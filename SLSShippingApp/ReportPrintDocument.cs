@@ -181,12 +181,18 @@ namespace ReportPrinter
                 "   <PageHeight>{4}</PageHeight>" +
                 "   <PageWidth>{5}</PageWidth>" +
                "</DeviceInfo>",
-                ToInches(margins.Top),
-                ToInches(margins.Left),
-                ToInches(margins.Right),
-                ToInches(margins.Bottom),
-                ToInches(paperSize.Height),
-                ToInches(paperSize.Width));
+                margins.Top,
+                margins.Left,
+                margins.Right,
+                margins.Bottom,
+                paperSize.Height,
+                paperSize.Width);
+                //ToInches(margins.Top),
+                //ToInches(margins.Left),
+                //ToInches(margins.Right),
+                //ToInches(margins.Bottom),
+                //ToInches(paperSize.Height),
+                //ToInches(paperSize.Width));
         }
 
         private static string ToInches(int hundrethsOfInch)

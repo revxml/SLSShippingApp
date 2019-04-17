@@ -6,5 +6,5 @@
     cause the file to be unrecognizable by the program.
 -->
 <GenericObjectDataSource DisplayName="TableAdapterManager+UpdateOrderOption" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-   <TypeInfo>SLSShipping.DS_rptPickingTicketTableAdapters.TableAdapterManager+UpdateOrderOption, DS_rptPickingTicket.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
+   <TypeInfo>SLSShippingApp.DS_rptPickingTicketTableAdapters.TableAdapterManager+UpdateOrderOption, DS_rptPickingTicket.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
 </GenericObjectDataSource>

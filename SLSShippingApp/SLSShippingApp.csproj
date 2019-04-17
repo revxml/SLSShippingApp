@@ -130,7 +130,7 @@
       <SubType>code</SubType>
     </Compile>
     <Compile Include="DataSets\DS_rptBayLabel.Designer.cs">
-      <DependentUpon>DataSets\DS_rptBayLabel.xsd</DependentUpon>
+      <DependentUpon>DS_rptBayLabel.xsd</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
@@ -139,12 +139,12 @@
       <SubType>code</SubType>
     </Compile>
     <Compile Include="DataSets\DS_rptFanBrandsLabel.Designer.cs">
-      <DependentUpon>DataSets\DS_rptFanBrandsLabel.xsd</DependentUpon>
+      <DependentUpon>DS_rptFanBrandsLabel.xsd</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="DataSets\DS_rptPackingLabels.Designer.cs">
-      <DependentUpon>DataSets\DS_rptPackingLabels.xsd</DependentUpon>
+      <DependentUpon>DS_rptPackingLabels.xsd</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
@@ -153,7 +153,7 @@
       <SubType>code</SubType>
     </Compile>
     <Compile Include="DataSets\DS_rptPickingTicket.Designer.cs">
-      <DependentUpon>DataSets\DS_rptPickingTicket.xsd</DependentUpon>
+      <DependentUpon>DS_rptPickingTicket.xsd</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
@@ -163,10 +163,10 @@
     <Compile Include="DataSets\DS_rptPrintLabel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataSets\DS_rptPrintLabel.xsd</DependentUpon>
+      <DependentUpon>DS_rptPrintLabel.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSets\DS_rptQuickShipLabel.Designer.cs">
-      <DependentUpon>DataSets\DS_rptQuickShipLabel.xsd</DependentUpon>
+      <DependentUpon>DS_rptQuickShipLabel.xsd</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
@@ -175,7 +175,7 @@
       <SubType>code</SubType>
     </Compile>
     <Compile Include="DataSets\DS_rptRetailerPackingLabel.Designer.cs">
-      <DependentUpon>DataSets\DS_rptRetailerPackingLabel.xsd</DependentUpon>
+      <DependentUpon>DS_rptRetailerPackingLabel.xsd</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
@@ -259,6 +259,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SLSShippingApp.resx">
+      <DependentUpon>SLSShippingApp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WindowsUsers.resx">
       <DependentUpon>WindowsUsers.cs</DependentUpon>
     </EmbeddedResource>
@@ -349,7 +352,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="icon.ico" />
+    <Resource Include="icon.ico" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

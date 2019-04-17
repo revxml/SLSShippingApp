@@ -1969,7 +1969,7 @@
             this.scShipping.SplitterDistance = 417;
             this.scShipping.TabIndex = 2;
             // 
-            // SLSShipping
+            // SLSShippingApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1977,7 +1977,7 @@
             this.ClientSize = new System.Drawing.Size(960, 584);
             this.Controls.Add(this.scShipping);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "SLSShipping";
+            this.Name = "SLSShippingApp";
             this.Text = "SLS Shipping";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SLSShipping_Closing);
             this.Load += new System.EventHandler(this.SLSShipping_Load);

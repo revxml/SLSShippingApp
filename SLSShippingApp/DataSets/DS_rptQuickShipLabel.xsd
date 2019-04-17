@@ -4,7 +4,7 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" GeneratorFunctionsComponentClassName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" UserFunctionsComponentName="QueriesTableAdapter" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="SLSShippingAppConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SLSShippingAppConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SLSShipping.Properties.Settings.GlobalReference.Default.SLSShippingAppConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="SLSShippingAppConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SLSShippingAppConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SLSShippingApp.Properties.Settings.GlobalReference.Default.SLSShippingAppConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="tblLabelQuickShipTableAdapter" GeneratorDataComponentClassName="tblLabelQuickShipTableAdapter" Name="tblLabelQuickShip" UserDataComponentName="tblLabelQuickShipTableAdapter">

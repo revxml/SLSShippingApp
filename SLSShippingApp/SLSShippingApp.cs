@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using System.Management;
 using System.Drawing.Printing;
 using Microsoft.Reporting.WinForms;
+
 using ZRush_ShipRush;
 
 namespace SLSShippingApp
@@ -939,7 +940,7 @@ namespace SLSShippingApp
         {
             DataTable dtRptData = new DataTable("ReportData");
             System.Reflection.Assembly assembly = this.GetType().Assembly;
-            String sEmbeddedRpt = "SLSShipping.Reports.rpt";//
+            String sEmbeddedRpt = "SLSShippingApp.Reports.rpt";//
             try
             {
                 if (sRptName.Contains("Retailer"))
