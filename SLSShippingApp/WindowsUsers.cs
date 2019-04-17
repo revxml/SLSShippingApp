@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
@@ -13,12 +14,6 @@ namespace SLSShippingApp
 {
     public partial class WindowsUsers : Form
     {
-        SqlConnection sqlCon;
-        SqlCommand sqlCmd;
-        DataTable dt;
-        String sSQL = String.Empty;
-        SqlDataReader reader;
-
         public WindowsUsers()
         {
             InitializeComponent();
@@ -34,21 +29,26 @@ namespace SLSShippingApp
         {
             DisableGridEvents();
             dgvWindowsUsers.DataSource = null;
-            sqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["SLSShippingAppConnection"].ConnectionString);
-            sSQL = "SELECT * FROM tblWindowsUsers";
-            sqlCmd = new SqlCommand(sSQL, sqlCon)
+
+            NameValueCollection nvcc = (NameValueCollection)ConfigurationManager.GetSection("customAppSettingsGroup/WindowsUsers");
+            DataTable dtUsers = new DataTable("WindowsUsers");
+            DataColumn dcName = new DataColumn("WindowsLogin", typeof(String));
+            DataColumn dcScreen = new DataColumn("DefaultScanScreen", typeof(String));
+            dtUsers.Columns.Add(dcName);
+            dtUsers.Columns.Add(dcScreen);
+
+            foreach (String key in nvcc.AllKeys)
             {
-                CommandType = CommandType.Text
-            };
-            sqlCon.Open();
-            dgvWindowsUsers.AutoGenerateColumns = false;
+                object[] rowVals = new object[2];
+                DataRowCollection rowCollection = dtUsers.Rows;
+                rowVals[0] = key.ToString();
+                rowVals[1] = nvcc[key].ToString();
+                DataRow row = rowCollection.Add(rowVals);
+            }
 
             try
             {
-                reader = sqlCmd.ExecuteReader();
-                dt = new DataTable("WindowsLogins");
-                dt.Load(reader);
-                dgvWindowsUsers.DataSource = dt;
+                dgvWindowsUsers.DataSource = dtUsers;
                 dgvWindowsUsers.Refresh();
             }
             catch (Exception ex)
@@ -57,10 +57,6 @@ namespace SLSShippingApp
             }
             finally
             {
-                sqlCon.Close();
-                sqlCon.Dispose();
-                sqlCmd.Dispose();
-                reader.Dispose();
                 EnableGridEvents();
             }
         }
@@ -70,16 +66,19 @@ namespace SLSShippingApp
             if (txtWindowsLogin.Text.Trim() == String.Empty)
                 return;
 
-            sqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["SLSShippingAppConnection"].ConnectionString);
-            sSQL = String.Format("INSERT INTO tblWindowsUsers (WindowsLogin,DefaultScanScreen,DefaultInputType) VALUES ('{0}','{1}','{2}')", txtWindowsLogin.Text.Trim(), cbDefaultScanScreen.Text, cbDefaultInputType.Text);
-            sqlCmd = new SqlCommand(sSQL, sqlCon)
-            {
-                CommandType = CommandType.Text
-            };
-            sqlCon.Open();
+            String sWindowUser = txtWindowsLogin.Text.Trim();
+            String sDefaultScreen = cbDefaultScanScreen.Text.ToString();
+
             try
             {
-                sqlCmd.ExecuteNonQuery();
+                Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                NameValueCollection nvcc = (NameValueCollection)ConfigurationManager.GetSection("customAppSettingsGroup/WindowsUsers");
+                nvcc.Add(sWindowUser, sDefaultScreen);
+
+                //save the file
+                config.Save(ConfigurationSaveMode.Modified);
+                //relaod the section you modified
+                ConfigurationManager.RefreshSection(config.AppSettings.SectionInformation.Name);
             }
             catch (Exception ex)
             {
@@ -87,12 +86,8 @@ namespace SLSShippingApp
             }
             finally
             {
-                sqlCon.Close();
-                sqlCon.Dispose();
-                sqlCmd.Dispose();
                 PopulateWindowsUsers();
             }
-
         }
 
         private void dgvWindowsUsers_CurrentCellDirtyStateChanged(object sender, EventArgs e)
@@ -110,16 +105,16 @@ namespace SLSShippingApp
             DataGridViewRow dgvRow = (DataGridViewRow)dgvWindowsUsers.Rows[e.RowIndex];
             if (dgvRow.Cells[0].Value.ToString() == String.Empty)
                 return;
-            sqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["SLSShippingAppConnection"].ConnectionString);
-            sSQL = String.Format("UPDATE tblWindowsUsers SET DefaultScanScreen = '{1}',DefaultInputType = '{2}' WHERE WindowsLogin = '{0}'", dgvRow.Cells[0].Value, dgvRow.Cells[1].Value, dgvRow.Cells[2].Value);
-            sqlCmd = new SqlCommand(sSQL, sqlCon)
-            {
-                CommandType = CommandType.Text
-            };
-            sqlCon.Open();
+
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            NameValueCollection nvcc = (NameValueCollection)ConfigurationManager.GetSection("customAppSettingsGroup/WindowsUsers");
+
+            String sWindowLogin = dgvRow.Cells[0].Value.ToString();
+            String sDefaultScreen = dgvRow.Cells[1].Value.ToString();
+
             try
             {
-                sqlCmd.ExecuteNonQuery();
+                nvcc[sWindowLogin] = sDefaultScreen;
             }
             catch (Exception ex)
             {
@@ -127,9 +122,6 @@ namespace SLSShippingApp
             }
             finally
             {
-                sqlCon.Close();
-                sqlCon.Dispose();
-                sqlCmd.Dispose();
                 PopulateWindowsUsers();
             }
         }
@@ -150,16 +142,12 @@ namespace SLSShippingApp
 
             if (MessageBox.Show(String.Format("Are you sure you want to DELETE user:{0}?", e.Row.Cells[0].Value), "Add/Edit Windows Users", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
             {
-                sqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["SLSShippingAppConnection"].ConnectionString);
-                sSQL = String.Format("DELETE FROM tblWindowsUsers  WHERE WindowsLogin = '{0}'", e.Row.Cells[0].Value);
-                sqlCmd = new SqlCommand(sSQL, sqlCon)
-                {
-                    CommandType = CommandType.Text
-                };
-                sqlCon.Open();
                 try
                 {
-                    sqlCmd.ExecuteNonQuery();
+                    String sWindowsLogin = e.Row.Cells[0].Value.ToString();
+                    Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                    NameValueCollection nvcc = (NameValueCollection)ConfigurationManager.GetSection("customAppSettingsGroup/WindowsUsers");
+                    nvcc.Remove(sWindowsLogin);
                 }
                 catch (Exception ex)
                 {
@@ -168,9 +156,6 @@ namespace SLSShippingApp
                 }
                 finally
                 {
-                    sqlCon.Close();
-                    sqlCon.Dispose();
-                    sqlCmd.Dispose();
                     PopulateWindowsUsers();
                 }
             }
