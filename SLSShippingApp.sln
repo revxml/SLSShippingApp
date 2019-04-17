@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLSShippingApp", "SLSShippingApp\SLSShippingApp.csproj", "{B20076C4-28B8-4F39-ACE7-6B94E91D0B8D}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SQL_ExpressDB", "SQL_ExpressDB\SQL_ExpressDB.vdproj", "{688D0BE0-4FB1-4933-A3C4-011D9EDE435A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		DebugLocal|Any CPU = DebugLocal|Any CPU
+		DebugLocal|Mixed Platforms = DebugLocal|Mixed Platforms
+		DebugLocal|x86 = DebugLocal|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B20076C4-28B8-4F39-ACE7-6B94E91D0B8D}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{B20076C4-28B8-4F39-ACE7-6B94E91D0B8D}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{B20076C4-28B8-4F39-ACE7-6B94E91D0B8D}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{B20076C4-28B8-4F39-ACE7-6B94E91D0B8D}.Debug|x86.ActiveCfg = Debug|x86
+		{B20076C4-28B8-4F39-ACE7-6B94E91D0B8D}.DebugLocal|Any CPU.ActiveCfg = Debug|x86
+		{B20076C4-28B8-4F39-ACE7-6B94E91D0B8D}.DebugLocal|Mixed Platforms.ActiveCfg = Debug|x86
+		{B20076C4-28B8-4F39-ACE7-6B94E91D0B8D}.DebugLocal|x86.ActiveCfg = Debug|x86
+		{B20076C4-28B8-4F39-ACE7-6B94E91D0B8D}.Release|Any CPU.ActiveCfg = Release|x86
+		{B20076C4-28B8-4F39-ACE7-6B94E91D0B8D}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{B20076C4-28B8-4F39-ACE7-6B94E91D0B8D}.Release|x86.ActiveCfg = Release|x86
+		{688D0BE0-4FB1-4933-A3C4-011D9EDE435A}.Debug|Any CPU.ActiveCfg = Debug
+		{688D0BE0-4FB1-4933-A3C4-011D9EDE435A}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{688D0BE0-4FB1-4933-A3C4-011D9EDE435A}.Debug|x86.ActiveCfg = Debug
+		{688D0BE0-4FB1-4933-A3C4-011D9EDE435A}.DebugLocal|Any CPU.ActiveCfg = Debug
+		{688D0BE0-4FB1-4933-A3C4-011D9EDE435A}.DebugLocal|Mixed Platforms.ActiveCfg = Debug
+		{688D0BE0-4FB1-4933-A3C4-011D9EDE435A}.DebugLocal|x86.ActiveCfg = Debug
+		{688D0BE0-4FB1-4933-A3C4-011D9EDE435A}.Release|Any CPU.ActiveCfg = Release
+		{688D0BE0-4FB1-4933-A3C4-011D9EDE435A}.Release|Mixed Platforms.ActiveCfg = Release
+		{688D0BE0-4FB1-4933-A3C4-011D9EDE435A}.Release|x86.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C6463D34-8AB6-414A-A813-B26DD0E0216A}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://mmtfs01:8080/tfs/utilities
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = SLSShippingApp\\SLSShippingApp.csproj
+		SccProjectName1 = ../SLSShippingApp/SLSShippingApp
+		SccLocalPath1 = SLSShippingApp
+		SccProjectUniqueName2 = SQL_ExpressDB\\SQL_ExpressDB.vdproj
+		SccProjectName2 = SQL_ExpressDB
+		SccLocalPath2 = SQL_ExpressDB
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,688 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DS_rptRetailerPackingLabel" targetNamespace="http://tempuri.org/DS_rptRetailerPackingLabel.xsd" xmlns:mstns="http://tempuri.org/DS_rptRetailerPackingLabel.xsd" xmlns="http://tempuri.org/DS_rptRetailerPackingLabel.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="SLSShippingAppConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SLSShippingAppConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SLSShipping.Properties.Settings.GlobalReference.Default.SLSShippingAppConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="tblRetailerPackingLabelTableAdapter" GeneratorDataComponentClassName="tblRetailerPackingLabelTableAdapter" Name="tblRetailerPackingLabel" UserDataComponentName="tblRetailerPackingLabelTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SLSShippingAppConnectionString (Settings)" DbObjectName="SLSShippingApp.dbo.tblRetailerPackingLabel" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [dbo].[tblRetailerPackingLabel] ([PickedDate], [OrderorSONumber], [PKTK], [OrderLineNumber], [StockNumber], [StockDescription1], [StockDescription2], [StockDescription3], [QuantityToShip], [RecToday], [txtImageName], [CustomerNumber], [CustomerName], [PONumber], [ShipToNumber], [ShipToName], [ShipToAddress1], [ShipToAddress2], [ShipToAddress3], [ShipToCity], [ShipToState], [ShipToZipCode], [ShipToCountry], [ShipViaCode], [CustomerProfile], [BayLocation], [QtyFromStock], [QtyShippedTodate], [BillToName], [BillToAddress1], [BillToAddress2], [BIllToAddress3], [BIllToCity], [BillToState], [BillToZipCode], [BillToCountry], [OrderDate], [ShipDate], [ShipInstructions1], [ShipInstructions2], [CustShipperAcct], [CustNote1], [CustNote2], [CustNote3], [CustNote4], [CustNote5], [RetailerName], [RetailerFld1], [RetailerFld2], [RetailerFld3], [RetailerFld4], [RetailerFld5], [OrderWeight], [SearchDesc], [UnitPrice], [ShipCost], [UnitTaxAmt], [TotalOrderCost], [CustomerOrderNo], [ShipToPhone], [OrderedByName], [OrderedByAddr1], [OrderedByAddr2], [OrderedByAddr3], [OrderedByCity], [OrderedByState], [OrderedByZipCode], [OrderedByCountry], [RetailerItemDesc], [TCNumber], [UPC], [OperatorName], [EnvironUser], [ASNNumber], [DPCI], [GiftWrap], [MFGID], [ReturnMethod], [ReturnPolicy], [GiftMessage]) VALUES (@PickedDate, @OrderorSONumber, @PKTK, @OrderLineNumber, @StockNumber, @StockDescription1, @StockDescription2, @StockDescription3, @QuantityToShip, @RecToday, @txtImageName, @CustomerNumber, @CustomerName, @PONumber, @ShipToNumber, @ShipToName, @ShipToAddress1, @ShipToAddress2, @ShipToAddress3, @ShipToCity, @ShipToState, @ShipToZipCode, @ShipToCountry, @ShipViaCode, @CustomerProfile, @BayLocation, @QtyFromStock, @QtyShippedTodate, @BillToName, @BillToAddress1, @BillToAddress2, @BIllToAddress3, @BIllToCity, @BillToState, @BillToZipCode, @BillToCountry, @OrderDate, @ShipDate, @ShipInstructions1, @ShipInstructions2, @CustShipperAcct, @CustNote1, @CustNote2, @CustNote3, @CustNote4, @CustNote5, @RetailerName, @RetailerFld1, @RetailerFld2, @RetailerFld3, @RetailerFld4, @RetailerFld5, @OrderWeight, @SearchDesc, @UnitPrice, @ShipCost, @UnitTaxAmt, @TotalOrderCost, @CustomerOrderNo, @ShipToPhone, @OrderedByName, @OrderedByAddr1, @OrderedByAddr2, @OrderedByAddr3, @OrderedByCity, @OrderedByState, @OrderedByZipCode, @OrderedByCountry, @RetailerItemDesc, @TCNumber, @UPC, @OperatorName, @EnvironUser, @ASNNumber, @DPCI, @GiftWrap, @MFGID, @ReturnMethod, @ReturnPolicy, @GiftMessage)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@PickedDate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="PickedDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@OrderorSONumber" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="OrderorSONumber" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@PKTK" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="PKTK" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@OrderLineNumber" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="OrderLineNumber" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@StockNumber" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="StockNumber" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@StockDescription1" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="StockDescription1" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@StockDescription2" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="StockDescription2" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@StockDescription3" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="StockDescription3" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@QuantityToShip" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="QuantityToShip" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@RecToday" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="RecToday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@txtImageName" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="txtImageName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@CustomerNumber" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CustomerNumber" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@CustomerName" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CustomerName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@PONumber" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="PONumber" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ShipToNumber" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ShipToNumber" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ShipToName" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ShipToName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ShipToAddress1" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ShipToAddress1" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ShipToAddress2" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ShipToAddress2" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ShipToAddress3" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ShipToAddress3" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ShipToCity" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ShipToCity" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ShipToState" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ShipToState" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ShipToZipCode" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ShipToZipCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ShipToCountry" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ShipToCountry" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ShipViaCode" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ShipViaCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@CustomerProfile" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CustomerProfile" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@BayLocation" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="BayLocation" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@QtyFromStock" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="QtyFromStock" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@QtyShippedTodate" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="QtyShippedTodate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@BillToName" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="BillToName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@BillToAddress1" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="BillToAddress1" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@BillToAddress2" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="BillToAddress2" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@BIllToAddress3" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="BIllToAddress3" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@BIllToCity" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="BIllToCity" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@BillToState" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="BillToState" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@BillToZipCode" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="BillToZipCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@BillToCountry" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="BillToCountry" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@OrderDate" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="OrderDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@ShipDate" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="ShipDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ShipInstructions1" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ShipInstructions1" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ShipInstructions2" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ShipInstructions2" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@CustShipperAcct" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CustShipperAcct" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@CustNote1" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CustNote1" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@CustNote2" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CustNote2" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@CustNote3" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CustNote3" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@CustNote4" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CustNote4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@CustNote5" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CustNote5" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@RetailerName" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="RetailerName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@RetailerFld1" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="RetailerFld1" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@RetailerFld2" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="RetailerFld2" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@RetailerFld3" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="RetailerFld3" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@RetailerFld4" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="RetailerFld4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@RetailerFld5" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="RetailerFld5" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@OrderWeight" Precision="6" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="OrderWeight" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@SearchDesc" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="SearchDesc" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@UnitPrice" Precision="6" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="UnitPrice" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@ShipCost" Precision="6" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="ShipCost" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@UnitTaxAmt" Precision="6" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="UnitTaxAmt" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@TotalOrderCost" Precision="6" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="TotalOrderCost" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@CustomerOrderNo" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CustomerOrderNo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ShipToPhone" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ShipToPhone" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@OrderedByName" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="OrderedByName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@OrderedByAddr1" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="OrderedByAddr1" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@OrderedByAddr2" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="OrderedByAddr2" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@OrderedByAddr3" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="OrderedByAddr3" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@OrderedByCity" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="OrderedByCity" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@OrderedByState" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="OrderedByState" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@OrderedByZipCode" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="OrderedByZipCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@OrderedByCountry" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="OrderedByCountry" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@RetailerItemDesc" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="RetailerItemDesc" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@TCNumber" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="TCNumber" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@UPC" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="UPC" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@OperatorName" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="OperatorName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@EnvironUser" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="EnvironUser" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ASNNumber" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ASNNumber" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@DPCI" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="DPCI" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@GiftWrap" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="GiftWrap" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MFGID" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MFGID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ReturnMethod" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ReturnMethod" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ReturnPolicy" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ReturnPolicy" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@GiftMessage" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="GiftMessage" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT PickedDate, OrderorSONumber, PKTK, OrderLineNumber, StockNumber, StockDescription1, StockDescription2, StockDescription3, QuantityToShip, RecToday, txtImageName, CustomerNumber, CustomerName, PONumber, ShipToNumber, ShipToName, ShipToAddress1, ShipToAddress2, ShipToAddress3, ShipToCity, ShipToState, ShipToZipCode, ShipToCountry, ShipViaCode, CustomerProfile, BayLocation, QtyFromStock, QtyShippedTodate, BillToName, BillToAddress1, BillToAddress2, BIllToAddress3, BIllToCity, BillToState, BillToZipCode, BillToCountry, OrderDate, ShipDate, ShipInstructions1, ShipInstructions2, CustShipperAcct, CustNote1, CustNote2, CustNote3, CustNote4, CustNote5, RetailerName, RetailerFld1, RetailerFld2, RetailerFld3, RetailerFld4, RetailerFld5, OrderWeight, SearchDesc, UnitPrice, ShipCost, UnitTaxAmt, TotalOrderCost, CustomerOrderNo, ShipToPhone, OrderedByName, OrderedByAddr1, OrderedByAddr2, OrderedByAddr3, OrderedByCity, OrderedByState, OrderedByZipCode, OrderedByCountry, RetailerItemDesc, TCNumber, UPC, OperatorName, EnvironUser, ASNNumber, DPCI, GiftWrap, MFGID, ReturnMethod, ReturnPolicy, GiftMessage FROM dbo.tblRetailerPackingLabel
+WHERE OrderOrSONumber = @OrderNumber</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="OrderNumber" ColumnName="OrderorSONumber" DataSourceName="SLSShippingApp.dbo.tblRetailerPackingLabel" DataTypeServer="varchar(25)" DbType="AnsiString" Direction="Input" ParameterName="@OrderNumber" Precision="0" ProviderType="VarChar" Scale="0" Size="25" SourceColumn="OrderorSONumber" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="PickedDate" DataSetColumn="PickedDate" />
+              <Mapping SourceColumn="OrderorSONumber" DataSetColumn="OrderOrSONumber" />
+              <Mapping SourceColumn="PKTK" DataSetColumn="PKTK" />
+              <Mapping SourceColumn="OrderLineNumber" DataSetColumn="OrderLineNumber" />
+              <Mapping SourceColumn="StockNumber" DataSetColumn="StockNumber" />
+              <Mapping SourceColumn="StockDescription1" DataSetColumn="StockDescription1" />
+              <Mapping SourceColumn="StockDescription2" DataSetColumn="StockDescription2" />
+              <Mapping SourceColumn="StockDescription3" DataSetColumn="StockDescription3" />
+              <Mapping SourceColumn="QuantityToShip" DataSetColumn="QuantityToShip" />
+              <Mapping SourceColumn="RecToday" DataSetColumn="RecToday" />
+              <Mapping SourceColumn="txtImageName" DataSetColumn="txtImageName" />
+              <Mapping SourceColumn="CustomerNumber" DataSetColumn="CustomerNumber" />
+              <Mapping SourceColumn="CustomerName" DataSetColumn="CustomerName" />
+              <Mapping SourceColumn="PONumber" DataSetColumn="PONumber" />
+              <Mapping SourceColumn="ShipToNumber" DataSetColumn="ShipToNumber" />
+              <Mapping SourceColumn="ShipToName" DataSetColumn="ShipToName" />
+              <Mapping SourceColumn="ShipToAddress1" DataSetColumn="ShipToAddress1" />
+              <Mapping SourceColumn="ShipToAddress2" DataSetColumn="ShipToAddress2" />
+              <Mapping SourceColumn="ShipToAddress3" DataSetColumn="ShipToAddress3" />
+              <Mapping SourceColumn="ShipToCity" DataSetColumn="ShipToCity" />
+              <Mapping SourceColumn="ShipToState" DataSetColumn="ShipToState" />
+              <Mapping SourceColumn="ShipToZipCode" DataSetColumn="ShipToZipCode" />
+              <Mapping SourceColumn="ShipToCountry" DataSetColumn="ShipToCountry" />
+              <Mapping SourceColumn="ShipViaCode" DataSetColumn="ShipViaCode" />
+              <Mapping SourceColumn="CustomerProfile" DataSetColumn="CustomerProfile" />
+              <Mapping SourceColumn="BayLocation" DataSetColumn="BayLocation" />
+              <Mapping SourceColumn="QtyFromStock" DataSetColumn="QtyFromStock" />
+              <Mapping SourceColumn="QtyShippedTodate" DataSetColumn="QtyShippedTodate" />
+              <Mapping SourceColumn="BillToName" DataSetColumn="BillToName" />
+              <Mapping SourceColumn="BillToAddress1" DataSetColumn="BillToAddress1" />
+              <Mapping SourceColumn="BillToAddress2" DataSetColumn="BillToAddress2" />
+              <Mapping SourceColumn="BIllToAddress3" DataSetColumn="BIllToAddress3" />
+              <Mapping SourceColumn="BIllToCity" DataSetColumn="BIllToCity" />
+              <Mapping SourceColumn="BillToState" DataSetColumn="BillToState" />
+              <Mapping SourceColumn="BillToZipCode" DataSetColumn="BillToZipCode" />
+              <Mapping SourceColumn="BillToCountry" DataSetColumn="BillToCountry" />
+              <Mapping SourceColumn="OrderDate" DataSetColumn="OrderDate" />
+              <Mapping SourceColumn="ShipDate" DataSetColumn="ShipDate" />
+              <Mapping SourceColumn="ShipInstructions1" DataSetColumn="ShipInstructions1" />
+              <Mapping SourceColumn="ShipInstructions2" DataSetColumn="ShipInstructions2" />
+              <Mapping SourceColumn="CustShipperAcct" DataSetColumn="CustShipperAcct" />
+              <Mapping SourceColumn="CustNote1" DataSetColumn="CustNote1" />
+              <Mapping SourceColumn="CustNote2" DataSetColumn="CustNote2" />
+              <Mapping SourceColumn="CustNote3" DataSetColumn="CustNote3" />
+              <Mapping SourceColumn="CustNote4" DataSetColumn="CustNote4" />
+              <Mapping SourceColumn="CustNote5" DataSetColumn="CustNote5" />
+              <Mapping SourceColumn="RetailerName" DataSetColumn="RetailerName" />
+              <Mapping SourceColumn="RetailerFld1" DataSetColumn="RetailerFld1" />
+              <Mapping SourceColumn="RetailerFld2" DataSetColumn="RetailerFld2" />
+              <Mapping SourceColumn="RetailerFld3" DataSetColumn="RetailerFld3" />
+              <Mapping SourceColumn="RetailerFld4" DataSetColumn="RetailerFld4" />
+              <Mapping SourceColumn="RetailerFld5" DataSetColumn="RetailerFld5" />
+              <Mapping SourceColumn="OrderWeight" DataSetColumn="OrderWeight" />
+              <Mapping SourceColumn="SearchDesc" DataSetColumn="SearchDesc" />
+              <Mapping SourceColumn="UnitPrice" DataSetColumn="UnitPrice" />
+              <Mapping SourceColumn="ShipCost" DataSetColumn="ShipCost" />
+              <Mapping SourceColumn="UnitTaxAmt" DataSetColumn="UnitTaxAmt" />
+              <Mapping SourceColumn="TotalOrderCost" DataSetColumn="TotalOrderCost" />
+              <Mapping SourceColumn="CustomerOrderNo" DataSetColumn="CustomerOrderNo" />
+              <Mapping SourceColumn="ShipToPhone" DataSetColumn="ShipToPhone" />
+              <Mapping SourceColumn="OrderedByName" DataSetColumn="OrderedByName" />
+              <Mapping SourceColumn="OrderedByAddr1" DataSetColumn="OrderedByAddr1" />
+              <Mapping SourceColumn="OrderedByAddr2" DataSetColumn="OrderedByAddr2" />
+              <Mapping SourceColumn="OrderedByAddr3" DataSetColumn="OrderedByAddr3" />
+              <Mapping SourceColumn="OrderedByCity" DataSetColumn="OrderedByCity" />
+              <Mapping SourceColumn="OrderedByState" DataSetColumn="OrderedByState" />
+              <Mapping SourceColumn="OrderedByZipCode" DataSetColumn="OrderedByZipCode" />
+              <Mapping SourceColumn="OrderedByCountry" DataSetColumn="OrderedByCountry" />
+              <Mapping SourceColumn="RetailerItemDesc" DataSetColumn="RetailerItemDesc" />
+              <Mapping SourceColumn="TCNumber" DataSetColumn="TCNumber" />
+              <Mapping SourceColumn="UPC" DataSetColumn="UPC" />
+              <Mapping SourceColumn="OperatorName" DataSetColumn="OperatorName" />
+              <Mapping SourceColumn="EnvironUser" DataSetColumn="EnvironUser" />
+              <Mapping SourceColumn="ASNNumber" DataSetColumn="ASNNumber" />
+              <Mapping SourceColumn="DPCI" DataSetColumn="DPCI" />
+              <Mapping SourceColumn="GiftWrap" DataSetColumn="GiftWrap" />
+              <Mapping SourceColumn="MFGID" DataSetColumn="MFGID" />
+              <Mapping SourceColumn="ReturnMethod" DataSetColumn="ReturnMethod" />
+              <Mapping SourceColumn="ReturnPolicy" DataSetColumn="ReturnPolicy" />
+              <Mapping SourceColumn="GiftMessage" DataSetColumn="GiftMessage" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DS_rptRetailerPackingLabel" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DS_rptRetailerPackingLabel" msprop:Generator_UserDSName="DS_rptRetailerPackingLabel">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tblRetailerPackingLabel" msprop:Generator_TableClassName="tblRetailerPackingLabelDataTable" msprop:Generator_TableVarName="tabletblRetailerPackingLabel" msprop:Generator_TablePropName="tblRetailerPackingLabel" msprop:Generator_RowDeletingName="tblRetailerPackingLabelRowDeleting" msprop:Generator_RowChangingName="tblRetailerPackingLabelRowChanging" msprop:Generator_RowEvHandlerName="tblRetailerPackingLabelRowChangeEventHandler" msprop:Generator_RowDeletedName="tblRetailerPackingLabelRowDeleted" msprop:Generator_UserTableName="tblRetailerPackingLabel" msprop:Generator_RowChangedName="tblRetailerPackingLabelRowChanged" msprop:Generator_RowEvArgName="tblRetailerPackingLabelRowChangeEvent" msprop:Generator_RowClassName="tblRetailerPackingLabelRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PickedDate" msprop:Generator_ColumnVarNameInTable="columnPickedDate" msprop:Generator_ColumnPropNameInRow="PickedDate" msprop:Generator_ColumnPropNameInTable="PickedDateColumn" msprop:Generator_UserColumnName="PickedDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="OrderOrSONumber" msprop:Generator_ColumnVarNameInTable="columnOrderOrSONumber" msprop:Generator_ColumnPropNameInRow="OrderOrSONumber" msprop:Generator_ColumnPropNameInTable="OrderOrSONumberColumn" msprop:Generator_UserColumnName="OrderOrSONumber" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PKTK" msprop:Generator_ColumnVarNameInTable="columnPKTK" msprop:Generator_ColumnPropNameInRow="PKTK" msprop:Generator_ColumnPropNameInTable="PKTKColumn" msprop:Generator_UserColumnName="PKTK" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="OrderLineNumber" msprop:Generator_ColumnVarNameInTable="columnOrderLineNumber" msprop:Generator_ColumnPropNameInRow="OrderLineNumber" msprop:Generator_ColumnPropNameInTable="OrderLineNumberColumn" msprop:Generator_UserColumnName="OrderLineNumber" type="xs:int" minOccurs="0" />
+              <xs:element name="StockNumber" msprop:Generator_ColumnVarNameInTable="columnStockNumber" msprop:Generator_ColumnPropNameInRow="StockNumber" msprop:Generator_ColumnPropNameInTable="StockNumberColumn" msprop:Generator_UserColumnName="StockNumber" type="xs:int" minOccurs="0" />
+              <xs:element name="StockDescription1" msprop:Generator_ColumnVarNameInTable="columnStockDescription1" msprop:Generator_ColumnPropNameInRow="StockDescription1" msprop:Generator_ColumnPropNameInTable="StockDescription1Column" msprop:Generator_UserColumnName="StockDescription1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="StockDescription2" msprop:Generator_ColumnVarNameInTable="columnStockDescription2" msprop:Generator_ColumnPropNameInRow="StockDescription2" msprop:Generator_ColumnPropNameInTable="StockDescription2Column" msprop:Generator_UserColumnName="StockDescription2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="StockDescription3" msprop:Generator_ColumnVarNameInTable="columnStockDescription3" msprop:Generator_ColumnPropNameInRow="StockDescription3" msprop:Generator_ColumnPropNameInTable="StockDescription3Column" msprop:Generator_UserColumnName="StockDescription3" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="QuantityToShip" msprop:Generator_ColumnVarNameInTable="columnQuantityToShip" msprop:Generator_ColumnPropNameInRow="QuantityToShip" msprop:Generator_ColumnPropNameInTable="QuantityToShipColumn" msprop:Generator_UserColumnName="QuantityToShip" type="xs:int" minOccurs="0" />
+              <xs:element name="RecToday" msprop:Generator_ColumnVarNameInTable="columnRecToday" msprop:Generator_ColumnPropNameInRow="RecToday" msprop:Generator_ColumnPropNameInTable="RecTodayColumn" msprop:Generator_UserColumnName="RecToday" type="xs:int" minOccurs="0" />
+              <xs:element name="txtImageName" msprop:Generator_ColumnVarNameInTable="columntxtImageName" msprop:Generator_ColumnPropNameInRow="txtImageName" msprop:Generator_ColumnPropNameInTable="txtImageNameColumn" msprop:Generator_UserColumnName="txtImageName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CustomerNumber" msprop:Generator_ColumnVarNameInTable="columnCustomerNumber" msprop:Generator_ColumnPropNameInRow="CustomerNumber" msprop:Generator_ColumnPropNameInTable="CustomerNumberColumn" msprop:Generator_UserColumnName="CustomerNumber" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CustomerName" msprop:Generator_ColumnVarNameInTable="columnCustomerName" msprop:Generator_ColumnPropNameInRow="CustomerName" msprop:Generator_ColumnPropNameInTable="CustomerNameColumn" msprop:Generator_UserColumnName="CustomerName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="75" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PONumber" msprop:Generator_ColumnVarNameInTable="columnPONumber" msprop:Generator_ColumnPropNameInRow="PONumber" msprop:Generator_ColumnPropNameInTable="PONumberColumn" msprop:Generator_UserColumnName="PONumber" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ShipToNumber" msprop:Generator_ColumnVarNameInTable="columnShipToNumber" msprop:Generator_ColumnPropNameInRow="ShipToNumber" msprop:Generator_ColumnPropNameInTable="ShipToNumberColumn" msprop:Generator_UserColumnName="ShipToNumber" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ShipToName" msprop:Generator_ColumnVarNameInTable="columnShipToName" msprop:Generator_ColumnPropNameInRow="ShipToName" msprop:Generator_ColumnPropNameInTable="ShipToNameColumn" msprop:Generator_UserColumnName="ShipToName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ShipToAddress1" msprop:Generator_ColumnVarNameInTable="columnShipToAddress1" msprop:Generator_ColumnPropNameInRow="ShipToAddress1" msprop:Generator_ColumnPropNameInTable="ShipToAddress1Column" msprop:Generator_UserColumnName="ShipToAddress1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ShipToAddress2" msprop:Generator_ColumnVarNameInTable="columnShipToAddress2" msprop:Generator_ColumnPropNameInRow="ShipToAddress2" msprop:Generator_ColumnPropNameInTable="ShipToAddress2Column" msprop:Generator_UserColumnName="ShipToAddress2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ShipToAddress3" msprop:Generator_ColumnVarNameInTable="columnShipToAddress3" msprop:Generator_ColumnPropNameInRow="ShipToAddress3" msprop:Generator_ColumnPropNameInTable="ShipToAddress3Column" msprop:Generator_UserColumnName="ShipToAddress3" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ShipToCity" msprop:Generator_ColumnVarNameInTable="columnShipToCity" msprop:Generator_ColumnPropNameInRow="ShipToCity" msprop:Generator_ColumnPropNameInTable="ShipToCityColumn" msprop:Generator_UserColumnName="ShipToCity" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ShipToState" msprop:Generator_ColumnVarNameInTable="columnShipToState" msprop:Generator_ColumnPropNameInRow="ShipToState" msprop:Generator_ColumnPropNameInTable="ShipToStateColumn" msprop:Generator_UserColumnName="ShipToState" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ShipToZipCode" msprop:Generator_ColumnVarNameInTable="columnShipToZipCode" msprop:Generator_ColumnPropNameInRow="ShipToZipCode" msprop:Generator_ColumnPropNameInTable="ShipToZipCodeColumn" msprop:Generator_UserColumnName="ShipToZipCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ShipToCountry" msprop:Generator_ColumnVarNameInTable="columnShipToCountry" msprop:Generator_ColumnPropNameInRow="ShipToCountry" msprop:Generator_ColumnPropNameInTable="ShipToCountryColumn" msprop:Generator_UserColumnName="ShipToCountry" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ShipViaCode" msprop:Generator_ColumnVarNameInTable="columnShipViaCode" msprop:Generator_ColumnPropNameInRow="ShipViaCode" msprop:Generator_ColumnPropNameInTable="ShipViaCodeColumn" msprop:Generator_UserColumnName="ShipViaCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CustomerProfile" msprop:Generator_ColumnVarNameInTable="columnCustomerProfile" msprop:Generator_ColumnPropNameInRow="CustomerProfile" msprop:Generator_ColumnPropNameInTable="CustomerProfileColumn" msprop:Generator_UserColumnName="CustomerProfile" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BayLocation" msprop:Generator_ColumnVarNameInTable="columnBayLocation" msprop:Generator_ColumnPropNameInRow="BayLocation" msprop:Generator_ColumnPropNameInTable="BayLocationColumn" msprop:Generator_UserColumnName="BayLocation" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="QtyFromStock" msprop:Generator_ColumnVarNameInTable="columnQtyFromStock" msprop:Generator_ColumnPropNameInRow="QtyFromStock" msprop:Generator_ColumnPropNameInTable="QtyFromStockColumn" msprop:Generator_UserColumnName="QtyFromStock" type="xs:int" minOccurs="0" />
+              <xs:element name="QtyShippedTodate" msprop:Generator_ColumnVarNameInTable="columnQtyShippedTodate" msprop:Generator_ColumnPropNameInRow="QtyShippedTodate" msprop:Generator_ColumnPropNameInTable="QtyShippedTodateColumn" msprop:Generator_UserColumnName="QtyShippedTodate" type="xs:int" minOccurs="0" />
+              <xs:element name="BillToName" msprop:Generator_ColumnVarNameInTable="columnBillToName" msprop:Generator_ColumnPropNameInRow="BillToName" msprop:Generator_ColumnPropNameInTable="BillToNameColumn" msprop:Generator_UserColumnName="BillToName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BillToAddress1" msprop:Generator_ColumnVarNameInTable="columnBillToAddress1" msprop:Generator_ColumnPropNameInRow="BillToAddress1" msprop:Generator_ColumnPropNameInTable="BillToAddress1Column" msprop:Generator_UserColumnName="BillToAddress1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BillToAddress2" msprop:Generator_ColumnVarNameInTable="columnBillToAddress2" msprop:Generator_ColumnPropNameInRow="BillToAddress2" msprop:Generator_ColumnPropNameInTable="BillToAddress2Column" msprop:Generator_UserColumnName="BillToAddress2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BIllToAddress3" msprop:Generator_ColumnVarNameInTable="columnBIllToAddress3" msprop:Generator_ColumnPropNameInRow="BIllToAddress3" msprop:Generator_ColumnPropNameInTable="BIllToAddress3Column" msprop:Generator_UserColumnName="BIllToAddress3" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BIllToCity" msprop:Generator_ColumnVarNameInTable="columnBIllToCity" msprop:Generator_ColumnPropNameInRow="BIllToCity" msprop:Generator_ColumnPropNameInTable="BIllToCityColumn" msprop:Generator_UserColumnName="BIllToCity" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BillToState" msprop:Generator_ColumnVarNameInTable="columnBillToState" msprop:Generator_ColumnPropNameInRow="BillToState" msprop:Generator_ColumnPropNameInTable="BillToStateColumn" msprop:Generator_UserColumnName="BillToState" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BillToZipCode" msprop:Generator_ColumnVarNameInTable="columnBillToZipCode" msprop:Generator_ColumnPropNameInRow="BillToZipCode" msprop:Generator_ColumnPropNameInTable="BillToZipCodeColumn" msprop:Generator_UserColumnName="BillToZipCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BillToCountry" msprop:Generator_ColumnVarNameInTable="columnBillToCountry" msprop:Generator_ColumnPropNameInRow="BillToCountry" msprop:Generator_ColumnPropNameInTable="BillToCountryColumn" msprop:Generator_UserColumnName="BillToCountry" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="OrderDate" msprop:Generator_ColumnVarNameInTable="columnOrderDate" msprop:Generator_ColumnPropNameInRow="OrderDate" msprop:Generator_ColumnPropNameInTable="OrderDateColumn" msprop:Generator_UserColumnName="OrderDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ShipDate" msprop:Generator_ColumnVarNameInTable="columnShipDate" msprop:Generator_ColumnPropNameInRow="ShipDate" msprop:Generator_ColumnPropNameInTable="ShipDateColumn" msprop:Generator_UserColumnName="ShipDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ShipInstructions1" msprop:Generator_ColumnVarNameInTable="columnShipInstructions1" msprop:Generator_ColumnPropNameInRow="ShipInstructions1" msprop:Generator_ColumnPropNameInTable="ShipInstructions1Column" msprop:Generator_UserColumnName="ShipInstructions1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ShipInstructions2" msprop:Generator_ColumnVarNameInTable="columnShipInstructions2" msprop:Generator_ColumnPropNameInRow="ShipInstructions2" msprop:Generator_ColumnPropNameInTable="ShipInstructions2Column" msprop:Generator_UserColumnName="ShipInstructions2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CustShipperAcct" msprop:Generator_ColumnVarNameInTable="columnCustShipperAcct" msprop:Generator_ColumnPropNameInRow="CustShipperAcct" msprop:Generator_ColumnPropNameInTable="CustShipperAcctColumn" msprop:Generator_UserColumnName="CustShipperAcct" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CustNote1" msprop:Generator_ColumnVarNameInTable="columnCustNote1" msprop:Generator_ColumnPropNameInRow="CustNote1" msprop:Generator_ColumnPropNameInTable="CustNote1Column" msprop:Generator_UserColumnName="CustNote1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CustNote2" msprop:Generator_ColumnVarNameInTable="columnCustNote2" msprop:Generator_ColumnPropNameInRow="CustNote2" msprop:Generator_ColumnPropNameInTable="CustNote2Column" msprop:Generator_UserColumnName="CustNote2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CustNote3" msprop:Generator_ColumnVarNameInTable="columnCustNote3" msprop:Generator_ColumnPropNameInRow="CustNote3" msprop:Generator_ColumnPropNameInTable="CustNote3Column" msprop:Generator_UserColumnName="CustNote3" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CustNote4" msprop:Generator_ColumnVarNameInTable="columnCustNote4" msprop:Generator_ColumnPropNameInRow="CustNote4" msprop:Generator_ColumnPropNameInTable="CustNote4Column" msprop:Generator_UserColumnName="CustNote4" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CustNote5" msprop:Generator_ColumnVarNameInTable="columnCustNote5" msprop:Generator_ColumnPropNameInRow="CustNote5" msprop:Generator_ColumnPropNameInTable="CustNote5Column" msprop:Generator_UserColumnName="CustNote5" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RetailerName" msprop:Generator_ColumnVarNameInTable="columnRetailerName" msprop:Generator_ColumnPropNameInRow="RetailerName" msprop:Generator_ColumnPropNameInTable="RetailerNameColumn" msprop:Generator_UserColumnName="RetailerName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RetailerFld1" msprop:Generator_ColumnVarNameInTable="columnRetailerFld1" msprop:Generator_ColumnPropNameInRow="RetailerFld1" msprop:Generator_ColumnPropNameInTable="RetailerFld1Column" msprop:Generator_UserColumnName="RetailerFld1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RetailerFld2" msprop:Generator_ColumnVarNameInTable="columnRetailerFld2" msprop:Generator_ColumnPropNameInRow="RetailerFld2" msprop:Generator_ColumnPropNameInTable="RetailerFld2Column" msprop:Generator_UserColumnName="RetailerFld2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RetailerFld3" msprop:Generator_ColumnVarNameInTable="columnRetailerFld3" msprop:Generator_ColumnPropNameInRow="RetailerFld3" msprop:Generator_ColumnPropNameInTable="RetailerFld3Column" msprop:Generator_UserColumnName="RetailerFld3" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RetailerFld4" msprop:Generator_ColumnVarNameInTable="columnRetailerFld4" msprop:Generator_ColumnPropNameInRow="RetailerFld4" msprop:Generator_ColumnPropNameInTable="RetailerFld4Column" msprop:Generator_UserColumnName="RetailerFld4" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RetailerFld5" msprop:Generator_ColumnVarNameInTable="columnRetailerFld5" msprop:Generator_ColumnPropNameInRow="RetailerFld5" msprop:Generator_ColumnPropNameInTable="RetailerFld5Column" msprop:Generator_UserColumnName="RetailerFld5" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="OrderWeight" msprop:Generator_ColumnVarNameInTable="columnOrderWeight" msprop:Generator_ColumnPropNameInRow="OrderWeight" msprop:Generator_ColumnPropNameInTable="OrderWeightColumn" msprop:Generator_UserColumnName="OrderWeight" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SearchDesc" msprop:Generator_ColumnVarNameInTable="columnSearchDesc" msprop:Generator_ColumnPropNameInRow="SearchDesc" msprop:Generator_ColumnPropNameInTable="SearchDescColumn" msprop:Generator_UserColumnName="SearchDesc" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="UnitPrice" msprop:Generator_ColumnVarNameInTable="columnUnitPrice" msprop:Generator_ColumnPropNameInRow="UnitPrice" msprop:Generator_ColumnPropNameInTable="UnitPriceColumn" msprop:Generator_UserColumnName="UnitPrice" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ShipCost" msprop:Generator_ColumnVarNameInTable="columnShipCost" msprop:Generator_ColumnPropNameInRow="ShipCost" msprop:Generator_ColumnPropNameInTable="ShipCostColumn" msprop:Generator_UserColumnName="ShipCost" type="xs:decimal" minOccurs="0" />
+              <xs:element name="UnitTaxAmt" msprop:Generator_ColumnVarNameInTable="columnUnitTaxAmt" msprop:Generator_ColumnPropNameInRow="UnitTaxAmt" msprop:Generator_ColumnPropNameInTable="UnitTaxAmtColumn" msprop:Generator_UserColumnName="UnitTaxAmt" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TotalOrderCost" msprop:Generator_ColumnVarNameInTable="columnTotalOrderCost" msprop:Generator_ColumnPropNameInRow="TotalOrderCost" msprop:Generator_ColumnPropNameInTable="TotalOrderCostColumn" msprop:Generator_UserColumnName="TotalOrderCost" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CustomerOrderNo" msprop:Generator_ColumnVarNameInTable="columnCustomerOrderNo" msprop:Generator_ColumnPropNameInRow="CustomerOrderNo" msprop:Generator_ColumnPropNameInTable="CustomerOrderNoColumn" msprop:Generator_UserColumnName="CustomerOrderNo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ShipToPhone" msprop:Generator_ColumnVarNameInTable="columnShipToPhone" msprop:Generator_ColumnPropNameInRow="ShipToPhone" msprop:Generator_ColumnPropNameInTable="ShipToPhoneColumn" msprop:Generator_UserColumnName="ShipToPhone" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="OrderedByName" msprop:Generator_ColumnVarNameInTable="columnOrderedByName" msprop:Generator_ColumnPropNameInRow="OrderedByName" msprop:Generator_ColumnPropNameInTable="OrderedByNameColumn" msprop:Generator_UserColumnName="OrderedByName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="OrderedByAddr1" msprop:Generator_ColumnVarNameInTable="columnOrderedByAddr1" msprop:Generator_ColumnPropNameInRow="OrderedByAddr1" msprop:Generator_ColumnPropNameInTable="OrderedByAddr1Column" msprop:Generator_UserColumnName="OrderedByAddr1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="OrderedByAddr2" msprop:Generator_ColumnVarNameInTable="columnOrderedByAddr2" msprop:Generator_ColumnPropNameInRow="OrderedByAddr2" msprop:Generator_ColumnPropNameInTable="OrderedByAddr2Column" msprop:Generator_UserColumnName="OrderedByAddr2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="OrderedByAddr3" msprop:Generator_ColumnVarNameInTable="columnOrderedByAddr3" msprop:Generator_ColumnPropNameInRow="OrderedByAddr3" msprop:Generator_ColumnPropNameInTable="OrderedByAddr3Column" msprop:Generator_UserColumnName="OrderedByAddr3" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="OrderedByCity" msprop:Generator_ColumnVarNameInTable="columnOrderedByCity" msprop:Generator_ColumnPropNameInRow="OrderedByCity" msprop:Generator_ColumnPropNameInTable="OrderedByCityColumn" msprop:Generator_UserColumnName="OrderedByCity" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="OrderedByState" msprop:Generator_ColumnVarNameInTable="columnOrderedByState" msprop:Generator_ColumnPropNameInRow="OrderedByState" msprop:Generator_ColumnPropNameInTable="OrderedByStateColumn" msprop:Generator_UserColumnName="OrderedByState" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="OrderedByZipCode" msprop:Generator_ColumnVarNameInTable="columnOrderedByZipCode" msprop:Generator_ColumnPropNameInRow="OrderedByZipCode" msprop:Generator_ColumnPropNameInTable="OrderedByZipCodeColumn" msprop:Generator_UserColumnName="OrderedByZipCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="OrderedByCountry" msprop:Generator_ColumnVarNameInTable="columnOrderedByCountry" msprop:Generator_ColumnPropNameInRow="OrderedByCountry" msprop:Generator_ColumnPropNameInTable="OrderedByCountryColumn" msprop:Generator_UserColumnName="OrderedByCountry" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RetailerItemDesc" msprop:Generator_ColumnVarNameInTable="columnRetailerItemDesc" msprop:Generator_ColumnPropNameInRow="RetailerItemDesc" msprop:Generator_ColumnPropNameInTable="RetailerItemDescColumn" msprop:Generator_UserColumnName="RetailerItemDesc" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TCNumber" msprop:Generator_ColumnVarNameInTable="columnTCNumber" msprop:Generator_ColumnPropNameInRow="TCNumber" msprop:Generator_ColumnPropNameInTable="TCNumberColumn" msprop:Generator_UserColumnName="TCNumber" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="UPC" msprop:Generator_ColumnVarNameInTable="columnUPC" msprop:Generator_ColumnPropNameInRow="UPC" msprop:Generator_ColumnPropNameInTable="UPCColumn" msprop:Generator_UserColumnName="UPC" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="OperatorName" msprop:Generator_ColumnVarNameInTable="columnOperatorName" msprop:Generator_ColumnPropNameInRow="OperatorName" msprop:Generator_ColumnPropNameInTable="OperatorNameColumn" msprop:Generator_UserColumnName="OperatorName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EnvironUser" msprop:Generator_ColumnVarNameInTable="columnEnvironUser" msprop:Generator_ColumnPropNameInRow="EnvironUser" msprop:Generator_ColumnPropNameInTable="EnvironUserColumn" msprop:Generator_UserColumnName="EnvironUser" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ASNNumber" msprop:Generator_ColumnVarNameInTable="columnASNNumber" msprop:Generator_ColumnPropNameInRow="ASNNumber" msprop:Generator_ColumnPropNameInTable="ASNNumberColumn" msprop:Generator_UserColumnName="ASNNumber" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DPCI" msprop:Generator_ColumnVarNameInTable="columnDPCI" msprop:Generator_ColumnPropNameInRow="DPCI" msprop:Generator_ColumnPropNameInTable="DPCIColumn" msprop:Generator_UserColumnName="DPCI" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="GiftWrap" msprop:Generator_ColumnVarNameInTable="columnGiftWrap" msprop:Generator_ColumnPropNameInRow="GiftWrap" msprop:Generator_ColumnPropNameInTable="GiftWrapColumn" msprop:Generator_UserColumnName="GiftWrap" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MFGID" msprop:Generator_ColumnVarNameInTable="columnMFGID" msprop:Generator_ColumnPropNameInRow="MFGID" msprop:Generator_ColumnPropNameInTable="MFGIDColumn" msprop:Generator_UserColumnName="MFGID" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ReturnMethod" msprop:Generator_ColumnVarNameInTable="columnReturnMethod" msprop:Generator_ColumnPropNameInRow="ReturnMethod" msprop:Generator_ColumnPropNameInTable="ReturnMethodColumn" msprop:Generator_UserColumnName="ReturnMethod" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ReturnPolicy" msprop:Generator_ColumnVarNameInTable="columnReturnPolicy" msprop:Generator_ColumnPropNameInRow="ReturnPolicy" msprop:Generator_ColumnPropNameInTable="ReturnPolicyColumn" msprop:Generator_UserColumnName="ReturnPolicy" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="GiftMessage" msprop:Generator_ColumnVarNameInTable="columnGiftMessage" msprop:Generator_ColumnPropNameInRow="GiftMessage" msprop:Generator_ColumnPropNameInTable="GiftMessageColumn" msprop:Generator_UserColumnName="GiftMessage" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

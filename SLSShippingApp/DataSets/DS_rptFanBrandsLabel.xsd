@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DS_rptFanBrandsLabel" targetNamespace="http://tempuri.org/DS_rptFanBrandsLabel.xsd" xmlns:mstns="http://tempuri.org/DS_rptFanBrandsLabel.xsd" xmlns="http://tempuri.org/DS_rptFanBrandsLabel.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" GeneratorFunctionsComponentClassName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" UserFunctionsComponentName="QueriesTableAdapter" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="SLSShippingAppConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SLSShippingAppConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SLSShipping.Properties.Settings.GlobalReference.Default.SLSShippingAppConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="tblLabelFanBrandsTableAdapter" GeneratorDataComponentClassName="tblLabelFanBrandsTableAdapter" Name="tblLabelFanBrands" UserDataComponentName="tblLabelFanBrandsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SLSShippingAppConnectionString (Settings)" DbObjectName="SLSShippingApp.dbo.tblLabelFanBrands" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT StockNumber, OperatorName, EnvironUser, txtImageFile FROM dbo.tblLabelFanBrands
+</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="StockNumber" DataSetColumn="StockNumber" />
+              <Mapping SourceColumn="OperatorName" DataSetColumn="OperatorName" />
+              <Mapping SourceColumn="EnvironUser" DataSetColumn="EnvironUser" />
+              <Mapping SourceColumn="txtImageFile" DataSetColumn="txtImageFile" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DS_rptFanBrandsLabel" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DS_rptFanBrandsLabel" msprop:Generator_UserDSName="DS_rptFanBrandsLabel">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tblLabelFanBrands" msprop:Generator_TableClassName="tblLabelFanBrandsDataTable" msprop:Generator_TableVarName="tabletblLabelFanBrands" msprop:Generator_RowChangedName="tblLabelFanBrandsRowChanged" msprop:Generator_TablePropName="tblLabelFanBrands" msprop:Generator_RowDeletingName="tblLabelFanBrandsRowDeleting" msprop:Generator_RowChangingName="tblLabelFanBrandsRowChanging" msprop:Generator_RowEvHandlerName="tblLabelFanBrandsRowChangeEventHandler" msprop:Generator_RowDeletedName="tblLabelFanBrandsRowDeleted" msprop:Generator_RowClassName="tblLabelFanBrandsRow" msprop:Generator_UserTableName="tblLabelFanBrands" msprop:Generator_RowEvArgName="tblLabelFanBrandsRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="StockNumber" msprop:Generator_ColumnVarNameInTable="columnStockNumber" msprop:Generator_ColumnPropNameInRow="StockNumber" msprop:Generator_ColumnPropNameInTable="StockNumberColumn" msprop:Generator_UserColumnName="StockNumber" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="OperatorName" msprop:Generator_ColumnVarNameInTable="columnOperatorName" msprop:Generator_ColumnPropNameInRow="OperatorName" msprop:Generator_ColumnPropNameInTable="OperatorNameColumn" msprop:Generator_UserColumnName="OperatorName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EnvironUser" msprop:Generator_ColumnVarNameInTable="columnEnvironUser" msprop:Generator_ColumnPropNameInRow="EnvironUser" msprop:Generator_ColumnPropNameInTable="EnvironUserColumn" msprop:Generator_UserColumnName="EnvironUser" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="txtImageFile" msprop:Generator_ColumnVarNameInTable="columntxtImageFile" msprop:Generator_ColumnPropNameInRow="txtImageFile" msprop:Generator_ColumnPropNameInTable="txtImageFileColumn" msprop:Generator_UserColumnName="txtImageFile" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
