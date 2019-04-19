@@ -236,7 +236,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DS_rptPickingTicket</rd:DataSetName>
-        <rd:SchemaPath>C:\Projects\SLSShipping\SLSShipping\SLSShippingApp\SLSShipping\SLSShipping\DS_rptPickingTicket.xsd</rd:SchemaPath>
+        <rd:SchemaPath>C:\Projects\SLSShippingApp\SLSShippingApp\DataSets\DS_rptPickingTicket.xsd</rd:SchemaPath>
         <rd:TableName>tblPickingFile</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
@@ -1271,39 +1271,6 @@
           </Textbox>
           <Rectangle Name="boxShipAddress">
             <ReportItems>
-              <Textbox Name="LabelShipTo">
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>Ship To</Value>
-                        <Style>
-                          <FontStyle>Normal</FontStyle>
-                          <FontFamily>Times New Roman</FontFamily>
-                          <FontSize>11pt</FontSize>
-                          <FontWeight>Bold</FontWeight>
-                          <TextDecoration>None</TextDecoration>
-                          <Color>#ffffff</Color>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Center</TextAlign>
-                      <LineHeight>16pt</LineHeight>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <Height>0.2076in</Height>
-                <Width>2.5729in</Width>
-                <Style>
-                  <Border>
-                    <Color>#000000</Color>
-                  </Border>
-                  <BackgroundColor>#595959</BackgroundColor>
-                  <Direction>LTR</Direction>
-                </Style>
-              </Textbox>
               <Textbox Name="txtShiptoName">
                 <KeepTogether>true</KeepTogether>
                 <Paragraphs>
@@ -1327,11 +1294,9 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>0.2291in</Top>
                 <Left>0.0313in</Left>
                 <Height>0.2076in</Height>
                 <Width>2.4791in</Width>
-                <ZIndex>1</ZIndex>
                 <Style>
                   <Border>
                     <Color>#000000</Color>
@@ -1362,11 +1327,11 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>0.4583in</Top>
+                <Top>0.2292in</Top>
                 <Left>0.0313in</Left>
                 <Height>0.2076in</Height>
                 <Width>2.4791in</Width>
-                <ZIndex>2</ZIndex>
+                <ZIndex>1</ZIndex>
                 <Style>
                   <Border>
                     <Color>#000000</Color>
@@ -1397,11 +1362,11 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>0.6979in</Top>
+                <Top>0.4688in</Top>
                 <Left>0.0313in</Left>
                 <Height>0.2076in</Height>
                 <Width>2.4791in</Width>
-                <ZIndex>3</ZIndex>
+                <ZIndex>2</ZIndex>
                 <Style>
                   <Border>
                     <Color>#000000</Color>
@@ -1432,11 +1397,11 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>0.9375in</Top>
+                <Top>0.7084in</Top>
                 <Left>0.0313in</Left>
                 <Height>0.2076in</Height>
                 <Width>2.4791in</Width>
-                <ZIndex>4</ZIndex>
+                <ZIndex>3</ZIndex>
                 <Style>
                   <Border>
                     <Color>#000000</Color>
@@ -1467,11 +1432,11 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>1.177in</Top>
+                <Top>0.9479in</Top>
                 <Left>0.0313in</Left>
                 <Height>0.2076in</Height>
-                <Width>1.4479in</Width>
-                <ZIndex>5</ZIndex>
+                <Width>1.38194in</Width>
+                <ZIndex>4</ZIndex>
                 <Style>
                   <Border>
                     <Color>#000000</Color>
@@ -1502,11 +1467,11 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>1.19587in</Top>
+                <Top>0.96677in</Top>
                 <Left>1.4688in</Left>
                 <Height>0.2076in</Height>
                 <Width>0.44587in</Width>
-                <ZIndex>6</ZIndex>
+                <ZIndex>5</ZIndex>
                 <Style>
                   <Border>
                     <Color>#000000</Color>
@@ -1537,11 +1502,11 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>1.20066in</Top>
+                <Top>0.97156in</Top>
                 <Left>1.92856in</Left>
                 <Height>0.2076in</Height>
                 <Width>0.58184in</Width>
-                <ZIndex>7</ZIndex>
+                <ZIndex>6</ZIndex>
                 <Style>
                   <Border>
                     <Color>#000000</Color>
@@ -1551,9 +1516,9 @@
               </Textbox>
             </ReportItems>
             <DataElementOutput>ContentsOnly</DataElementOutput>
-            <Top>2.0889in</Top>
+            <Top>2.318in</Top>
             <Left>0.12973in</Left>
-            <Height>1.44587in</Height>
+            <Height>1.21677in</Height>
             <Width>2.5729in</Width>
             <ZIndex>13</ZIndex>
             <Style>
@@ -1565,39 +1530,6 @@
           </Rectangle>
           <Rectangle Name="boxBillTo">
             <ReportItems>
-              <Textbox Name="lblBillTo">
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>Bill To</Value>
-                        <Style>
-                          <FontStyle>Normal</FontStyle>
-                          <FontFamily>Times New Roman</FontFamily>
-                          <FontSize>11pt</FontSize>
-                          <FontWeight>Bold</FontWeight>
-                          <TextDecoration>None</TextDecoration>
-                          <Color>#ffffff</Color>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Center</TextAlign>
-                      <LineHeight>16pt</LineHeight>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <Height>0.2076in</Height>
-                <Width>2.5312in</Width>
-                <Style>
-                  <Border>
-                    <Color>#000000</Color>
-                  </Border>
-                  <BackgroundColor>#595959</BackgroundColor>
-                  <Direction>LTR</Direction>
-                </Style>
-              </Textbox>
               <Textbox Name="txtBillToName">
                 <KeepTogether>true</KeepTogether>
                 <Paragraphs>
@@ -1621,11 +1553,10 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>0.2291in</Top>
+                <Top>0.0007in</Top>
                 <Left>0.0416in</Left>
                 <Height>0.2076in</Height>
                 <Width>2.4687in</Width>
-                <ZIndex>1</ZIndex>
                 <Style>
                   <Border>
                     <Color>#000000</Color>
@@ -1656,11 +1587,11 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>0.4583in</Top>
+                <Top>0.2299in</Top>
                 <Left>0.0416in</Left>
                 <Height>0.2076in</Height>
                 <Width>2.4687in</Width>
-                <ZIndex>2</ZIndex>
+                <ZIndex>1</ZIndex>
                 <Style>
                   <Border>
                     <Color>#000000</Color>
@@ -1691,11 +1622,11 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>0.6979in</Top>
+                <Top>0.4695in</Top>
                 <Left>0.0416in</Left>
                 <Height>0.2076in</Height>
                 <Width>2.4687in</Width>
-                <ZIndex>3</ZIndex>
+                <ZIndex>2</ZIndex>
                 <Style>
                   <Border>
                     <Color>#000000</Color>
@@ -1726,11 +1657,11 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>0.9375in</Top>
+                <Top>0.7091in</Top>
                 <Left>0.0416in</Left>
                 <Height>0.2076in</Height>
                 <Width>2.4687in</Width>
-                <ZIndex>4</ZIndex>
+                <ZIndex>3</ZIndex>
                 <Style>
                   <Border>
                     <Color>#000000</Color>
@@ -1761,11 +1692,11 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>1.177in</Top>
+                <Top>0.9486in</Top>
                 <Left>0.0416in</Left>
                 <Height>0.2076in</Height>
                 <Width>1.6145in</Width>
-                <ZIndex>5</ZIndex>
+                <ZIndex>4</ZIndex>
                 <Style>
                   <Border>
                     <Color>#000000</Color>
@@ -1796,11 +1727,11 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>1.177in</Top>
+                <Top>0.9486in</Top>
                 <Left>1.6666in</Left>
                 <Height>0.2076in</Height>
                 <Width>0.802in</Width>
-                <ZIndex>6</ZIndex>
+                <ZIndex>5</ZIndex>
                 <Style>
                   <Border>
                     <Color>#000000</Color>
@@ -1810,9 +1741,9 @@
               </Textbox>
             </ReportItems>
             <DataElementOutput>ContentsOnly</DataElementOutput>
-            <Top>2.0896in</Top>
+            <Top>2.318in</Top>
             <Left>5.00819in</Left>
-            <Height>1.4166in</Height>
+            <Height>1.1882in</Height>
             <Width>2.5416in</Width>
             <ZIndex>14</ZIndex>
             <Style>
@@ -2230,7 +2161,8 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Left>0.01389in</Left>
+                <Top>0.12683in</Top>
+                <Left>0.18902in</Left>
                 <Height>0.2083in</Height>
                 <Width>0.8541in</Width>
                 <Style>
@@ -2263,7 +2195,8 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Left>0.93404in</Left>
+                <Top>0.12683in</Top>
+                <Left>1.10917in</Left>
                 <Height>0.2083in</Height>
                 <Width>0.8541in</Width>
                 <ZIndex>1</ZIndex>
@@ -2278,7 +2211,7 @@
                 <Source>Embedded</Source>
                 <Value>imgBayOrder</Value>
                 <Sizing>Clip</Sizing>
-                <Top>0.27774in</Top>
+                <Top>1.31294in</Top>
                 <Left>0.18902in</Left>
                 <Height>1.00453in</Height>
                 <Width>1.87479in</Width>
@@ -2297,7 +2230,7 @@
                 <Source>Embedded</Source>
                 <Value>imgSingleOrder</Value>
                 <Sizing>Clip</Sizing>
-                <Top>0.27774in</Top>
+                <Top>1.1834in</Top>
                 <Left>0.79708in</Left>
                 <Height>0.9068in</Height>
                 <Width>0.76229in</Width>
@@ -2314,12 +2247,12 @@
               </Image>
               <Image Name="imgHold">
                 <Source>Embedded</Source>
-                <Value>imgHold</Value>
+                <Value>=IIf(First(Fields!Hold.Value, "DS_rptPickingTicket")=1, imgHold, IIf(First(Fields!BayLocation.Value, "DS_rptPickingTicket") &lt;&gt; "", imgBayOrder, imgSingleOrder))</Value>
                 <Sizing>Clip</Sizing>
-                <Top>0.34522in</Top>
-                <Left>0.01389in</Left>
-                <Height>0.7812in</Height>
-                <Width>2.18056in</Width>
+                <Top>0.39069in</Top>
+                <Left>0.06247in</Left>
+                <Height>0.76494in</Height>
+                <Width>2.15976in</Width>
                 <ZIndex>4</ZIndex>
                 <Visibility>
                   <Hidden>true</Hidden>
@@ -2333,10 +2266,10 @@
               </Image>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>2.0889in</Top>
-            <Left>2.7651in</Left>
-            <Height>1.43547in</Height>
-            <Width>2.2708in</Width>
+            <Top>1.15603in</Top>
+            <Left>2.71652in</Left>
+            <Height>2.34113in</Height>
+            <Width>2.22223in</Width>
             <ZIndex>26</ZIndex>
             <Style>
               <Border>
@@ -2344,6 +2277,78 @@
               </Border>
             </Style>
           </Rectangle>
+          <Textbox Name="lblBillTo">
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Bill To</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>11pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#ffffff</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                  <LineHeight>16pt</LineHeight>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>2.10319in</Top>
+            <Left>5.02899in</Left>
+            <Height>0.20093in</Height>
+            <Width>2.5312in</Width>
+            <ZIndex>27</ZIndex>
+            <Style>
+              <Border>
+                <Color>#000000</Color>
+              </Border>
+              <BackgroundColor>#595959</BackgroundColor>
+              <Direction>LTR</Direction>
+            </Style>
+          </Textbox>
+          <Textbox Name="LabelShipTo">
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Ship To</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>11pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#ffffff</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                  <LineHeight>16pt</LineHeight>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>2.1104in</Top>
+            <Left>0.11584in</Left>
+            <Height>0.2076in</Height>
+            <Width>2.5729in</Width>
+            <ZIndex>28</ZIndex>
+            <Style>
+              <Border>
+                <Color>#000000</Color>
+              </Border>
+              <BackgroundColor>#595959</BackgroundColor>
+              <Direction>LTR</Direction>
+            </Style>
+          </Textbox>
         </ReportItems>
         <Height>6.29774in</Height>
         <Style>
@@ -2355,7 +2360,7 @@
           </BottomBorder>
         </Style>
       </Body>
-      <Width>7.75613in</Width>
+      <Width>7.88324in</Width>
       <Page>
         <PageHeader>
           <Height>1.20841in</Height>
@@ -2560,7 +2565,7 @@
               </Paragraphs>
               <Top>0.1249in</Top>
               <Left>2.64013in</Left>
-              <Height>0.8854in</Height>
+              <Height>0.69672in</Height>
               <Width>2.5104in</Width>
               <ZIndex>5</ZIndex>
               <Style>
@@ -2593,8 +2598,8 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>0.8124in</Top>
-              <Left>3.69223in</Left>
+              <Top>0.82162in</Top>
+              <Left>3.5999in</Left>
               <Height>0.1979in</Height>
               <Width>1.427in</Width>
               <ZIndex>6</ZIndex>
@@ -2629,10 +2634,10 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>0.8124in</Top>
-              <Left>3.09853in</Left>
+              <Top>0.82162in</Top>
+              <Left>3.0062in</Left>
               <Height>0.1979in</Height>
-              <Width>0.8854in</Width>
+              <Width>0.55203in</Width>
               <ZIndex>7</ZIndex>
               <Style>
                 <Border>

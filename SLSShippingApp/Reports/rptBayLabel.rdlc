@@ -222,7 +222,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Fields!OrderNumber.Valu</Value>
+                <Value>=Fields!OrderNumber.Value</Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontWeight>Normal</FontWeight>
@@ -616,7 +616,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DS_rptBayLabel</rd:DataSetName>
-        <rd:SchemaPath>C:\Projects\SLSShipping\SLSShipping\SLSShippingApp\SLSShipping\SLSShipping\DS_rptBayLabel.xsd</rd:SchemaPath>
+        <rd:SchemaPath>C:\Projects\SLSShippingApp\SLSShippingApp\DataSets\DS_rptBayLabel.xsd</rd:SchemaPath>
         <rd:TableName>tblLabel</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>

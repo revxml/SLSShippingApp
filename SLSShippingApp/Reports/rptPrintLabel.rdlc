@@ -84,7 +84,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DS_rptPrintLabel</rd:DataSetName>
-        <rd:SchemaPath>C:\Projects\SLSShipping\SLSShipping\SLSShippingApp\SLSShipping\SLSShipping\DS_rptPrintLabel.xsd</rd:SchemaPath>
+        <rd:SchemaPath>C:\Projects\SLSShippingApp\SLSShippingApp\DataSets\DS_rptPrintLabel.xsd</rd:SchemaPath>
         <rd:TableName>tblLabel</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
@@ -344,7 +344,7 @@
             <rd:DefaultName>Textbox24</rd:DefaultName>
             <Top>1.6841in</Top>
             <Left>0.25477in</Left>
-            <Height>0.25in</Height>
+            <Height>0.19791in</Height>
             <Width>0.86792in</Width>
             <ZIndex>8</ZIndex>
             <Style>
@@ -457,7 +457,7 @@
             </Paragraphs>
             <Top>1.71188in</Top>
             <Left>1.13658in</Left>
-            <Height>0.22222in</Height>
+            <Height>0.17013in</Height>
             <Width>0.96777in</Width>
             <ZIndex>12</ZIndex>
             <Style>
@@ -510,7 +510,7 @@
             </Paragraphs>
             <Top>1.6841in</Top>
             <Left>2.13213in</Left>
-            <Height>0.25in</Height>
+            <Height>0.19791in</Height>
             <Width>0.6351in</Width>
             <ZIndex>14</ZIndex>
             <Style>

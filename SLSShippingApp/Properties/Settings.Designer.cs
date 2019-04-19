@@ -26,8 +26,8 @@ namespace SLSShippingApp.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=SLSShippingApp;Persist Security Info=True;Trusted_C" +
-            "onnection=True;")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\sqlexpress;Initial Catalog=SLSShippingApp;Persist Security Info=Tru" +
+            "e;Trusted_Connection=True;")]
         public string SLSShippingAppConnectionString {
             get {
                 return ((string)(this["SLSShippingAppConnectionString"]));
