@@ -868,7 +868,7 @@ namespace SLSShippingApp
         private void PrintReport(String sRptType, String sReport, String sOrdNo, short iCopies = 1)
         {
             Microsoft.Reporting.WinForms.LocalReport lr = new Microsoft.Reporting.WinForms.LocalReport();
-            lr.EnableExternalImages = true;
+            lr.EnableExternalImages = true;       
             System.IO.Stream stream = GetDataSource(ref lr, sReport, sOrdNo);
             lr.LoadReportDefinition(stream);
 
@@ -892,14 +892,9 @@ namespace SLSShippingApp
                 case "SFO":
                     printDoc.PrinterSettings.PrinterName = sTicketPrinter;
                     break;
-               
-                   // printDoc.PrinterSettings.PrinterName = sTicketPrinter;
-                   // break;
             }
             printDoc.PrinterSettings.Copies = iCopies;
-            printDoc.DocumentName = sReport;
-           
-
+            printDoc.DocumentName = sReport;   
 
             String sPrinter = sLabelPrinter;
             if (sRptType != "Label")

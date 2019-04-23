@@ -107,7 +107,7 @@
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
     <Reference Include="System">
-      <HintPath>..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.dll</HintPath>
+      <HintPath>..\..\..\Windows\Microsoft.NET\Framework\v2.0.50727\System.dll</HintPath>
     </Reference>
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -116,7 +116,6 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
@@ -171,6 +170,15 @@
     <Compile Include="ReportPrintDocument.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="RptClasses\DS_rptBayLabel.cs" />
+    <Compile Include="RptClasses\DS_rptFanBrandsLabel.cs" />
+    <Compile Include="RptClasses\DS_rptPackingLabels.cs" />
+    <Compile Include="RptClasses\DS_rptPickingTicket.cs" />
+    <Compile Include="RptClasses\DS_rptPrintLabel.cs" />
+    <Compile Include="RptClasses\DS_rptQuickShipLabel.cs" />
+    <Compile Include="RptClasses\DS_rptRetailerPackingLabel.cs" />
+    <Compile Include="RptClasses\DS_rptTargetPackingLabels.cs" />
+    <Compile Include="RptClasses\DS_rptWalmartPackingLabel.cs" />
     <Compile Include="SLSShippingApp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -255,6 +263,11 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="DS_rptBayLabel.datasource" />
+    <None Include="DS_rptBayLabel.tblLabelDataTable.datasource" />
+    <None Include="DS_rptBayLabel.tblLabelRow.datasource" />
+    <None Include="DS_rptBayLabel.tblLabelRowChangeEvent.datasource" />
+    <None Include="DS_rptBayLabel.tblLabelRowChangeEventHandler.datasource" />
     <None Include="DS_rptBayLabel.xsc">
       <DependentUpon>DS_rptBayLabel.xsd</DependentUpon>
     </None>
@@ -314,10 +327,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\icon.ico" />
-    <Resource Include="Images\imgBayOrder.jpg" />
-    <Resource Include="Images\imgHOLD.jpg" />
-    <Resource Include="Images\imgSingleOrder.jpg" />
-    <Resource Include="Images\imgProp65.jpg" />
+    <Resource Include="Reports\imgBayOrder.jpg" />
+    <Resource Include="Reports\imgHOLD.jpg" />
+    <Resource Include="Reports\imgSingleOrder.jpg" />
+    <Resource Include="Reports\imgProp65.jpg" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

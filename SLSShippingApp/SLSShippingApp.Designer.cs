@@ -214,14 +214,12 @@
             this.tabPickTicket.SuspendLayout();
             this.gbPickTicketByPO.SuspendLayout();
             this.tabMaintenance.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBayDetails)).BeginInit();
             this.tabQSMaintenance.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
@@ -231,7 +229,6 @@
             this.tabPrinters.SuspendLayout();
             this.gbSetPrinters.SuspendLayout();
             this.tabAdmin.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -239,7 +236,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvFoundOrder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
             this.menuLastScans.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.scShipping)).BeginInit();
             this.scShipping.Panel1.SuspendLayout();
             this.scShipping.Panel2.SuspendLayout();
             this.scShipping.SuspendLayout();
@@ -2002,7 +1998,6 @@
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -2011,7 +2006,6 @@
             this.splitContainer3.Panel1.ResumeLayout(false);
             this.splitContainer3.Panel1.PerformLayout();
             this.splitContainer3.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvQSMaintenance)).EndInit();
             this.tabCloseBay.ResumeLayout(false);
@@ -2026,7 +2020,6 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.gbRePrintBackout.ResumeLayout(false);
             this.gbRePrintBackout.PerformLayout();
@@ -2035,7 +2028,6 @@
             this.menuLastScans.ResumeLayout(false);
             this.scShipping.Panel1.ResumeLayout(false);
             this.scShipping.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.scShipping)).EndInit();
             this.scShipping.ResumeLayout(false);
             this.ResumeLayout(false);
 
