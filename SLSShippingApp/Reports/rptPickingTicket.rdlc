@@ -233,10 +233,14 @@
           <DataField>Hold</DataField>
           <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
+        <Field Name="NoteProp65">
+          <DataField>NoteProp65</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DS_rptPickingTicket</rd:DataSetName>
-        <rd:SchemaPath>C:\Projects\SLSShippingApp\SLSShippingApp\DataSets\DS_rptPickingTicket.xsd</rd:SchemaPath>
+        <rd:SchemaPath>C:\Projects\SLSShippingApp\SLSShippingApp\DS_rptPickingTicket.xsd</rd:SchemaPath>
         <rd:TableName>tblPickingFile</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
@@ -273,8 +277,8 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>0.01388in</Top>
-                <Left>0.0104in</Left>
+                <Top>0.02776in</Top>
+                <Left>0.0209in</Left>
                 <Height>0.2395in</Height>
                 <Width>0.5312in</Width>
                 <Style>
@@ -308,47 +312,11 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>0.01388in</Top>
+                <Top>0.02776in</Top>
                 <Left>0.5521in</Left>
                 <Height>0.2395in</Height>
-                <Width>0.99222in</Width>
+                <Width>1.08452in</Width>
                 <ZIndex>1</ZIndex>
-                <Style>
-                  <Border>
-                    <Color>#000000</Color>
-                  </Border>
-                  <BackgroundColor>#595959</BackgroundColor>
-                  <Direction>LTR</Direction>
-                </Style>
-              </Textbox>
-              <Textbox Name="lblQtyRequested">
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>Qty Requested</Value>
-                        <Style>
-                          <FontStyle>Normal</FontStyle>
-                          <FontFamily>Times New Roman</FontFamily>
-                          <FontSize>12pt</FontSize>
-                          <FontWeight>Bold</FontWeight>
-                          <TextDecoration>None</TextDecoration>
-                          <Color>#ffffff</Color>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Center</TextAlign>
-                      <LineHeight>17pt</LineHeight>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-                <Top>0.01388in</Top>
-                <Left>3.94228in</Left>
-                <Height>0.2395in</Height>
-                <Width>1.2395in</Width>
-                <ZIndex>2</ZIndex>
                 <Style>
                   <Border>
                     <Color>#000000</Color>
@@ -380,11 +348,10 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>0.01388in</Top>
-                <Left>5.19567in</Left>
+                <Left>5.51511in</Left>
                 <Height>0.2395in</Height>
-                <Width>1.8228in</Width>
-                <ZIndex>3</ZIndex>
+                <Width>2.10836in</Width>
+                <ZIndex>2</ZIndex>
                 <Style>
                   <Border>
                     <Color>#000000</Color>
@@ -416,11 +383,11 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>0.01388in</Top>
-                <Left>1.55821in</Left>
+                <Top>0.02776in</Top>
+                <Left>1.65051in</Left>
                 <Height>0.2395in</Height>
-                <Width>2.37018in</Width>
-                <ZIndex>4</ZIndex>
+                <Width>2.61121in</Width>
+                <ZIndex>3</ZIndex>
                 <Style>
                   <Border>
                     <Color>#000000</Color>
@@ -433,16 +400,16 @@
                 <TablixBody>
                   <TablixColumns>
                     <TablixColumn>
-                      <Width>2.38679in</Width>
+                      <Width>2.6244in</Width>
                     </TablixColumn>
                     <TablixColumn>
                       <Width>1.2402in</Width>
                     </TablixColumn>
                     <TablixColumn>
-                      <Width>1.09716in</Width>
+                      <Width>1.06586in</Width>
                     </TablixColumn>
                     <TablixColumn>
-                      <Width>0.75in</Width>
+                      <Width>1.06051in</Width>
                     </TablixColumn>
                   </TablixColumns>
                   <TablixRows>
@@ -494,7 +461,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!QuantityToShip.Value</Value>
+                                      <Value>Quantity To Ship</Value>
                                       <Style>
                                         <FontWeight>Normal</FontWeight>
                                         <Color>#333333</Color>
@@ -518,6 +485,7 @@
                                   <Width>1pt</Width>
                                 </LeftBorder>
                                 <BackgroundColor>White</BackgroundColor>
+                                <VerticalAlign>Bottom</VerticalAlign>
                                 <PaddingLeft>2pt</PaddingLeft>
                                 <PaddingRight>2pt</PaddingRight>
                                 <PaddingTop>2pt</PaddingTop>
@@ -528,14 +496,14 @@
                         </TablixCell>
                         <TablixCell>
                           <CellContents>
-                            <Textbox Name="txtQtyToShip">
+                            <Textbox Name="Textbox10">
                               <CanGrow>true</CanGrow>
                               <KeepTogether>true</KeepTogether>
                               <Paragraphs>
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!QuantityToShip.Value</Value>
+                                      <Value>___________</Value>
                                       <Style>
                                         <FontSize>11pt</FontSize>
                                         <FontWeight>Bold</FontWeight>
@@ -548,6 +516,7 @@
                                   </Style>
                                 </Paragraph>
                               </Paragraphs>
+                              <rd:DefaultName>Textbox10</rd:DefaultName>
                               <Style>
                                 <Border>
                                   <Style>Solid</Style>
@@ -561,6 +530,7 @@
                                   <Width>1pt</Width>
                                 </LeftBorder>
                                 <BackgroundColor>White</BackgroundColor>
+                                <VerticalAlign>Bottom</VerticalAlign>
                                 <PaddingLeft>2pt</PaddingLeft>
                                 <PaddingRight>2pt</PaddingRight>
                                 <PaddingTop>2pt</PaddingTop>
@@ -667,7 +637,7 @@
                       <TablixMembers>
                         <TablixMember>
                           <TablixHeader>
-                            <Size>1in</Size>
+                            <Size>1.10619in</Size>
                             <CellContents>
                               <Textbox Name="StockNumber">
                                 <CanGrow>true</CanGrow>
@@ -725,11 +695,11 @@
                   </TablixMembers>
                 </TablixRowHierarchy>
                 <DataSetName>DS_rptPickingTicket</DataSetName>
-                <Top>0.25338in</Top>
+                <Top>0.26726in</Top>
                 <Left>0.00272in</Left>
                 <Height>0.75in</Height>
-                <Width>7.01575in</Width>
-                <ZIndex>5</ZIndex>
+                <Width>7.63876in</Width>
+                <ZIndex>4</ZIndex>
                 <Style>
                   <Border>
                     <Style>None</Style>
@@ -738,10 +708,10 @@
               </Tablix>
             </ReportItems>
             <DataElementOutput>ContentsOnly</DataElementOutput>
-            <Top>5.03048in</Top>
-            <Left>0.13881in</Left>
-            <Height>1.00338in</Height>
-            <Width>7.01847in</Width>
+            <Top>6.40079in</Top>
+            <Left>0.24372in</Left>
+            <Height>1.01726in</Height>
+            <Width>7.64148in</Width>
             <Style>
               <Border>
                 <Color>#000000</Color>
@@ -772,226 +742,12 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>1.58699in</Top>
-            <Left>0.15193in</Left>
+            <Top>1.77706in</Top>
+            <Left>0.24644in</Left>
             <Height>0.25in</Height>
             <Width>2.3958in</Width>
             <ZIndex>1</ZIndex>
             <DataElementName>ShipViaCode</DataElementName>
-            <Style>
-              <Border>
-                <Color>#000000</Color>
-              </Border>
-              <Direction>LTR</Direction>
-            </Style>
-          </Textbox>
-          <Textbox Name="lblRetailerName">
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=Fields!RetailerName.Value</Value>
-                    <Style>
-                      <FontStyle>Normal</FontStyle>
-                      <FontFamily>Times New Roman</FontFamily>
-                      <FontSize>9pt</FontSize>
-                      <FontWeight>Normal</FontWeight>
-                      <TextDecoration>None</TextDecoration>
-                      <Color>#000000</Color>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                  <LineHeight>14pt</LineHeight>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <Top>0.14756in</Top>
-            <Left>0.14153in</Left>
-            <Height>0.1666in</Height>
-            <Width>2.41312in</Width>
-            <ZIndex>2</ZIndex>
-            <Style>
-              <Border>
-                <Color>#000000</Color>
-              </Border>
-              <Direction>LTR</Direction>
-            </Style>
-          </Textbox>
-          <Textbox Name="lblRetFld1">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=Fields!RetailerFld1.Value</Value>
-                    <Style>
-                      <FontStyle>Normal</FontStyle>
-                      <FontFamily>Times New Roman</FontFamily>
-                      <FontSize>9pt</FontSize>
-                      <FontWeight>Normal</FontWeight>
-                      <TextDecoration>None</TextDecoration>
-                      <Color>#000000</Color>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                  <LineHeight>14pt</LineHeight>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <Top>0.31879in</Top>
-            <Left>0.14153in</Left>
-            <Height>0.1666in</Height>
-            <Width>2.41312in</Width>
-            <ZIndex>3</ZIndex>
-            <Style>
-              <Border>
-                <Color>#000000</Color>
-              </Border>
-              <Direction>LTR</Direction>
-            </Style>
-          </Textbox>
-          <Textbox Name="lblRetFld2">
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=Fields!RetailerFld2.Value</Value>
-                    <Style>
-                      <FontStyle>Normal</FontStyle>
-                      <FontFamily>Times New Roman</FontFamily>
-                      <FontSize>9pt</FontSize>
-                      <FontWeight>Normal</FontWeight>
-                      <TextDecoration>None</TextDecoration>
-                      <Color>#000000</Color>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                  <LineHeight>14pt</LineHeight>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <Top>0.49001in</Top>
-            <Left>0.14153in</Left>
-            <Height>0.1666in</Height>
-            <Width>2.41312in</Width>
-            <ZIndex>4</ZIndex>
-            <Style>
-              <Border>
-                <Color>#000000</Color>
-              </Border>
-              <Direction>LTR</Direction>
-            </Style>
-          </Textbox>
-          <Textbox Name="lblRetFld3">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=Fields!RetailerFld3.Value</Value>
-                    <Style>
-                      <FontStyle>Normal</FontStyle>
-                      <FontFamily>Times New Roman</FontFamily>
-                      <FontSize>9pt</FontSize>
-                      <FontWeight>Normal</FontWeight>
-                      <TextDecoration>None</TextDecoration>
-                      <Color>#000000</Color>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                  <LineHeight>14pt</LineHeight>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <Top>0.66124in</Top>
-            <Left>0.14153in</Left>
-            <Height>0.1666in</Height>
-            <Width>2.41312in</Width>
-            <ZIndex>5</ZIndex>
-            <Style>
-              <Border>
-                <Color>#000000</Color>
-              </Border>
-              <Direction>LTR</Direction>
-            </Style>
-          </Textbox>
-          <Textbox Name="lblRetFld4">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=Fields!RetailerFld4.Value</Value>
-                    <Style>
-                      <FontStyle>Normal</FontStyle>
-                      <FontFamily>Times New Roman</FontFamily>
-                      <FontSize>9pt</FontSize>
-                      <FontWeight>Normal</FontWeight>
-                      <TextDecoration>None</TextDecoration>
-                      <Color>#000000</Color>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                  <LineHeight>14pt</LineHeight>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <Top>0.83247in</Top>
-            <Left>0.14153in</Left>
-            <Height>0.1666in</Height>
-            <Width>2.41312in</Width>
-            <ZIndex>6</ZIndex>
-            <Style>
-              <Border>
-                <Color>#000000</Color>
-              </Border>
-              <Direction>LTR</Direction>
-            </Style>
-          </Textbox>
-          <Textbox Name="txtRetFld5">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=Fields!RetailerFld5.Value</Value>
-                    <Style>
-                      <FontStyle>Normal</FontStyle>
-                      <FontFamily>Times New Roman</FontFamily>
-                      <FontSize>9pt</FontSize>
-                      <FontWeight>Normal</FontWeight>
-                      <TextDecoration>None</TextDecoration>
-                      <Color>#000000</Color>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                  <LineHeight>14pt</LineHeight>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <Top>1.00369in</Top>
-            <Left>0.14153in</Left>
-            <Height>0.48747in</Height>
-            <Width>2.41312in</Width>
-            <ZIndex>7</ZIndex>
             <Style>
               <Border>
                 <Color>#000000</Color>
@@ -1024,10 +780,10 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>0.02778in</Top>
-                <Left>1.18534in</Left>
+                <Top>0.49993in</Top>
+                <Left>1.26081in</Left>
                 <Height>0.177in</Height>
-                <Width>1.28157in</Width>
+                <Width>1.19666in</Width>
                 <Style>
                   <Border>
                     <Color>#000000</Color>
@@ -1036,7 +792,8 @@
                 </Style>
               </Textbox>
               <Line Name="Line89">
-                <Top>0.27073in</Top>
+                <Top>0.49993in</Top>
+                <Left>0.00445in</Left>
                 <Height>0in</Height>
                 <Width>2.45747in</Width>
                 <ZIndex>1</ZIndex>
@@ -1070,10 +827,10 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>0.04167in</Top>
-                <Left>0.01389in</Left>
+                <Top>0.49993in</Top>
+                <Left>0.00445in</Left>
                 <Height>0.177in</Height>
-                <Width>1.11589in</Width>
+                <Width>1.22858in</Width>
                 <ZIndex>2</ZIndex>
                 <Style>
                   <Border>
@@ -1105,8 +862,8 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>0.32629in</Top>
-                <Left>0.09157in</Left>
+                <Top>0.06944in</Top>
+                <Left>0.04167in</Left>
                 <Height>0.28578in</Height>
                 <Width>2.25691in</Width>
                 <ZIndex>3</ZIndex>
@@ -1119,11 +876,11 @@
               </Textbox>
             </ReportItems>
             <DataElementOutput>ContentsOnly</DataElementOutput>
-            <Top>0.34476in</Top>
-            <Left>2.68742in</Left>
-            <Height>0.67693in</Height>
-            <Width>2.46691in</Width>
-            <ZIndex>8</ZIndex>
+            <Top>2.72652in</Top>
+            <Left>2.80193in</Left>
+            <Height>0.73248in</Height>
+            <Width>2.47136in</Width>
+            <ZIndex>2</ZIndex>
             <Style>
               <Border>
                 <Color>#000000</Color>
@@ -1154,11 +911,11 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>0.17816in</Top>
-            <Left>5.2733in</Left>
+            <Top>1.77706in</Top>
+            <Left>5.9165in</Left>
             <Height>0.177in</Height>
             <Width>0.802in</Width>
-            <ZIndex>9</ZIndex>
+            <ZIndex>3</ZIndex>
             <Style>
               <Border>
                 <Color>#000000</Color>
@@ -1188,11 +945,11 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>0.17816in</Top>
-            <Left>6.117in</Left>
+            <Top>1.77706in</Top>
+            <Left>6.7602in</Left>
             <Height>0.177in</Height>
             <Width>0.7812in</Width>
-            <ZIndex>10</ZIndex>
+            <ZIndex>4</ZIndex>
             <Style>
               <Border>
                 <Color>#000000</Color>
@@ -1223,11 +980,11 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>0.40736in</Top>
-            <Left>5.2733in</Left>
+            <Top>2.00626in</Top>
+            <Left>5.9165in</Left>
             <Height>0.177in</Height>
             <Width>0.802in</Width>
-            <ZIndex>11</ZIndex>
+            <ZIndex>5</ZIndex>
             <Style>
               <Border>
                 <Color>#000000</Color>
@@ -1257,11 +1014,11 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>0.40736in</Top>
-            <Left>6.117in</Left>
+            <Top>2.00626in</Top>
+            <Left>6.7602in</Left>
             <Height>0.177in</Height>
             <Width>0.7812in</Width>
-            <ZIndex>12</ZIndex>
+            <ZIndex>6</ZIndex>
             <Style>
               <Border>
                 <Color>#000000</Color>
@@ -1516,11 +1273,11 @@
               </Textbox>
             </ReportItems>
             <DataElementOutput>ContentsOnly</DataElementOutput>
-            <Top>2.318in</Top>
-            <Left>0.12973in</Left>
+            <Top>3.6877in</Top>
+            <Left>0.21514in</Left>
             <Height>1.21677in</Height>
             <Width>2.5729in</Width>
-            <ZIndex>13</ZIndex>
+            <ZIndex>7</ZIndex>
             <Style>
               <Border>
                 <Color>#000000</Color>
@@ -1741,11 +1498,11 @@
               </Textbox>
             </ReportItems>
             <DataElementOutput>ContentsOnly</DataElementOutput>
-            <Top>2.318in</Top>
-            <Left>5.00819in</Left>
+            <Top>3.6877in</Top>
+            <Left>5.3436in</Left>
             <Height>1.1882in</Height>
             <Width>2.5416in</Width>
-            <ZIndex>14</ZIndex>
+            <ZIndex>8</ZIndex>
             <Style>
               <Border>
                 <Color>#000000</Color>
@@ -1753,74 +1510,6 @@
               </Border>
             </Style>
           </Rectangle>
-          <Textbox Name="txtShipInstructions1">
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=Fields!ShipInstructions1.Value</Value>
-                    <Style>
-                      <FontStyle>Normal</FontStyle>
-                      <FontFamily>Times New Roman</FontFamily>
-                      <FontWeight>Normal</FontWeight>
-                      <TextDecoration>None</TextDecoration>
-                      <Color>#000000</Color>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                  <LineHeight>15pt</LineHeight>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <Top>3.85953in</Top>
-            <Left>0.11033in</Left>
-            <Height>0.5in</Height>
-            <Width>3.4479in</Width>
-            <ZIndex>15</ZIndex>
-            <Style>
-              <Border>
-                <Color>#000000</Color>
-              </Border>
-              <Direction>LTR</Direction>
-            </Style>
-          </Textbox>
-          <Textbox Name="txtShipInstructions2">
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=Fields!ShipInstructions2.Value</Value>
-                    <Style>
-                      <FontStyle>Normal</FontStyle>
-                      <FontFamily>Times New Roman</FontFamily>
-                      <FontWeight>Normal</FontWeight>
-                      <TextDecoration>None</TextDecoration>
-                      <Color>#000000</Color>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                  <LineHeight>15pt</LineHeight>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <Top>4.40123in</Top>
-            <Left>0.11033in</Left>
-            <Height>0.5305in</Height>
-            <Width>3.4479in</Width>
-            <ZIndex>16</ZIndex>
-            <Style>
-              <Border>
-                <Color>#000000</Color>
-              </Border>
-              <Direction>LTR</Direction>
-            </Style>
-          </Textbox>
           <Textbox Name="lblShippingInstructions">
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
@@ -1844,14 +1533,15 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>3.65123in</Top>
-            <Left>0.11033in</Left>
+            <Top>5.04937in</Top>
+            <Left>0.21524in</Left>
             <Height>0.2083in</Height>
             <Width>3.4479in</Width>
-            <ZIndex>17</ZIndex>
+            <ZIndex>9</ZIndex>
             <Style>
               <Border>
                 <Color>#000000</Color>
+                <Style>Solid</Style>
               </Border>
               <BackgroundColor>#595959</BackgroundColor>
               <Direction>LTR</Direction>
@@ -1880,222 +1570,17 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>3.68402in</Top>
-            <Left>4.08109in</Left>
+            <Top>5.0394in</Top>
+            <Left>4.4568in</Left>
             <Height>0.2083in</Height>
-            <Width>3.5in</Width>
-            <ZIndex>18</ZIndex>
+            <Width>3.47187in</Width>
+            <ZIndex>10</ZIndex>
             <Style>
               <Border>
                 <Color>#000000</Color>
+                <Style>Solid</Style>
               </Border>
               <BackgroundColor>#595959</BackgroundColor>
-              <Direction>LTR</Direction>
-            </Style>
-          </Textbox>
-          <Textbox Name="txtCustShipAcct">
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=Fields!CustShipperAcct.Value</Value>
-                    <Style>
-                      <FontStyle>Normal</FontStyle>
-                      <FontFamily>Times New Roman</FontFamily>
-                      <FontSize>11pt</FontSize>
-                      <FontWeight>Normal</FontWeight>
-                      <TextDecoration>None</TextDecoration>
-                      <Color>#000000</Color>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                  <LineHeight>16pt</LineHeight>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <Top>3.89232in</Top>
-            <Left>5.06029in</Left>
-            <Height>0.2083in</Height>
-            <Width>2.5in</Width>
-            <ZIndex>19</ZIndex>
-            <Style>
-              <Border>
-                <Color>#000000</Color>
-              </Border>
-              <Direction>LTR</Direction>
-            </Style>
-          </Textbox>
-          <Textbox Name="lblShipAcct">
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Ship Account:</Value>
-                    <Style>
-                      <FontStyle>Normal</FontStyle>
-                      <FontFamily>Times New Roman</FontFamily>
-                      <FontSize>11pt</FontSize>
-                      <FontWeight>Normal</FontWeight>
-                      <TextDecoration>None</TextDecoration>
-                      <Color>#000000</Color>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                  <LineHeight>16pt</LineHeight>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <Top>3.89232in</Top>
-            <Left>4.10189in</Left>
-            <Height>0.2076in</Height>
-            <Width>0.9062in</Width>
-            <ZIndex>20</ZIndex>
-            <Style>
-              <Border>
-                <Color>#000000</Color>
-              </Border>
-              <Direction>LTR</Direction>
-            </Style>
-          </Textbox>
-          <Textbox Name="txtCustNotes1">
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=Fields!CustNote1.Value</Value>
-                    <Style>
-                      <FontStyle>Normal</FontStyle>
-                      <FontFamily>Times New Roman</FontFamily>
-                      <FontWeight>Normal</FontWeight>
-                      <TextDecoration>None</TextDecoration>
-                      <Color>#000000</Color>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                  <LineHeight>15pt</LineHeight>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <Top>4.11112in</Top>
-            <Left>4.09149in</Left>
-            <Height>0.2076in</Height>
-            <Width>3.4687in</Width>
-            <ZIndex>21</ZIndex>
-            <Style>
-              <Border>
-                <Color>#000000</Color>
-              </Border>
-              <Direction>LTR</Direction>
-            </Style>
-          </Textbox>
-          <Textbox Name="txtCustNotes2">
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=Fields!CustNote2.Value</Value>
-                    <Style>
-                      <FontStyle>Normal</FontStyle>
-                      <FontFamily>Times New Roman</FontFamily>
-                      <FontWeight>Normal</FontWeight>
-                      <TextDecoration>None</TextDecoration>
-                      <Color>#000000</Color>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                  <LineHeight>15pt</LineHeight>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <Top>4.32982in</Top>
-            <Left>4.09149in</Left>
-            <Height>0.2076in</Height>
-            <Width>3.4687in</Width>
-            <ZIndex>22</ZIndex>
-            <Style>
-              <Border>
-                <Color>#000000</Color>
-              </Border>
-              <Direction>LTR</Direction>
-            </Style>
-          </Textbox>
-          <Textbox Name="txtCustNotes3">
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=Fields!CustNote3.Value</Value>
-                    <Style>
-                      <FontStyle>Normal</FontStyle>
-                      <FontFamily>Times New Roman</FontFamily>
-                      <FontWeight>Normal</FontWeight>
-                      <TextDecoration>None</TextDecoration>
-                      <Color>#000000</Color>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                  <LineHeight>15pt</LineHeight>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <Top>4.54862in</Top>
-            <Left>4.09149in</Left>
-            <Height>0.2076in</Height>
-            <Width>3.4687in</Width>
-            <ZIndex>23</ZIndex>
-            <Style>
-              <Border>
-                <Color>#000000</Color>
-              </Border>
-              <Direction>LTR</Direction>
-            </Style>
-          </Textbox>
-          <Textbox Name="txtCustNotes4">
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=Fields!CustNote4.Value</Value>
-                    <Style>
-                      <FontStyle>Normal</FontStyle>
-                      <FontFamily>Times New Roman</FontFamily>
-                      <FontWeight>Normal</FontWeight>
-                      <TextDecoration>None</TextDecoration>
-                      <Color>#000000</Color>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                  <LineHeight>15pt</LineHeight>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <Top>4.76732in</Top>
-            <Left>4.08109in</Left>
-            <Height>0.2076in</Height>
-            <Width>3.4687in</Width>
-            <ZIndex>24</ZIndex>
-            <Style>
-              <Border>
-                <Color>#000000</Color>
-              </Border>
               <Direction>LTR</Direction>
             </Style>
           </Textbox>
@@ -2122,11 +1607,11 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>0.13716in</Top>
-            <Left>2.68742in</Left>
+            <Top>2.51892in</Top>
+            <Left>2.80193in</Left>
             <Height>0.2076in</Height>
             <Width>2.46691in</Width>
-            <ZIndex>25</ZIndex>
+            <ZIndex>11</ZIndex>
             <Style>
               <Border>
                 <Color>#000000</Color>
@@ -2161,7 +1646,6 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>0.12683in</Top>
                 <Left>0.18902in</Left>
                 <Height>0.2083in</Height>
                 <Width>0.8541in</Width>
@@ -2195,7 +1679,6 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>0.12683in</Top>
                 <Left>1.10917in</Left>
                 <Height>0.2083in</Height>
                 <Width>0.8541in</Width>
@@ -2207,70 +1690,68 @@
                   <Direction>LTR</Direction>
                 </Style>
               </Textbox>
-              <Image Name="imgBayOrder">
-                <Source>Embedded</Source>
-                <Value>imgBayOrder</Value>
-                <Sizing>Clip</Sizing>
-                <Top>1.31294in</Top>
-                <Left>0.18902in</Left>
-                <Height>1.00453in</Height>
-                <Width>1.87479in</Width>
-                <ZIndex>2</ZIndex>
-                <Visibility>
-                  <Hidden>true</Hidden>
-                </Visibility>
-                <Style>
-                  <Border>
-                    <Color>#000000</Color>
-                  </Border>
-                  <BackgroundColor>#ffffff</BackgroundColor>
-                </Style>
-              </Image>
-              <Image Name="imgSingleOrder">
-                <Source>Embedded</Source>
-                <Value>imgSingleOrder</Value>
-                <Sizing>Clip</Sizing>
-                <Top>1.1834in</Top>
-                <Left>0.79708in</Left>
-                <Height>0.9068in</Height>
-                <Width>0.76229in</Width>
-                <ZIndex>3</ZIndex>
-                <Visibility>
-                  <Hidden>true</Hidden>
-                </Visibility>
-                <Style>
-                  <Border>
-                    <Color>#000000</Color>
-                  </Border>
-                  <BackgroundColor>#ffffff</BackgroundColor>
-                </Style>
-              </Image>
               <Image Name="imgHold">
                 <Source>Embedded</Source>
-                <Value>=IIf(First(Fields!Hold.Value, "DS_rptPickingTicket")=1, imgHold, IIf(First(Fields!BayLocation.Value, "DS_rptPickingTicket") &lt;&gt; "", imgBayOrder, imgSingleOrder))</Value>
+                <Value>imgHold</Value>
                 <Sizing>Clip</Sizing>
-                <Top>0.39069in</Top>
-                <Left>0.06247in</Left>
+                <Top>0.44401in</Top>
+                <Left>0.04167in</Left>
                 <Height>0.76494in</Height>
                 <Width>2.15976in</Width>
-                <ZIndex>4</ZIndex>
+                <ZIndex>2</ZIndex>
                 <Visibility>
-                  <Hidden>true</Hidden>
+                  <Hidden>=IIf(First(Fields!Hold.Value, "DS_rptPickingTicket") = 1, False,True)</Hidden>
                 </Visibility>
                 <Style>
                   <Border>
                     <Color>#000000</Color>
                   </Border>
                   <BackgroundColor>#ffffff</BackgroundColor>
+                </Style>
+              </Image>
+              <Image Name="imgSingle">
+                <Source>Embedded</Source>
+                <Value>imgSingleOrder</Value>
+                <Sizing>FitProportional</Sizing>
+                <Top>0.33791in</Top>
+                <Left>0.76159in</Left>
+                <Height>0.87104in</Height>
+                <Width>0.59181in</Width>
+                <ZIndex>3</ZIndex>
+                <Visibility>
+                  <Hidden>=IIf(First(Fields!Hold.Value, "DS_rptPickingTicket") = 0 ANd First(Fields!BayLocation.Value, "DS_rptPickingTicket")  = "N/A",False,True)</Hidden>
+                </Visibility>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                </Style>
+              </Image>
+              <Image Name="imgBay">
+                <Source>Embedded</Source>
+                <Value>imgBayOrder</Value>
+                <Sizing>FitProportional</Sizing>
+                <Top>0.31905in</Top>
+                <Left>0.07291in</Left>
+                <Height>1.07013in</Height>
+                <Width>2.32839in</Width>
+                <ZIndex>4</ZIndex>
+                <Visibility>
+                  <Hidden>=IIf(First(Fields!BayLocation.Value, "DS_rptPickingTicket") = "N/A", True, False)</Hidden>
+                </Visibility>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
                 </Style>
               </Image>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>1.15603in</Top>
-            <Left>2.71652in</Left>
-            <Height>2.34113in</Height>
-            <Width>2.22223in</Width>
-            <ZIndex>26</ZIndex>
+            <Top>3.47289in</Top>
+            <Left>2.80193in</Left>
+            <Height>1.49707in</Height>
+            <Width>2.46691in</Width>
+            <ZIndex>12</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2300,14 +1781,15 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>2.10319in</Top>
-            <Left>5.02899in</Left>
+            <Top>3.47289in</Top>
+            <Left>5.32972in</Left>
             <Height>0.20093in</Height>
-            <Width>2.5312in</Width>
-            <ZIndex>27</ZIndex>
+            <Width>2.56588in</Width>
+            <ZIndex>13</ZIndex>
             <Style>
               <Border>
                 <Color>#000000</Color>
+                <Style>Solid</Style>
               </Border>
               <BackgroundColor>#595959</BackgroundColor>
               <Direction>LTR</Direction>
@@ -2336,11 +1818,891 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>2.1104in</Top>
-            <Left>0.11584in</Left>
+            <Top>3.47289in</Top>
+            <Left>0.20125in</Left>
             <Height>0.2076in</Height>
-            <Width>2.5729in</Width>
+            <Width>2.59371in</Width>
+            <ZIndex>14</ZIndex>
+            <Style>
+              <Border>
+                <Color>#000000</Color>
+                <Style>Solid</Style>
+              </Border>
+              <BackgroundColor>#595959</BackgroundColor>
+              <Direction>LTR</Direction>
+            </Style>
+          </Textbox>
+          <Rectangle Name="Rectangle1">
+            <ReportItems>
+              <Textbox Name="txtCustShipAcct">
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=Fields!CustShipperAcct.Value</Value>
+                        <Style>
+                          <FontStyle>Normal</FontStyle>
+                          <FontFamily>Times New Roman</FontFamily>
+                          <FontSize>11pt</FontSize>
+                          <FontWeight>Normal</FontWeight>
+                          <TextDecoration>None</TextDecoration>
+                          <Color>#000000</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                      <LineHeight>16pt</LineHeight>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>0.01493in</Top>
+                <Left>1.08377in</Left>
+                <Height>0.2083in</Height>
+                <Width>2.27033in</Width>
+                <Style>
+                  <Border>
+                    <Color>#000000</Color>
+                  </Border>
+                  <Direction>LTR</Direction>
+                </Style>
+              </Textbox>
+              <Textbox Name="lblShipAcct">
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Ship Account:</Value>
+                        <Style>
+                          <FontStyle>Normal</FontStyle>
+                          <FontFamily>Times New Roman</FontFamily>
+                          <FontSize>11pt</FontSize>
+                          <FontWeight>Normal</FontWeight>
+                          <TextDecoration>None</TextDecoration>
+                          <Color>#000000</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                      <LineHeight>16pt</LineHeight>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>0.01493in</Top>
+                <Left>0.12537in</Left>
+                <Height>0.2076in</Height>
+                <Width>0.9062in</Width>
+                <ZIndex>1</ZIndex>
+                <Style>
+                  <Border>
+                    <Color>#000000</Color>
+                  </Border>
+                  <Direction>LTR</Direction>
+                </Style>
+              </Textbox>
+              <Textbox Name="txtCustNotes1">
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=Fields!CustNote1.Value</Value>
+                        <Style>
+                          <FontStyle>Normal</FontStyle>
+                          <FontFamily>Times New Roman</FontFamily>
+                          <FontWeight>Normal</FontWeight>
+                          <TextDecoration>None</TextDecoration>
+                          <Color>#000000</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                      <LineHeight>15pt</LineHeight>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>0.23373in</Top>
+                <Left>0.11497in</Left>
+                <Height>0.2076in</Height>
+                <Width>3.23913in</Width>
+                <ZIndex>2</ZIndex>
+                <Style>
+                  <Border>
+                    <Color>#000000</Color>
+                  </Border>
+                  <Direction>LTR</Direction>
+                </Style>
+              </Textbox>
+              <Textbox Name="txtCustNotes2">
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=Fields!CustNote2.Value</Value>
+                        <Style>
+                          <FontStyle>Normal</FontStyle>
+                          <FontFamily>Times New Roman</FontFamily>
+                          <FontWeight>Normal</FontWeight>
+                          <TextDecoration>None</TextDecoration>
+                          <Color>#000000</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                      <LineHeight>15pt</LineHeight>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>0.45243in</Top>
+                <Left>0.11497in</Left>
+                <Height>0.2076in</Height>
+                <Width>3.23913in</Width>
+                <ZIndex>3</ZIndex>
+                <Style>
+                  <Border>
+                    <Color>#000000</Color>
+                  </Border>
+                  <Direction>LTR</Direction>
+                </Style>
+              </Textbox>
+              <Textbox Name="txtCustNotes3">
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=Fields!CustNote3.Value</Value>
+                        <Style>
+                          <FontStyle>Normal</FontStyle>
+                          <FontFamily>Times New Roman</FontFamily>
+                          <FontWeight>Normal</FontWeight>
+                          <TextDecoration>None</TextDecoration>
+                          <Color>#000000</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                      <LineHeight>15pt</LineHeight>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>0.66003in</Top>
+                <Left>0.11497in</Left>
+                <Height>0.2076in</Height>
+                <Width>3.23913in</Width>
+                <ZIndex>4</ZIndex>
+                <Style>
+                  <Border>
+                    <Color>#000000</Color>
+                  </Border>
+                  <Direction>LTR</Direction>
+                </Style>
+              </Textbox>
+              <Textbox Name="txtCustNotes4">
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=Fields!CustNote4.Value</Value>
+                        <Style>
+                          <FontStyle>Normal</FontStyle>
+                          <FontFamily>Times New Roman</FontFamily>
+                          <FontWeight>Normal</FontWeight>
+                          <TextDecoration>None</TextDecoration>
+                          <Color>#000000</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                      <LineHeight>15pt</LineHeight>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>0.88993in</Top>
+                <Left>0.10457in</Left>
+                <Height>0.2076in</Height>
+                <Width>3.23913in</Width>
+                <ZIndex>5</ZIndex>
+                <Style>
+                  <Border>
+                    <Color>#000000</Color>
+                  </Border>
+                  <Direction>LTR</Direction>
+                </Style>
+              </Textbox>
+            </ReportItems>
+            <KeepTogether>true</KeepTogether>
+            <Top>5.2477in</Top>
+            <Left>4.4568in</Left>
+            <Height>1.09753in</Height>
+            <Width>3.4388in</Width>
+            <ZIndex>15</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Rectangle>
+          <Rectangle Name="Rectangle2">
+            <ReportItems>
+              <Textbox Name="txtShipInstructions1">
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=Fields!ShipInstructions1.Value</Value>
+                        <Style>
+                          <FontStyle>Normal</FontStyle>
+                          <FontFamily>Times New Roman</FontFamily>
+                          <FontWeight>Normal</FontWeight>
+                          <TextDecoration>None</TextDecoration>
+                          <Color>#000000</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                      <LineHeight>15pt</LineHeight>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>0.02778in</Top>
+                <Left>0.04519in</Left>
+                <Height>0.5in</Height>
+                <Width>3.27809in</Width>
+                <Style>
+                  <Border>
+                    <Color>#000000</Color>
+                  </Border>
+                  <Direction>LTR</Direction>
+                </Style>
+              </Textbox>
+              <Textbox Name="txtShipInstructions2">
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=Fields!ShipInstructions2.Value</Value>
+                        <Style>
+                          <FontStyle>Normal</FontStyle>
+                          <FontFamily>Times New Roman</FontFamily>
+                          <FontWeight>Normal</FontWeight>
+                          <TextDecoration>None</TextDecoration>
+                          <Color>#000000</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                      <LineHeight>15pt</LineHeight>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>0.52778in</Top>
+                <Left>0.04519in</Left>
+                <Height>0.5305in</Height>
+                <Width>3.27809in</Width>
+                <ZIndex>1</ZIndex>
+                <Style>
+                  <Border>
+                    <Color>#000000</Color>
+                  </Border>
+                  <Direction>LTR</Direction>
+                </Style>
+              </Textbox>
+            </ReportItems>
+            <KeepTogether>true</KeepTogether>
+            <Top>5.2477in</Top>
+            <Left>0.22075in</Left>
+            <Height>1.08756in</Height>
+            <Width>3.44239in</Width>
+            <ZIndex>16</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Rectangle>
+          <Textbox Name="txtPONum">
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Fields!PONumber.Value</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>11pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                  <LineHeight>16pt</LineHeight>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>2.25157in</Top>
+            <Left>3.80972in</Left>
+            <Height>0.1979in</Height>
+            <Width>1.427in</Width>
+            <ZIndex>17</ZIndex>
+            <DataElementName>PONumber</DataElementName>
+            <Style>
+              <Border>
+                <Color>#000000</Color>
+              </Border>
+              <Direction>LTR</Direction>
+            </Style>
+          </Textbox>
+          <Textbox Name="lblPO">
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>PO:</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>11pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                  <LineHeight>16pt</LineHeight>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>2.25157in</Top>
+            <Left>3.21602in</Left>
+            <Height>0.1979in</Height>
+            <Width>0.55203in</Width>
+            <ZIndex>18</ZIndex>
+            <Style>
+              <Border>
+                <Color>#000000</Color>
+              </Border>
+              <Direction>LTR</Direction>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>PACKING LIST</Value>
+                    <Style>
+                      <FontSize>16pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>1.77706in</Top>
+            <Left>3.27729in</Left>
+            <Height>0.34416in</Height>
+            <Width>1.74687in</Width>
+            <ZIndex>19</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox1">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>**Please note that damaged and defective items must be reported within 2 weeks of receipt of prouducts**</Value>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox1</rd:DefaultName>
+            <Top>7.56849in</Top>
+            <Left>0.73833in</Left>
+            <Height>0.18396in</Height>
+            <Width>6.55574in</Width>
+            <ZIndex>20</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox8">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value />
+                    <Style>
+                      <Format>=Now()</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox8</rd:DefaultName>
+            <Top>7.75194in</Top>
+            <Left>0.22075in</Left>
+            <Height>0.25in</Height>
+            <Width>1.45901in</Width>
+            <ZIndex>21</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="txtOrderNoBarCode">
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Fields!OrderOrSoNumber.Value</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>Bar Code 39 f HR</FontFamily>
+                      <FontSize>22pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                  <LineHeight>28pt</LineHeight>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>0.19704in</Top>
+            <Left>5.35679in</Left>
+            <Height>0.69672in</Height>
+            <Width>2.5104in</Width>
+            <ZIndex>22</ZIndex>
+            <Style>
+              <Border>
+                <Color>#000000</Color>
+              </Border>
+              <Direction>LTR</Direction>
+            </Style>
+          </Textbox>
+          <Textbox Name="lblRetailerName">
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Fields!RetailerName.Value</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                  <LineHeight>14pt</LineHeight>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>0.22274in</Top>
+            <Left>0.15059in</Left>
+            <Height>0.15734in</Height>
+            <Width>2.02633in</Width>
+            <ZIndex>23</ZIndex>
+            <Style>
+              <Border>
+                <Color>#000000</Color>
+              </Border>
+              <Direction>LTR</Direction>
+            </Style>
+          </Textbox>
+          <Textbox Name="lblRetFld1">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Fields!RetailerFld1.Value</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                  <LineHeight>14pt</LineHeight>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>0.39397in</Top>
+            <Left>0.15059in</Left>
+            <Height>0.15733in</Height>
+            <Width>2.28891in</Width>
+            <ZIndex>24</ZIndex>
+            <Style>
+              <Border>
+                <Color>#000000</Color>
+              </Border>
+              <Direction>LTR</Direction>
+            </Style>
+          </Textbox>
+          <Textbox Name="lblRetFld2">
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Fields!RetailerFld2.Value</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                  <LineHeight>14pt</LineHeight>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>0.56519in</Top>
+            <Left>0.15059in</Left>
+            <Height>0.14345in</Height>
+            <Width>2.41312in</Width>
+            <ZIndex>25</ZIndex>
+            <Style>
+              <Border>
+                <Color>#000000</Color>
+              </Border>
+              <Direction>LTR</Direction>
+            </Style>
+          </Textbox>
+          <Textbox Name="lblRetFld3">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Fields!RetailerFld3.Value</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                  <LineHeight>14pt</LineHeight>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>0.72253in</Top>
+            <Left>0.15059in</Left>
+            <Height>0.17123in</Height>
+            <Width>2.41312in</Width>
+            <ZIndex>26</ZIndex>
+            <Style>
+              <Border>
+                <Color>#000000</Color>
+              </Border>
+              <Direction>LTR</Direction>
+            </Style>
+          </Textbox>
+          <Textbox Name="lblRetFld4">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Fields!RetailerFld4.Value</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                  <LineHeight>14pt</LineHeight>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>0.90765in</Top>
+            <Left>0.15059in</Left>
+            <Height>0.17122in</Height>
+            <Width>2.41312in</Width>
+            <ZIndex>27</ZIndex>
+            <Style>
+              <Border>
+                <Color>#000000</Color>
+              </Border>
+              <Direction>LTR</Direction>
+            </Style>
+          </Textbox>
+          <Textbox Name="txtRetFld5">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Fields!RetailerFld5.Value</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                  <LineHeight>14pt</LineHeight>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>1.07887in</Top>
+            <Left>0.14787in</Left>
+            <Height>0.27101in</Height>
+            <Width>2.41312in</Width>
             <ZIndex>28</ZIndex>
+            <Style>
+              <Border>
+                <Color>#000000</Color>
+              </Border>
+              <Direction>LTR</Direction>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox3">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>SHIPMENT REQUIRES PROP 65 LABELS</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>0.19444in</Top>
+            <Left>2.46728in</Left>
+            <Height>0.18564in</Height>
+            <Width>2.83395in</Width>
+            <ZIndex>29</ZIndex>
+            <Visibility>
+              <Hidden>=IIF(CBool(Fields!NoteProp65.Value)= True,False,True)</Hidden>
+            </Visibility>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Image Name="imgProp65">
+            <Source>Embedded</Source>
+            <Value>imgProp65</Value>
+            <Sizing>FitProportional</Sizing>
+            <Top>0.44953in</Top>
+            <Left>2.71091in</Left>
+            <Height>0.35635in</Height>
+            <Width>0.42453in</Width>
+            <ZIndex>30</ZIndex>
+            <Visibility>
+              <Hidden>=IIF(CBool(Fields!NoteProp65.Value)= True,False,True)</Hidden>
+            </Visibility>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Image>
+          <Textbox Name="Textbox4">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>WARNING: This product can expose you to chemicals</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox4</rd:DefaultName>
+            <Top>0.43746in</Top>
+            <Left>3.19054in</Left>
+            <Height>0.42841in</Height>
+            <Width>2.01269in</Width>
+            <ZIndex>31</ZIndex>
+            <Visibility>
+              <Hidden>=IIF(CBool(Fields!NoteProp65.Value)= True,False,True)</Hidden>
+            </Visibility>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox6">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>including DINP, which is known to the State of California to cause cancer. For more information, go to www.P65Warnings.ca.gov</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox6</rd:DefaultName>
+            <Top>0.88476in</Top>
+            <Left>2.71091in</Left>
+            <Height>0.74867in</Height>
+            <Width>2.4669in</Width>
+            <ZIndex>32</ZIndex>
+            <Visibility>
+              <Hidden>=IIF(CBool(Fields!NoteProp65.Value)= True,False,True)</Hidden>
+            </Visibility>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="lblQtyRequested">
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Qty Requested</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#ffffff</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                  <LineHeight>17pt</LineHeight>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>6.41466in</Top>
+            <Left>4.51933in</Left>
+            <Height>0.2395in</Height>
+            <Width>1.2395in</Width>
+            <ZIndex>33</ZIndex>
             <Style>
               <Border>
                 <Color>#000000</Color>
@@ -2350,414 +2712,22 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>6.29774in</Height>
+        <Height>8.12694in</Height>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
           <BottomBorder>
-            <Style>Solid</Style>
+            <Style>None</Style>
           </BottomBorder>
         </Style>
       </Body>
-      <Width>7.88324in</Width>
+      <Width>8.08859in</Width>
       <Page>
-        <PageHeader>
-          <Height>1.20841in</Height>
-          <PrintOnFirstPage>true</PrintOnFirstPage>
-          <ReportItems>
-            <Textbox Name="lblSLSCompName">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>SPORTS LICENSING SOLUTIONS</Value>
-                      <Style>
-                        <FontStyle>Normal</FontStyle>
-                        <FontFamily>Times New Roman</FontFamily>
-                        <FontSize>11pt</FontSize>
-                        <FontWeight>Normal</FontWeight>
-                        <TextDecoration>None</TextDecoration>
-                        <Color>#000000</Color>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                    <LineHeight>16pt</LineHeight>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>0.1249in</Top>
-              <Left>0.19924in</Left>
-              <Height>0.177in</Height>
-              <Width>2.427in</Width>
-              <Style>
-                <Border>
-                  <Color>#000000</Color>
-                </Border>
-                <Direction>LTR</Direction>
-              </Style>
-            </Textbox>
-            <Textbox Name="lblSLSTagline">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>THE MAKERS OF FANMATS</Value>
-                      <Style>
-                        <FontStyle>Normal</FontStyle>
-                        <FontFamily>Times New Roman</FontFamily>
-                        <FontSize>11pt</FontSize>
-                        <FontWeight>Normal</FontWeight>
-                        <TextDecoration>None</TextDecoration>
-                        <Color>#000000</Color>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                    <LineHeight>16pt</LineHeight>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>0.3332in</Top>
-              <Left>0.19924in</Left>
-              <Height>0.177in</Height>
-              <Width>2.427in</Width>
-              <ZIndex>1</ZIndex>
-              <Style>
-                <Border>
-                  <Color>#000000</Color>
-                </Border>
-                <Direction>LTR</Direction>
-              </Style>
-            </Textbox>
-            <Textbox Name="lblSLSAddress">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>3200  SHAWNEE IND'L WAY 100</Value>
-                      <Style>
-                        <FontStyle>Normal</FontStyle>
-                        <FontFamily>Times New Roman</FontFamily>
-                        <FontSize>11pt</FontSize>
-                        <FontWeight>Normal</FontWeight>
-                        <TextDecoration>None</TextDecoration>
-                        <Color>#000000</Color>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                    <LineHeight>16pt</LineHeight>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>0.5415in</Top>
-              <Left>0.19924in</Left>
-              <Height>0.177in</Height>
-              <Width>2.427in</Width>
-              <ZIndex>2</ZIndex>
-              <Style>
-                <Border>
-                  <Color>#000000</Color>
-                </Border>
-                <Direction>LTR</Direction>
-              </Style>
-            </Textbox>
-            <Textbox Name="lblSLSCityStateZip">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>SUWANEE, GA 30024</Value>
-                      <Style>
-                        <FontStyle>Normal</FontStyle>
-                        <FontFamily>Times New Roman</FontFamily>
-                        <FontSize>11pt</FontSize>
-                        <FontWeight>Normal</FontWeight>
-                        <TextDecoration>None</TextDecoration>
-                        <Color>#000000</Color>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                    <LineHeight>16pt</LineHeight>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>0.7499in</Top>
-              <Left>0.19924in</Left>
-              <Height>0.177in</Height>
-              <Width>2.427in</Width>
-              <ZIndex>3</ZIndex>
-              <Style>
-                <Border>
-                  <Color>#000000</Color>
-                </Border>
-                <Direction>LTR</Direction>
-              </Style>
-            </Textbox>
-            <Textbox Name="lblSLSPhone">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>678-730-0600</Value>
-                      <Style>
-                        <FontStyle>Normal</FontStyle>
-                        <FontFamily>Times New Roman</FontFamily>
-                        <FontSize>11pt</FontSize>
-                        <FontWeight>Normal</FontWeight>
-                        <TextDecoration>None</TextDecoration>
-                        <Color>#000000</Color>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                    <LineHeight>16pt</LineHeight>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>0.9582in</Top>
-              <Left>0.19924in</Left>
-              <Height>0.177in</Height>
-              <Width>2.427in</Width>
-              <ZIndex>4</ZIndex>
-              <Style>
-                <Border>
-                  <Color>#000000</Color>
-                </Border>
-                <Direction>LTR</Direction>
-              </Style>
-            </Textbox>
-            <Textbox Name="txtOrderNoBarCode">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Fields!OrderOrSoNumber.Value</Value>
-                      <Style>
-                        <FontStyle>Normal</FontStyle>
-                        <FontFamily>Bar Code 39 f HR</FontFamily>
-                        <FontSize>22pt</FontSize>
-                        <FontWeight>Normal</FontWeight>
-                        <TextDecoration>None</TextDecoration>
-                        <Color>#000000</Color>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                    <LineHeight>28pt</LineHeight>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>0.1249in</Top>
-              <Left>2.64013in</Left>
-              <Height>0.69672in</Height>
-              <Width>2.5104in</Width>
-              <ZIndex>5</ZIndex>
-              <Style>
-                <Border>
-                  <Color>#000000</Color>
-                </Border>
-                <Direction>LTR</Direction>
-              </Style>
-            </Textbox>
-            <Textbox Name="txtPONum">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Fields!PONumber.Value</Value>
-                      <Style>
-                        <FontStyle>Normal</FontStyle>
-                        <FontFamily>Times New Roman</FontFamily>
-                        <FontSize>11pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                        <TextDecoration>None</TextDecoration>
-                        <Color>#000000</Color>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                    <LineHeight>16pt</LineHeight>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>0.82162in</Top>
-              <Left>3.5999in</Left>
-              <Height>0.1979in</Height>
-              <Width>1.427in</Width>
-              <ZIndex>6</ZIndex>
-              <DataElementName>PONumber</DataElementName>
-              <Style>
-                <Border>
-                  <Color>#000000</Color>
-                </Border>
-                <Direction>LTR</Direction>
-              </Style>
-            </Textbox>
-            <Textbox Name="lblPO">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>PO:</Value>
-                      <Style>
-                        <FontStyle>Normal</FontStyle>
-                        <FontFamily>Times New Roman</FontFamily>
-                        <FontSize>11pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                        <TextDecoration>None</TextDecoration>
-                        <Color>#000000</Color>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                    <LineHeight>16pt</LineHeight>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>0.82162in</Top>
-              <Left>3.0062in</Left>
-              <Height>0.1979in</Height>
-              <Width>0.55203in</Width>
-              <ZIndex>7</ZIndex>
-              <Style>
-                <Border>
-                  <Color>#000000</Color>
-                </Border>
-                <Direction>LTR</Direction>
-              </Style>
-            </Textbox>
-            <Textbox Name="txtPickedDate">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Fields!PickedDate.Value</Value>
-                      <Style>
-                        <FontStyle>Normal</FontStyle>
-                        <FontFamily>Times New Roman</FontFamily>
-                        <FontSize>11pt</FontSize>
-                        <FontWeight>Normal</FontWeight>
-                        <TextDecoration>None</TextDecoration>
-                        <Color>#000000</Color>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Right</TextAlign>
-                    <LineHeight>16pt</LineHeight>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>0.3749in</Top>
-              <Left>5.5672in</Left>
-              <Height>0.2187in</Height>
-              <Width>1.51731in</Width>
-              <ZIndex>8</ZIndex>
-              <DataElementName>PickedDate</DataElementName>
-              <Style>
-                <Border>
-                  <Color>#000000</Color>
-                </Border>
-                <Direction>LTR</Direction>
-              </Style>
-            </Textbox>
-            <Textbox Name="txtPage">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>Page: </Value>
-                      <Style>
-                        <FontStyle>Normal</FontStyle>
-                        <FontFamily>Times New Roman</FontFamily>
-                        <FontSize>11pt</FontSize>
-                        <FontWeight>Normal</FontWeight>
-                        <TextDecoration>None</TextDecoration>
-                        <Color>#000000</Color>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Right</TextAlign>
-                    <LineHeight>16pt</LineHeight>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>0.1562in</Top>
-              <Left>5.5672in</Left>
-              <Height>0.2187in</Height>
-              <Width>0.49993in</Width>
-              <ZIndex>9</ZIndex>
-              <Style>
-                <Border>
-                  <Color>#000000</Color>
-                </Border>
-                <Direction>LTR</Direction>
-              </Style>
-            </Textbox>
-            <Textbox Name="PageNumber">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Globals!PageNumber</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>PageNumber</rd:DefaultName>
-              <Top>0.1249in</Top>
-              <Left>6.08102in</Left>
-              <Height>0.25in</Height>
-              <Width>1in</Width>
-              <ZIndex>10</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-          </ReportItems>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-          </Style>
-        </PageHeader>
-        <LeftMargin>0.25in</LeftMargin>
-        <RightMargin>0.25in</RightMargin>
-        <TopMargin>0.25in</TopMargin>
-        <BottomMargin>0.25in</BottomMargin>
+        <LeftMargin>0.2in</LeftMargin>
+        <RightMargin>0.2in</RightMargin>
+        <TopMargin>0.2in</TopMargin>
+        <BottomMargin>0.2in</BottomMargin>
         <Style />
       </Page>
     </ReportSection>
@@ -2989,7 +2959,14 @@ mWb/zJn/mWb/zJn/mWb/zJn/mWb/zJn/////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////AAAA////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////AAAA</ImageData>
     </EmbeddedImage>
+    <EmbeddedImage Name="imgProp65">
+      <MIMEType>image/jpeg</MIMEType>
+      <ImageData>/9j/4AAQSkZJRgABAQEAagBqAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wAARCAAoADADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9DvCOj694g0me6uPHGuJJHqF9aARW+ngbIbqWFDzankrGCfcnp0ra/wCEN1f/AKHvxB/3407/AORKPhr/AMi7ef8AYZ1b/wBONxXV0AcH4k0+bwjoGoa1q/xF1yy0ywga4uLiWHTgqIoySf8ARK8u/Zv+Pnhn9qfRNV1HwT8R
+PFX/ABLLk29za6hZ6ZFOv92QKLZsow5Bz9QDxXz3/wAFAPjFP8Y/iBZfs9+GNXXTNHhX+0vG+ubsRWNmnzNG7D0HJHUkgYNeKxeOvhx+zf8AEzQfjV+zxrH9u/DWDydA8Z6RDBNC0WcBbhklVWIbBYMARuBx1oA/VD/hDdX/AOh78Qf9+NO/+RKP+EN1f/oe/EH/AH407/5ErX8L+JtN8ZeHdN13R7pL3S9QgS5triM5V0YZBrUoA5T4a/8AIu3n/YZ1b/043Fea/tj/ALSdl+zL8HL/AF4bbnxFe/6FolgOXuLphhcDqQucn8K9A8E6paaJ4K1bUL+dLWytdV1iaaaQ4VEXULksx9gBXw38GdLu/wDgoB+1Ve/FjW4Hb4TeBpzZ+G7KYfu7y4U580joefmPXsOKAOj+Bv7I954N/ZF+JWu+MVN98SfHmk3Oo6tcT8yRKUMiQ59sZI9celeM/wDBIj4P6R8SPg98YLHxHYrdaVrEkWlTRyDqpjLEj3BwfqK/UrxLb2914c1WG7mjt7WS0lSWaVtqIhQhmY9gBkmvk/8A4JleB9K8C/CDxPbab4j0PxG8/iG6kkm0K9W5jjTcfLDEAYbb2oA8/wD2KfHesfsx/GfXP2Y/Ht0z2iSNeeD9SnJ23EDEnyQT7cgeoIxX6BV8q/t/fs13nxn+Hdr4r8JFrT4keDX/ALS0e6h4kkCHc8OffGQPX612P7GX7S1p+018HbLWpNtt4n04/Ydc088PBcqMEkdg2Mj8aAPmz9vzxH8U7z4L23gT4d+CfE3iHT9f1zVzrWo+HdOlu2jt11K4/cYjVipbrkjGBUfwe/a68T/BP4b6H4M8PfshfFiDTdLt1iU/2TcBpXx80jf6PyzHJoooA6rUv2/vHWr6fc2N5+yJ8V7i0uomhmhfSrgq6MCGU/6P0IJriPg3+0nL+z/ot7pPgD9if4p+HbC9uDdXEcVheymSTpktJCxwBwBnAHQUUUAegf8ADw/4
+h/8ARpXxZ/8ABVcf/I9fPPwd8X/E/wAK/tqf8Jv4O+AHxF8H+DvF0iweINH1LRrhLdXY/NcLIYlRMH5ucDr1oooA/9k=</ImageData>
+    </EmbeddedImage>
   </EmbeddedImages>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>d3757076-77ef-4fc0-a67b-e2a2ea596342</rd:ReportID>
 </Report>

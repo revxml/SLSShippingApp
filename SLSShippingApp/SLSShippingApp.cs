@@ -874,6 +874,9 @@ namespace SLSShippingApp
 
             ReportPageSettings rps = lr.GetDefaultPageSettings();
             ReportPrinter.ReportPrintDocument printDoc = new ReportPrinter.ReportPrintDocument(lr);
+            PrintController printController = new StandardPrintController();
+            
+            printDoc.PrintController = printController;
 
             if (sRptType == "Label")
                 printDoc.DefaultPageSettings.PaperSize = new PaperSize(rps.PaperSize.Kind.ToString(), rps.PaperSize.Height, rps.PaperSize.Width);
@@ -895,6 +898,7 @@ namespace SLSShippingApp
             }
             printDoc.PrinterSettings.Copies = iCopies;
             printDoc.DocumentName = sReport;
+           
 
 
             String sPrinter = sLabelPrinter;

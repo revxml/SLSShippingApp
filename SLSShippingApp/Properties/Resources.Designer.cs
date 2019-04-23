@@ -68,5 +68,41 @@ namespace SLSShippingApp.Properties {
                 return ResourceManager.GetString("icon", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to imgBayOrder.jpg.
+        /// </summary>
+        internal static string imgBayOrder {
+            get {
+                return ResourceManager.GetString("imgBayOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to imgHOLD.jpg.
+        /// </summary>
+        internal static string imgHOLD {
+            get {
+                return ResourceManager.GetString("imgHOLD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to imgProp65.jpg.
+        /// </summary>
+        internal static string imgProp65 {
+            get {
+                return ResourceManager.GetString("imgProp65", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to imgSingleOrder.jpg.
+        /// </summary>
+        internal static string imgSingleOrder {
+            get {
+                return ResourceManager.GetString("imgSingleOrder", resourceCulture);
+            }
+        }
     }
 }

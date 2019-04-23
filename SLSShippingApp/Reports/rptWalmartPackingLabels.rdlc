@@ -70,463 +70,185 @@
               </SortExpressions>
               <TablixMembers>
                 <TablixMember>
-                  <Group Name="StockNumber">
-                    <GroupExpressions>
-                      <GroupExpression>=Fields!StockNumber.Value</GroupExpression>
-                    </GroupExpressions>
-                  </Group>
-                  <SortExpressions>
-                    <SortExpression>
-                      <Value>=Fields!StockNumber.Value</Value>
-                    </SortExpression>
-                  </SortExpressions>
+                  <TablixHeader>
+                    <Size>0.53405in</Size>
+                    <CellContents>
+                      <Textbox Name="QuantityToShip">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>=Fields!QuantityToShip.Value</Value>
+                                <Style>
+                                  <FontWeight>Normal</FontWeight>
+                                  <Color>#333333</Color>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style />
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>QuantityToShip</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Style>None</Style>
+                          </Border>
+                          <BottomBorder>
+                            <Color>LightGrey</Color>
+                            <Style>Solid</Style>
+                            <Width>1pt</Width>
+                          </BottomBorder>
+                          <BackgroundColor>White</BackgroundColor>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
                   <TablixMembers>
                     <TablixMember>
-                      <Group Name="StockDescription1">
-                        <GroupExpressions>
-                          <GroupExpression>=Fields!StockDescription1.Value</GroupExpression>
-                        </GroupExpressions>
-                      </Group>
-                      <SortExpressions>
-                        <SortExpression>
-                          <Value>=Fields!StockDescription1.Value</Value>
-                        </SortExpression>
-                      </SortExpressions>
+                      <TablixHeader>
+                        <Size>1.33218in</Size>
+                        <CellContents>
+                          <Textbox Name="UPC1">
+                            <CanGrow>true</CanGrow>
+                            <KeepTogether>true</KeepTogether>
+                            <Paragraphs>
+                              <Paragraph>
+                                <TextRuns>
+                                  <TextRun>
+                                    <Value>=Fields!UPC.Value</Value>
+                                    <Style>
+                                      <FontWeight>Normal</FontWeight>
+                                      <Color>#333333</Color>
+                                    </Style>
+                                  </TextRun>
+                                </TextRuns>
+                                <Style />
+                              </Paragraph>
+                            </Paragraphs>
+                            <rd:DefaultName>UPC1</rd:DefaultName>
+                            <Style>
+                              <Border>
+                                <Style>None</Style>
+                              </Border>
+                              <BottomBorder>
+                                <Color>LightGrey</Color>
+                                <Style>Solid</Style>
+                                <Width>1pt</Width>
+                              </BottomBorder>
+                              <BackgroundColor>White</BackgroundColor>
+                              <PaddingLeft>2pt</PaddingLeft>
+                              <PaddingRight>2pt</PaddingRight>
+                              <PaddingTop>2pt</PaddingTop>
+                              <PaddingBottom>2pt</PaddingBottom>
+                            </Style>
+                          </Textbox>
+                        </CellContents>
+                      </TablixHeader>
                       <TablixMembers>
                         <TablixMember>
-                          <Group Name="StockDescription2">
-                            <GroupExpressions>
-                              <GroupExpression>=Fields!StockDescription2.Value</GroupExpression>
-                            </GroupExpressions>
-                          </Group>
-                          <SortExpressions>
-                            <SortExpression>
-                              <Value>=Fields!StockDescription2.Value</Value>
-                            </SortExpression>
-                          </SortExpressions>
+                          <TablixHeader>
+                            <Size>3.35684in</Size>
+                            <CellContents>
+                              <Textbox Name="RetailerItemDesc1">
+                                <CanGrow>true</CanGrow>
+                                <KeepTogether>true</KeepTogether>
+                                <Paragraphs>
+                                  <Paragraph>
+                                    <TextRuns>
+                                      <TextRun>
+                                        <Value>=Fields!RetailerItemDesc.Value</Value>
+                                        <Style>
+                                          <FontWeight>Normal</FontWeight>
+                                          <Color>#333333</Color>
+                                        </Style>
+                                      </TextRun>
+                                    </TextRuns>
+                                    <Style />
+                                  </Paragraph>
+                                </Paragraphs>
+                                <rd:DefaultName>RetailerItemDesc1</rd:DefaultName>
+                                <Style>
+                                  <Border>
+                                    <Style>None</Style>
+                                  </Border>
+                                  <BottomBorder>
+                                    <Color>LightGrey</Color>
+                                    <Style>Solid</Style>
+                                    <Width>1pt</Width>
+                                  </BottomBorder>
+                                  <BackgroundColor>White</BackgroundColor>
+                                  <PaddingLeft>2pt</PaddingLeft>
+                                  <PaddingRight>2pt</PaddingRight>
+                                  <PaddingTop>2pt</PaddingTop>
+                                  <PaddingBottom>2pt</PaddingBottom>
+                                </Style>
+                              </Textbox>
+                            </CellContents>
+                          </TablixHeader>
                           <TablixMembers>
                             <TablixMember>
-                              <Group Name="StockDescription3">
-                                <GroupExpressions>
-                                  <GroupExpression>=Fields!StockDescription3.Value</GroupExpression>
-                                </GroupExpressions>
-                              </Group>
-                              <SortExpressions>
-                                <SortExpression>
-                                  <Value>=Fields!StockDescription3.Value</Value>
-                                </SortExpression>
-                              </SortExpressions>
+                              <TablixHeader>
+                                <Size>1.14167in</Size>
+                                <CellContents>
+                                  <Textbox Name="UnitPrice">
+                                    <CanGrow>true</CanGrow>
+                                    <KeepTogether>true</KeepTogether>
+                                    <Paragraphs>
+                                      <Paragraph>
+                                        <TextRuns>
+                                          <TextRun>
+                                            <Value>=Fields!UnitPrice.Value</Value>
+                                            <Style>
+                                              <FontWeight>Normal</FontWeight>
+                                              <Color>#333333</Color>
+                                            </Style>
+                                          </TextRun>
+                                        </TextRuns>
+                                        <Style />
+                                      </Paragraph>
+                                    </Paragraphs>
+                                    <rd:DefaultName>UnitPrice</rd:DefaultName>
+                                    <Style>
+                                      <Border>
+                                        <Style>None</Style>
+                                      </Border>
+                                      <BottomBorder>
+                                        <Color>LightGrey</Color>
+                                        <Style>Solid</Style>
+                                        <Width>1pt</Width>
+                                      </BottomBorder>
+                                      <BackgroundColor>White</BackgroundColor>
+                                      <PaddingLeft>2pt</PaddingLeft>
+                                      <PaddingRight>2pt</PaddingRight>
+                                      <PaddingTop>2pt</PaddingTop>
+                                      <PaddingBottom>2pt</PaddingBottom>
+                                    </Style>
+                                  </Textbox>
+                                </CellContents>
+                              </TablixHeader>
                               <TablixMembers>
-                                <TablixMember>
-                                  <Group Name="QuantityToShip">
-                                    <GroupExpressions>
-                                      <GroupExpression>=Fields!QuantityToShip.Value</GroupExpression>
-                                    </GroupExpressions>
-                                  </Group>
-                                  <SortExpressions>
-                                    <SortExpression>
-                                      <Value>=Fields!QuantityToShip.Value</Value>
-                                    </SortExpression>
-                                  </SortExpressions>
-                                  <TablixMembers>
-                                    <TablixMember>
-                                      <Group Name="RecToday">
-                                        <GroupExpressions>
-                                          <GroupExpression>=Fields!RecToday.Value</GroupExpression>
-                                        </GroupExpressions>
-                                      </Group>
-                                      <SortExpressions>
-                                        <SortExpression>
-                                          <Value>=Fields!RecToday.Value</Value>
-                                        </SortExpression>
-                                      </SortExpressions>
-                                      <TablixMembers>
-                                        <TablixMember>
-                                          <Group Name="QtyFromStock">
-                                            <GroupExpressions>
-                                              <GroupExpression>=Fields!QtyFromStock.Value</GroupExpression>
-                                            </GroupExpressions>
-                                          </Group>
-                                          <SortExpressions>
-                                            <SortExpression>
-                                              <Value>=Fields!QtyFromStock.Value</Value>
-                                            </SortExpression>
-                                          </SortExpressions>
-                                          <TablixHeader>
-                                            <Size>0.53405in</Size>
-                                            <CellContents>
-                                              <Textbox Name="QuantityToShip">
-                                                <CanGrow>true</CanGrow>
-                                                <KeepTogether>true</KeepTogether>
-                                                <Paragraphs>
-                                                  <Paragraph>
-                                                    <TextRuns>
-                                                      <TextRun>
-                                                        <Value>=Fields!QuantityToShip.Value</Value>
-                                                        <Style>
-                                                          <FontWeight>Normal</FontWeight>
-                                                          <Color>#333333</Color>
-                                                        </Style>
-                                                      </TextRun>
-                                                    </TextRuns>
-                                                    <Style />
-                                                  </Paragraph>
-                                                </Paragraphs>
-                                                <rd:DefaultName>QuantityToShip</rd:DefaultName>
-                                                <Style>
-                                                  <Border>
-                                                    <Style>None</Style>
-                                                  </Border>
-                                                  <BottomBorder>
-                                                    <Color>LightGrey</Color>
-                                                    <Style>Solid</Style>
-                                                    <Width>1pt</Width>
-                                                  </BottomBorder>
-                                                  <BackgroundColor>White</BackgroundColor>
-                                                  <PaddingLeft>2pt</PaddingLeft>
-                                                  <PaddingRight>2pt</PaddingRight>
-                                                  <PaddingTop>2pt</PaddingTop>
-                                                  <PaddingBottom>2pt</PaddingBottom>
-                                                </Style>
-                                              </Textbox>
-                                            </CellContents>
-                                          </TablixHeader>
-                                          <TablixMembers>
-                                            <TablixMember>
-                                              <Group Name="QtyShippedTodate">
-                                                <GroupExpressions>
-                                                  <GroupExpression>=Fields!QtyShippedTodate.Value</GroupExpression>
-                                                </GroupExpressions>
-                                              </Group>
-                                              <SortExpressions>
-                                                <SortExpression>
-                                                  <Value>=Fields!QtyShippedTodate.Value</Value>
-                                                </SortExpression>
-                                              </SortExpressions>
-                                              <TablixHeader>
-                                                <Size>1.33218in</Size>
-                                                <CellContents>
-                                                  <Textbox Name="UPC1">
-                                                    <CanGrow>true</CanGrow>
-                                                    <KeepTogether>true</KeepTogether>
-                                                    <Paragraphs>
-                                                      <Paragraph>
-                                                        <TextRuns>
-                                                          <TextRun>
-                                                            <Value>=Fields!UPC.Value</Value>
-                                                            <Style>
-                                                              <FontWeight>Normal</FontWeight>
-                                                              <Color>#333333</Color>
-                                                            </Style>
-                                                          </TextRun>
-                                                        </TextRuns>
-                                                        <Style />
-                                                      </Paragraph>
-                                                    </Paragraphs>
-                                                    <rd:DefaultName>UPC1</rd:DefaultName>
-                                                    <Style>
-                                                      <Border>
-                                                        <Style>None</Style>
-                                                      </Border>
-                                                      <BottomBorder>
-                                                        <Color>LightGrey</Color>
-                                                        <Style>Solid</Style>
-                                                        <Width>1pt</Width>
-                                                      </BottomBorder>
-                                                      <BackgroundColor>White</BackgroundColor>
-                                                      <PaddingLeft>2pt</PaddingLeft>
-                                                      <PaddingRight>2pt</PaddingRight>
-                                                      <PaddingTop>2pt</PaddingTop>
-                                                      <PaddingBottom>2pt</PaddingBottom>
-                                                    </Style>
-                                                  </Textbox>
-                                                </CellContents>
-                                              </TablixHeader>
-                                              <TablixMembers>
-                                                <TablixMember>
-                                                  <Group Name="SearchDesc">
-                                                    <GroupExpressions>
-                                                      <GroupExpression>=Fields!SearchDesc.Value</GroupExpression>
-                                                    </GroupExpressions>
-                                                  </Group>
-                                                  <SortExpressions>
-                                                    <SortExpression>
-                                                      <Value>=Fields!SearchDesc.Value</Value>
-                                                    </SortExpression>
-                                                  </SortExpressions>
-                                                  <TablixHeader>
-                                                    <Size>3.35684in</Size>
-                                                    <CellContents>
-                                                      <Textbox Name="RetailerItemDesc1">
-                                                        <CanGrow>true</CanGrow>
-                                                        <KeepTogether>true</KeepTogether>
-                                                        <Paragraphs>
-                                                          <Paragraph>
-                                                            <TextRuns>
-                                                              <TextRun>
-                                                                <Value>=Fields!RetailerItemDesc.Value</Value>
-                                                                <Style>
-                                                                  <FontWeight>Normal</FontWeight>
-                                                                  <Color>#333333</Color>
-                                                                </Style>
-                                                              </TextRun>
-                                                            </TextRuns>
-                                                            <Style />
-                                                          </Paragraph>
-                                                        </Paragraphs>
-                                                        <rd:DefaultName>RetailerItemDesc1</rd:DefaultName>
-                                                        <Style>
-                                                          <Border>
-                                                            <Style>None</Style>
-                                                          </Border>
-                                                          <BottomBorder>
-                                                            <Color>LightGrey</Color>
-                                                            <Style>Solid</Style>
-                                                            <Width>1pt</Width>
-                                                          </BottomBorder>
-                                                          <BackgroundColor>White</BackgroundColor>
-                                                          <PaddingLeft>2pt</PaddingLeft>
-                                                          <PaddingRight>2pt</PaddingRight>
-                                                          <PaddingTop>2pt</PaddingTop>
-                                                          <PaddingBottom>2pt</PaddingBottom>
-                                                        </Style>
-                                                      </Textbox>
-                                                    </CellContents>
-                                                  </TablixHeader>
-                                                  <TablixMembers>
-                                                    <TablixMember>
-                                                      <Group Name="UnitPrice">
-                                                        <GroupExpressions>
-                                                          <GroupExpression>=Fields!UnitPrice.Value</GroupExpression>
-                                                        </GroupExpressions>
-                                                      </Group>
-                                                      <SortExpressions>
-                                                        <SortExpression>
-                                                          <Value>=Fields!UnitPrice.Value</Value>
-                                                        </SortExpression>
-                                                      </SortExpressions>
-                                                      <TablixHeader>
-                                                        <Size>1.14167in</Size>
-                                                        <CellContents>
-                                                          <Textbox Name="UnitPrice">
-                                                            <CanGrow>true</CanGrow>
-                                                            <KeepTogether>true</KeepTogether>
-                                                            <Paragraphs>
-                                                              <Paragraph>
-                                                                <TextRuns>
-                                                                  <TextRun>
-                                                                    <Value>=Fields!UnitPrice.Value</Value>
-                                                                    <Style>
-                                                                      <FontWeight>Normal</FontWeight>
-                                                                      <Color>#333333</Color>
-                                                                    </Style>
-                                                                  </TextRun>
-                                                                </TextRuns>
-                                                                <Style />
-                                                              </Paragraph>
-                                                            </Paragraphs>
-                                                            <rd:DefaultName>UnitPrice</rd:DefaultName>
-                                                            <Style>
-                                                              <Border>
-                                                                <Style>None</Style>
-                                                              </Border>
-                                                              <BottomBorder>
-                                                                <Color>LightGrey</Color>
-                                                                <Style>Solid</Style>
-                                                                <Width>1pt</Width>
-                                                              </BottomBorder>
-                                                              <BackgroundColor>White</BackgroundColor>
-                                                              <PaddingLeft>2pt</PaddingLeft>
-                                                              <PaddingRight>2pt</PaddingRight>
-                                                              <PaddingTop>2pt</PaddingTop>
-                                                              <PaddingBottom>2pt</PaddingBottom>
-                                                            </Style>
-                                                          </Textbox>
-                                                        </CellContents>
-                                                      </TablixHeader>
-                                                      <TablixMembers>
-                                                        <TablixMember>
-                                                          <Group Name="ShipCost">
-                                                            <GroupExpressions>
-                                                              <GroupExpression>=Fields!ShipCost.Value</GroupExpression>
-                                                            </GroupExpressions>
-                                                          </Group>
-                                                          <SortExpressions>
-                                                            <SortExpression>
-                                                              <Value>=Fields!ShipCost.Value</Value>
-                                                            </SortExpression>
-                                                          </SortExpressions>
-                                                          <TablixMembers>
-                                                            <TablixMember>
-                                                              <Group Name="UnitTaxAmt">
-                                                                <GroupExpressions>
-                                                                  <GroupExpression>=Fields!UnitTaxAmt.Value</GroupExpression>
-                                                                </GroupExpressions>
-                                                              </Group>
-                                                              <SortExpressions>
-                                                                <SortExpression>
-                                                                  <Value>=Fields!UnitTaxAmt.Value</Value>
-                                                                </SortExpression>
-                                                              </SortExpressions>
-                                                              <TablixMembers>
-                                                                <TablixMember>
-                                                                  <Group Name="RetailerItemDesc">
-                                                                    <GroupExpressions>
-                                                                      <GroupExpression>=Fields!RetailerItemDesc.Value</GroupExpression>
-                                                                    </GroupExpressions>
-                                                                  </Group>
-                                                                  <SortExpressions>
-                                                                    <SortExpression>
-                                                                      <Value>=Fields!RetailerItemDesc.Value</Value>
-                                                                    </SortExpression>
-                                                                  </SortExpressions>
-                                                                  <TablixMembers>
-                                                                    <TablixMember>
-                                                                      <Group Name="TCNumber">
-                                                                        <GroupExpressions>
-                                                                          <GroupExpression>=Fields!TCNumber.Value</GroupExpression>
-                                                                        </GroupExpressions>
-                                                                      </Group>
-                                                                      <SortExpressions>
-                                                                        <SortExpression>
-                                                                          <Value>=Fields!TCNumber.Value</Value>
-                                                                        </SortExpression>
-                                                                      </SortExpressions>
-                                                                      <TablixMembers>
-                                                                        <TablixMember>
-                                                                          <Group Name="UPC">
-                                                                            <GroupExpressions>
-                                                                              <GroupExpression>=Fields!UPC.Value</GroupExpression>
-                                                                            </GroupExpressions>
-                                                                          </Group>
-                                                                          <SortExpressions>
-                                                                            <SortExpression>
-                                                                              <Value>=Fields!UPC.Value</Value>
-                                                                            </SortExpression>
-                                                                          </SortExpressions>
-                                                                          <TablixMembers>
-                                                                            <TablixMember>
-                                                                              <Group Name="MFGID">
-                                                                                <GroupExpressions>
-                                                                                  <GroupExpression>=Fields!MFGID.Value</GroupExpression>
-                                                                                </GroupExpressions>
-                                                                              </Group>
-                                                                              <SortExpressions>
-                                                                                <SortExpression>
-                                                                                  <Value>=Fields!MFGID.Value</Value>
-                                                                                </SortExpression>
-                                                                              </SortExpressions>
-                                                                              <TablixMembers>
-                                                                                <TablixMember>
-                                                                                  <Group Name="Details" />
-                                                                                  <Visibility>
-                                                                                    <Hidden>true</Hidden>
-                                                                                    <ToggleItem>MFGID1</ToggleItem>
-                                                                                  </Visibility>
-                                                                                </TablixMember>
-                                                                              </TablixMembers>
-                                                                              <Visibility>
-                                                                                <Hidden>true</Hidden>
-                                                                                <ToggleItem>UPC</ToggleItem>
-                                                                              </Visibility>
-                                                                            </TablixMember>
-                                                                          </TablixMembers>
-                                                                          <Visibility>
-                                                                            <Hidden>true</Hidden>
-                                                                            <ToggleItem>TCNumber</ToggleItem>
-                                                                          </Visibility>
-                                                                        </TablixMember>
-                                                                      </TablixMembers>
-                                                                      <Visibility>
-                                                                        <Hidden>true</Hidden>
-                                                                        <ToggleItem>RetailerItemDesc</ToggleItem>
-                                                                      </Visibility>
-                                                                    </TablixMember>
-                                                                  </TablixMembers>
-                                                                  <Visibility>
-                                                                    <Hidden>true</Hidden>
-                                                                    <ToggleItem>UnitTaxAmt</ToggleItem>
-                                                                  </Visibility>
-                                                                </TablixMember>
-                                                              </TablixMembers>
-                                                              <Visibility>
-                                                                <Hidden>true</Hidden>
-                                                                <ToggleItem>ShipCost</ToggleItem>
-                                                              </Visibility>
-                                                            </TablixMember>
-                                                          </TablixMembers>
-                                                          <Visibility>
-                                                            <Hidden>true</Hidden>
-                                                            <ToggleItem>UnitPrice</ToggleItem>
-                                                          </Visibility>
-                                                        </TablixMember>
-                                                      </TablixMembers>
-                                                      <Visibility>
-                                                        <Hidden>true</Hidden>
-                                                        <ToggleItem>SearchDesc</ToggleItem>
-                                                      </Visibility>
-                                                    </TablixMember>
-                                                  </TablixMembers>
-                                                  <Visibility>
-                                                    <Hidden>true</Hidden>
-                                                    <ToggleItem>QtyShippedTodate</ToggleItem>
-                                                  </Visibility>
-                                                </TablixMember>
-                                              </TablixMembers>
-                                              <Visibility>
-                                                <Hidden>true</Hidden>
-                                                <ToggleItem>QtyFromStock</ToggleItem>
-                                              </Visibility>
-                                            </TablixMember>
-                                          </TablixMembers>
-                                          <Visibility>
-                                            <Hidden>true</Hidden>
-                                            <ToggleItem>RecToday1</ToggleItem>
-                                          </Visibility>
-                                        </TablixMember>
-                                      </TablixMembers>
-                                      <Visibility>
-                                        <Hidden>true</Hidden>
-                                        <ToggleItem>QuantityToShip</ToggleItem>
-                                      </Visibility>
-                                    </TablixMember>
-                                  </TablixMembers>
-                                  <Visibility>
-                                    <Hidden>true</Hidden>
-                                    <ToggleItem>StockDescription3</ToggleItem>
-                                  </Visibility>
-                                </TablixMember>
+                                <TablixMember />
                               </TablixMembers>
-                              <Visibility>
-                                <Hidden>true</Hidden>
-                                <ToggleItem>StockDescription2</ToggleItem>
-                              </Visibility>
                             </TablixMember>
                           </TablixMembers>
-                          <Visibility>
-                            <Hidden>true</Hidden>
-                            <ToggleItem>StockDescription1</ToggleItem>
-                          </Visibility>
                         </TablixMember>
                       </TablixMembers>
-                      <Visibility>
-                        <Hidden>true</Hidden>
-                        <ToggleItem>StockNumber</ToggleItem>
-                      </Visibility>
                     </TablixMember>
                   </TablixMembers>
-                  <Visibility>
-                    <Hidden>true</Hidden>
-                    <ToggleItem>OrderLineNumber</ToggleItem>
-                  </Visibility>
                 </TablixMember>
               </TablixMembers>
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DS_rptReailterPackingLabel</DataSetName>
-        <Top>4.20755in</Top>
-        <Left>0.37169in</Left>
+        <Top>4.20063in</Top>
+        <Left>0.38988in</Left>
         <Height>0.25in</Height>
         <Width>7.51054in</Width>
         <Style>
@@ -576,7 +298,7 @@
         </Paragraphs>
         <Top>0.86064in</Top>
         <Left>4.94408in</Left>
-        <Height>0.125in</Height>
+        <Height>0.13892in</Height>
         <Width>1.2916in</Width>
         <ZIndex>2</ZIndex>
         <Style>
@@ -695,10 +417,10 @@
       </Textbox>
       <Rectangle Name="Box32">
         <DataElementOutput>ContentsOnly</DataElementOutput>
-        <Top>1.33645in</Top>
-        <Left>0.36302in</Left>
+        <Top>1.29485in</Top>
+        <Left>0.69632in</Left>
         <Height>0.0416in</Height>
-        <Width>7.5in</Width>
+        <Width>6.97878in</Width>
         <ZIndex>6</ZIndex>
         <Style>
           <Border>
@@ -711,9 +433,9 @@
       <Rectangle Name="Box33">
         <DataElementOutput>ContentsOnly</DataElementOutput>
         <Top>2.29485in</Top>
-        <Left>0.36302in</Left>
+        <Left>0.69632in</Left>
         <Height>0.0416in</Height>
-        <Width>7.5in</Width>
+        <Width>6.95833in</Width>
         <ZIndex>7</ZIndex>
         <Style>
           <Border>
@@ -725,9 +447,9 @@
       </Rectangle>
       <Rectangle Name="Box34">
         <DataElementOutput>ContentsOnly</DataElementOutput>
-        <Top>1.33645in</Top>
+        <Top>1.29485in</Top>
         <Left>7.69632in</Left>
-        <Height>1in</Height>
+        <Height>1.0416in</Height>
         <Width>0.1666in</Width>
         <ZIndex>8</ZIndex>
         <Style>
@@ -741,9 +463,9 @@
       </Rectangle>
       <Rectangle Name="Box36">
         <DataElementOutput>ContentsOnly</DataElementOutput>
-        <Top>1.33645in</Top>
-        <Left>0.36302in</Left>
-        <Height>1in</Height>
+        <Top>1.29485in</Top>
+        <Left>0.51079in</Left>
+        <Height>1.0416in</Height>
         <Width>0.1666in</Width>
         <ZIndex>9</ZIndex>
         <Style>
@@ -778,7 +500,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>1.46145in</Top>
+        <Top>1.37812in</Top>
         <Left>0.69632in</Left>
         <Height>0.1666in</Height>
         <Width>1in</Width>
@@ -813,7 +535,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>1.46145in</Top>
+        <Top>1.39201in</Top>
         <Left>3.69632in</Left>
         <Height>0.1666in</Height>
         <Width>1in</Width>
@@ -848,7 +570,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>1.62815in</Top>
+        <Top>1.59539in</Top>
         <Left>0.70517in</Left>
         <Height>0.125in</Height>
         <Width>1.5416in</Width>
@@ -884,7 +606,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>1.75315in</Top>
+        <Top>1.76206in</Top>
         <Left>0.70517in</Left>
         <Height>0.125in</Height>
         <Width>1.5416in</Width>
@@ -920,8 +642,8 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>1.86426in</Top>
-        <Left>0.70517in</Left>
+        <Top>1.92873in</Top>
+        <Left>0.69632in</Left>
         <Height>0.125in</Height>
         <Width>1.5416in</Width>
         <ZIndex>14</ZIndex>
@@ -956,7 +678,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>1.62815in</Top>
+        <Top>1.58638in</Top>
         <Left>3.69632in</Left>
         <Height>0.125in</Height>
         <Width>1.5416in</Width>
@@ -992,7 +714,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>1.75315in</Top>
+        <Top>1.76694in</Top>
         <Left>3.69632in</Left>
         <Height>0.125in</Height>
         <Width>1.5416in</Width>
@@ -1028,7 +750,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>1.87815in</Top>
+        <Top>1.96152in</Top>
         <Left>3.69632in</Left>
         <Height>0.125in</Height>
         <Width>1.5416in</Width>
@@ -1064,7 +786,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>2.00315in</Top>
+        <Top>2.12317in</Top>
         <Left>0.69632in</Left>
         <Height>0.125in</Height>
         <Width>1.5416in</Width>
@@ -1100,7 +822,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>2.00315in</Top>
+        <Top>2.12818in</Top>
         <Left>3.69632in</Left>
         <Height>0.125in</Height>
         <Width>0.875in</Width>
@@ -1171,7 +893,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>1.81565in</Top>
+        <Top>1.82944in</Top>
         <Left>6.02962in</Left>
         <Height>0.125in</Height>
         <Width>1.5416in</Width>
@@ -1421,7 +1143,7 @@
             </Paragraphs>
             <Left>0.0729in</Left>
             <Height>0.177in</Height>
-            <Width>0.5416in</Width>
+            <Width>0.4583in</Width>
             <Style>
               <Border>
                 <Color>#000000</Color>
@@ -1453,9 +1175,9 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Left>0.5312in</Left>
+            <Left>0.57287in</Left>
             <Height>0.177in</Height>
-            <Width>1.0833in</Width>
+            <Width>1.04163in</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -1644,7 +1366,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>4.44369in</Top>
+        <Top>4.56869in</Top>
         <Left>6.18246in</Left>
         <Height>0.125in</Height>
         <Width>0.875in</Width>
@@ -1679,10 +1401,10 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>4.61029in</Top>
-        <Left>5.56786in</Left>
+        <Top>4.73529in</Top>
+        <Left>5.62342in</Left>
         <Height>0.125in</Height>
-        <Width>1.4895in</Width>
+        <Width>1.43394in</Width>
         <ZIndex>31</ZIndex>
         <Style>
           <Border>
@@ -1714,7 +1436,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>4.77699in</Top>
+        <Top>4.90199in</Top>
         <Left>6.09916in</Left>
         <Height>0.125in</Height>
         <Width>0.9583in</Width>
@@ -1749,10 +1471,10 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>4.94369in</Top>
-        <Left>5.56786in</Left>
+        <Top>5.05477in</Top>
+        <Left>5.6373in</Left>
         <Height>0.125in</Height>
-        <Width>1.4895in</Width>
+        <Width>1.42006in</Width>
         <ZIndex>33</ZIndex>
         <Style>
           <Border>
@@ -1803,7 +1525,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Variables!SubTotal.Value</Value>
+                <Value>=Sum(Fields!UnitPrice.Value*Fields!QtyFromStock.Value)</Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Verdana</FontFamily>
@@ -1821,7 +1543,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>4.44369in</Top>
+        <Top>4.56869in</Top>
         <Left>7.08524in</Left>
         <Height>0.125in</Height>
         <Width>0.75in</Width>
@@ -1840,7 +1562,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Variables!Shipping.Value</Value>
+                <Value>=SUM(Fields!ShipCost.Value)</Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Verdana</FontFamily>
@@ -1858,7 +1580,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>4.61029in</Top>
+        <Top>4.73529in</Top>
         <Left>7.11292in</Left>
         <Height>0.125in</Height>
         <Width>0.75in</Width>
@@ -1877,7 +1599,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Variables!Tax.Value</Value>
+                <Value>=Sum(Fields!UnitTaxAmt.Value)</Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Verdana</FontFamily>
@@ -1895,7 +1617,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>4.7631in</Top>
+        <Top>4.8881in</Top>
         <Left>7.09916in</Left>
         <Height>0.125in</Height>
         <Width>0.75in</Width>
@@ -1914,7 +1636,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Variables!Total.Value</Value>
+                <Value>=Fields!TotalOrderCost.Value</Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Verdana</FontFamily>
@@ -1932,7 +1654,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>4.92977in</Top>
+        <Top>5.05477in</Top>
         <Left>7.09916in</Left>
         <Height>0.125in</Height>
         <Width>0.75in</Width>
@@ -2300,12 +2022,12 @@
     <Height>7.13207in</Height>
     <Style />
   </Body>
-  <Width>9.54768in</Width>
+  <Width>8.19862in</Width>
   <Page>
-    <LeftMargin>1in</LeftMargin>
-    <RightMargin>1in</RightMargin>
-    <TopMargin>1in</TopMargin>
-    <BottomMargin>1in</BottomMargin>
+    <LeftMargin>0.2in</LeftMargin>
+    <RightMargin>0.2in</RightMargin>
+    <TopMargin>0.2in</TopMargin>
+    <BottomMargin>0.2in</BottomMargin>
     <Style />
   </Page>
   <AutoRefresh>0</AutoRefresh>
@@ -2648,7 +2370,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DS_rptRetailerPackingLabel</rd:DataSetName>
-        <rd:SchemaPath>C:\Projects\SLSShippingApp\SLSShippingApp\DataSets\DS_rptRetailerPackingLabel.xsd</rd:SchemaPath>
+        <rd:SchemaPath>C:\Projects\SLSShippingApp\SLSShippingApp\DS_rptRetailerPackingLabel.xsd</rd:SchemaPath>
         <rd:TableName>tblRetailerPackingLabel</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>

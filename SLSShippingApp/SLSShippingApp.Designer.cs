@@ -334,7 +334,7 @@
             this.cboExclude.Items.AddRange(new object[] {
             "No",
             "Yes"});
-            this.cboExclude.Location = new System.Drawing.Point(194, 75);
+            this.cboExclude.Location = new System.Drawing.Point(194, 67);
             this.cboExclude.Name = "cboExclude";
             this.cboExclude.Size = new System.Drawing.Size(49, 21);
             this.cboExclude.TabIndex = 40;
@@ -342,7 +342,7 @@
             // lblExclude
             // 
             this.lblExclude.AutoSize = true;
-            this.lblExclude.Location = new System.Drawing.Point(191, 57);
+            this.lblExclude.Location = new System.Drawing.Point(191, 49);
             this.lblExclude.Name = "lblExclude";
             this.lblExclude.Size = new System.Drawing.Size(54, 15);
             this.lblExclude.TabIndex = 39;
@@ -384,7 +384,7 @@
             // 
             // txtScanToOrder
             // 
-            this.txtScanToOrder.Location = new System.Drawing.Point(95, 76);
+            this.txtScanToOrder.Location = new System.Drawing.Point(95, 80);
             this.txtScanToOrder.Margin = new System.Windows.Forms.Padding(2);
             this.txtScanToOrder.Name = "txtScanToOrder";
             this.txtScanToOrder.Size = new System.Drawing.Size(87, 20);
@@ -436,7 +436,7 @@
             this.btnScanToOrder.Location = new System.Drawing.Point(122, 323);
             this.btnScanToOrder.Margin = new System.Windows.Forms.Padding(2);
             this.btnScanToOrder.Name = "btnScanToOrder";
-            this.btnScanToOrder.Size = new System.Drawing.Size(116, 22);
+            this.btnScanToOrder.Size = new System.Drawing.Size(157, 22);
             this.btnScanToOrder.TabIndex = 35;
             this.btnScanToOrder.Text = "Start Scan-to-Order";
             this.btnScanToOrder.UseVisualStyleBackColor = false;
@@ -590,7 +590,7 @@
             // lblShopFloorNo
             // 
             this.lblShopFloorNo.AutoSize = true;
-            this.lblShopFloorNo.Location = new System.Drawing.Point(330, 160);
+            this.lblShopFloorNo.Location = new System.Drawing.Point(330, 159);
             this.lblShopFloorNo.Name = "lblShopFloorNo";
             this.lblShopFloorNo.Size = new System.Drawing.Size(89, 15);
             this.lblShopFloorNo.TabIndex = 14;
@@ -629,7 +629,7 @@
             // lblItemDesc2
             // 
             this.lblItemDesc2.AutoSize = true;
-            this.lblItemDesc2.Location = new System.Drawing.Point(260, 282);
+            this.lblItemDesc2.Location = new System.Drawing.Point(260, 281);
             this.lblItemDesc2.Name = "lblItemDesc2";
             this.lblItemDesc2.Size = new System.Drawing.Size(109, 15);
             this.lblItemDesc2.TabIndex = 8;
@@ -638,7 +638,7 @@
             // lblItemDesc1
             // 
             this.lblItemDesc1.AutoSize = true;
-            this.lblItemDesc1.Location = new System.Drawing.Point(260, 253);
+            this.lblItemDesc1.Location = new System.Drawing.Point(260, 252);
             this.lblItemDesc1.Name = "lblItemDesc1";
             this.lblItemDesc1.Size = new System.Drawing.Size(109, 15);
             this.lblItemDesc1.TabIndex = 7;
@@ -647,7 +647,7 @@
             // lblItemNo
             // 
             this.lblItemNo.AutoSize = true;
-            this.lblItemNo.Location = new System.Drawing.Point(285, 225);
+            this.lblItemNo.Location = new System.Drawing.Point(285, 224);
             this.lblItemNo.Name = "lblItemNo";
             this.lblItemNo.Size = new System.Drawing.Size(82, 15);
             this.lblItemNo.TabIndex = 6;
@@ -680,7 +680,7 @@
             // lblScanQty
             // 
             this.lblScanQty.AutoSize = true;
-            this.lblScanQty.Location = new System.Drawing.Point(336, 187);
+            this.lblScanQty.Location = new System.Drawing.Point(336, 186);
             this.lblScanQty.Name = "lblScanQty";
             this.lblScanQty.Size = new System.Drawing.Size(79, 15);
             this.lblScanQty.TabIndex = 2;

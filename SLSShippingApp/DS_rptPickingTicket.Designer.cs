@@ -387,6 +387,8 @@ namespace SLSShippingApp {
             
             private global::System.Data.DataColumn columnHold;
             
+            private global::System.Data.DataColumn columnNoteProp65;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public tblPickingFileDataTable() {
@@ -854,6 +856,14 @@ namespace SLSShippingApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn NoteProp65Column {
+                get {
+                    return this.columnNoteProp65;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -943,7 +953,8 @@ namespace SLSShippingApp {
                         string CustomerNumber, 
                         string CustomerName, 
                         int QtyShippedTodate, 
-                        bool Hold) {
+                        bool Hold, 
+                        string NoteProp65) {
                 tblPickingFileRow rowtblPickingFileRow = ((tblPickingFileRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         PKTK,
@@ -999,7 +1010,8 @@ namespace SLSShippingApp {
                         CustomerNumber,
                         CustomerName,
                         QtyShippedTodate,
-                        Hold};
+                        Hold,
+                        NoteProp65};
                 rowtblPickingFileRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowtblPickingFileRow);
                 return rowtblPickingFileRow;
@@ -1076,6 +1088,7 @@ namespace SLSShippingApp {
                 this.columnCustomerName = base.Columns["CustomerName"];
                 this.columnQtyShippedTodate = base.Columns["QtyShippedTodate"];
                 this.columnHold = base.Columns["Hold"];
+                this.columnNoteProp65 = base.Columns["NoteProp65"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1189,6 +1202,8 @@ namespace SLSShippingApp {
                 base.Columns.Add(this.columnQtyShippedTodate);
                 this.columnHold = new global::System.Data.DataColumn("Hold", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnHold);
+                this.columnNoteProp65 = new global::System.Data.DataColumn("NoteProp65", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNoteProp65);
                 this.columnPKTK.MaxLength = 25;
                 this.columntxtImageName.MaxLength = 100;
                 this.columnPONumber.MaxLength = 25;
@@ -2239,6 +2254,22 @@ namespace SLSShippingApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string NoteProp65 {
+                get {
+                    try {
+                        return ((string)(this[this.tabletblPickingFile.NoteProp65Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NoteProp65\' in table \'tblPickingFile\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabletblPickingFile.NoteProp65Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsPKTKNull() {
                 return this.IsNull(this.tabletblPickingFile.PKTKColumn);
             }
@@ -2884,6 +2915,18 @@ namespace SLSShippingApp {
             public void SetHoldNull() {
                 this[this.tabletblPickingFile.HoldColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsNoteProp65Null() {
+                return this.IsNull(this.tabletblPickingFile.NoteProp65Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetNoteProp65Null() {
+                this[this.tabletblPickingFile.NoteProp65Column] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -3120,7 +3163,7 @@ namespace SLSShippingApp.DS_rptPickingTicketTableAdapters {
                 txtImageName, CustomerNumber,CustomerName, PONumber, ShipToNumber, ShipToName, ShipToAddress1, ShipToAddress2, 
                 ShipToAddress3, ShipToCity, ShipToState, ShipToZipCode, ShipViaCode, CustomerProfile, BayLocation, QtyFromStock, QtyShippedTodate, BillToName, 
                 BillToAddress1, BillToAddress2, BIllToAddress3, BIllToCity, BillToState, OrderDate, ShipDate, ShipInstructions1, ShipInstructions2, CustShipperAcct, CustNote1, CustNote2, 
-                CustNote3, CustNote4, CustNote5, RetailerName, RetailerFld1, RetailerFld2, RetailerFld3, RetailerFld4, RetailerFld5, OrderWeight, OperatorName, EnvironUser, BillToZipCode
+                CustNote3, CustNote4, CustNote5, RetailerName, RetailerFld1, RetailerFld2, RetailerFld3, RetailerFld4, RetailerFld5, OrderWeight, OperatorName, EnvironUser, BillToZipCode,Hold,NoteProp65
 FROM      tblPickingFile
 WHERE  OrderOrSONumber = @OrderNumber";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;

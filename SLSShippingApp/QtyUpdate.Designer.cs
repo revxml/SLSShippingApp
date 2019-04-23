@@ -36,7 +36,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(59, 28);
+            this.label1.Location = new System.Drawing.Point(59, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(239, 15);
             this.label1.TabIndex = 1;
@@ -44,7 +44,7 @@
             // 
             // txtNewQty
             // 
-            this.txtNewQty.Location = new System.Drawing.Point(114, 50);
+            this.txtNewQty.Location = new System.Drawing.Point(114, 42);
             this.txtNewQty.Name = "txtNewQty";
             this.txtNewQty.Size = new System.Drawing.Size(100, 20);
             this.txtNewQty.TabIndex = 2;
@@ -52,7 +52,7 @@
             // btnSubmitQty
             // 
             this.btnSubmitQty.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnSubmitQty.Location = new System.Drawing.Point(111, 79);
+            this.btnSubmitQty.Location = new System.Drawing.Point(111, 70);
             this.btnSubmitQty.Name = "btnSubmitQty";
             this.btnSubmitQty.Size = new System.Drawing.Size(107, 23);
             this.btnSubmitQty.TabIndex = 3;

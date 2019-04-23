@@ -63,7 +63,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <ApplicationIcon>Images\icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>SLSShippingApp.Program</StartupObject>
@@ -223,15 +223,27 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Reports\rptBayLabel.rdlc" />
-    <EmbeddedResource Include="Reports\rptHSNPackingLabels.rdlc" />
+    <EmbeddedResource Include="Reports\rptBayLabel.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptHSNPackingLabels.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptPackingLabels.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\rptPickingTicket.rdlc" />
-    <EmbeddedResource Include="Reports\rptPrintLabel.rdlc" />
-    <EmbeddedResource Include="Reports\rptTargetPackingLabels.rdlc" />
-    <EmbeddedResource Include="Reports\rptWalmartPackingLabels.rdlc" />
+    <EmbeddedResource Include="Reports\rptPickingTicket.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptPrintLabel.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptTargetPackingLabels.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptWalmartPackingLabels.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="SLSShippingApp.resx">
       <DependentUpon>SLSShippingApp.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -301,7 +313,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icon.ico" />
+    <Resource Include="Images\icon.ico" />
+    <Resource Include="Images\imgBayOrder.jpg" />
+    <Resource Include="Images\imgHOLD.jpg" />
+    <Resource Include="Images\imgSingleOrder.jpg" />
+    <Resource Include="Images\imgProp65.jpg" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

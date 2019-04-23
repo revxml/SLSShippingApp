@@ -17,7 +17,7 @@
                 txtImageName, CustomerNumber,CustomerName, PONumber, ShipToNumber, ShipToName, ShipToAddress1, ShipToAddress2, 
                 ShipToAddress3, ShipToCity, ShipToState, ShipToZipCode, ShipViaCode, CustomerProfile, BayLocation, QtyFromStock, QtyShippedTodate, BillToName, 
                 BillToAddress1, BillToAddress2, BIllToAddress3, BIllToCity, BillToState, OrderDate, ShipDate, ShipInstructions1, ShipInstructions2, CustShipperAcct, CustNote1, CustNote2, 
-                CustNote3, CustNote4, CustNote5, RetailerName, RetailerFld1, RetailerFld2, RetailerFld3, RetailerFld4, RetailerFld5, OrderWeight, OperatorName, EnvironUser, BillToZipCode
+                CustNote3, CustNote4, CustNote5, RetailerName, RetailerFld1, RetailerFld2, RetailerFld3, RetailerFld4, RetailerFld5, OrderWeight, OperatorName, EnvironUser, BillToZipCode,Hold,NoteProp65
 FROM      tblPickingFile
 WHERE  OrderOrSONumber = @OrderNumber</CommandText>
                     <Parameters>
@@ -93,7 +93,7 @@ WHERE  OrderOrSONumber = @OrderNumber</CommandText>
   <xs:element name="DS_rptPickingTicket" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DS_rptPickingTicket" msprop:Generator_UserDSName="DS_rptPickingTicket">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="tblPickingFile" msprop:Generator_TableClassName="tblPickingFileDataTable" msprop:Generator_TableVarName="tabletblPickingFile" msprop:Generator_RowChangedName="tblPickingFileRowChanged" msprop:Generator_TablePropName="tblPickingFile" msprop:Generator_RowDeletingName="tblPickingFileRowDeleting" msprop:Generator_RowChangingName="tblPickingFileRowChanging" msprop:Generator_RowEvHandlerName="tblPickingFileRowChangeEventHandler" msprop:Generator_RowDeletedName="tblPickingFileRowDeleted" msprop:Generator_RowClassName="tblPickingFileRow" msprop:Generator_UserTableName="tblPickingFile" msprop:Generator_RowEvArgName="tblPickingFileRowChangeEvent">
+        <xs:element name="tblPickingFile" msprop:Generator_TableClassName="tblPickingFileDataTable" msprop:Generator_TableVarName="tabletblPickingFile" msprop:Generator_TablePropName="tblPickingFile" msprop:Generator_RowDeletingName="tblPickingFileRowDeleting" msprop:Generator_RowChangingName="tblPickingFileRowChanging" msprop:Generator_RowEvHandlerName="tblPickingFileRowChangeEventHandler" msprop:Generator_RowDeletedName="tblPickingFileRowDeleted" msprop:Generator_UserTableName="tblPickingFile" msprop:Generator_RowChangedName="tblPickingFileRowChanged" msprop:Generator_RowEvArgName="tblPickingFileRowChangeEvent" msprop:Generator_RowClassName="tblPickingFileRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="PKTK" msprop:Generator_ColumnVarNameInTable="columnPKTK" msprop:Generator_ColumnPropNameInRow="PKTK" msprop:Generator_ColumnPropNameInTable="PKTKColumn" msprop:Generator_UserColumnName="PKTK" minOccurs="0">
@@ -408,6 +408,7 @@ WHERE  OrderOrSONumber = @OrderNumber</CommandText>
               </xs:element>
               <xs:element name="QtyShippedTodate" msprop:Generator_ColumnVarNameInTable="columnQtyShippedTodate" msprop:Generator_ColumnPropNameInRow="QtyShippedTodate" msprop:Generator_ColumnPropNameInTable="QtyShippedTodateColumn" msprop:Generator_UserColumnName="QtyShippedTodate" type="xs:int" minOccurs="0" />
               <xs:element name="Hold" msprop:Generator_ColumnVarNameInTable="columnHold" msprop:Generator_ColumnPropNameInRow="Hold" msprop:Generator_ColumnPropNameInTable="HoldColumn" msprop:Generator_UserColumnName="Hold" type="xs:boolean" default="false" minOccurs="0" />
+              <xs:element name="NoteProp65" msprop:Generator_ColumnVarNameInTable="columnNoteProp65" msprop:Generator_ColumnPropNameInRow="NoteProp65" msprop:Generator_ColumnPropNameInTable="NoteProp65Column" msprop:Generator_UserColumnName="NoteProp65" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

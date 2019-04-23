@@ -84,7 +84,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DS_rptPrintLabel</rd:DataSetName>
-        <rd:SchemaPath>C:\Projects\SLSShippingApp\SLSShippingApp\DataSets\DS_rptPrintLabel.xsd</rd:SchemaPath>
+        <rd:SchemaPath>C:\Projects\SLSShippingApp\SLSShippingApp\DS_rptPrintLabel.xsd</rd:SchemaPath>
         <rd:TableName>tblLabel</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>

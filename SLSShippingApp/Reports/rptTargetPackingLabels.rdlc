@@ -220,16 +220,6 @@
               </TablixHeader>
               <TablixMembers>
                 <TablixMember>
-                  <Group Name="StockNumber">
-                    <GroupExpressions>
-                      <GroupExpression>=Fields!StockNumber.Value</GroupExpression>
-                    </GroupExpressions>
-                  </Group>
-                  <SortExpressions>
-                    <SortExpression>
-                      <Value>=Fields!StockNumber.Value</Value>
-                    </SortExpression>
-                  </SortExpressions>
                   <TablixHeader>
                     <Size>0.75816in</Size>
                     <CellContents>
@@ -271,16 +261,6 @@
                   </TablixHeader>
                   <TablixMembers>
                     <TablixMember>
-                      <Group Name="StockDescription1">
-                        <GroupExpressions>
-                          <GroupExpression>=Fields!StockDescription1.Value</GroupExpression>
-                        </GroupExpressions>
-                      </Group>
-                      <SortExpressions>
-                        <SortExpression>
-                          <Value>=Fields!StockDescription1.Value</Value>
-                        </SortExpression>
-                      </SortExpressions>
                       <TablixHeader>
                         <Size>0.60666in</Size>
                         <CellContents>
@@ -322,16 +302,6 @@
                       </TablixHeader>
                       <TablixMembers>
                         <TablixMember>
-                          <Group Name="StockDescription2">
-                            <GroupExpressions>
-                              <GroupExpression>=Fields!StockDescription2.Value</GroupExpression>
-                            </GroupExpressions>
-                          </Group>
-                          <SortExpressions>
-                            <SortExpression>
-                              <Value>=Fields!StockDescription2.Value</Value>
-                            </SortExpression>
-                          </SortExpressions>
                           <TablixHeader>
                             <Size>1.15584in</Size>
                             <CellContents>
@@ -372,164 +342,20 @@
                             </CellContents>
                           </TablixHeader>
                           <TablixMembers>
-                            <TablixMember>
-                              <Group Name="StockDescription3">
-                                <GroupExpressions>
-                                  <GroupExpression>=Fields!StockDescription3.Value</GroupExpression>
-                                </GroupExpressions>
-                              </Group>
-                              <SortExpressions>
-                                <SortExpression>
-                                  <Value>=Fields!StockDescription3.Value</Value>
-                                </SortExpression>
-                              </SortExpressions>
-                              <TablixMembers>
-                                <TablixMember>
-                                  <Group Name="QuantityToShip">
-                                    <GroupExpressions>
-                                      <GroupExpression>=Fields!QuantityToShip.Value</GroupExpression>
-                                    </GroupExpressions>
-                                  </Group>
-                                  <SortExpressions>
-                                    <SortExpression>
-                                      <Value>=Fields!QuantityToShip.Value</Value>
-                                    </SortExpression>
-                                  </SortExpressions>
-                                  <TablixMembers>
-                                    <TablixMember>
-                                      <Group Name="UnitPrice">
-                                        <GroupExpressions>
-                                          <GroupExpression>=Fields!UnitPrice.Value</GroupExpression>
-                                        </GroupExpressions>
-                                      </Group>
-                                      <SortExpressions>
-                                        <SortExpression>
-                                          <Value>=Fields!UnitPrice.Value</Value>
-                                        </SortExpression>
-                                      </SortExpressions>
-                                      <TablixMembers>
-                                        <TablixMember>
-                                          <Group Name="ShipCost">
-                                            <GroupExpressions>
-                                              <GroupExpression>=Fields!ShipCost.Value</GroupExpression>
-                                            </GroupExpressions>
-                                          </Group>
-                                          <SortExpressions>
-                                            <SortExpression>
-                                              <Value>=Fields!ShipCost.Value</Value>
-                                            </SortExpression>
-                                          </SortExpressions>
-                                          <TablixMembers>
-                                            <TablixMember>
-                                              <Group Name="UnitTaxAmt">
-                                                <GroupExpressions>
-                                                  <GroupExpression>=Fields!UnitTaxAmt.Value</GroupExpression>
-                                                </GroupExpressions>
-                                              </Group>
-                                              <SortExpressions>
-                                                <SortExpression>
-                                                  <Value>=Fields!UnitTaxAmt.Value</Value>
-                                                </SortExpression>
-                                              </SortExpressions>
-                                              <TablixMembers>
-                                                <TablixMember>
-                                                  <Group Name="RetailerItemDesc">
-                                                    <GroupExpressions>
-                                                      <GroupExpression>=Fields!RetailerItemDesc.Value</GroupExpression>
-                                                    </GroupExpressions>
-                                                  </Group>
-                                                  <SortExpressions>
-                                                    <SortExpression>
-                                                      <Value>=Fields!RetailerItemDesc.Value</Value>
-                                                    </SortExpression>
-                                                  </SortExpressions>
-                                                  <TablixMembers>
-                                                    <TablixMember>
-                                                      <Group Name="UPC">
-                                                        <GroupExpressions>
-                                                          <GroupExpression>=Fields!UPC.Value</GroupExpression>
-                                                        </GroupExpressions>
-                                                      </Group>
-                                                      <SortExpressions>
-                                                        <SortExpression>
-                                                          <Value>=Fields!UPC.Value</Value>
-                                                        </SortExpression>
-                                                      </SortExpressions>
-                                                      <TablixMembers>
-                                                        <TablixMember>
-                                                          <Group Name="Details" />
-                                                          <Visibility>
-                                                            <Hidden>true</Hidden>
-                                                            <ToggleItem>UPC</ToggleItem>
-                                                          </Visibility>
-                                                        </TablixMember>
-                                                      </TablixMembers>
-                                                      <Visibility>
-                                                        <Hidden>true</Hidden>
-                                                        <ToggleItem>RetailerItemDesc</ToggleItem>
-                                                      </Visibility>
-                                                    </TablixMember>
-                                                  </TablixMembers>
-                                                  <Visibility>
-                                                    <Hidden>true</Hidden>
-                                                    <ToggleItem>UnitTaxAmt</ToggleItem>
-                                                  </Visibility>
-                                                </TablixMember>
-                                              </TablixMembers>
-                                              <Visibility>
-                                                <Hidden>true</Hidden>
-                                                <ToggleItem>ShipCost</ToggleItem>
-                                              </Visibility>
-                                            </TablixMember>
-                                          </TablixMembers>
-                                          <Visibility>
-                                            <Hidden>true</Hidden>
-                                            <ToggleItem>UnitPrice</ToggleItem>
-                                          </Visibility>
-                                        </TablixMember>
-                                      </TablixMembers>
-                                      <Visibility>
-                                        <Hidden>true</Hidden>
-                                        <ToggleItem>QuantityToShip</ToggleItem>
-                                      </Visibility>
-                                    </TablixMember>
-                                  </TablixMembers>
-                                  <Visibility>
-                                    <Hidden>true</Hidden>
-                                    <ToggleItem>StockDescription3</ToggleItem>
-                                  </Visibility>
-                                </TablixMember>
-                              </TablixMembers>
-                              <Visibility>
-                                <Hidden>true</Hidden>
-                                <ToggleItem>StockDescription2</ToggleItem>
-                              </Visibility>
-                            </TablixMember>
+                            <TablixMember />
                           </TablixMembers>
-                          <Visibility>
-                            <Hidden>true</Hidden>
-                            <ToggleItem>StockDescription1</ToggleItem>
-                          </Visibility>
                         </TablixMember>
                       </TablixMembers>
-                      <Visibility>
-                        <Hidden>true</Hidden>
-                        <ToggleItem>StockNumber</ToggleItem>
-                      </Visibility>
                     </TablixMember>
                   </TablixMembers>
-                  <Visibility>
-                    <Hidden>true</Hidden>
-                    <ToggleItem>OrderLineNumber</ToggleItem>
-                  </Visibility>
                 </TablixMember>
               </TablixMembers>
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DS_RetailerPackingLabel</DataSetName>
-        <Top>3.43489in</Top>
-        <Left>0.10248in</Left>
+        <Top>3.25433in</Top>
+        <Left>0.05808in</Left>
         <Height>0.25in</Height>
         <Width>6.39218in</Width>
         <Style>
@@ -542,8 +368,8 @@
         <Source>Embedded</Source>
         <Value>imgWMLogo</Value>
         <Sizing>Fit</Sizing>
-        <Top>0.375in</Top>
-        <Left>0.20455in</Left>
+        <Top>0.19444in</Top>
+        <Left>0.16015in</Left>
         <Height>1.125in</Height>
         <Width>2.534in</Width>
         <ZIndex>1</ZIndex>
@@ -554,146 +380,6 @@
           <BackgroundColor>#ffffff</BackgroundColor>
         </Style>
       </Image>
-      <Textbox Name="lblOrderNo">
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Order #:</Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Verdana</FontFamily>
-                  <FontSize>6pt</FontSize>
-                  <FontWeight>Normal</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                  <Color>#000000</Color>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Right</TextAlign>
-              <LineHeight>11pt</LineHeight>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <Top>0.0416in</Top>
-        <Left>3.62185in</Left>
-        <Height>0.125in</Height>
-        <Width>1.2916in</Width>
-        <ZIndex>2</ZIndex>
-        <Style>
-          <Border>
-            <Color>#000000</Color>
-          </Border>
-          <Direction>LTR</Direction>
-        </Style>
-      </Textbox>
-      <Textbox Name="txtOrderNo">
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=Fields!PONumber.Value</Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Verdana</FontFamily>
-                  <FontSize>6pt</FontSize>
-                  <FontWeight>Normal</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                  <Color>#00b7ef</Color>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-              <LineHeight>11pt</LineHeight>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <Top>0.0416in</Top>
-        <Left>5.03855in</Left>
-        <Height>0.125in</Height>
-        <Width>1.1666in</Width>
-        <ZIndex>3</ZIndex>
-        <Style>
-          <Border>
-            <Color>#000000</Color>
-          </Border>
-          <Direction>LTR</Direction>
-        </Style>
-      </Textbox>
-      <Textbox Name="lblShippedVia">
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Your order from:</Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Verdana</FontFamily>
-                  <FontSize>6pt</FontSize>
-                  <FontWeight>Normal</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                  <Color>#000000</Color>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Right</TextAlign>
-              <LineHeight>11pt</LineHeight>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <Top>0.1666in</Top>
-        <Left>3.62185in</Left>
-        <Height>0.125in</Height>
-        <Width>1.2916in</Width>
-        <ZIndex>4</ZIndex>
-        <Style>
-          <Border>
-            <Color>#000000</Color>
-          </Border>
-          <Direction>LTR</Direction>
-        </Style>
-      </Textbox>
-      <Textbox Name="txtShippedVia">
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=Fields!PickedDate.Value</Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Verdana</FontFamily>
-                  <FontSize>6pt</FontSize>
-                  <FontWeight>Normal</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                  <Color>#ed1c24</Color>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-              <LineHeight>11pt</LineHeight>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <Top>0.1666in</Top>
-        <Left>5.03855in</Left>
-        <Height>0.125in</Height>
-        <Width>1.1666in</Width>
-        <ZIndex>5</ZIndex>
-        <Style>
-          <Border>
-            <Color>#000000</Color>
-          </Border>
-          <Direction>LTR</Direction>
-        </Style>
-      </Textbox>
       <Textbox Name="lblTopThankYou">
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
@@ -716,11 +402,11 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>0.25in</Top>
-        <Left>0.20525in</Left>
+        <Top>0.06944in</Top>
+        <Left>0.16085in</Left>
         <Height>0.0854in</Height>
         <Width>2.9625in</Width>
-        <ZIndex>6</ZIndex>
+        <ZIndex>2</ZIndex>
         <Style>
           <Border>
             <Color>#000000</Color>
@@ -750,11 +436,11 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>1.252in</Top>
-        <Left>3.62395in</Left>
+        <Top>1.07144in</Top>
+        <Left>3.57955in</Left>
         <Height>0.1729in</Height>
         <Width>0.7965in</Width>
-        <ZIndex>7</ZIndex>
+        <ZIndex>3</ZIndex>
         <Style>
           <Border>
             <Color>#000000</Color>
@@ -785,11 +471,11 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>1.4604in</Top>
-        <Left>3.58225in</Left>
+        <Top>1.27984in</Top>
+        <Left>3.53785in</Left>
         <Height>0.5in</Height>
         <Width>2.625in</Width>
-        <ZIndex>8</ZIndex>
+        <ZIndex>4</ZIndex>
         <Style>
           <Border>
             <Color>#000000</Color>
@@ -819,11 +505,11 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>1.252in</Top>
-        <Left>4.49895in</Left>
+        <Top>1.07144in</Top>
+        <Left>4.45455in</Left>
         <Height>0.2076in</Height>
         <Width>1.6666in</Width>
-        <ZIndex>9</ZIndex>
+        <ZIndex>5</ZIndex>
         <Style>
           <Border>
             <Color>#000000</Color>
@@ -853,45 +539,11 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>1.9597in</Top>
-        <Left>4.28925in</Left>
+        <Top>1.81761in</Top>
+        <Left>4.24485in</Left>
         <Height>0.1708in</Height>
         <Width>1.0006in</Width>
-        <ZIndex>10</ZIndex>
-        <Style>
-          <Border>
-            <Color>#000000</Color>
-          </Border>
-          <Direction>LTR</Direction>
-        </Style>
-      </Textbox>
-      <Textbox Name="Text108">
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>="Page " &amp; Globals!PageNumber &amp; " of  " &amp; Globals!TotalPages</Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Times New Roman</FontFamily>
-                  <FontSize>8pt</FontSize>
-                  <FontWeight>Normal</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                  <Color>#000000</Color>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-              <LineHeight>13pt</LineHeight>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <Left>0.20525in</Left>
-        <Height>0.2076in</Height>
-        <Width>0.9583in</Width>
-        <ZIndex>11</ZIndex>
+        <ZIndex>6</ZIndex>
         <Style>
           <Border>
             <Color>#000000</Color>
@@ -926,7 +578,7 @@
             </Paragraphs>
             <Top>0.0493in</Top>
             <Left>4.3264in</Left>
-            <Height>0.125in</Height>
+            <Height>0.1736in</Height>
             <Width>1in</Width>
             <Style>
               <Border>
@@ -960,7 +612,7 @@
             </Paragraphs>
             <Top>0.0493in</Top>
             <Left>2.2042in</Left>
-            <Height>0.125in</Height>
+            <Height>0.16779in</Height>
             <Width>1in</Width>
             <ZIndex>1</ZIndex>
             <Style>
@@ -993,8 +645,8 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>0.20208in</Top>
-            <Left>4.3264in</Left>
+            <Top>0.24374in</Top>
+            <Left>4.32174in</Left>
             <Height>0.125in</Height>
             <Width>1.5416in</Width>
             <ZIndex>2</ZIndex>
@@ -1029,8 +681,8 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>0.35486in</Top>
-            <Left>4.3264in</Left>
+            <Top>0.39652in</Top>
+            <Left>4.32174in</Left>
             <Height>0.125in</Height>
             <Width>1.5416in</Width>
             <ZIndex>3</ZIndex>
@@ -1065,8 +717,8 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>0.5206in</Top>
-            <Left>4.3264in</Left>
+            <Top>0.56226in</Top>
+            <Left>4.32174in</Left>
             <Height>0.125in</Height>
             <Width>1.5416in</Width>
             <ZIndex>4</ZIndex>
@@ -1101,7 +753,7 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>0.22898in</Top>
+            <Top>0.27264in</Top>
             <Left>2.2042in</Left>
             <Height>0.125in</Height>
             <Width>1.5416in</Width>
@@ -1137,7 +789,7 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>0.36787in</Top>
+            <Top>0.41153in</Top>
             <Left>2.2042in</Left>
             <Height>0.125in</Height>
             <Width>1.5416in</Width>
@@ -1173,7 +825,7 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>0.51973in</Top>
+            <Top>0.56339in</Top>
             <Left>2.2042in</Left>
             <Height>0.125in</Height>
             <Width>1.5416in</Width>
@@ -1345,7 +997,7 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>0.69986in</Top>
+            <Top>0.74352in</Top>
             <Left>2.2042in</Left>
             <Height>0.1229in</Height>
             <Width>1.5416in</Width>
@@ -1381,8 +1033,8 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>0.70116in</Top>
-            <Left>4.3264in</Left>
+            <Top>0.74282in</Top>
+            <Left>4.32174in</Left>
             <Height>0.1236in</Height>
             <Width>1.5416in</Width>
             <ZIndex>13</ZIndex>
@@ -1417,7 +1069,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>0.69986in</Top>
+            <Top>0.74352in</Top>
             <Left>3.78747in</Left>
             <Height>0.1229in</Height>
             <Width>0.18584in</Width>
@@ -1452,8 +1104,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>0.69986in</Top>
-            <Left>5.88189in</Left>
+            <Top>0.74152in</Top>
+            <Left>5.87723in</Left>
             <Height>0.1229in</Height>
             <Width>0.18584in</Width>
             <ZIndex>15</ZIndex>
@@ -1466,11 +1118,11 @@
           </Textbox>
         </ReportItems>
         <DataElementOutput>ContentsOnly</DataElementOutput>
-        <Top>2.18285in</Top>
-        <Left>0.10248in</Left>
-        <Height>0.8777in</Height>
+        <Top>2.00229in</Top>
+        <Left>0.05808in</Left>
+        <Height>0.90904in</Height>
         <Width>6.3777in</Width>
-        <ZIndex>12</ZIndex>
+        <ZIndex>7</ZIndex>
         <Style>
           <Border>
             <Color>#ececec</Color>
@@ -1505,8 +1157,9 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>0.041in</Top>
-            <Height>0.177in</Height>
+            <Top>0.03in</Top>
+            <Left>0.04119in</Left>
+            <Height>0.14922in</Height>
             <Width>0.4583in</Width>
             <Style>
               <Border>
@@ -1540,7 +1193,7 @@
             </Paragraphs>
             <Top>0.041in</Top>
             <Left>0.582in</Left>
-            <Height>0.177in</Height>
+            <Height>0.13822in</Height>
             <Width>0.6236in</Width>
             <ZIndex>1</ZIndex>
             <Style>
@@ -1574,9 +1227,9 @@
               </Paragraph>
             </Paragraphs>
             <Top>0.041in</Top>
-            <Left>1.8285in</Left>
-            <Height>0.177in</Height>
-            <Width>1.2083in</Width>
+            <Left>1.85628in</Left>
+            <Height>0.15211in</Height>
+            <Width>1.18052in</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -1610,7 +1263,7 @@
             </Paragraphs>
             <Top>0.041in</Top>
             <Left>3.0368in</Left>
-            <Height>0.177in</Height>
+            <Height>0.15211in</Height>
             <Width>0.7472in</Width>
             <ZIndex>3</ZIndex>
             <Style>
@@ -1645,7 +1298,7 @@
             </Paragraphs>
             <Top>0.041in</Top>
             <Left>3.82567in</Left>
-            <Height>0.177in</Height>
+            <Height>0.13822in</Height>
             <Width>0.4951in</Width>
             <ZIndex>4</ZIndex>
             <Style>
@@ -1679,7 +1332,7 @@
             </Paragraphs>
             <Top>0.041in</Top>
             <Left>1.30072in</Left>
-            <Height>0.177in</Height>
+            <Height>0.15211in</Height>
             <Width>0.5in</Width>
             <ZIndex>5</ZIndex>
             <Style>
@@ -1713,7 +1366,7 @@
             </Paragraphs>
             <Top>0.041in</Top>
             <Left>4.36243in</Left>
-            <Height>0.177in</Height>
+            <Height>0.13822in</Height>
             <Width>0.90031in</Width>
             <ZIndex>6</ZIndex>
             <Style>
@@ -1747,8 +1400,8 @@
             </Paragraphs>
             <Top>0.0368in</Top>
             <Left>5.33219in</Left>
-            <Height>0.177in</Height>
-            <Width>1.04831in</Width>
+            <Height>0.14242in</Height>
+            <Width>1.04691in</Width>
             <ZIndex>7</ZIndex>
             <Style>
               <Border>
@@ -1771,11 +1424,11 @@
           </Line>
         </ReportItems>
         <DataElementOutput>ContentsOnly</DataElementOutput>
-        <Top>3.14745in</Top>
-        <Left>0.09968in</Left>
+        <Top>2.96689in</Top>
+        <Left>0.05528in</Left>
         <Height>0.218in</Height>
         <Width>6.416in</Width>
-        <ZIndex>13</ZIndex>
+        <ZIndex>8</ZIndex>
         <Style>
           <Border>
             <Color>#ececec</Color>
@@ -1807,11 +1460,11 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>3.93606in</Top>
-        <Left>0.09968in</Left>
+        <Top>3.78328in</Top>
+        <Left>0.05528in</Left>
         <Height>0.877in</Height>
         <Width>6.3298in</Width>
-        <ZIndex>14</ZIndex>
+        <ZIndex>9</ZIndex>
         <Style>
           <Border>
             <Color>#000000</Color>
@@ -1840,11 +1493,11 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>3.76596in</Top>
-        <Left>0.09968in</Left>
+        <Top>3.56252in</Top>
+        <Left>0.05528in</Left>
         <Height>0.1791in</Height>
         <Width>1.2923in</Width>
-        <ZIndex>15</ZIndex>
+        <ZIndex>10</ZIndex>
         <Style>
           <Border>
             <Color>#000000</Color>
@@ -1873,11 +1526,11 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>4.93606in</Top>
-        <Left>0.09968in</Left>
+        <Top>4.7555in</Top>
+        <Left>0.05528in</Left>
         <Height>0.1791in</Height>
         <Width>1.6034in</Width>
-        <ZIndex>16</ZIndex>
+        <ZIndex>11</ZIndex>
         <Style>
           <Border>
             <Color>#000000</Color>
@@ -1907,11 +1560,11 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>5.14366in</Top>
-        <Left>0.09968in</Left>
+        <Top>4.9631in</Top>
+        <Left>0.05528in</Left>
         <Height>0.7923in</Height>
         <Width>6.3305in</Width>
-        <ZIndex>17</ZIndex>
+        <ZIndex>12</ZIndex>
         <Style>
           <Border>
             <Color>#000000</Color>
@@ -1919,64 +1572,261 @@
           <Direction>LTR</Direction>
         </Style>
       </Textbox>
-      <Rectangle Name="Box124">
-        <ReportItems>
-          <Textbox Name="txtFooterLine">
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=CStr(DatePart("yyyy",Today()))+" Target Stores. Target and the Bullseye Design are registered trademarks of Target Brands, Inc. All rights reserved."</Value>
-                    <Style>
-                      <FontStyle>Normal</FontStyle>
-                      <FontFamily>Times New Roman</FontFamily>
-                      <FontSize>7pt</FontSize>
-                      <FontWeight>Normal</FontWeight>
-                      <TextDecoration>None</TextDecoration>
-                      <Color>#000000</Color>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Right</TextAlign>
-                  <LineHeight>12pt</LineHeight>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <Top>0.125in</Top>
-            <Left>1.0861in</Left>
-            <Height>0.1701in</Height>
-            <Width>5.2458in</Width>
-            <Style>
-              <Border>
-                <Color>#000000</Color>
-              </Border>
-              <Direction>LTR</Direction>
-            </Style>
-          </Textbox>
-        </ReportItems>
-        <DataElementOutput>ContentsOnly</DataElementOutput>
-        <Top>6.02006in</Top>
-        <Left>0.09968in</Left>
-        <Height>0.3319in</Height>
-        <Width>6.3326in</Width>
-        <ZIndex>18</ZIndex>
-        <Style>
-          <Border>
-            <Color>#ececec</Color>
-            <Style>Solid</Style>
-            <Width>2pt</Width>
-          </Border>
-          <BackgroundColor>#d8d8d8</BackgroundColor>
-        </Style>
-      </Rectangle>
     </ReportItems>
-    <Height>6.53774in</Height>
+    <Height>5.7845in</Height>
     <Style />
   </Body>
   <Width>6.64338in</Width>
   <Page>
+    <PageHeader>
+      <Height>0.46226in</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="Text108">
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>="Page " &amp; Globals!PageNumber &amp; " of  " &amp; Globals!TotalPages</Value>
+                  <Style>
+                    <FontStyle>Normal</FontStyle>
+                    <FontFamily>Times New Roman</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>Normal</FontWeight>
+                    <TextDecoration>None</TextDecoration>
+                    <Color>#000000</Color>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+                <LineHeight>13pt</LineHeight>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>0.10377in</Top>
+          <Left>0.21085in</Left>
+          <Height>0.2076in</Height>
+          <Width>0.9583in</Width>
+          <Style>
+            <Border>
+              <Color>#000000</Color>
+            </Border>
+            <Direction>LTR</Direction>
+          </Style>
+        </Textbox>
+        <Textbox Name="lblOrderNo">
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Order #:</Value>
+                  <Style>
+                    <FontStyle>Normal</FontStyle>
+                    <FontFamily>Verdana</FontFamily>
+                    <FontSize>6pt</FontSize>
+                    <FontWeight>Normal</FontWeight>
+                    <TextDecoration>None</TextDecoration>
+                    <Color>#000000</Color>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Right</TextAlign>
+                <LineHeight>11pt</LineHeight>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>0.10377in</Top>
+          <Left>3.90248in</Left>
+          <Height>0.125in</Height>
+          <Width>1.2916in</Width>
+          <ZIndex>1</ZIndex>
+          <Style>
+            <Border>
+              <Color>#000000</Color>
+            </Border>
+            <Direction>LTR</Direction>
+          </Style>
+        </Textbox>
+        <Textbox Name="txtOrderNo">
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=Fields!PONumber.Value</Value>
+                  <Style>
+                    <FontStyle>Normal</FontStyle>
+                    <FontFamily>Verdana</FontFamily>
+                    <FontSize>6pt</FontSize>
+                    <FontWeight>Normal</FontWeight>
+                    <TextDecoration>None</TextDecoration>
+                    <Color>#00b7ef</Color>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+                <LineHeight>11pt</LineHeight>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>0.10377in</Top>
+          <Left>5.31918in</Left>
+          <Height>0.125in</Height>
+          <Width>1.1666in</Width>
+          <ZIndex>2</ZIndex>
+          <Style>
+            <Border>
+              <Color>#000000</Color>
+            </Border>
+            <Direction>LTR</Direction>
+          </Style>
+        </Textbox>
+        <Textbox Name="lblShippedVia">
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Your order from:</Value>
+                  <Style>
+                    <FontStyle>Normal</FontStyle>
+                    <FontFamily>Verdana</FontFamily>
+                    <FontSize>6pt</FontSize>
+                    <FontWeight>Normal</FontWeight>
+                    <TextDecoration>None</TextDecoration>
+                    <Color>#000000</Color>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Right</TextAlign>
+                <LineHeight>11pt</LineHeight>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>0.28433in</Top>
+          <Left>3.90248in</Left>
+          <Height>0.125in</Height>
+          <Width>1.2916in</Width>
+          <ZIndex>3</ZIndex>
+          <Style>
+            <Border>
+              <Color>#000000</Color>
+            </Border>
+            <Direction>LTR</Direction>
+          </Style>
+        </Textbox>
+        <Textbox Name="txtShippedVia">
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=Fields!PickedDate.Value</Value>
+                  <Style>
+                    <FontStyle>Normal</FontStyle>
+                    <FontFamily>Verdana</FontFamily>
+                    <FontSize>6pt</FontSize>
+                    <FontWeight>Normal</FontWeight>
+                    <TextDecoration>None</TextDecoration>
+                    <Color>#ed1c24</Color>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+                <LineHeight>11pt</LineHeight>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>0.28433in</Top>
+          <Left>5.31918in</Left>
+          <Height>0.125in</Height>
+          <Width>1.1666in</Width>
+          <ZIndex>4</ZIndex>
+          <Style>
+            <Border>
+              <Color>#000000</Color>
+            </Border>
+            <Direction>LTR</Direction>
+          </Style>
+        </Textbox>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageHeader>
+    <PageFooter>
+      <Height>0.49057in</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Rectangle Name="Box124">
+          <ReportItems>
+            <Textbox Name="txtFooterLine">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=CStr(DatePart("yyyy",Today()))+" Target Stores. Target and the Bullseye Design are registered trademarks of Target Brands, Inc. All rights reserved."</Value>
+                      <Style>
+                        <FontStyle>Normal</FontStyle>
+                        <FontFamily>Times New Roman</FontFamily>
+                        <FontSize>7pt</FontSize>
+                        <FontWeight>Normal</FontWeight>
+                        <TextDecoration>None</TextDecoration>
+                        <Color>#000000</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                    <LineHeight>12pt</LineHeight>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.125in</Top>
+              <Left>1.0861in</Left>
+              <Height>0.1701in</Height>
+              <Width>5.2458in</Width>
+              <Style>
+                <Border>
+                  <Color>#000000</Color>
+                </Border>
+                <Direction>LTR</Direction>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <DataElementOutput>ContentsOnly</DataElementOutput>
+          <Top>0.05556in</Top>
+          <Left>0.10248in</Left>
+          <Height>0.3319in</Height>
+          <Width>6.3326in</Width>
+          <Style>
+            <Border>
+              <Color>#ececec</Color>
+              <Style>Solid</Style>
+              <Width>2pt</Width>
+            </Border>
+            <BackgroundColor>#d8d8d8</BackgroundColor>
+          </Style>
+        </Rectangle>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageFooter>
     <LeftMargin>1in</LeftMargin>
     <RightMargin>1in</RightMargin>
     <TopMargin>1in</TopMargin>
@@ -2323,7 +2173,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DS_rptRetailerPackingLabel</rd:DataSetName>
-        <rd:SchemaPath>C:\Projects\SLSShippingApp\SLSShippingApp\DataSets\DS_rptRetailerPackingLabel.xsd</rd:SchemaPath>
+        <rd:SchemaPath>C:\Projects\SLSShippingApp\SLSShippingApp\DS_rptRetailerPackingLabel.xsd</rd:SchemaPath>
         <rd:TableName>tblRetailerPackingLabel</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>

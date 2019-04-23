@@ -120,4 +120,16 @@
   <data name="icon" xml:space="preserve">
     <value>icon.ico</value>
   </data>
+  <data name="imgBayOrder" xml:space="preserve">
+    <value>imgBayOrder.jpg</value>
+  </data>
+  <data name="imgHOLD" xml:space="preserve">
+    <value>imgHOLD.jpg</value>
+  </data>
+  <data name="imgProp65" xml:space="preserve">
+    <value>imgProp65.jpg</value>
+  </data>
+  <data name="imgSingleOrder" xml:space="preserve">
+    <value>imgSingleOrder.jpg</value>
+  </data>
 </root>
