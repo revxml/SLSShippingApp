@@ -277,7 +277,6 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>0.02776in</Top>
                 <Left>0.0209in</Left>
                 <Height>0.2395in</Height>
                 <Width>0.5312in</Width>
@@ -312,7 +311,6 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>0.02776in</Top>
                 <Left>0.5521in</Left>
                 <Height>0.2395in</Height>
                 <Width>1.08452in</Width>
@@ -383,7 +381,6 @@
                     </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Top>0.02776in</Top>
                 <Left>1.65051in</Left>
                 <Height>0.2395in</Height>
                 <Width>2.61121in</Width>
@@ -706,6 +703,41 @@
                   </Border>
                 </Style>
               </Tablix>
+              <Textbox Name="lblQtyRequested">
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Qty Requested</Value>
+                        <Style>
+                          <FontStyle>Normal</FontStyle>
+                          <FontFamily>Times New Roman</FontFamily>
+                          <FontSize>12pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                          <TextDecoration>None</TextDecoration>
+                          <Color>#ffffff</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Center</TextAlign>
+                      <LineHeight>17pt</LineHeight>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Left>4.26172in</Left>
+                <Height>0.2395in</Height>
+                <Width>1.26728in</Width>
+                <ZIndex>5</ZIndex>
+                <Style>
+                  <Border>
+                    <Color>#000000</Color>
+                  </Border>
+                  <BackgroundColor>#595959</BackgroundColor>
+                  <Direction>LTR</Direction>
+                </Style>
+              </Textbox>
             </ReportItems>
             <DataElementOutput>ContentsOnly</DataElementOutput>
             <Top>6.40079in</Top>
@@ -1573,7 +1605,7 @@
             <Top>5.0394in</Top>
             <Left>4.4568in</Left>
             <Height>0.2083in</Height>
-            <Width>3.47187in</Width>
+            <Width>3.4388in</Width>
             <ZIndex>10</ZIndex>
             <Style>
               <Border>
@@ -2673,42 +2705,6 @@
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
               <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="lblQtyRequested">
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Qty Requested</Value>
-                    <Style>
-                      <FontStyle>Normal</FontStyle>
-                      <FontFamily>Times New Roman</FontFamily>
-                      <FontSize>12pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                      <TextDecoration>None</TextDecoration>
-                      <Color>#ffffff</Color>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                  <LineHeight>17pt</LineHeight>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <Top>6.41466in</Top>
-            <Left>4.51933in</Left>
-            <Height>0.2395in</Height>
-            <Width>1.2395in</Width>
-            <ZIndex>33</ZIndex>
-            <Style>
-              <Border>
-                <Color>#000000</Color>
-              </Border>
-              <BackgroundColor>#595959</BackgroundColor>
-              <Direction>LTR</Direction>
             </Style>
           </Textbox>
         </ReportItems>
