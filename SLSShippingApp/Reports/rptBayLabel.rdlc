@@ -107,7 +107,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Fields!CustomerNum.Value</Value>
+                <Value>=First(Fields!CustomerNum.Value, "dsBayLabelClass")</Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontWeight>Normal</FontWeight>
@@ -188,7 +188,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Fields!CustomerName.Value</Value>
+                <Value>=First(Fields!CustomerName.Value, "dsBayLabelClass")</Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontWeight>Normal</FontWeight>
@@ -222,7 +222,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Fields!OrderNumber.Value</Value>
+                <Value>=First(Fields!OrderNumber.Value, "dsBayLabelClass")</Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontWeight>Normal</FontWeight>
@@ -322,7 +322,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Fields!OrderSize.Value</Value>
+                <Value>=First(Fields!OrderSize.Value, "dsBayLabelClass")</Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontWeight>Normal</FontWeight>
@@ -356,7 +356,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Fields!OrderWeight.Value</Value>
+                <Value>=First(Fields!OrderWeight.Value, "dsBayLabelClass")</Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontWeight>Normal</FontWeight>
@@ -457,7 +457,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Format(Fields!ShippingDate.Value,"Short Date")</Value>
+                <Value>=Format(First(Fields!ShippingDate.Value, "dsBayLabelClass"),"Short Date")</Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Arial Black</FontFamily>
@@ -493,7 +493,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Fields!BayLocation.Value</Value>
+                <Value>=First(Fields!BayLocation.Value,"dsBayLabelClass")</Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontSize>24pt</FontSize>
@@ -623,7 +623,7 @@
         <rd:TableAdapterName>tblLabelTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
-    <DataSet Name="BayLabelClass">
+    <DataSet Name="dsBayLabelClass">
       <Query>
         <DataSourceName>DS_rptBayLabel</DataSourceName>
         <CommandText>/* Local Query */</CommandText>

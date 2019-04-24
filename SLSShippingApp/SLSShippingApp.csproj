@@ -170,15 +170,15 @@
     <Compile Include="ReportPrintDocument.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="RptClasses\DS_rptBayLabel.cs" />
-    <Compile Include="RptClasses\DS_rptFanBrandsLabel.cs" />
-    <Compile Include="RptClasses\DS_rptPackingLabels.cs" />
-    <Compile Include="RptClasses\DS_rptPickingTicket.cs" />
-    <Compile Include="RptClasses\DS_rptPrintLabel.cs" />
-    <Compile Include="RptClasses\DS_rptQuickShipLabel.cs" />
-    <Compile Include="RptClasses\DS_rptRetailerPackingLabel.cs" />
-    <Compile Include="RptClasses\DS_rptTargetPackingLabels.cs" />
-    <Compile Include="RptClasses\DS_rptWalmartPackingLabel.cs" />
+    <Compile Include="RptClasses\clsBayLabel.cs" />
+    <Compile Include="RptClasses\clsFanBrandsLabel.cs" />
+    <Compile Include="RptClasses\clsPackingLabels.cs" />
+    <Compile Include="RptClasses\clsPickingTicket.cs" />
+    <Compile Include="RptClasses\clsPrintLabel.cs" />
+    <Compile Include="RptClasses\clsQuickShipLabel.cs" />
+    <Compile Include="RptClasses\clsRetailerPackingLabel.cs" />
+    <Compile Include="RptClasses\clsTargetPackingLabels.cs" />
+    <Compile Include="RptClasses\clsWalmartPackingLabel.cs" />
     <Compile Include="SLSShippingApp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -292,6 +292,7 @@
     <None Include="DS_rptPickingTicket.xss">
       <DependentUpon>DS_rptPickingTicket.xsd</DependentUpon>
     </None>
+    <None Include="DS_rptPrintLabel.datasource" />
     <None Include="DS_rptPrintLabel.xsc">
       <DependentUpon>DS_rptPrintLabel.xsd</DependentUpon>
     </None>
@@ -395,7 +396,9 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

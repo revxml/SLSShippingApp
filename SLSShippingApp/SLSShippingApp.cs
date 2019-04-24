@@ -44,6 +44,8 @@ namespace SLSShippingApp
         String sScanToCustomer = String.Empty;
         Boolean bSingleItemOrders = false;
         String g_sOrderNumber = String.Empty;//This is used for Report Printing
+        private RptClasses.clsBayLabelTblLabel BayLabelClass = new RptClasses.clsBayLabelTblLabel();
+        private RptClasses.clsPrintLabel PrintLabelClass = new RptClasses.clsPrintLabel();
 
         public SLSShippingApp()
         {
@@ -63,6 +65,7 @@ namespace SLSShippingApp
                 GenerateDatabase();
             }
 
+            
             /* this is for generating customer packing slips, when customer needs to approve them*/
             // DataTable dtPrintInfo = GetPrintInfo();
             // LoadPrintData(dtPrintInfo);
@@ -723,9 +726,14 @@ namespace SLSShippingApp
             }
         }
 
+        #endregion
+        #region PRINTING REPORTS
+
         private void LoadPrintData(DataTable dtPrintInfo)
         {
             ClearSQLExpressTables();
+
+            
 
             SqlConnection sqlCon = new SqlConnection(comAPI.SLSShippingAppConnection);
             SqlCommand sqlCmd = new SqlCommand
@@ -766,6 +774,9 @@ namespace SLSShippingApp
                 sCustomerNumber = row["CustomerNumber"].ToString().Length > 0 ? row["CustomerNumber"].ToString().Trim() : null;
                 String sOrderNumber = sOrderNumber = row["OrderNumber"].ToString().Trim();
 
+                BayLabelClass = new RptClasses.clsBayLabelTblLabel();
+                PrintLabelClass = new RptClasses.clsPrintLabel();
+
                 g_sOrderNumber = sOrderNumber;
 
                 if (sRptCustomer != null && sCustomerNumber != null)
@@ -803,11 +814,21 @@ namespace SLSShippingApp
                 {
                     try
                     {
-                        sSQL = row["SQLString"].ToString();
-                        sqlCmd.CommandType = CommandType.Text;
-                        sqlCmd.CommandText = sSQL;
-                        sqlCmd = new SqlCommand(sSQL, sqlCon);
-                        sqlCmd.ExecuteNonQuery();
+                        if (bBayLabel)
+                        {
+                             PopulateBayLabelClass(row["SQLString"].ToString(),ref BayLabelClass);
+                        }else if (bItemLabel)
+                        {
+                            PopulateItemLabelClass( row["SQLString"].ToString(),ref PrintLabelClass);
+                        }
+                        else
+                        {
+                            sSQL = row["SQLString"].ToString();
+                            sqlCmd.CommandType = CommandType.Text;
+                            sqlCmd.CommandText = sSQL;
+                            sqlCmd = new SqlCommand(sSQL, sqlCon);
+                            sqlCmd.ExecuteNonQuery();
+                        }
                     }
                     catch (SqlException sEx)
                     {
@@ -825,7 +846,8 @@ namespace SLSShippingApp
                 bBayLabel = false;
 
                 if (bItemLabel)
-                    PrintReport("Label", "rptPrintLabel", sOrderNumber, 1);
+                    PrintRptFromClass("Label", "rptPrintLabel", 1);
+                   // PrintReport("Label", "rptPrintLabel", sOrderNumber, 1);
                 bItemLabel = false;
 
                 if (bPackingLabel)
@@ -851,7 +873,61 @@ namespace SLSShippingApp
                 if (bPackingTicket)
                     PrintDoc(sPackingTicket, sOrderNumber);
                 bPackingTicket = false;
+
+                BayLabelClass = null;
+                PrintLabelClass = null;
             }
+        }
+
+        private void PopulateBayLabelClass(String sql,ref RptClasses.clsBayLabelTblLabel BayLabelClass)
+        {
+            int sqlLength = sql.Length-1;
+            int sqlValuesStart = sql.IndexOf("VALUES (") + 8;
+            int sqlPullStringLength = sqlLength - sqlValuesStart;
+            sql = sql.Substring(sqlValuesStart, sqlPullStringLength) ;
+            sql = sql.Replace("\"",String.Empty);
+            sql = sql.Replace("\'", String.Empty);
+            String[] arSql = sql.Split(',');
+
+            BayLabelClass.OrderNumber = arSql[0];
+            BayLabelClass.ShippingDate = Convert.ToDateTime(arSql[1]);
+            BayLabelClass.StockNumber = arSql[2];
+            BayLabelClass.BayLocation = arSql[3];
+            BayLabelClass.OrderSize = Convert.ToInt32(arSql[4]);
+            BayLabelClass.BayLocationOnly = arSql[5];
+            BayLabelClass.CustomerNum = arSql[6];
+            BayLabelClass.CustomerName = arSql[7];
+            BayLabelClass.IsKit = Convert.ToBoolean(arSql[8]);
+            BayLabelClass.ItemDesc1 = arSql[9];
+            BayLabelClass.ItemDesc2 = arSql[10];
+            BayLabelClass.ComponentItemNumber = arSql[11];
+            BayLabelClass.OperatorName = arSql[12];
+            BayLabelClass.EnvironUser = arSql[13];
+            BayLabelClass.OrderWeight = Convert.ToDecimal(arSql[14]);
+            BayLabelClass.Image = arSql[15];
+        }
+        private void PopulateItemLabelClass(String sql,ref RptClasses.clsPrintLabel PrintLabelClass)
+        {
+            int sqlLength = sql.Length - 1;
+            int sqlValuesStart = sql.IndexOf("VALUES (") + 8;
+            int sqlPullStringLength = sqlLength - sqlValuesStart;
+            sql = sql.Substring(sqlValuesStart, sqlPullStringLength);
+            sql = sql.Replace("\"", String.Empty);
+            sql = sql.Replace("\'", String.Empty);
+            String[] arSql = sql.Split(',');
+
+            PrintLabelClass.CustomerName = arSql[0];
+            PrintLabelClass.OrderNumber = arSql[1];
+            PrintLabelClass.BayLocation = arSql[2];
+            PrintLabelClass.StockNumber = arSql[3];
+            PrintLabelClass.ItemDesc1 = arSql[4];
+            PrintLabelClass.ItemDesc2 = arSql[5];
+            PrintLabelClass.ComponentItemNumber = arSql[6];
+            PrintLabelClass.ShippingDate = Convert.ToDateTime(arSql[7]);
+            PrintLabelClass.OrderSize = Convert.ToInt32(arSql[8]);
+            PrintLabelClass.OperatorName = arSql[9];
+            PrintLabelClass.EnvironUser = arSql[10];
+           // PrintLabelClass.Image = arSql[11];
         }
 
 
@@ -864,14 +940,142 @@ namespace SLSShippingApp
             else
                 MessageBox.Show("Customer Packing Ticket expected for customer but not found. \nContact management and/or SLS Customer Service regarding missing Packing Ticket.", "Missing Customer Packing Slip");
         }
+        private void PrintRptFromClass(String sRptType, String sReport,  short iCopies)
+        {
+            System.Reflection.Assembly assembly = this.GetType().Assembly;
+            String sEmbeddedRpt = "SLSShippingApp.Reports.rpt";//
+            Microsoft.Reporting.WinForms.LocalReport lr = new LocalReport();
+            lr.EnableExternalImages = true;
+            if(sReport.Contains("Retailer"))
+            {
+                String sCusName = sReport.Replace("PackingLabels", "").Replace("rpt", "");
+                lr.DisplayName = sCusName + " Packing Label";
+                lr.ReportEmbeddedResource = sEmbeddedRpt + sCusName + "PackingLabels.rdlc";
+            }
+            else if(sReport.Contains("Bay"))
+            {
+                lr.DisplayName = "Bay Label";
+                lr.ReportEmbeddedResource = sEmbeddedRpt + "PrintBayLabel.rdlc";
+            }
+            else if(sReport.Contains("PrintLabel"))
+            {
+                
+                String sImage = PrintLabelClass.ComponentItemNumber; //How do i get this value from the Class object? // dtRptData.Rows[0]["ComponentItemNumber"].ToString();
+                String sFullImagePath = ConfigurationManager.AppSettings["ImagePath"].ToString() + sImage + ".jpg";
+                sImage = "file://" + sFullImagePath.Substring(2, sFullImagePath.Length - 2).Replace("\\", "/").Replace(" ", "%20");
+                PrintLabelClass.Image = sImage;
+                lr.DisplayName = "Item Label";
+                //DataTable dtPrintLabelClass = new DataTable();
+                //dtPrintLabelClass = ClassToDataTable("PrintLabelClass", PrintLabelClass);
+                //DataTableReader dr = new DataTableReader(dtPrintLabelClass);
+                //ReportDataSource rds = new ReportDataSource("clsPrintLabel", dr);
+                //lr.DataSources.Add(rds);
+               // lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("clsPrintLabel", PrintLabelClass.)));
+               
+                lr.ReportEmbeddedResource = sEmbeddedRpt + "PrintLabel.rdlc";
+
+            }
+            else if(sReport.Contains("FanBrands"))
+            {
+                lr.DisplayName = "FanBrands Label";
+                lr.ReportEmbeddedResource = sEmbeddedRpt + "FanBrandsLabel.rdlc";
+            }
+            else if (sReport.Contains("Packing"))
+            {
+                lr.DisplayName = "Packing Label";
+                lr.ReportEmbeddedResource = sEmbeddedRpt + "PackingLabels.rdlc";
+            }
+            else if(sReport.Contains("Picking"))
+            {
+                lr.DisplayName = "Picking Ticket";
+                lr.ReportEmbeddedResource = sEmbeddedRpt + "PickingTicket.rdlc";
+            }
+            else if (sReport.Contains("QuickShipLabel"))
+            {
+                lr.DisplayName = "QuickShip Label";
+                lr.ReportEmbeddedResource = sEmbeddedRpt + "QuickShipLabel.rdlc";
+            }
+
+                
+           // System.Windows.Forms.BindingSource bs = new BindingSource();
+           // bs.DataSource = ds;
+            //ReportDataSource dataset = new ReportDataSource("DSPrintLabel", bs);
+           // lr.DataSources.Add(dataset);
+           // dataset.Value = ds;
+            //lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource()
+            //                            {
+            //                                Name = "DSPrintLabel",
+            //                                Value = ds
+            //                            });
+            ReportPageSettings rps = lr.GetDefaultPageSettings();
+            ReportPrinter.ReportPrintDocument printDoc = new ReportPrinter.ReportPrintDocument(lr);
+            PrintController printController = new StandardPrintController();
+            printDoc.PrintController = printController;
+            printDoc.DefaultPageSettings.PaperSize = new PaperSize(rps.PaperSize.Kind.ToString(), rps.PaperSize.Height, rps.PaperSize.Width);
+            lr.Refresh();
+            printDoc.PrinterSettings.PrinterName = sLabelPrinter;
+            printDoc.PrinterSettings.Copies = iCopies;
+            printDoc.DocumentName = sReport;
+            if (!CheckPrinterConnected(sLabelPrinter))
+            {
+                MessageBox.Show(String.Format("{0} is either not connected, or not a valid printer", sLabelPrinter), "Invalid Printer");
+                return;
+            }
+            printDoc.Print();
+
+        }
+
+        private DataTable ClassToDataTable(String ClassName,  object objClass)
+        {
+            DataTable dt = new DataTable("BindingSource");
+           
+            
+          
+
+            if (ClassName == "PrintLabelClass")
+            {
+                RptClasses.clsPrintLabel obj = (RptClasses.clsPrintLabel)objClass;
+                dt.Columns.Add("OrderNumber", typeof(String));
+                dt.Columns.Add("ShippingDate", typeof(DateTime));
+                dt.Columns.Add("StockNumber", typeof(String));
+                dt.Columns.Add("BayLocation", typeof(String));
+                dt.Columns.Add("CustomerNum", typeof(String));
+                dt.Columns.Add("CustomerName", typeof(String));
+                dt.Columns.Add("isKit", typeof(Boolean));
+                dt.Columns.Add("ItemDesc1", typeof(String));
+                dt.Columns.Add("ItemDesc2", typeof(String));
+                dt.Columns.Add("ComponentItemNumber", typeof(String));
+                dt.Columns.Add("OrderWeight", typeof(Decimal));
+                DataRow dr = dt.NewRow();
+                dr[0] = obj.OrderNumber;
+                dr[1] = obj.ShippingDate;
+                dr[2] = obj.StockNumber;
+                dr[3] = obj.BayLocation;
+                dr[4] = obj.CustomerNum;
+                dr[5] = obj.CustomerName;
+                dr[6] = obj.IsKit;
+                dr[7] = obj.ItemDesc1;
+                dr[8] = obj.ItemDesc2;
+                dr[9] = obj.ComponentItemNumber;
+                dr[10] = obj.OrderWeight;
+                dt.Rows.Add(dr);
+
+            }
+           
+                                                          
+            
+
+
+            return dt;
+
+        }
 
         private void PrintReport(String sRptType, String sReport, String sOrdNo, short iCopies = 1)
         {
             Microsoft.Reporting.WinForms.LocalReport lr = new Microsoft.Reporting.WinForms.LocalReport();
-            lr.EnableExternalImages = true;       
+            lr.EnableExternalImages = true;
             System.IO.Stream stream = GetDataSource(ref lr, sReport, sOrdNo);
             lr.LoadReportDefinition(stream);
-
             ReportPageSettings rps = lr.GetDefaultPageSettings();
             ReportPrinter.ReportPrintDocument printDoc = new ReportPrinter.ReportPrintDocument(lr);
             PrintController printController = new StandardPrintController();
@@ -965,18 +1169,20 @@ namespace SLSShippingApp
                 }
                 else if (sRptName.Contains("PrintLabel"))
                 {
-                    DS_rptPrintLabelTableAdapters.tblLabelTableAdapter ta = new DS_rptPrintLabelTableAdapters.tblLabelTableAdapter();
-                    dtRptData = ta.GetData(sOrdNo);
-                    String sImage = dtRptData.Rows[0]["ComponentItemNumber"].ToString();
-                    String sFullImagePath = ConfigurationManager.AppSettings["ImagePath"].ToString() + sImage + ".jpg";
-                    sImage = "file://" + sFullImagePath.Substring(2, sFullImagePath.Length - 2).Replace("\\", "/").Replace(" ", "%20");
-                    dtRptData.Rows[0]["Image"] = sImage;
-                    dtRptData.AcceptChanges();
-                    lr.DisplayName = "Item Label";
-                    lr.EnableExternalImages = true;
+                    //DS_rptPrintLabelTableAdapters.tblLabelTableAdapter ta = new DS_rptPrintLabelTableAdapters.tblLabelTableAdapter();
+                    //dtRptData = ta.GetData(sOrdNo);
+                    //String sImage = dtRptData.Rows[0]["ComponentItemNumber"].ToString();
+                    //String sFullImagePath = ConfigurationManager.AppSettings["ImagePath"].ToString() + sImage + ".jpg";
+                    //sImage = "file://" + sFullImagePath.Substring(2, sFullImagePath.Length - 2).Replace("\\", "/").Replace(" ", "%20");
+                    //dtRptData.Rows[0]["Image"] = sImage;
+                    //dtRptData.AcceptChanges();
+                    //lr.DisplayName = "Item Label";
+                    //lr.EnableExternalImages = true;
 
-                    lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DS_rptPrintLabel", dtRptData));
-                    lr.ReportEmbeddedResource = sEmbeddedRpt + "PrintLabel.rdlc";
+                    //lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DS_rptPrintLabel", dtRptData));
+                    //lr.ReportEmbeddedResource = sEmbeddedRpt + "PrintLabel.rdlc";
+
+                    
 
                     return assembly.GetManifestResourceStream(sEmbeddedRpt + "PrintLabel.rdlc");
                 }
