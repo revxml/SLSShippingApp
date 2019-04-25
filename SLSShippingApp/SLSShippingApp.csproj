@@ -174,11 +174,14 @@
     <Compile Include="RptClasses\clsFanBrandsLabel.cs" />
     <Compile Include="RptClasses\clsPackingLabels.cs" />
     <Compile Include="RptClasses\clsPickingTicket.cs" />
-    <Compile Include="RptClasses\clsPrintLabel.cs" />
     <Compile Include="RptClasses\clsQuickShipLabel.cs" />
     <Compile Include="RptClasses\clsRetailerPackingLabel.cs" />
     <Compile Include="RptClasses\clsTargetPackingLabels.cs" />
     <Compile Include="RptClasses\clsWalmartPackingLabel.cs" />
+    <Compile Include="RptClasses\clsPrintLabel.cs" />
+    <Compile Include="RptClasses\RptDataSources.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SLSShippingApp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -263,11 +266,6 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="DS_rptBayLabel.datasource" />
-    <None Include="DS_rptBayLabel.tblLabelDataTable.datasource" />
-    <None Include="DS_rptBayLabel.tblLabelRow.datasource" />
-    <None Include="DS_rptBayLabel.tblLabelRowChangeEvent.datasource" />
-    <None Include="DS_rptBayLabel.tblLabelRowChangeEventHandler.datasource" />
     <None Include="DS_rptBayLabel.xsc">
       <DependentUpon>DS_rptBayLabel.xsd</DependentUpon>
     </None>

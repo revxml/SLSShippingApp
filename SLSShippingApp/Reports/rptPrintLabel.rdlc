@@ -1,6 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DS_rptPrintLabel">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>2b308d11-94d0-4b8b-9eb6-f95569381df4</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DS_rptPrintLabel">
+      <Query>
+        <DataSourceName>DS_rptPrintLabel</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="OrderNumber">
+          <DataField>OrderNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ShippingDate">
+          <DataField>ShippingDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="StockNumber">
+          <DataField>StockNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BayLocation">
+          <DataField>BayLocation</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="OrderSize">
+          <DataField>OrderSize</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="BayLocationOnly">
+          <DataField>BayLocationOnly</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CustomerNum">
+          <DataField>CustomerNum</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CustomerName">
+          <DataField>CustomerName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="IsKit">
+          <DataField>IsKit</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="ItemDesc1">
+          <DataField>ItemDesc1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ItemDesc2">
+          <DataField>ItemDesc2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ComponentItemNumber">
+          <DataField>ComponentItemNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="OperatorName">
+          <DataField>OperatorName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="EnvironUser">
+          <DataField>EnvironUser</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="OrderWeight">
+          <DataField>OrderWeight</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Image">
+          <DataField>Image</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>DS_rptPrintLabel</rd:DataSetName>
+        <rd:SchemaPath>C:\Projects\SLSShippingApp\SLSShippingApp\DS_rptPrintLabel.xsd</rd:SchemaPath>
+        <rd:TableName>tblLabel</rd:TableName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+        <rd:TableAdapterName>tblLabelTableAdapter</rd:TableAdapterName>
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -74,7 +165,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Trim(Fields!StockNumber.Value) + IIf(Fields!IsKit.Value =1, Trim(Fields!ComponentItemNumber.Value),"")</Value>
+                    <Value>=Trim(Fields!StockNumber.Value)</Value>
                     <Style>
                       <FontWeight>Bold</FontWeight>
                     </Style>
@@ -408,7 +499,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Trim(Sum(Fields!OrderSize.Value))</Value>
+                    <Value>=Trim(Fields!OrderSize.Value)</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -463,12 +554,6 @@
       <NumberOfRows>2</NumberOfRows>
     </GridLayoutDefinition>
   </ReportParametersLayout>
-  <Classes>
-    <Class>
-      <ClassName>clsPrintLabel</ClassName>
-      <InstanceName>PrintLabelClass</InstanceName>
-    </Class>
-  </Classes>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>e60df420-603b-41b5-9eee-33177731be2c</rd:ReportID>
 </Report>
