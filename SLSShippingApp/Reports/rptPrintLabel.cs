@@ -12,13 +12,15 @@ namespace SLSShippingApp.Reports
         public rptPrintLabel()
         {
             InitializeComponent();
-           // this.txtDate.Text = DateTime.Now.ToShortDateString();
+            this.PageHeight = 200;
+            this.PageWidth = 400;
+            lblDate.Text = DateTime.Now.ToShortDateString();
            
         }
 
         private void xrPictureBox1_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            String sImagePath = Detail.Report.GetCurrentColumnValue("Image").ToString().Replace(@"\\",@"\");
+            String sImagePath = @Detail.Report.GetCurrentColumnValue("Image").ToString();//.Replace(@"\\",@"\");
             (sender as XRPictureBox).ImageUrl = sImagePath;
            ((XRPictureBox)sender).PerformLayout();            
         }

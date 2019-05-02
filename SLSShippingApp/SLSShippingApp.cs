@@ -13,6 +13,7 @@ using System.Drawing.Printing;
 using Microsoft.Reporting.WinForms;
 using DevExpress.DataAccess.Sql;
 using DevExpress.XtraReports.UI;
+using DevExpress.XtraPrinting;
 using SLSShippingApp.Reports;
 
 namespace SLSShippingApp
@@ -46,9 +47,13 @@ namespace SLSShippingApp
         private RptClasses.clsBayLabelTblLabel BayLabelClass = new RptClasses.clsBayLabelTblLabel();
         private clsPrintLabel PrintLabelClass = new clsPrintLabel();
 
+
+
         public SLSShippingApp()
         {
             InitializeComponent();
+           // printTool.PrintingSystem.StartPrint += PrintingSystem_StartPrint;
+
             if (ConfigurationManager.AppSettings["IsTesting"].ToString() == "true")
             {
                 //  iIsTest = 1;
@@ -804,14 +809,15 @@ namespace SLSShippingApp
                     }
                 }
 
-                if (!bItemLabel)
+                if (!bItemLabel && !bBayLabel)
                 {//this is here so that I'll i'm printing/testing is the itemLabel
                     ClearSQLExpressTables("tblLabel");
                     continue;
                 }
                 if (bBayLabel)
                 {
-                    PrintReport("Label", "rptPrintBayLabel", sOrderNumber, 1);
+                    PrintDevExpReport("Label", "rptPrintBayLabel", 1);
+//                    PrintReport("Label", "rptPrintBayLabel", sOrderNumber, 1);
                     ClearSQLExpressTables("tblLabel");
                 }
                 bBayLabel = false;
@@ -833,8 +839,9 @@ namespace SLSShippingApp
                     }
                     else
                     {
-                        PrintReport("Label", "rptPackingLabels", sOrderNumber, 1);
-                        ClearSQLExpressTables("tblLabel");
+                        //PrintReport("Label", "rptPackingLabels", sOrderNumber, 1);
+                        PrintDevExpReport("Label", "rptPackingLabels", 1);
+                        ClearSQLExpressTables("tblTickets");
                     }
                 }
                 bPackingLabel = false;
@@ -1060,9 +1067,13 @@ namespace SLSShippingApp
                 case "rptPrintLabel":
                     report = new rptPrintLabel();
                     break;
-                    //case "rptBayLabel":
-                    //    report = new rptBayLabel();
+                case "rptBayLabel":
+                    report = new rptBayLabel();
+                    break;
             }
+
+           
+
             //Bind the report to a datasource
             BindToData(sRptType, sReport, report);
             //create report detail
@@ -1074,8 +1085,10 @@ namespace SLSShippingApp
         private void BindToData(String sRptType, String sReport, XtraReport report)
         {
             DevExpress.DataAccess.Sql.SqlDataSource ds = new SqlDataSource("SLSShippingAppConnection");
-            DevExpress.DataAccess.Sql.CustomSqlQuery customQuery = new CustomSqlQuery();
-            customQuery.Name = "ReportDataQuery";
+            DevExpress.DataAccess.Sql.CustomSqlQuery customQuery = new CustomSqlQuery
+            {
+                Name = "ReportDataQuery"
+            };
             String sqlQuery = "SELECT * FROM ";
             String sqlTable = String.Empty;
 
@@ -1120,8 +1133,10 @@ namespace SLSShippingApp
             report.Bands.Add(detailReportBand);
 
             //add a header to the detail report
-            ReportHeaderBand detailReportHeader = new ReportHeaderBand();
-            detailReportHeader.HeightF = 0;
+            ReportHeaderBand detailReportHeader = new ReportHeaderBand
+            {
+                HeightF = 0
+            };
             detailReportBand.Bands.Add(detailReportHeader);
 
             DetailBand detailBand = new DetailBand();
@@ -1131,17 +1146,49 @@ namespace SLSShippingApp
             detailReportBand.DataMember = dataMember;
         }
 
+        private void PrintingSystem_StartPrint(object sender, PrintDocumentEventArgs e)
+        {
+            e.PrintDocument.PrintPage += PrintDocument_PrintPage;
+            e.PrintDocument.QueryPageSettings += PrintDocument_QueryPageSettings;
+        }
+
+        static void PrintDocument_QueryPageSettings(object sender, QueryPageSettingsEventArgs e)
+        {
+            var s = e.PageSettings.PaperSize;
+            e.PageSettings.PaperSize = new PaperSize("Custom", s.Height, s.Width);
+        }
+
+        static bool clockwise = false;
+        static void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            Graphics g = e.Graphics;
+
+            Rectangle pageBounds = e.PageBounds;
+            pageBounds = GraphicsUnitConverter.Convert(pageBounds, GraphicsDpi.HundredthsOfAnInch, GraphicsDpi.Document);
+            g.PageUnit = GraphicsUnit.Document;
+
+            if (clockwise)
+            {
+                g.TranslateTransform(pageBounds.Width, 0);
+                g.RotateTransform(90);
+            }
+            else
+            {
+                g.TranslateTransform(0, pageBounds.Height);
+                g.RotateTransform(-90);
+            }
+        }
+
+
         private void PublishReport(XtraReport report, String sRptType)
         {
-            ReportPrintTool printTool = new ReportPrintTool(report);
-
             String sPrinterName = ConfigurationManager.AppSettings.Get("PickTicketPrinter").ToString();
             if (sRptType == "Label")
             {
                 sPrinterName = ConfigurationManager.AppSettings.Get("LabelPrinter").ToString();
                 report.PrinterName = sPrinterName;
                 report.ReportUnit = ReportUnit.HundredthsOfAnInch;
-                report.PaperKind = PaperKind.Custom;
+                report.PaperKind = System.Drawing.Printing.PaperKind.Custom;
                 report.PageHeight = 200;
                 report.PageWidth = 400;
                 report.RollPaper = true;
@@ -1157,18 +1204,54 @@ namespace SLSShippingApp
             }
             try
             {
-                //This is for testing purposes only
-                printTool.ShowPreviewDialog();
+                using (ReportPrintTool printTool = new ReportPrintTool(report))
+                {
+                     printTool.PrintingSystem.StartPrint += PrintingSystem_StartPrint;
+                    //This is for testing purposes only
+                    // printTool.ShowPreviewDialog();
+                    printTool.Print(sPrinterName);
+                }
 
-                printTool.Print(sPrinterName);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(String.Format("Error printing to {0}: {1}", sPrinterName, ex.Message));
             }
-            report.DataSource = null;
+            finally
+            {
+                report.DataSource = null;
+            }
         }
+        // The PrintPage event is raised for each page to be printed.
+        //private void pd_PrintPage(object sender, PrintPageEventArgs ev)
+        //{
+        //    float linesPerPage = 0;
+        //    float yPos = 0;
+        //    int count = 0;
+        //    float leftMargin = ev.MarginBounds.Left;
+        //    float topMargin = ev.MarginBounds.Top;
+        //    String line = null;
 
+        //    // Calculate the number of lines per page.
+        //    linesPerPage = ev.MarginBounds.Height /
+        //       printFont.GetHeight(ev.Graphics);
+
+        //    // Iterate over the file, printing each line.
+        //    while (count < linesPerPage &&
+        //       ((line = streamToPrint.ReadLine()) != null))
+        //    {
+        //        yPos = topMargin + (count * printFont.GetHeight(ev.Graphics));
+        //        ev.Graphics.DrawString(line, printFont, Brushes.Black,
+        //           leftMargin, yPos, new StringFormat());
+        //        count++;
+        //    }
+
+        //    // If more lines exist, print another page.
+        //    if (line != null)
+        //        ev.HasMorePages = true;
+        //    else
+        //        ev.HasMorePages = false;
+        //}
 
         private void PrintReport(String sRptType, String sReport, String sOrdNo, short iCopies = 1)
         {

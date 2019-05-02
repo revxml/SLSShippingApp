@@ -146,28 +146,13 @@
     <Compile Include="CommonAPI.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="DS_rptBayLabel.Designer.cs">
-      <DependentUpon>DS_rptBayLabel.xsd</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="DS_rptFanBrandsLabel.Designer.cs">
       <DependentUpon>DS_rptFanBrandsLabel.xsd</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="DS_rptPackingLabels.Designer.cs">
-      <DependentUpon>DS_rptPackingLabels.xsd</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="DS_rptPickingTicket.Designer.cs">
       <DependentUpon>DS_rptPickingTicket.xsd</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="DS_rptPrintLabel.Designer.cs">
-      <DependentUpon>DS_rptPrintLabel.xsd</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -189,6 +174,24 @@
     </Compile>
     <Compile Include="ReportPrintDocument.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptBayLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptBayLabel.Designer.cs">
+      <DependentUpon>rptBayLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\rptPackingLabels.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptPackingLabels.Designer.cs">
+      <DependentUpon>rptPackingLabels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\rptPickingTicket.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptPickingTicket.Designer.cs">
+      <DependentUpon>rptPickingTicket.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\rptPrintLabel.cs">
       <SubType>Component</SubType>
@@ -223,17 +226,9 @@
     <Compile Include="WindowsUsers.Designer.cs">
       <DependentUpon>WindowsUsers.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="DS_rptBayLabel.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DS_rptBayLabel.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="DS_rptFanBrandsLabel.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>DS_rptFanBrandsLabel.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DS_rptPackingLabels.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DS_rptPackingLabels.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="DS_rptPickingTicket.xsd">
       <Generator>MSDataSetGenerator</Generator>
@@ -261,20 +256,20 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Reports\rptBayLabel.rdlc">
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Reports\rptBayLabel.resx">
+      <DependentUpon>rptBayLabel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptHSNPackingLabels.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\rptPackingLabels.rdlc">
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Reports\rptPackingLabels.resx">
+      <DependentUpon>rptPackingLabels.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptPickingTicket.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\rptPrintLabel.rdlc">
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Reports\rptPickingTicket.resx">
+      <DependentUpon>rptPickingTicket.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptPrintLabel.resx">
       <DependentUpon>rptPrintLabel.cs</DependentUpon>
@@ -296,40 +291,17 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="DS_rptBayLabel.xsc">
-      <DependentUpon>DS_rptBayLabel.xsd</DependentUpon>
-    </None>
-    <None Include="DS_rptBayLabel.xss">
-      <DependentUpon>DS_rptBayLabel.xsd</DependentUpon>
-    </None>
     <None Include="DS_rptFanBrandsLabel.xsc">
       <DependentUpon>DS_rptFanBrandsLabel.xsd</DependentUpon>
     </None>
     <None Include="DS_rptFanBrandsLabel.xss">
       <DependentUpon>DS_rptFanBrandsLabel.xsd</DependentUpon>
     </None>
-    <None Include="DS_rptPackingLabels.xsc">
-      <DependentUpon>DS_rptPackingLabels.xsd</DependentUpon>
-    </None>
-    <None Include="DS_rptPackingLabels.xss">
-      <DependentUpon>DS_rptPackingLabels.xsd</DependentUpon>
-    </None>
     <None Include="DS_rptPickingTicket.xsc">
       <DependentUpon>DS_rptPickingTicket.xsd</DependentUpon>
     </None>
     <None Include="DS_rptPickingTicket.xss">
       <DependentUpon>DS_rptPickingTicket.xsd</DependentUpon>
-    </None>
-    <None Include="DS_rptPrintLabel.datasource" />
-    <None Include="DS_rptPrintLabel.xsc">
-      <DependentUpon>DS_rptPrintLabel.xsd</DependentUpon>
-    </None>
-    <EmbeddedResource Include="DS_rptPrintLabel.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DS_rptPrintLabel.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <None Include="DS_rptPrintLabel.xss">
-      <DependentUpon>DS_rptPrintLabel.xsd</DependentUpon>
     </None>
     <None Include="DS_rptQuickShipLabel.xsc">
       <DependentUpon>DS_rptQuickShipLabel.xsd</DependentUpon>
