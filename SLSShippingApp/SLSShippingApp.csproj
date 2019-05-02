@@ -151,11 +151,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="DS_rptPickingTicket.Designer.cs">
-      <DependentUpon>DS_rptPickingTicket.xsd</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="DS_rptQuickShipLabel.Designer.cs">
       <DependentUpon>DS_rptQuickShipLabel.xsd</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -199,18 +194,6 @@
     <Compile Include="Reports\rptPrintLabel.Designer.cs">
       <DependentUpon>rptPrintLabel.cs</DependentUpon>
     </Compile>
-    <Compile Include="RptClasses\clsBayLabel.cs" />
-    <Compile Include="RptClasses\clsFanBrandsLabel.cs" />
-    <Compile Include="RptClasses\clsPackingLabels.cs" />
-    <Compile Include="RptClasses\clsPickingTicket.cs" />
-    <Compile Include="RptClasses\clsQuickShipLabel.cs" />
-    <Compile Include="RptClasses\clsRetailerPackingLabel.cs" />
-    <Compile Include="RptClasses\clsTargetPackingLabels.cs" />
-    <Compile Include="RptClasses\clsWalmartPackingLabel.cs" />
-    <Compile Include="RptClasses\clsPrintLabel.cs" />
-    <Compile Include="RptClasses\RptDataSources.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="SLSShippingApp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,10 +212,6 @@
     <EmbeddedResource Include="DS_rptFanBrandsLabel.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>DS_rptFanBrandsLabel.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DS_rptPickingTicket.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DS_rptPickingTicket.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="DS_rptQuickShipLabel.xsd">
       <Generator>MSDataSetGenerator</Generator>
@@ -265,9 +244,6 @@
     <EmbeddedResource Include="Reports\rptPackingLabels.resx">
       <DependentUpon>rptPackingLabels.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\rptPickingTicket.rdlc">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptPickingTicket.resx">
       <DependentUpon>rptPickingTicket.cs</DependentUpon>
     </EmbeddedResource>
@@ -296,12 +272,6 @@
     </None>
     <None Include="DS_rptFanBrandsLabel.xss">
       <DependentUpon>DS_rptFanBrandsLabel.xsd</DependentUpon>
-    </None>
-    <None Include="DS_rptPickingTicket.xsc">
-      <DependentUpon>DS_rptPickingTicket.xsd</DependentUpon>
-    </None>
-    <None Include="DS_rptPickingTicket.xss">
-      <DependentUpon>DS_rptPickingTicket.xsd</DependentUpon>
     </None>
     <None Include="DS_rptQuickShipLabel.xsc">
       <DependentUpon>DS_rptQuickShipLabel.xsd</DependentUpon>

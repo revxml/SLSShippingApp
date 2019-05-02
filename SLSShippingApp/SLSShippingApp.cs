@@ -44,15 +44,10 @@ namespace SLSShippingApp
         String sScanToCustomer = String.Empty;
         Boolean bSingleItemOrders = false;
         String g_sOrderNumber = String.Empty;//This is used for Report Printing
-        private RptClasses.clsBayLabelTblLabel BayLabelClass = new RptClasses.clsBayLabelTblLabel();
-        private clsPrintLabel PrintLabelClass = new clsPrintLabel();
-
-
-
+     
         public SLSShippingApp()
         {
             InitializeComponent();
-           // printTool.PrintingSystem.StartPrint += PrintingSystem_StartPrint;
 
             if (ConfigurationManager.AppSettings["IsTesting"].ToString() == "true")
             {
@@ -68,7 +63,6 @@ namespace SLSShippingApp
             {
                 GenerateDatabase();
             }
-
 
             /* this is for generating customer packing slips, when customer needs to approve them*/
             // DataTable dtPrintInfo = GetPrintInfo();
@@ -848,7 +842,8 @@ namespace SLSShippingApp
 
                 if (bPickintTicket)
                 {
-                    PrintReport("Ticket", "rptPickingTicket", sOrderNumber, 1);
+                    // PrintReport("Ticket", "rptPickingTicket", sOrderNumber, 1);
+                    PrintDevExpReport("Ticket", "rptPickingTicket", 1);
                     ClearSQLExpressTables("rptPickingTicket");
                     //ZRush_ShipRush.ZFShippingPanel zPanel = new ZFShippingPanel();
                     //zPanel.SerialNumber = "!5e+b08HUxyiqCM8wr75l8IZ6Kim8q6cboE-o0mWR1ChZG913D-afvU";
@@ -867,57 +862,7 @@ namespace SLSShippingApp
                 sqlCon.Dispose();
             }
         }
-
-        private void PopulateBayLabelClass(String sql, ref RptClasses.clsBayLabelTblLabel BayLabelClass)
-        {
-            int sqlLength = sql.Length - 1;
-            int sqlValuesStart = sql.IndexOf("VALUES (") + 8;
-            int sqlPullStringLength = sqlLength - sqlValuesStart;
-            sql = sql.Substring(sqlValuesStart, sqlPullStringLength);
-            sql = sql.Replace("\"", String.Empty);
-            sql = sql.Replace("\'", String.Empty);
-            String[] arSql = sql.Split(',');
-
-            BayLabelClass.OrderNumber = arSql[0];
-            BayLabelClass.ShippingDate = Convert.ToDateTime(arSql[1]);
-            BayLabelClass.StockNumber = arSql[2];
-            BayLabelClass.BayLocation = arSql[3];
-            BayLabelClass.OrderSize = Convert.ToInt32(arSql[4]);
-            BayLabelClass.BayLocationOnly = arSql[5];
-            BayLabelClass.CustomerNum = arSql[6];
-            BayLabelClass.CustomerName = arSql[7];
-            BayLabelClass.IsKit = Convert.ToBoolean(arSql[8]);
-            BayLabelClass.ItemDesc1 = arSql[9];
-            BayLabelClass.ItemDesc2 = arSql[10];
-            BayLabelClass.ComponentItemNumber = arSql[11];
-            BayLabelClass.OperatorName = arSql[12];
-            BayLabelClass.EnvironUser = arSql[13];
-            BayLabelClass.OrderWeight = Convert.ToDecimal(arSql[14]);
-            BayLabelClass.Image = arSql[15];
-        }
-
-        private void PopulateItemLabelClass(String sql, ref clsPrintLabel PrintLabelClass)
-        {
-
-            int sqlLength = sql.Length - 1;
-            int sqlValuesStart = sql.IndexOf("VALUES (") + 8;
-            int sqlPullStringLength = sqlLength - sqlValuesStart;
-            sql = sql.Substring(sqlValuesStart, sqlPullStringLength);
-            sql = sql.Replace("\"", String.Empty);
-            sql = sql.Replace("\'", String.Empty);
-            String[] arSql = sql.Split(',');
-            PrintLabelClass.OrderNumber = arSql[1];
-            PrintLabelClass.ShippingDate = Convert.ToDateTime(arSql[7]);
-            PrintLabelClass.StockNumber = arSql[3];
-            PrintLabelClass.BayLocation = arSql[2];
-            PrintLabelClass.CustomerNum = arSql[0];
-            PrintLabelClass.ItemDesc1 = arSql[4];
-            PrintLabelClass.ItemDesc2 = arSql[5];
-            PrintLabelClass.ComponentItemNumber = arSql[6];
-            PrintLabelClass.Image = String.Empty;
-        }
-
-
+      
         private void PrintDoc(String sFileName, String sOrdNo)
         {
             String c_sFolder = ConfigurationManager.AppSettings["CustomerPackingSlips"].ToString();
@@ -927,137 +872,6 @@ namespace SLSShippingApp
             else
                 MessageBox.Show("Customer Packing Ticket expected for customer but not found. \nContact management and/or SLS Customer Service regarding missing Packing Ticket.", "Missing Customer Packing Slip");
         }
-
-        private void PrintRptFromClass(String sRptType, String sReport, short iCopies)
-        {
-            System.Reflection.Assembly assembly = this.GetType().Assembly;
-            String sEmbeddedRpt = "SLSShippingApp.Reports.rpt";//
-            LocalReport lr = new LocalReport();
-            lr.EnableExternalImages = true;
-            if (sReport.Contains("Retailer"))
-            {
-                String sCusName = sReport.Replace("PackingLabels", "").Replace("rpt", "");
-                lr.DisplayName = sCusName + " Packing Label";
-                lr.ReportEmbeddedResource = sEmbeddedRpt + sCusName + "PackingLabels.rdlc";
-            }
-            else if (sReport.Contains("Bay"))
-            {
-                lr.DisplayName = "Bay Label";
-                lr.ReportEmbeddedResource = sEmbeddedRpt + "PrintBayLabel.rdlc";
-            }
-            else if (sReport.Contains("PrintLabel"))
-            {
-
-                String sImage = "";//dtSource.Rows[0]["ComponentItemNumber"].ToString().Trim(); //How do i get this value from the Class object? // dtRptData.Rows[0]["ComponentItemNumber"].ToString();
-                String sFullImagePath = ConfigurationManager.AppSettings["ImagePath"].ToString() + sImage + ".jpg";
-                sImage = "file://" + sFullImagePath.Substring(2, sFullImagePath.Length - 2).Replace("\\", "/").Replace(" ", "%20");
-                // dtSource.Rows[0]["Image"] = sImage;
-                lr.DisplayName = "Item Label";
-                //DataTable dtPrintLabelClass = new DataTable();
-                //dtPrintLabelClass = ClassToDataTable("PrintLabelClass", PrintLabelClass);
-                //DataTableReader dr = new DataTableReader(dtPrintLabelClass);
-                //ReportDataSource rds = new ReportDataSource("clsPrintLabel", dr);
-                //lr.DataSources.Add(rds);
-                lr.DataSources.Add(new ReportDataSource("clsPrintLabel", PrintLabelClass));
-                //  lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSource",dtSource));
-
-                lr.ReportEmbeddedResource = sEmbeddedRpt + "PrintLabel.rdlc";
-
-            }
-            else if (sReport.Contains("FanBrands"))
-            {
-                lr.DisplayName = "FanBrands Label";
-                lr.ReportEmbeddedResource = sEmbeddedRpt + "FanBrandsLabel.rdlc";
-            }
-            else if (sReport.Contains("Packing"))
-            {
-                lr.DisplayName = "Packing Label";
-                lr.ReportEmbeddedResource = sEmbeddedRpt + "PackingLabels.rdlc";
-            }
-            else if (sReport.Contains("Picking"))
-            {
-                lr.DisplayName = "Picking Ticket";
-                lr.ReportEmbeddedResource = sEmbeddedRpt + "PickingTicket.rdlc";
-            }
-            else if (sReport.Contains("QuickShipLabel"))
-            {
-                lr.DisplayName = "QuickShip Label";
-                lr.ReportEmbeddedResource = sEmbeddedRpt + "QuickShipLabel.rdlc";
-            }
-
-
-            // System.Windows.Forms.BindingSource bs = new BindingSource();
-            // bs.DataSource = ds;
-            //ReportDataSource dataset = new ReportDataSource("DSPrintLabel", bs);
-            // lr.DataSources.Add(dataset);
-            // dataset.Value = ds;
-            //lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource()
-            //                            {
-            //                                Name = "DSPrintLabel",
-            //                                Value = ds
-            //                            });
-            ReportPageSettings rps = lr.GetDefaultPageSettings();
-            ReportPrinter.ReportPrintDocument printDoc = new ReportPrinter.ReportPrintDocument(lr);
-            PrintController printController = new StandardPrintController();
-            printDoc.PrintController = printController;
-            printDoc.DefaultPageSettings.PaperSize = new PaperSize(rps.PaperSize.Kind.ToString(), rps.PaperSize.Height, rps.PaperSize.Width);
-            lr.Refresh();
-            printDoc.PrinterSettings.PrinterName = sLabelPrinter;
-            printDoc.PrinterSettings.Copies = iCopies;
-            printDoc.DocumentName = sReport;
-            if (!CheckPrinterConnected(sLabelPrinter))
-            {
-                MessageBox.Show(String.Format("{0} is either not connected, or not a valid printer", sLabelPrinter), "Invalid Printer");
-                return;
-            }
-            printDoc.Print();
-
-        }
-
-        //private DataTable ClassToDataTable(String ClassName,  object objClass)
-        //{
-        //    DataTable dt = new DataTable("BindingSource");
-
-
-
-
-        //    if (ClassName == "PrintLabelClass")
-        //    {
-        //        RptClasses.clsPrintLabel obj = (RptClasses.clsPrintLabel)objClass;
-        //        dt.Columns.Add("OrderNumber", typeof(String));
-        //        dt.Columns.Add("ShippingDate", typeof(DateTime));
-        //        dt.Columns.Add("StockNumber", typeof(String));
-        //        dt.Columns.Add("BayLocation", typeof(String));
-        //        dt.Columns.Add("CustomerNum", typeof(String));
-        //        dt.Columns.Add("CustomerName", typeof(String));
-        //        dt.Columns.Add("isKit", typeof(Boolean));
-        //        dt.Columns.Add("ItemDesc1", typeof(String));
-        //        dt.Columns.Add("ItemDesc2", typeof(String));
-        //        dt.Columns.Add("ComponentItemNumber", typeof(String));
-        //        dt.Columns.Add("OrderWeight", typeof(Decimal));
-        //        DataRow dr = dt.NewRow();
-        //        dr[0] = obj.OrderNumber;
-        //        dr[1] = obj.ShippingDate;
-        //        dr[2] = obj.StockNumber;
-        //        dr[3] = obj.BayLocation;
-        //        dr[4] = obj.CustomerNum;
-        //        dr[5] = obj.CustomerName;
-        //        dr[6] = obj.IsKit;
-        //        dr[7] = obj.ItemDesc1;
-        //        dr[8] = obj.ItemDesc2;
-        //        dr[9] = obj.ComponentItemNumber;
-        //        dr[10] = obj.OrderWeight;
-        //        dt.Rows.Add(dr);
-
-        //    }
-
-
-
-
-
-        //    return dt;
-
-        //}
 
         private void PrintDevExpReport(String sRptType, String sReport, short iCopies = 1)
         {
@@ -1070,9 +884,13 @@ namespace SLSShippingApp
                 case "rptBayLabel":
                     report = new rptBayLabel();
                     break;
-            }
-
-           
+                case "rptPackingLabels":
+                    report = new rptPackingLabels();
+                    break;
+                case "rptPickingTicket":
+                    report = new rptPickingTicket();
+                    break;
+            }        
 
             //Bind the report to a datasource
             BindToData(sRptType, sReport, report);
@@ -1082,6 +900,7 @@ namespace SLSShippingApp
             PublishReport(report, sRptType);
 
         }
+
         private void BindToData(String sRptType, String sReport, XtraReport report)
         {
             DevExpress.DataAccess.Sql.SqlDataSource ds = new SqlDataSource("SLSShippingAppConnection");
@@ -1178,8 +997,7 @@ namespace SLSShippingApp
                 g.RotateTransform(-90);
             }
         }
-
-
+        
         private void PublishReport(XtraReport report, String sRptType)
         {
             String sPrinterName = ConfigurationManager.AppSettings.Get("PickTicketPrinter").ToString();
@@ -1211,7 +1029,6 @@ namespace SLSShippingApp
                     // printTool.ShowPreviewDialog();
                     printTool.Print(sPrinterName);
                 }
-
             }
             catch (Exception ex)
             {
@@ -1221,37 +1038,7 @@ namespace SLSShippingApp
             {
                 report.DataSource = null;
             }
-        }
-        // The PrintPage event is raised for each page to be printed.
-        //private void pd_PrintPage(object sender, PrintPageEventArgs ev)
-        //{
-        //    float linesPerPage = 0;
-        //    float yPos = 0;
-        //    int count = 0;
-        //    float leftMargin = ev.MarginBounds.Left;
-        //    float topMargin = ev.MarginBounds.Top;
-        //    String line = null;
-
-        //    // Calculate the number of lines per page.
-        //    linesPerPage = ev.MarginBounds.Height /
-        //       printFont.GetHeight(ev.Graphics);
-
-        //    // Iterate over the file, printing each line.
-        //    while (count < linesPerPage &&
-        //       ((line = streamToPrint.ReadLine()) != null))
-        //    {
-        //        yPos = topMargin + (count * printFont.GetHeight(ev.Graphics));
-        //        ev.Graphics.DrawString(line, printFont, Brushes.Black,
-        //           leftMargin, yPos, new StringFormat());
-        //        count++;
-        //    }
-
-        //    // If more lines exist, print another page.
-        //    if (line != null)
-        //        ev.HasMorePages = true;
-        //    else
-        //        ev.HasMorePages = false;
-        //}
+        }     
 
         private void PrintReport(String sRptType, String sReport, String sOrdNo, short iCopies = 1)
         {
@@ -1343,31 +1130,6 @@ namespace SLSShippingApp
                     lr.ReportEmbeddedResource = sEmbeddedRpt + sCusName + "PackingLabels.rdlc";
                     return assembly.GetManifestResourceStream(sEmbeddedRpt + sCusName + "PackingLabels.rdlc");
                 }
-                else if (sRptName.Contains("Bay"))
-                {
-                    DS_rptBayLabelTableAdapters.tblLabelTableAdapter ta = new DS_rptBayLabelTableAdapters.tblLabelTableAdapter();
-                    dtRptData = ta.GetData(sOrdNo);
-                    lr.DisplayName = "Bay Label";
-                    lr.EnableExternalImages = true;
-                    lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DS_rptBayLabel", dtRptData));
-                    lr.ReportEmbeddedResource = sEmbeddedRpt + "PrintBayLabel.rdlc";
-                    return assembly.GetManifestResourceStream(sEmbeddedRpt + "PrintBayLabel.rdlc");
-                }
-                else if (sRptName.Contains("PrintLabel"))
-                {
-                    DS_rptPrintLabelTableAdapters.tblLabelTableAdapter ta = new DS_rptPrintLabelTableAdapters.tblLabelTableAdapter();
-                    dtRptData = ta.GetData(sOrdNo);
-                    String sImage = dtRptData.Rows[0]["ComponentItemNumber"].ToString();
-                    String sFullImagePath = ConfigurationManager.AppSettings["ImagePath"].ToString() + sImage + ".jpg";
-                    sImage = "file://" + sFullImagePath.Substring(2, sFullImagePath.Length - 2).Replace("\\", "/").Replace(" ", "%20");
-                    dtRptData.Rows[0]["Image"] = sImage;
-                    dtRptData.AcceptChanges();
-                    lr.DisplayName = "Item Label";
-                    lr.EnableExternalImages = true;
-                    lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DS_rptPrintLabel", dtRptData));
-                    lr.ReportEmbeddedResource = sEmbeddedRpt + "PrintLabel.rdlc";
-                    return assembly.GetManifestResourceStream(sEmbeddedRpt + "PrintLabel.rdlc");
-                }
                 else if (sRptName.Contains("FanBrands"))
                 {
                     DS_rptFanBrandsLabelTableAdapters.tblLabelFanBrandsTableAdapter ta = new DS_rptFanBrandsLabelTableAdapters.tblLabelFanBrandsTableAdapter();
@@ -1377,26 +1139,6 @@ namespace SLSShippingApp
                     lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DS_rptFanBransLabel", dtRptData));
                     lr.ReportEmbeddedResource = sEmbeddedRpt + "FanBrandsLabel.rdlc";
                     return assembly.GetManifestResourceStream(sEmbeddedRpt + "FanBrandsLabel.rdlc");
-                }
-                else if (sRptName.Contains("Packing"))
-                {
-                    DS_rptPackingLabelsTableAdapters.tblTicketsTableAdapter ta = new DS_rptPackingLabelsTableAdapters.tblTicketsTableAdapter();
-                    dtRptData = ta.GetData(sOrdNo);
-                    lr.DisplayName = "Packing Label";
-                    lr.EnableExternalImages = true;
-                    lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DS_rptPackingLabels", dtRptData));
-                    lr.ReportEmbeddedResource = sEmbeddedRpt + "PackingLabels.rdlc";
-                    return assembly.GetManifestResourceStream(sEmbeddedRpt + "PackingLabels.rdlc");
-                }
-                else if (sRptName.Contains("Picking"))
-                {
-                    DS_rptPickingTicketTableAdapters.tblPickingFileTableAdapter ta = new DS_rptPickingTicketTableAdapters.tblPickingFileTableAdapter();
-                    dtRptData = ta.GetData(String.Concat("*", sOrdNo, "*"));
-                    lr.DisplayName = "Picking Ticket";
-                    lr.EnableExternalImages = true;
-                    lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DS_rptPickingTicket", dtRptData));
-                    lr.ReportEmbeddedResource = sEmbeddedRpt + "PickingTicket.rdlc";
-                    return assembly.GetManifestResourceStream(sEmbeddedRpt + "PickingTicket.rdlc");
                 }
                 else if (sRptName.Contains("QuickShipLabel"))
                 {
@@ -1408,6 +1150,51 @@ namespace SLSShippingApp
                     lr.ReportEmbeddedResource = sEmbeddedRpt + "QuickShipLabel.rdlc";
                     return assembly.GetManifestResourceStream(sEmbeddedRpt + "QuickShipLabel.rdlc");
                 }
+                //else if (sRptName.Contains("Bay"))
+                //{
+                //    DS_rptBayLabelTableAdapters.tblLabelTableAdapter ta = new DS_rptBayLabelTableAdapters.tblLabelTableAdapter();
+                //    dtRptData = ta.GetData(sOrdNo);
+                //    lr.DisplayName = "Bay Label";
+                //    lr.EnableExternalImages = true;
+                //    lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DS_rptBayLabel", dtRptData));
+                //    lr.ReportEmbeddedResource = sEmbeddedRpt + "PrintBayLabel.rdlc";
+                //    return assembly.GetManifestResourceStream(sEmbeddedRpt + "PrintBayLabel.rdlc");
+                //}
+                //else if (sRptName.Contains("PrintLabel"))
+                //{
+                //    DS_rptPrintLabelTableAdapters.tblLabelTableAdapter ta = new DS_rptPrintLabelTableAdapters.tblLabelTableAdapter();
+                //    dtRptData = ta.GetData(sOrdNo);
+                //    String sImage = dtRptData.Rows[0]["ComponentItemNumber"].ToString();
+                //    String sFullImagePath = ConfigurationManager.AppSettings["ImagePath"].ToString() + sImage + ".jpg";
+                //    sImage = "file://" + sFullImagePath.Substring(2, sFullImagePath.Length - 2).Replace("\\", "/").Replace(" ", "%20");
+                //    dtRptData.Rows[0]["Image"] = sImage;
+                //    dtRptData.AcceptChanges();
+                //    lr.DisplayName = "Item Label";
+                //    lr.EnableExternalImages = true;
+                //    lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DS_rptPrintLabel", dtRptData));
+                //    lr.ReportEmbeddedResource = sEmbeddedRpt + "PrintLabel.rdlc";
+                //    return assembly.GetManifestResourceStream(sEmbeddedRpt + "PrintLabel.rdlc");
+                //}
+                //else if (sRptName.Contains("Packing"))
+                //{
+                //    DS_rptPackingLabelsTableAdapters.tblTicketsTableAdapter ta = new DS_rptPackingLabelsTableAdapters.tblTicketsTableAdapter();
+                //    dtRptData = ta.GetData(sOrdNo);
+                //    lr.DisplayName = "Packing Label";
+                //    lr.EnableExternalImages = true;
+                //    lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DS_rptPackingLabels", dtRptData));
+                //    lr.ReportEmbeddedResource = sEmbeddedRpt + "PackingLabels.rdlc";
+                //    return assembly.GetManifestResourceStream(sEmbeddedRpt + "PackingLabels.rdlc");
+                //}
+                //else if (sRptName.Contains("Picking"))
+                //{
+                //    DS_rptPickingTicketTableAdapters.tblPickingFileTableAdapter ta = new DS_rptPickingTicketTableAdapters.tblPickingFileTableAdapter();
+                //    dtRptData = ta.GetData(String.Concat("*", sOrdNo, "*"));
+                //    lr.DisplayName = "Picking Ticket";
+                //    lr.EnableExternalImages = true;
+                //    lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DS_rptPickingTicket", dtRptData));
+                //    lr.ReportEmbeddedResource = sEmbeddedRpt + "PickingTicket.rdlc";
+                //    return assembly.GetManifestResourceStream(sEmbeddedRpt + "PickingTicket.rdlc");
+                //}
                 return null;
             }
             catch (Exception ex)
