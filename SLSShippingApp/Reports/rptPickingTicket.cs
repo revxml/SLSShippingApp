@@ -27,7 +27,7 @@ namespace SLSShippingApp.Reports
             Boolean bHold = Convert.ToBoolean(Detail.Report.GetCurrentColumnValue("Hold"));
             if (bHold)
                 imgHold.Visible = true;
-            else if (sBay != String.Empty)
+            else if (sBay != String.Empty && sBay != "-1")
                 imgBay.Visible = true;
             else
                 imgSingle.Visible = true;

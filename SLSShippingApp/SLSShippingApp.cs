@@ -803,11 +803,11 @@ namespace SLSShippingApp
                     }
                 }
 
-                if (!bItemLabel && !bBayLabel)
-                {//this is here so that I'll i'm printing/testing is the itemLabel
-                    ClearSQLExpressTables("tblLabel");
-                    continue;
-                }
+                //if (!bItemLabel && !bBayLabel)
+                //{//this is here so that I'll i'm printing/testing is the itemLabel
+                //    ClearSQLExpressTables("tblLabel");
+                //    continue;
+                //}
                 if (bBayLabel)
                 {
                     PrintDevExpReport("Label", "rptPrintBayLabel", 1);
@@ -828,7 +828,8 @@ namespace SLSShippingApp
                 {
                     if (sRptCustomer != null)
                     {
-                        PrintReport("tblRetailerPackingLabel", "rpt" + sRptCustomer + "PackingLabels", sOrderNumber, 1);
+                        //PrintReport("tblRetailerPackingLabel", "rpt" + sRptCustomer + "PackingLabels", sOrderNumber, 1);
+                        PrintDevExpReport("tblRetailerPackingLabel", "rpt" + sRptCustomer + "PackingLabels", 1);
                         ClearSQLExpressTables("tblRetailerPackingLabel");
                     }
                     else
@@ -866,9 +867,28 @@ namespace SLSShippingApp
         private void PrintDoc(String sFileName, String sOrdNo)
         {
             String c_sFolder = ConfigurationManager.AppSettings["CustomerPackingSlips"].ToString();
+            StreamReader streamToPrint;
+            String sFullPath = c_sFolder + sFileName;
 
             if (System.IO.File.Exists(c_sFolder + sFileName) == true)
-                PrintReport("Ticket", c_sFolder + sFileName, sOrdNo);
+            {
+                // PrintReport("Ticket", c_sFolder + sFileName, sOrdNo);
+                
+                //ReportPrinter.ReportPrintDocument printDoc = new ReportPrinter.ReportPrintDocument(c_sFolder + sFileName);
+                PrintController printController = new StandardPrintController();
+                streamToPrint = new StreamReader(sFullPath);
+                PrintDocument pd = new PrintDocument();
+               
+                pd.PrintController = printController;
+                pd.PrinterSettings.PrinterName = sTicketPrinter;
+                pd.PrinterSettings.Copies = 1;
+                
+                pd.Print();
+                
+
+                //printDoc.PrintController = printController;
+
+            }
             else
                 MessageBox.Show("Customer Packing Ticket expected for customer but not found. \nContact management and/or SLS Customer Service regarding missing Packing Ticket.", "Missing Customer Packing Slip");
         }
@@ -908,11 +928,12 @@ namespace SLSShippingApp
             {
                 Name = "ReportDataQuery"
             };
-            String sqlQuery = "SELECT * FROM ";
+            String sqlQuery = "SELECT * ";
             String sqlTable = String.Empty;
 
             if (sReport.Contains("Retailer"))
             {
+               // sqlQuery += ",UnitPrice*CONVERT(DECIMAL(6,4),QuantityToShip) as ExtPrice ";
                 sqlTable = "tblRetailerPackingLabel";
             }
             else if (sReport.Contains("Bay"))
@@ -939,7 +960,7 @@ namespace SLSShippingApp
             {
                 sqlTable = "tblLabelQuickShip";
             }
-            customQuery.Sql = String.Format("{0}{1}", sqlQuery, sqlTable);
+            customQuery.Sql = String.Format("{0} FROM {1}", sqlQuery, sqlTable);
             ds.Queries.Add(customQuery);
             report.DataSource = ds;
             report.DataMember = "ReportDataQuery";
@@ -1024,10 +1045,15 @@ namespace SLSShippingApp
             {
                 using (ReportPrintTool printTool = new ReportPrintTool(report))
                 {
-                     printTool.PrintingSystem.StartPrint += PrintingSystem_StartPrint;
+                    if(sRptType == "Label")
+                        printTool.PrintingSystem.StartPrint += PrintingSystem_StartPrint;
+                    
                     //This is for testing purposes only
                     // printTool.ShowPreviewDialog();
                     printTool.Print(sPrinterName);
+
+                    if (sRptType == "Label")
+                        printTool.PrintingSystem.StartPrint -= PrintingSystem_StartPrint;
                 }
             }
             catch (Exception ex)
@@ -1038,178 +1064,180 @@ namespace SLSShippingApp
             {
                 report.DataSource = null;
             }
-        }     
-
-        private void PrintReport(String sRptType, String sReport, String sOrdNo, short iCopies = 1)
-        {
-
-            LocalReport lr = new LocalReport
-            {
-                EnableExternalImages = true
-            };
-            System.IO.Stream stream = GetDataSource(ref lr, sReport, sOrdNo);
-            lr.LoadReportDefinition(stream);
-            ReportPageSettings rps = lr.GetDefaultPageSettings();
-            ReportPrinter.ReportPrintDocument printDoc = new ReportPrinter.ReportPrintDocument(lr);
-            PrintController printController = new StandardPrintController();
-
-            printDoc.PrintController = printController;
-
-            if (sRptType == "Label")
-                printDoc.DefaultPageSettings.PaperSize = new PaperSize(rps.PaperSize.Kind.ToString(), rps.PaperSize.Height, rps.PaperSize.Width);
-
-            lr.Refresh();
-
-            switch (sRptType)
-            {
-                case "Label":
-                    printDoc.PrinterSettings.PrinterName = sLabelPrinter;
-                    break;
-                case "Ticket":
-                case "SFO":
-                    printDoc.PrinterSettings.PrinterName = sTicketPrinter;
-                    break;
-            }
-            printDoc.PrinterSettings.Copies = iCopies;
-            printDoc.DocumentName = sReport;
-
-            String sPrinter = sLabelPrinter;
-            if (sRptType != "Label")
-                sPrinter = sTicketPrinter;
-            //Check for printer
-            if (!CheckPrinterConnected(sPrinter))
-            {
-                MessageBox.Show(String.Format("{0} is either not connected, or not a valid printer", sPrinter), "Invalid Printer");
-                return;
-            }
-
-            //Want to use Print Preview, but against live data. 
-            //commenting out the if...else portion. 
-            //will need to uncomment when testing completes - KEB 20150302
-            //#if(DEBUG)
-
-            //          PrintPreviewDialog pv = new PrintPreviewDialog();//Do Print Preview when in test mode
-            //         pv.Document = printDoc;
-            //         pv.Document.PrinterSettings.DefaultPageSettings.Landscape = false;
-            //         pv.ShowDialog();
-            //#endif
-            //no print prview here            
-            printDoc.Print();
         }
 
-        private Microsoft.Reporting.WinForms.ReportParameterCollection ReportDefaultParam()
-        {
-            ReportParameterCollection arrLst = new ReportParameterCollection
-            {
-                CreateReportParameter("@OrderNumber", g_sOrderNumber)
-            };
-            return arrLst;
-        }
+        //private void PrintReport(String sRptType, String sReport, String sOrdNo, short iCopies = 1)
+        //{
 
-        private Microsoft.Reporting.WinForms.ReportParameter CreateReportParameter(String paramName, String paramValue)
-        {
-            Microsoft.Reporting.WinForms.ReportParameter aParam = new Microsoft.Reporting.WinForms.ReportParameter(paramName, paramValue);
-            return aParam;
-        }
+        //    //LocalReport lr = new LocalReport
+        //    //{
+        //    //    EnableExternalImages = true
+        //    //};
+        //    //System.IO.Stream stream = GetDataSource(ref lr, sReport, sOrdNo);
+        //    //lr.LoadReportDefinition(stream);
+        //    //ReportPageSettings rps = lr.GetDefaultPageSettings();
+        //   // ReportPrinter.ReportPrintDocument printDoc = new ReportPrinter.ReportPrintDocument(lr);
+        //    PrintController printController = new StandardPrintController();
 
-        private System.IO.Stream GetDataSource(ref Microsoft.Reporting.WinForms.LocalReport lr, String sRptName, String sOrdNo)
-        {
-            DataTable dtRptData = new DataTable("ReportData");
-            System.Reflection.Assembly assembly = this.GetType().Assembly;
-            String sEmbeddedRpt = "SLSShippingApp.Reports.rpt";//
-            try
-            {
-                if (sRptName.Contains("Retailer"))
-                {
-                    DS_rptRetailerPackingLabelTableAdapters.tblRetailerPackingLabelTableAdapter ta = new DS_rptRetailerPackingLabelTableAdapters.tblRetailerPackingLabelTableAdapter();
-                    dtRptData = ta.GetData(sOrdNo);
-                    String sCusName = sRptName.Replace("PackingLabels", "").Replace("rpt", "");
-                    lr.DisplayName = sCusName + " Packing Label";
-                    lr.EnableExternalImages = true;
-                    lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DS_rptRetailerPackingLabel", dtRptData));
-                    lr.ReportEmbeddedResource = sEmbeddedRpt + sCusName + "PackingLabels.rdlc";
-                    return assembly.GetManifestResourceStream(sEmbeddedRpt + sCusName + "PackingLabels.rdlc");
-                }
-                else if (sRptName.Contains("FanBrands"))
-                {
-                    DS_rptFanBrandsLabelTableAdapters.tblLabelFanBrandsTableAdapter ta = new DS_rptFanBrandsLabelTableAdapters.tblLabelFanBrandsTableAdapter();
-                    dtRptData = ta.GetData();
-                    lr.DisplayName = "FanBrands Label";
-                    lr.EnableExternalImages = true;
-                    lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DS_rptFanBransLabel", dtRptData));
-                    lr.ReportEmbeddedResource = sEmbeddedRpt + "FanBrandsLabel.rdlc";
-                    return assembly.GetManifestResourceStream(sEmbeddedRpt + "FanBrandsLabel.rdlc");
-                }
-                else if (sRptName.Contains("QuickShipLabel"))
-                {
-                    DS_rptQuickShipLabelTableAdapters.tblLabelQuickShipTableAdapter ta = new DS_rptQuickShipLabelTableAdapters.tblLabelQuickShipTableAdapter();
-                    dtRptData = ta.GetData();
-                    lr.DisplayName = "QuickShip Label";
-                    lr.EnableExternalImages = true;
-                    lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DS_rptQuickShipLabel", dtRptData));
-                    lr.ReportEmbeddedResource = sEmbeddedRpt + "QuickShipLabel.rdlc";
-                    return assembly.GetManifestResourceStream(sEmbeddedRpt + "QuickShipLabel.rdlc");
-                }
-                //else if (sRptName.Contains("Bay"))
-                //{
-                //    DS_rptBayLabelTableAdapters.tblLabelTableAdapter ta = new DS_rptBayLabelTableAdapters.tblLabelTableAdapter();
-                //    dtRptData = ta.GetData(sOrdNo);
-                //    lr.DisplayName = "Bay Label";
-                //    lr.EnableExternalImages = true;
-                //    lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DS_rptBayLabel", dtRptData));
-                //    lr.ReportEmbeddedResource = sEmbeddedRpt + "PrintBayLabel.rdlc";
-                //    return assembly.GetManifestResourceStream(sEmbeddedRpt + "PrintBayLabel.rdlc");
-                //}
-                //else if (sRptName.Contains("PrintLabel"))
-                //{
-                //    DS_rptPrintLabelTableAdapters.tblLabelTableAdapter ta = new DS_rptPrintLabelTableAdapters.tblLabelTableAdapter();
-                //    dtRptData = ta.GetData(sOrdNo);
-                //    String sImage = dtRptData.Rows[0]["ComponentItemNumber"].ToString();
-                //    String sFullImagePath = ConfigurationManager.AppSettings["ImagePath"].ToString() + sImage + ".jpg";
-                //    sImage = "file://" + sFullImagePath.Substring(2, sFullImagePath.Length - 2).Replace("\\", "/").Replace(" ", "%20");
-                //    dtRptData.Rows[0]["Image"] = sImage;
-                //    dtRptData.AcceptChanges();
-                //    lr.DisplayName = "Item Label";
-                //    lr.EnableExternalImages = true;
-                //    lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DS_rptPrintLabel", dtRptData));
-                //    lr.ReportEmbeddedResource = sEmbeddedRpt + "PrintLabel.rdlc";
-                //    return assembly.GetManifestResourceStream(sEmbeddedRpt + "PrintLabel.rdlc");
-                //}
-                //else if (sRptName.Contains("Packing"))
-                //{
-                //    DS_rptPackingLabelsTableAdapters.tblTicketsTableAdapter ta = new DS_rptPackingLabelsTableAdapters.tblTicketsTableAdapter();
-                //    dtRptData = ta.GetData(sOrdNo);
-                //    lr.DisplayName = "Packing Label";
-                //    lr.EnableExternalImages = true;
-                //    lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DS_rptPackingLabels", dtRptData));
-                //    lr.ReportEmbeddedResource = sEmbeddedRpt + "PackingLabels.rdlc";
-                //    return assembly.GetManifestResourceStream(sEmbeddedRpt + "PackingLabels.rdlc");
-                //}
-                //else if (sRptName.Contains("Picking"))
-                //{
-                //    DS_rptPickingTicketTableAdapters.tblPickingFileTableAdapter ta = new DS_rptPickingTicketTableAdapters.tblPickingFileTableAdapter();
-                //    dtRptData = ta.GetData(String.Concat("*", sOrdNo, "*"));
-                //    lr.DisplayName = "Picking Ticket";
-                //    lr.EnableExternalImages = true;
-                //    lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DS_rptPickingTicket", dtRptData));
-                //    lr.ReportEmbeddedResource = sEmbeddedRpt + "PickingTicket.rdlc";
-                //    return assembly.GetManifestResourceStream(sEmbeddedRpt + "PickingTicket.rdlc");
-                //}
-                return null;
-            }
-            catch (Exception ex)
-            {
-                if (bVerbose)
-                    ShowErrorDetails(ex, 892, "GetDataSource");
-                else
-                    MessageBox.Show(String.Format("Error populating Report Data Source: {0}", ex.Message), "Report/Label Population");
-                return null;
-            }
-            finally
-            {
-                dtRptData.Dispose();
-            }
-        }
+        //    printDoc.PrintController = printController;
+
+        //    //if (sRptType == "Label")
+        //    //    printDoc.DefaultPageSettings.PaperSize = new PaperSize(rps.PaperSize.Kind.ToString(), rps.PaperSize.Height, rps.PaperSize.Width);
+
+        //    //lr.Refresh();
+
+        //    switch (sRptType)
+        //    {
+        //        case "Label":
+        //            printDoc.PrinterSettings.PrinterName = sLabelPrinter;
+        //            break;
+        //        case "Ticket":
+        //        case "SFO":
+        //            printDoc.PrinterSettings.PrinterName = sTicketPrinter;
+        //            break;
+        //    }
+        //    printDoc.PrinterSettings.Copies = iCopies;
+        //    printDoc.DocumentName = sReport;
+
+        //    String sPrinter = sLabelPrinter;
+        //    if (sRptType != "Label")
+        //        sPrinter = sTicketPrinter;
+        //    //Check for printer
+        //    if (!CheckPrinterConnected(sPrinter))
+        //    {
+        //        MessageBox.Show(String.Format("{0} is either not connected, or not a valid printer", sPrinter), "Invalid Printer");
+        //        return;
+        //    }
+
+        //    //Want to use Print Preview, but against live data. 
+        //    //commenting out the if...else portion. 
+        //    //will need to uncomment when testing completes - KEB 20150302
+        //    //#if(DEBUG)
+
+        //    //          PrintPreviewDialog pv = new PrintPreviewDialog();//Do Print Preview when in test mode
+        //    //         pv.Document = printDoc;
+        //    //         pv.Document.PrinterSettings.DefaultPageSettings.Landscape = false;
+        //    //         pv.ShowDialog();
+        //    //#endif
+        //    //no print prview here            
+        //    printDoc.Print();
+        //}
+
+        //private Microsoft.Reporting.WinForms.ReportParameterCollection ReportDefaultParam()
+        //{
+        //    ReportParameterCollection arrLst = new ReportParameterCollection
+        //    {
+        //        CreateReportParameter("@OrderNumber", g_sOrderNumber)
+        //    };
+        //    return arrLst;
+        //}
+
+        //private Microsoft.Reporting.WinForms.ReportParameter CreateReportParameter(String paramName, String paramValue)
+        //{
+        //    Microsoft.Reporting.WinForms.ReportParameter aParam = new Microsoft.Reporting.WinForms.ReportParameter(paramName, paramValue);
+        //    return aParam;
+        //}
+
+        //private System.IO.Stream GetDataSource(ref Microsoft.Reporting.WinForms.LocalReport lr, String sRptName, String sOrdNo)
+        //{
+        //    DataTable dtRptData = new DataTable("ReportData");
+        //    System.Reflection.Assembly assembly = this.GetType().Assembly;
+        //    String sEmbeddedRpt = "SLSShippingApp.Reports.rpt";//
+        //    try
+        //    {
+        //        //if (sRptName.Contains("Retailer"))
+        //        //{
+        //        //    DS_rptRetailerPackingLabelTableAdapters.tblRetailerPackingLabelTableAdapter ta = new DS_rptRetailerPackingLabelTableAdapters.tblRetailerPackingLabelTableAdapter();
+        //        //    dtRptData = ta.GetData(sOrdNo);
+        //        //    String sCusName = sRptName.Replace("PackingLabels", "").Replace("rpt", "");
+        //        //    lr.DisplayName = sCusName + " Packing Label";
+        //        //    lr.EnableExternalImages = true;
+        //        //    lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DS_rptRetailerPackingLabel", dtRptData));
+        //        //    lr.ReportEmbeddedResource = sEmbeddedRpt + sCusName + "PackingLabels.rdlc";
+        //        //    return assembly.GetManifestResourceStream(sEmbeddedRpt + sCusName + "PackingLabels.rdlc");
+        //        //}
+        //        //else
+        //        //if (sRptName.Contains("FanBrands"))
+        //        //{
+        //        //    DS_rptFanBrandsLabelTableAdapters.tblLabelFanBrandsTableAdapter ta = new DS_rptFanBrandsLabelTableAdapters.tblLabelFanBrandsTableAdapter();
+        //        //    dtRptData = ta.GetData();
+        //        //    lr.DisplayName = "FanBrands Label";
+        //        //    lr.EnableExternalImages = true;
+        //        //    lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DS_rptFanBransLabel", dtRptData));
+        //        //    lr.ReportEmbeddedResource = sEmbeddedRpt + "FanBrandsLabel.rdlc";
+        //        //    return assembly.GetManifestResourceStream(sEmbeddedRpt + "FanBrandsLabel.rdlc");
+        //        //}
+        //        //else 
+        //        //if (sRptName.Contains("QuickShipLabel"))
+        //        //{
+        //        //    DS_rptQuickShipLabelTableAdapters.tblLabelQuickShipTableAdapter ta = new DS_rptQuickShipLabelTableAdapters.tblLabelQuickShipTableAdapter();
+        //        //    dtRptData = ta.GetData();
+        //        //    lr.DisplayName = "QuickShip Label";
+        //        //    lr.EnableExternalImages = true;
+        //        //    lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DS_rptQuickShipLabel", dtRptData));
+        //        //    lr.ReportEmbeddedResource = sEmbeddedRpt + "QuickShipLabel.rdlc";
+        //        //    return assembly.GetManifestResourceStream(sEmbeddedRpt + "QuickShipLabel.rdlc");
+        //        //}
+        //        //else if (sRptName.Contains("Bay"))
+        //        //{
+        //        //    DS_rptBayLabelTableAdapters.tblLabelTableAdapter ta = new DS_rptBayLabelTableAdapters.tblLabelTableAdapter();
+        //        //    dtRptData = ta.GetData(sOrdNo);
+        //        //    lr.DisplayName = "Bay Label";
+        //        //    lr.EnableExternalImages = true;
+        //        //    lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DS_rptBayLabel", dtRptData));
+        //        //    lr.ReportEmbeddedResource = sEmbeddedRpt + "PrintBayLabel.rdlc";
+        //        //    return assembly.GetManifestResourceStream(sEmbeddedRpt + "PrintBayLabel.rdlc");
+        //        //}
+        //        //else if (sRptName.Contains("PrintLabel"))
+        //        //{
+        //        //    DS_rptPrintLabelTableAdapters.tblLabelTableAdapter ta = new DS_rptPrintLabelTableAdapters.tblLabelTableAdapter();
+        //        //    dtRptData = ta.GetData(sOrdNo);
+        //        //    String sImage = dtRptData.Rows[0]["ComponentItemNumber"].ToString();
+        //        //    String sFullImagePath = ConfigurationManager.AppSettings["ImagePath"].ToString() + sImage + ".jpg";
+        //        //    sImage = "file://" + sFullImagePath.Substring(2, sFullImagePath.Length - 2).Replace("\\", "/").Replace(" ", "%20");
+        //        //    dtRptData.Rows[0]["Image"] = sImage;
+        //        //    dtRptData.AcceptChanges();
+        //        //    lr.DisplayName = "Item Label";
+        //        //    lr.EnableExternalImages = true;
+        //        //    lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DS_rptPrintLabel", dtRptData));
+        //        //    lr.ReportEmbeddedResource = sEmbeddedRpt + "PrintLabel.rdlc";
+        //        //    return assembly.GetManifestResourceStream(sEmbeddedRpt + "PrintLabel.rdlc");
+        //        //}
+        //        //else if (sRptName.Contains("Packing"))
+        //        //{
+        //        //    DS_rptPackingLabelsTableAdapters.tblTicketsTableAdapter ta = new DS_rptPackingLabelsTableAdapters.tblTicketsTableAdapter();
+        //        //    dtRptData = ta.GetData(sOrdNo);
+        //        //    lr.DisplayName = "Packing Label";
+        //        //    lr.EnableExternalImages = true;
+        //        //    lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DS_rptPackingLabels", dtRptData));
+        //        //    lr.ReportEmbeddedResource = sEmbeddedRpt + "PackingLabels.rdlc";
+        //        //    return assembly.GetManifestResourceStream(sEmbeddedRpt + "PackingLabels.rdlc");
+        //        //}
+        //        //else if (sRptName.Contains("Picking"))
+        //        //{
+        //        //    DS_rptPickingTicketTableAdapters.tblPickingFileTableAdapter ta = new DS_rptPickingTicketTableAdapters.tblPickingFileTableAdapter();
+        //        //    dtRptData = ta.GetData(String.Concat("*", sOrdNo, "*"));
+        //        //    lr.DisplayName = "Picking Ticket";
+        //        //    lr.EnableExternalImages = true;
+        //        //    lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DS_rptPickingTicket", dtRptData));
+        //        //    lr.ReportEmbeddedResource = sEmbeddedRpt + "PickingTicket.rdlc";
+        //        //    return assembly.GetManifestResourceStream(sEmbeddedRpt + "PickingTicket.rdlc");
+        //        //}
+        //        return null;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        if (bVerbose)
+        //            ShowErrorDetails(ex, 892, "GetDataSource");
+        //        else
+        //            MessageBox.Show(String.Format("Error populating Report Data Source: {0}", ex.Message), "Report/Label Population");
+        //        return null;
+        //    }
+        //    finally
+        //    {
+        //        dtRptData.Dispose();
+        //    }
+        //}
         #endregion
 
         #region PRINTER ASSIGNMENT

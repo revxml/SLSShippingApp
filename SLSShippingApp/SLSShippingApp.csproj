@@ -146,21 +146,6 @@
     <Compile Include="CommonAPI.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="DS_rptFanBrandsLabel.Designer.cs">
-      <DependentUpon>DS_rptFanBrandsLabel.xsd</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="DS_rptQuickShipLabel.Designer.cs">
-      <DependentUpon>DS_rptQuickShipLabel.xsd</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Include="DS_rptRetailerPackingLabel.Designer.cs">
-      <DependentUpon>DS_rptRetailerPackingLabel.xsd</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="QtyUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,11 +155,23 @@
     <Compile Include="ReportPrintDocument.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\rptFanBrandsLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptFanBrandsLabel.Designer.cs">
+      <DependentUpon>rptFanBrandsLabel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\rptBayLabel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\rptBayLabel.Designer.cs">
       <DependentUpon>rptBayLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\rptHSNPackingLables.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptHSNPackingLables.Designer.cs">
+      <DependentUpon>rptHSNPackingLables.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\rptPackingLabels.cs">
       <SubType>Component</SubType>
@@ -194,6 +191,24 @@
     <Compile Include="Reports\rptPrintLabel.Designer.cs">
       <DependentUpon>rptPrintLabel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\rptQuickShipLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptQuickShipLabel.Designer.cs">
+      <DependentUpon>rptQuickShipLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\rptTargetPackingLabels.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptTargetPackingLabels.Designer.cs">
+      <DependentUpon>rptTargetPackingLabels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\rptWalmartPackingLabels.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptWalmartPackingLabels.Designer.cs">
+      <DependentUpon>rptWalmartPackingLabels.cs</DependentUpon>
+    </Compile>
     <Compile Include="SLSShippingApp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -209,18 +224,6 @@
     <Compile Include="WindowsUsers.Designer.cs">
       <DependentUpon>WindowsUsers.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="DS_rptFanBrandsLabel.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DS_rptFanBrandsLabel.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DS_rptQuickShipLabel.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DS_rptQuickShipLabel.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DS_rptRetailerPackingLabel.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DS_rptRetailerPackingLabel.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="QtyUpdate.resx">
       <DependentUpon>QtyUpdate.cs</DependentUpon>
@@ -235,11 +238,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reports\rptFanBrandsLabel.resx">
+      <DependentUpon>rptFanBrandsLabel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptBayLabel.resx">
       <DependentUpon>rptBayLabel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\rptHSNPackingLabels.rdlc">
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Reports\rptHSNPackingLables.resx">
+      <DependentUpon>rptHSNPackingLables.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptPackingLabels.resx">
       <DependentUpon>rptPackingLabels.cs</DependentUpon>
@@ -250,11 +256,14 @@
     <EmbeddedResource Include="Reports\rptPrintLabel.resx">
       <DependentUpon>rptPrintLabel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\rptTargetPackingLabels.rdlc">
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Reports\rptQuickShipLabel.resx">
+      <DependentUpon>rptQuickShipLabel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\rptWalmartPackingLabels.rdlc">
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Reports\rptTargetPackingLabels.resx">
+      <DependentUpon>rptTargetPackingLabels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptWalmartPackingLabels.resx">
+      <DependentUpon>rptWalmartPackingLabels.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SLSShippingApp.resx">
       <DependentUpon>SLSShippingApp.cs</DependentUpon>
@@ -266,24 +275,6 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DS_rptFanBrandsLabel.xsc">
-      <DependentUpon>DS_rptFanBrandsLabel.xsd</DependentUpon>
-    </None>
-    <None Include="DS_rptFanBrandsLabel.xss">
-      <DependentUpon>DS_rptFanBrandsLabel.xsd</DependentUpon>
-    </None>
-    <None Include="DS_rptQuickShipLabel.xsc">
-      <DependentUpon>DS_rptQuickShipLabel.xsd</DependentUpon>
-    </None>
-    <None Include="DS_rptQuickShipLabel.xss">
-      <DependentUpon>DS_rptQuickShipLabel.xsd</DependentUpon>
-    </None>
-    <None Include="DS_rptRetailerPackingLabel.xsc">
-      <DependentUpon>DS_rptRetailerPackingLabel.xsd</DependentUpon>
-    </None>
-    <None Include="DS_rptRetailerPackingLabel.xss">
-      <DependentUpon>DS_rptRetailerPackingLabel.xsd</DependentUpon>
     </None>
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
@@ -298,10 +289,13 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\icon.ico" />
-    <Resource Include="Reports\imgBayOrder.jpg" />
-    <Resource Include="Reports\imgHOLD.jpg" />
-    <Resource Include="Reports\imgSingleOrder.jpg" />
-    <Resource Include="Reports\imgProp65.jpg" />
+    <Resource Include="Reports\images\imgBayOrder.jpg" />
+    <Resource Include="Reports\images\imgHOLD.jpg" />
+    <Resource Include="Reports\images\imgSingleOrder.jpg" />
+    <Resource Include="Reports\images\imgProp65.jpg" />
+    <Content Include="Reports\images\imgHSN.jpg" />
+    <Content Include="Reports\images\imgTarget.jpg" />
+    <Content Include="Reports\images\imgWalmart.jpg" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
