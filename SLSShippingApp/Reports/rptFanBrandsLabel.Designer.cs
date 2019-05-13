@@ -49,11 +49,11 @@
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
-            this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel2 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
-            this.lblToday = new DevExpress.XtraReports.UI.XRLabel();
             this.pbImage = new DevExpress.XtraReports.UI.XRPictureBox();
+            this.lblToday = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel2 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // Title
@@ -156,21 +156,45 @@
             this.Detail.HeightF = 156.6038F;
             this.Detail.Name = "Detail";
             // 
-            // xrLabel1
+            // pbImage
             // 
-            this.xrLabel1.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
-            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(12.26415F, 8.311318F);
-            this.xrLabel1.Multiline = true;
-            this.xrLabel1.Name = "xrLabel1";
-            this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel1.SizeF = new System.Drawing.SizeF(208.4906F, 22.99999F);
-            this.xrLabel1.StylePriority.UseFont = false;
-            this.xrLabel1.StylePriority.UseTextAlignment = false;
-            this.xrLabel1.Text = "Bay Location: Fan Brands";
-            this.xrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.pbImage.LocationFloat = new DevExpress.Utils.PointFloat(252.8302F, 8.311318F);
+            this.pbImage.Name = "pbImage";
+            this.pbImage.SizeF = new System.Drawing.SizeF(137.7359F, 106.0189F);
+            // 
+            // lblToday
+            // 
+            this.lblToday.CanGrow = false;
+            this.lblToday.Font = new System.Drawing.Font("Arial", 11F);
+            this.lblToday.LocationFloat = new DevExpress.Utils.PointFloat(12.26415F, 63.97169F);
+            this.lblToday.Multiline = true;
+            this.lblToday.Name = "lblToday";
+            this.lblToday.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.lblToday.SizeF = new System.Drawing.SizeF(233.0189F, 23F);
+            this.lblToday.StylePriority.UseFont = false;
+            this.lblToday.StylePriority.UseTextAlignment = false;
+            this.lblToday.Text = "lblToday";
+            this.lblToday.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            // 
+            // xrLabel3
+            // 
+            this.xrLabel3.CanGrow = false;
+            this.xrLabel3.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[StockNumber]")});
+            this.xrLabel3.Font = new System.Drawing.Font("Arial", 11F);
+            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(133.9623F, 37.5566F);
+            this.xrLabel3.Multiline = true;
+            this.xrLabel3.Name = "xrLabel3";
+            this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel3.SizeF = new System.Drawing.SizeF(109.434F, 20.16982F);
+            this.xrLabel3.StylePriority.UseFont = false;
+            this.xrLabel3.StylePriority.UseTextAlignment = false;
+            this.xrLabel3.Text = "xrLabel3";
+            this.xrLabel3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrLabel2
             // 
+            this.xrLabel2.CanGrow = false;
             this.xrLabel2.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
             this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(12.26415F, 36.23585F);
             this.xrLabel2.Multiline = true;
@@ -182,39 +206,19 @@
             this.xrLabel2.Text = "Stock Number:";
             this.xrLabel2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
-            // xrLabel3
+            // xrLabel1
             // 
-            this.xrLabel3.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[StockNumber]")});
-            this.xrLabel3.Font = new System.Drawing.Font("Arial", 11F);
-            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(133.9623F, 37.5566F);
-            this.xrLabel3.Multiline = true;
-            this.xrLabel3.Name = "xrLabel3";
-            this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel3.SizeF = new System.Drawing.SizeF(109.434F, 20.16982F);
-            this.xrLabel3.StylePriority.UseFont = false;
-            this.xrLabel3.StylePriority.UseTextAlignment = false;
-            this.xrLabel3.Text = "xrLabel3";
-            this.xrLabel3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            // 
-            // lblToday
-            // 
-            this.lblToday.Font = new System.Drawing.Font("Arial", 11F);
-            this.lblToday.LocationFloat = new DevExpress.Utils.PointFloat(12.26415F, 63.97169F);
-            this.lblToday.Multiline = true;
-            this.lblToday.Name = "lblToday";
-            this.lblToday.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.lblToday.SizeF = new System.Drawing.SizeF(233.0189F, 23F);
-            this.lblToday.StylePriority.UseFont = false;
-            this.lblToday.StylePriority.UseTextAlignment = false;
-            this.lblToday.Text = "lblToday";
-            this.lblToday.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            // 
-            // pbImage
-            // 
-            this.pbImage.LocationFloat = new DevExpress.Utils.PointFloat(252.8302F, 8.311318F);
-            this.pbImage.Name = "pbImage";
-            this.pbImage.SizeF = new System.Drawing.SizeF(137.7359F, 106.0189F);
+            this.xrLabel1.CanGrow = false;
+            this.xrLabel1.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
+            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(12.26415F, 8.311318F);
+            this.xrLabel1.Multiline = true;
+            this.xrLabel1.Name = "xrLabel1";
+            this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel1.SizeF = new System.Drawing.SizeF(208.4906F, 22.99999F);
+            this.xrLabel1.StylePriority.UseFont = false;
+            this.xrLabel1.StylePriority.UseTextAlignment = false;
+            this.xrLabel1.Text = "Bay Location: Fan Brands";
+            this.xrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
             // rptFanBrandsLabel
             // 

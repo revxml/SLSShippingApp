@@ -6,9 +6,9 @@ using DevExpress.XtraReports.UI;
 
 namespace SLSShippingApp.Reports
 {
-    public partial class rptHSNPackingLables : DevExpress.XtraReports.UI.XtraReport
+    public partial class rptHSNPackingLabels : DevExpress.XtraReports.UI.XtraReport
     {
-        public rptHSNPackingLables()
+        public rptHSNPackingLabels()
         {
             InitializeComponent();
         }

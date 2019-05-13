@@ -1,6 +1,6 @@
 ﻿namespace SLSShippingApp.Reports
 {
-    partial class rptPickingTicket
+    partial class rptChargeBeforeShipTicket
     {
         /// <summary>
         /// Required designer variable.
@@ -141,8 +141,7 @@
             DevExpress.DataAccess.Sql.ColumnExpression columnExpression54 = new DevExpress.DataAccess.Sql.ColumnExpression();
             DevExpress.DataAccess.Sql.Column column55 = new DevExpress.DataAccess.Sql.Column();
             DevExpress.DataAccess.Sql.ColumnExpression columnExpression55 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(rptPickingTicket));
-            DevExpress.XtraPrinting.BarCode.Code39Generator code39Generator1 = new DevExpress.XtraPrinting.BarCode.Code39Generator();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(rptChargeBeforeShipTicket));
             this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.Title = new DevExpress.XtraReports.UI.XRControlStyle();
             this.GroupCaption1 = new DevExpress.XtraReports.UI.XRControlStyle();
@@ -158,22 +157,10 @@
             this.pageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.pageInfo2 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
-            this.xrBarCode1 = new DevExpress.XtraReports.UI.XRBarCode();
-            this.panelBillToBox = new DevExpress.XtraReports.UI.XRPanel();
-            this.lblBillToBoxState = new DevExpress.XtraReports.UI.XRLabel();
-            this.lblBillToBoxCity = new DevExpress.XtraReports.UI.XRLabel();
-            this.lblBillToBoxAdd3 = new DevExpress.XtraReports.UI.XRLabel();
-            this.lblBillToBoxAdd2 = new DevExpress.XtraReports.UI.XRLabel();
-            this.lblBillToBoxAdd1 = new DevExpress.XtraReports.UI.XRLabel();
-            this.lblBillToBoxName = new DevExpress.XtraReports.UI.XRLabel();
-            this.lblBillToBoxHeader = new DevExpress.XtraReports.UI.XRLabel();
             this.panelShipInstrBox = new DevExpress.XtraReports.UI.XRPanel();
             this.lblShipInstBoxInstruction2 = new DevExpress.XtraReports.UI.XRLabel();
             this.lblShipInstBoxInstruction1 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
-            this.imgSingle = new DevExpress.XtraReports.UI.XRPictureBox();
-            this.imgHold = new DevExpress.XtraReports.UI.XRPictureBox();
-            this.imgBay = new DevExpress.XtraReports.UI.XRPictureBox();
             this.lblBayLocationVal = new DevExpress.XtraReports.UI.XRLabel();
             this.lblBayLoc = new DevExpress.XtraReports.UI.XRLabel();
             this.panelCusNotesBox = new DevExpress.XtraReports.UI.XRPanel();
@@ -184,15 +171,6 @@
             this.lblCustNotesShipperAcctVal = new DevExpress.XtraReports.UI.XRLabel();
             this.lblShipperAcct = new DevExpress.XtraReports.UI.XRLabel();
             this.lblCusNotesHeader = new DevExpress.XtraReports.UI.XRLabel();
-            this.panelShipToBox = new DevExpress.XtraReports.UI.XRPanel();
-            this.lblShipToBox3 = new DevExpress.XtraReports.UI.XRLabel();
-            this.lblShipToBoxZip = new DevExpress.XtraReports.UI.XRLabel();
-            this.lblShipToBoxState = new DevExpress.XtraReports.UI.XRLabel();
-            this.lblShipToBoxCity = new DevExpress.XtraReports.UI.XRLabel();
-            this.lblShipToBox2 = new DevExpress.XtraReports.UI.XRLabel();
-            this.lblShipToBox1 = new DevExpress.XtraReports.UI.XRLabel();
-            this.lblShipToBoxName = new DevExpress.XtraReports.UI.XRLabel();
-            this.lblShipToBoxHeader = new DevExpress.XtraReports.UI.XRLabel();
             this.xrPanel1 = new DevExpress.XtraReports.UI.XRPanel();
             this.lblCusBoxNumberVal = new DevExpress.XtraReports.UI.XRLabel();
             this.lblCusBoxNumLbl = new DevExpress.XtraReports.UI.XRLabel();
@@ -212,10 +190,6 @@
             this.lblRetailer2 = new DevExpress.XtraReports.UI.XRLabel();
             this.lblRetailer1 = new DevExpress.XtraReports.UI.XRLabel();
             this.lblRetailerName = new DevExpress.XtraReports.UI.XRLabel();
-            this.pbProp65 = new DevExpress.XtraReports.UI.XRPictureBox();
-            this.lblProp653 = new DevExpress.XtraReports.UI.XRLabel();
-            this.lblProp652 = new DevExpress.XtraReports.UI.XRLabel();
-            this.lblProp651 = new DevExpress.XtraReports.UI.XRLabel();
             this.label1 = new DevExpress.XtraReports.UI.XRLabel();
             this.GroupHeader2 = new DevExpress.XtraReports.UI.GroupHeaderBand();
             this.table2 = new DevExpress.XtraReports.UI.XRTable();
@@ -234,6 +208,10 @@
             this.tableCell60 = new DevExpress.XtraReports.UI.XRTableCell();
             this.tableCell61 = new DevExpress.XtraReports.UI.XRTableCell();
             this.tableCell64 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrLabel2 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel5 = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.table2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.table3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -606,16 +584,14 @@
             // ReportHeader
             // 
             this.ReportHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrBarCode1,
-            this.panelBillToBox,
+            this.xrLabel5,
+            this.xrLabel4,
+            this.xrLabel3,
+            this.xrLabel2,
             this.panelShipInstrBox,
-            this.imgSingle,
-            this.imgHold,
-            this.imgBay,
             this.lblBayLocationVal,
             this.lblBayLoc,
             this.panelCusNotesBox,
-            this.panelShipToBox,
             this.xrPanel1,
             this.lblPONumber,
             this.lblPO,
@@ -630,166 +606,9 @@
             this.lblRetailer2,
             this.lblRetailer1,
             this.lblRetailerName,
-            this.pbProp65,
-            this.lblProp653,
-            this.lblProp652,
-            this.lblProp651,
             this.label1});
             this.ReportHeader.HeightF = 615.802F;
             this.ReportHeader.Name = "ReportHeader";
-            // 
-            // xrBarCode1
-            // 
-            this.xrBarCode1.Alignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrBarCode1.AutoModule = true;
-            this.xrBarCode1.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[OrderorSONumber]")});
-            this.xrBarCode1.LocationFloat = new DevExpress.Utils.PointFloat(567.3585F, 11.93396F);
-            this.xrBarCode1.Name = "xrBarCode1";
-            this.xrBarCode1.Padding = new DevExpress.XtraPrinting.PaddingInfo(10, 10, 0, 0, 100F);
-            this.xrBarCode1.ProcessNullValues = DevExpress.XtraReports.UI.ValueSuppressType.Suppress;
-            this.xrBarCode1.SizeF = new System.Drawing.SizeF(200F, 69.33963F);
-            this.xrBarCode1.StylePriority.UseTextAlignment = false;
-            code39Generator1.CalcCheckSum = false;
-            code39Generator1.WideNarrowRatio = 3F;
-            this.xrBarCode1.Symbology = code39Generator1;
-            this.xrBarCode1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrBarCode1.TextFormatString = "{0:#}";
-            // 
-            // panelBillToBox
-            // 
-            this.panelBillToBox.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.panelBillToBox.BorderWidth = 2F;
-            this.panelBillToBox.CanGrow = false;
-            this.panelBillToBox.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.lblBillToBoxState,
-            this.lblBillToBoxCity,
-            this.lblBillToBoxAdd3,
-            this.lblBillToBoxAdd2,
-            this.lblBillToBoxAdd1,
-            this.lblBillToBoxName,
-            this.lblBillToBoxHeader});
-            this.panelBillToBox.LocationFloat = new DevExpress.Utils.PointFloat(537.7358F, 329.4811F);
-            this.panelBillToBox.Name = "panelBillToBox";
-            this.panelBillToBox.SizeF = new System.Drawing.SizeF(234.9056F, 137.2641F);
-            this.panelBillToBox.StylePriority.UseBorders = false;
-            this.panelBillToBox.StylePriority.UseBorderWidth = false;
-            // 
-            // lblBillToBoxState
-            // 
-            this.lblBillToBoxState.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.lblBillToBoxState.CanGrow = false;
-            this.lblBillToBoxState.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[BillToState]")});
-            this.lblBillToBoxState.LocationFloat = new DevExpress.Utils.PointFloat(159.4338F, 115.6227F);
-            this.lblBillToBoxState.Multiline = true;
-            this.lblBillToBoxState.Name = "lblBillToBoxState";
-            this.lblBillToBoxState.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblBillToBoxState.SizeF = new System.Drawing.SizeF(70.75482F, 19.22641F);
-            this.lblBillToBoxState.StylePriority.UseBorders = false;
-            this.lblBillToBoxState.StylePriority.UseTextAlignment = false;
-            this.lblBillToBoxState.Text = "lblBillToBoxState";
-            this.lblBillToBoxState.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            // 
-            // lblBillToBoxCity
-            // 
-            this.lblBillToBoxCity.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.lblBillToBoxCity.CanGrow = false;
-            this.lblBillToBoxCity.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[BIllToCity]")});
-            this.lblBillToBoxCity.LocationFloat = new DevExpress.Utils.PointFloat(1.88678F, 114.6792F);
-            this.lblBillToBoxCity.Multiline = true;
-            this.lblBillToBoxCity.Name = "lblBillToBoxCity";
-            this.lblBillToBoxCity.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblBillToBoxCity.SizeF = new System.Drawing.SizeF(152.8301F, 19.22641F);
-            this.lblBillToBoxCity.StylePriority.UseBorders = false;
-            this.lblBillToBoxCity.StylePriority.UseTextAlignment = false;
-            this.lblBillToBoxCity.Text = "lblBillToBoxCity";
-            this.lblBillToBoxCity.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            // 
-            // lblBillToBoxAdd3
-            // 
-            this.lblBillToBoxAdd3.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.lblBillToBoxAdd3.CanGrow = false;
-            this.lblBillToBoxAdd3.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[BIllToAddress3]")});
-            this.lblBillToBoxAdd3.LocationFloat = new DevExpress.Utils.PointFloat(1.88678F, 93.92447F);
-            this.lblBillToBoxAdd3.Multiline = true;
-            this.lblBillToBoxAdd3.Name = "lblBillToBoxAdd3";
-            this.lblBillToBoxAdd3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblBillToBoxAdd3.SizeF = new System.Drawing.SizeF(231.132F, 18.28302F);
-            this.lblBillToBoxAdd3.StylePriority.UseBorders = false;
-            this.lblBillToBoxAdd3.StylePriority.UseTextAlignment = false;
-            this.lblBillToBoxAdd3.Text = "lblBillToBoxAdd3";
-            this.lblBillToBoxAdd3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            // 
-            // lblBillToBoxAdd2
-            // 
-            this.lblBillToBoxAdd2.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.lblBillToBoxAdd2.CanGrow = false;
-            this.lblBillToBoxAdd2.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[BillToAddress2]")});
-            this.lblBillToBoxAdd2.LocationFloat = new DevExpress.Utils.PointFloat(1.88678F, 70.33957F);
-            this.lblBillToBoxAdd2.Multiline = true;
-            this.lblBillToBoxAdd2.Name = "lblBillToBoxAdd2";
-            this.lblBillToBoxAdd2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblBillToBoxAdd2.SizeF = new System.Drawing.SizeF(231.132F, 21.11319F);
-            this.lblBillToBoxAdd2.StylePriority.UseBorders = false;
-            this.lblBillToBoxAdd2.StylePriority.UseTextAlignment = false;
-            this.lblBillToBoxAdd2.Text = "lblBillToBoxAdd2";
-            this.lblBillToBoxAdd2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            // 
-            // lblBillToBoxAdd1
-            // 
-            this.lblBillToBoxAdd1.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.lblBillToBoxAdd1.CanGrow = false;
-            this.lblBillToBoxAdd1.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[BillToAddress1]")});
-            this.lblBillToBoxAdd1.LocationFloat = new DevExpress.Utils.PointFloat(1.88678F, 48.64157F);
-            this.lblBillToBoxAdd1.Multiline = true;
-            this.lblBillToBoxAdd1.Name = "lblBillToBoxAdd1";
-            this.lblBillToBoxAdd1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblBillToBoxAdd1.SizeF = new System.Drawing.SizeF(231.132F, 20.1698F);
-            this.lblBillToBoxAdd1.StylePriority.UseBorders = false;
-            this.lblBillToBoxAdd1.StylePriority.UseTextAlignment = false;
-            this.lblBillToBoxAdd1.Text = "lblBillToBoxAdd1";
-            this.lblBillToBoxAdd1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            // 
-            // lblBillToBoxName
-            // 
-            this.lblBillToBoxName.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.lblBillToBoxName.CanGrow = false;
-            this.lblBillToBoxName.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[BillToName]")});
-            this.lblBillToBoxName.LocationFloat = new DevExpress.Utils.PointFloat(1.88678F, 25.05658F);
-            this.lblBillToBoxName.Multiline = true;
-            this.lblBillToBoxName.Name = "lblBillToBoxName";
-            this.lblBillToBoxName.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblBillToBoxName.SizeF = new System.Drawing.SizeF(231.132F, 23F);
-            this.lblBillToBoxName.StylePriority.UseBorders = false;
-            this.lblBillToBoxName.StylePriority.UseTextAlignment = false;
-            this.lblBillToBoxName.Text = "lblBillToBoxName";
-            this.lblBillToBoxName.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            // 
-            // lblBillToBoxHeader
-            // 
-            this.lblBillToBoxHeader.BackColor = System.Drawing.Color.DarkGray;
-            this.lblBillToBoxHeader.CanGrow = false;
-            this.lblBillToBoxHeader.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.lblBillToBoxHeader.ForeColor = System.Drawing.Color.White;
-            this.lblBillToBoxHeader.LocationFloat = new DevExpress.Utils.PointFloat(1.88678F, 1.41507F);
-            this.lblBillToBoxHeader.Multiline = true;
-            this.lblBillToBoxHeader.Name = "lblBillToBoxHeader";
-            this.lblBillToBoxHeader.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblBillToBoxHeader.SizeF = new System.Drawing.SizeF(231.132F, 23F);
-            this.lblBillToBoxHeader.StylePriority.UseBackColor = false;
-            this.lblBillToBoxHeader.StylePriority.UseFont = false;
-            this.lblBillToBoxHeader.StylePriority.UseForeColor = false;
-            this.lblBillToBoxHeader.StylePriority.UseTextAlignment = false;
-            this.lblBillToBoxHeader.Text = "Bill To";
-            this.lblBillToBoxHeader.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // panelShipInstrBox
             // 
@@ -857,33 +676,6 @@
             this.xrLabel1.StylePriority.UseTextAlignment = false;
             this.xrLabel1.Text = "Shipping Instructions";
             this.xrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            // 
-            // imgSingle
-            // 
-            this.imgSingle.ImageAlignment = DevExpress.XtraPrinting.ImageAlignment.MiddleCenter;
-            this.imgSingle.ImageSource = new DevExpress.XtraPrinting.Drawing.ImageSource("img", resources.GetString("imgSingle.ImageSource"));
-            this.imgSingle.LocationFloat = new DevExpress.Utils.PointFloat(345.283F, 367.7452F);
-            this.imgSingle.Name = "imgSingle";
-            this.imgSingle.SizeF = new System.Drawing.SizeF(94.3396F, 94.69812F);
-            this.imgSingle.Visible = false;
-            // 
-            // imgHold
-            // 
-            this.imgHold.ImageAlignment = DevExpress.XtraPrinting.ImageAlignment.MiddleCenter;
-            this.imgHold.ImageSource = new DevExpress.XtraPrinting.Drawing.ImageSource("img", resources.GetString("imgHold.ImageSource"));
-            this.imgHold.LocationFloat = new DevExpress.Utils.PointFloat(281.132F, 361.1415F);
-            this.imgHold.Name = "imgHold";
-            this.imgHold.SizeF = new System.Drawing.SizeF(206.6037F, 104.1321F);
-            this.imgHold.Visible = false;
-            // 
-            // imgBay
-            // 
-            this.imgBay.ImageAlignment = DevExpress.XtraPrinting.ImageAlignment.MiddleCenter;
-            this.imgBay.ImageSource = new DevExpress.XtraPrinting.Drawing.ImageSource("img", resources.GetString("imgBay.ImageSource"));
-            this.imgBay.LocationFloat = new DevExpress.Utils.PointFloat(283.9622F, 359.2547F);
-            this.imgBay.Name = "imgBay";
-            this.imgBay.SizeF = new System.Drawing.SizeF(205.6604F, 106.9622F);
-            this.imgBay.Visible = false;
             // 
             // lblBayLocationVal
             // 
@@ -1045,158 +837,6 @@
             this.lblCusNotesHeader.StylePriority.UseTextAlignment = false;
             this.lblCusNotesHeader.Text = "Customer Notes";
             this.lblCusNotesHeader.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            // 
-            // panelShipToBox
-            // 
-            this.panelShipToBox.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.panelShipToBox.BorderWidth = 2F;
-            this.panelShipToBox.CanGrow = false;
-            this.panelShipToBox.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.lblShipToBox3,
-            this.lblShipToBoxZip,
-            this.lblShipToBoxState,
-            this.lblShipToBoxCity,
-            this.lblShipToBox2,
-            this.lblShipToBox1,
-            this.lblShipToBoxName,
-            this.lblShipToBoxHeader});
-            this.panelShipToBox.LocationFloat = new DevExpress.Utils.PointFloat(16.98113F, 327.5943F);
-            this.panelShipToBox.Name = "panelShipToBox";
-            this.panelShipToBox.SizeF = new System.Drawing.SizeF(239.6227F, 140.0944F);
-            this.panelShipToBox.StylePriority.UseBorders = false;
-            this.panelShipToBox.StylePriority.UseBorderWidth = false;
-            // 
-            // lblShipToBox3
-            // 
-            this.lblShipToBox3.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.lblShipToBox3.CanGrow = false;
-            this.lblShipToBox3.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ShipToAddress3]")});
-            this.lblShipToBox3.LocationFloat = new DevExpress.Utils.PointFloat(2.264174F, 92.98114F);
-            this.lblShipToBox3.Multiline = true;
-            this.lblShipToBox3.Name = "lblShipToBox3";
-            this.lblShipToBox3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblShipToBox3.SizeF = new System.Drawing.SizeF(231.1321F, 21.11322F);
-            this.lblShipToBox3.StylePriority.UseBorders = false;
-            this.lblShipToBox3.StylePriority.UseTextAlignment = false;
-            this.lblShipToBox3.Text = "lblShipToBox3";
-            this.lblShipToBox3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            // 
-            // lblShipToBoxZip
-            // 
-            this.lblShipToBoxZip.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.lblShipToBoxZip.CanGrow = false;
-            this.lblShipToBoxZip.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ShipToZipCode]")});
-            this.lblShipToBoxZip.LocationFloat = new DevExpress.Utils.PointFloat(132.0755F, 116.9245F);
-            this.lblShipToBoxZip.Multiline = true;
-            this.lblShipToBoxZip.Name = "lblShipToBoxZip";
-            this.lblShipToBoxZip.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblShipToBoxZip.SizeF = new System.Drawing.SizeF(61.32077F, 20.1698F);
-            this.lblShipToBoxZip.StylePriority.UseBorders = false;
-            this.lblShipToBoxZip.StylePriority.UseTextAlignment = false;
-            this.lblShipToBoxZip.Text = "lblShipToBoxZip";
-            this.lblShipToBoxZip.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            // 
-            // lblShipToBoxState
-            // 
-            this.lblShipToBoxState.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.lblShipToBoxState.CanGrow = false;
-            this.lblShipToBoxState.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ShipToState]")});
-            this.lblShipToBoxState.LocationFloat = new DevExpress.Utils.PointFloat(195.2831F, 115.9812F);
-            this.lblShipToBoxState.Multiline = true;
-            this.lblShipToBoxState.Name = "lblShipToBoxState";
-            this.lblShipToBoxState.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblShipToBoxState.SizeF = new System.Drawing.SizeF(41.5094F, 21.11322F);
-            this.lblShipToBoxState.StylePriority.UseBorders = false;
-            this.lblShipToBoxState.StylePriority.UseTextAlignment = false;
-            this.lblShipToBoxState.Text = "lblShipToBoxState";
-            this.lblShipToBoxState.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            // 
-            // lblShipToBoxCity
-            // 
-            this.lblShipToBoxCity.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.lblShipToBoxCity.CanGrow = false;
-            this.lblShipToBoxCity.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ShipToCity]")});
-            this.lblShipToBoxCity.LocationFloat = new DevExpress.Utils.PointFloat(4.150967F, 115.9812F);
-            this.lblShipToBoxCity.Multiline = true;
-            this.lblShipToBoxCity.Name = "lblShipToBoxCity";
-            this.lblShipToBoxCity.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblShipToBoxCity.SizeF = new System.Drawing.SizeF(125.4718F, 20.16983F);
-            this.lblShipToBoxCity.StylePriority.UseBorders = false;
-            this.lblShipToBoxCity.StylePriority.UseTextAlignment = false;
-            this.lblShipToBoxCity.Text = "lblShipToBoxCity";
-            this.lblShipToBoxCity.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            // 
-            // lblShipToBox2
-            // 
-            this.lblShipToBox2.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.lblShipToBox2.CanGrow = false;
-            this.lblShipToBox2.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ShipToAddress2]")});
-            this.lblShipToBox2.LocationFloat = new DevExpress.Utils.PointFloat(2.264174F, 70.33963F);
-            this.lblShipToBox2.Multiline = true;
-            this.lblShipToBox2.Name = "lblShipToBox2";
-            this.lblShipToBox2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblShipToBox2.SizeF = new System.Drawing.SizeF(232.0755F, 20.16983F);
-            this.lblShipToBox2.StylePriority.UseBorders = false;
-            this.lblShipToBox2.StylePriority.UseTextAlignment = false;
-            this.lblShipToBox2.Text = "lblShipToBox2";
-            this.lblShipToBox2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            // 
-            // lblShipToBox1
-            // 
-            this.lblShipToBox1.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.lblShipToBox1.CanGrow = false;
-            this.lblShipToBox1.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ShipToAddress1]")});
-            this.lblShipToBox1.LocationFloat = new DevExpress.Utils.PointFloat(2.264174F, 47.69812F);
-            this.lblShipToBox1.Multiline = true;
-            this.lblShipToBox1.Name = "lblShipToBox1";
-            this.lblShipToBox1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblShipToBox1.SizeF = new System.Drawing.SizeF(232.0755F, 20.16983F);
-            this.lblShipToBox1.StylePriority.UseBorders = false;
-            this.lblShipToBox1.StylePriority.UseTextAlignment = false;
-            this.lblShipToBox1.Text = "lblShipToBox1";
-            this.lblShipToBox1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            // 
-            // lblShipToBoxName
-            // 
-            this.lblShipToBoxName.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.lblShipToBoxName.CanGrow = false;
-            this.lblShipToBoxName.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ShipToName]")});
-            this.lblShipToBoxName.LocationFloat = new DevExpress.Utils.PointFloat(2.264174F, 26F);
-            this.lblShipToBoxName.Multiline = true;
-            this.lblShipToBoxName.Name = "lblShipToBoxName";
-            this.lblShipToBoxName.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblShipToBoxName.SizeF = new System.Drawing.SizeF(233.0189F, 20.16983F);
-            this.lblShipToBoxName.StylePriority.UseBorders = false;
-            this.lblShipToBoxName.StylePriority.UseTextAlignment = false;
-            this.lblShipToBoxName.Text = "lblShipToBoxName";
-            this.lblShipToBoxName.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            // 
-            // lblShipToBoxHeader
-            // 
-            this.lblShipToBoxHeader.BackColor = System.Drawing.Color.DarkGray;
-            this.lblShipToBoxHeader.CanGrow = false;
-            this.lblShipToBoxHeader.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.lblShipToBoxHeader.ForeColor = System.Drawing.Color.White;
-            this.lblShipToBoxHeader.LocationFloat = new DevExpress.Utils.PointFloat(2.264179F, 1.4151F);
-            this.lblShipToBoxHeader.Multiline = true;
-            this.lblShipToBoxHeader.Name = "lblShipToBoxHeader";
-            this.lblShipToBoxHeader.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblShipToBoxHeader.SizeF = new System.Drawing.SizeF(237.7359F, 23F);
-            this.lblShipToBoxHeader.StylePriority.UseBackColor = false;
-            this.lblShipToBoxHeader.StylePriority.UseFont = false;
-            this.lblShipToBoxHeader.StylePriority.UseForeColor = false;
-            this.lblShipToBoxHeader.StylePriority.UseTextAlignment = false;
-            this.lblShipToBoxHeader.Text = "Ship To";
-            this.lblShipToBoxHeader.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrPanel1
             // 
@@ -1477,62 +1117,6 @@
             this.lblRetailerName.Text = "lblRetailerName";
             this.lblRetailerName.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
-            // pbProp65
-            // 
-            this.pbProp65.ImageSource = new DevExpress.XtraPrinting.Drawing.ImageSource("img", resources.GetString("pbProp65.ImageSource"));
-            this.pbProp65.LocationFloat = new DevExpress.Utils.PointFloat(271.434F, 28.12264F);
-            this.pbProp65.Name = "pbProp65";
-            this.pbProp65.SizeF = new System.Drawing.SizeF(53.77361F, 38.09434F);
-            this.pbProp65.Visible = false;
-            this.pbProp65.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lblProp651_BeforePrint);
-            // 
-            // lblProp653
-            // 
-            this.lblProp653.CanGrow = false;
-            this.lblProp653.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.lblProp653.LocationFloat = new DevExpress.Utils.PointFloat(271.434F, 66.80186F);
-            this.lblProp653.Multiline = true;
-            this.lblProp653.Name = "lblProp653";
-            this.lblProp653.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblProp653.SizeF = new System.Drawing.SizeF(272.6415F, 71.1132F);
-            this.lblProp653.StylePriority.UseFont = false;
-            this.lblProp653.StylePriority.UseTextAlignment = false;
-            this.lblProp653.Text = "including DINP, which is known to the State of California to cause cancer. For mo" +
-    "re information, go to www.P65Warnings.ca.gov";
-            this.lblProp653.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.lblProp653.Visible = false;
-            this.lblProp653.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lblProp651_BeforePrint);
-            // 
-            // lblProp652
-            // 
-            this.lblProp652.CanGrow = false;
-            this.lblProp652.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.lblProp652.LocationFloat = new DevExpress.Utils.PointFloat(323.3207F, 28.12264F);
-            this.lblProp652.Multiline = true;
-            this.lblProp652.Name = "lblProp652";
-            this.lblProp652.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblProp652.SizeF = new System.Drawing.SizeF(220.7547F, 38.09435F);
-            this.lblProp652.StylePriority.UseFont = false;
-            this.lblProp652.StylePriority.UseTextAlignment = false;
-            this.lblProp652.Text = "WARNING: This product can expose you to chemicals";
-            this.lblProp652.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.lblProp652.Visible = false;
-            this.lblProp652.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lblProp651_BeforePrint);
-            // 
-            // lblProp651
-            // 
-            this.lblProp651.CanGrow = false;
-            this.lblProp651.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.lblProp651.LocationFloat = new DevExpress.Utils.PointFloat(271.434F, 12.0849F);
-            this.lblProp651.Multiline = true;
-            this.lblProp651.Name = "lblProp651";
-            this.lblProp651.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblProp651.SizeF = new System.Drawing.SizeF(272.6415F, 18.28302F);
-            this.lblProp651.StylePriority.UseFont = false;
-            this.lblProp651.Text = "SHIPMENT REQUIRES PROP 65 LABELS";
-            this.lblProp651.Visible = false;
-            this.lblProp651.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lblProp651_BeforePrint);
-            // 
             // label1
             // 
             this.label1.CanGrow = false;
@@ -1713,7 +1297,7 @@
             this.pbItemImage.Name = "pbItemImage";
             this.pbItemImage.SizeF = new System.Drawing.SizeF(86.79248F, 60.73586F);
             this.pbItemImage.Sizing = DevExpress.XtraPrinting.ImageSizeMode.Squeeze;
-            this.pbItemImage.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.pbItemImage_BeforePrint);
+          //  this.pbItemImage.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.pbItemImage_BeforePrint);
             // 
             // table3
             // 
@@ -1787,7 +1371,54 @@
             this.tableCell64.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.tableCell64.Weight = 0.13851570367463179D;
             // 
-            // rptPickingTicket
+            // xrLabel2
+            // 
+            this.xrLabel2.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[OrderorSONumber]")});
+            this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(288.1132F, 18.12263F);
+            this.xrLabel2.Multiline = true;
+            this.xrLabel2.Name = "xrLabel2";
+            this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
+            this.xrLabel2.SizeF = new System.Drawing.SizeF(250.9435F, 57.90566F);
+            this.xrLabel2.Text = "xrLabel2";
+            // 
+            // xrLabel3
+            // 
+            this.xrLabel3.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[PickedDate]")});
+            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(661.6981F, 14.34905F);
+            this.xrLabel3.Multiline = true;
+            this.xrLabel3.Name = "xrLabel3";
+            this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
+            this.xrLabel3.SizeF = new System.Drawing.SizeF(114.1509F, 23F);
+            this.xrLabel3.Text = "xrLabel3";
+            // 
+            // xrLabel4
+            // 
+            this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(576.7925F, 15.29245F);
+            this.xrLabel4.Multiline = true;
+            this.xrLabel4.Name = "xrLabel4";
+            this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
+            this.xrLabel4.SizeF = new System.Drawing.SizeF(83.96228F, 23F);
+            this.xrLabel4.Text = "Picked Date";
+            // 
+            // xrLabel5
+            // 
+            this.xrLabel5.CanGrow = false;
+            this.xrLabel5.Font = new System.Drawing.Font("Arial", 50F, System.Drawing.FontStyle.Bold);
+            this.xrLabel5.ForeColor = System.Drawing.Color.DarkRed;
+            this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(28.67924F, 364.3491F);
+            this.xrLabel5.Multiline = true;
+            this.xrLabel5.Name = "xrLabel5";
+            this.xrLabel5.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
+            this.xrLabel5.SizeF = new System.Drawing.SizeF(734.9056F, 104.1321F);
+            this.xrLabel5.StylePriority.UseFont = false;
+            this.xrLabel5.StylePriority.UseForeColor = false;
+            this.xrLabel5.StylePriority.UseTextAlignment = false;
+            this.xrLabel5.Text = "Charge Before Ship";
+            this.xrLabel5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
+            // rptChargeBeforeShipTicket
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
             this.TopMargin,
@@ -1852,10 +1483,6 @@
         private DevExpress.XtraReports.UI.XRTableCell tableCell61;
         private DevExpress.XtraReports.UI.XRTableCell tableCell64;
         private DevExpress.XtraReports.UI.XRLabel lblReturnNotice;
-        private DevExpress.XtraReports.UI.XRPictureBox pbProp65;
-        private DevExpress.XtraReports.UI.XRLabel lblProp653;
-        private DevExpress.XtraReports.UI.XRLabel lblProp652;
-        private DevExpress.XtraReports.UI.XRLabel lblProp651;
         private DevExpress.XtraReports.UI.XRLabel lblRetailer5;
         private DevExpress.XtraReports.UI.XRLabel lblRetailer4;
         private DevExpress.XtraReports.UI.XRLabel lblRetailer3;
@@ -1875,9 +1502,6 @@
         private DevExpress.XtraReports.UI.XRLabel lblCusBoxHeader;
         private DevExpress.XtraReports.UI.XRLabel lblPONumber;
         private DevExpress.XtraReports.UI.XRLabel lblPO;
-        private DevExpress.XtraReports.UI.XRPictureBox imgSingle;
-        private DevExpress.XtraReports.UI.XRPictureBox imgHold;
-        private DevExpress.XtraReports.UI.XRPictureBox imgBay;
         private DevExpress.XtraReports.UI.XRLabel lblBayLocationVal;
         private DevExpress.XtraReports.UI.XRLabel lblBayLoc;
         private DevExpress.XtraReports.UI.XRPanel panelCusNotesBox;
@@ -1888,28 +1512,14 @@
         private DevExpress.XtraReports.UI.XRLabel lblCustNotesShipperAcctVal;
         private DevExpress.XtraReports.UI.XRLabel lblShipperAcct;
         private DevExpress.XtraReports.UI.XRLabel lblCusNotesHeader;
-        private DevExpress.XtraReports.UI.XRPanel panelShipToBox;
-        private DevExpress.XtraReports.UI.XRLabel lblShipToBox3;
-        private DevExpress.XtraReports.UI.XRLabel lblShipToBoxZip;
-        private DevExpress.XtraReports.UI.XRLabel lblShipToBoxState;
-        private DevExpress.XtraReports.UI.XRLabel lblShipToBoxCity;
-        private DevExpress.XtraReports.UI.XRLabel lblShipToBox2;
-        private DevExpress.XtraReports.UI.XRLabel lblShipToBox1;
-        private DevExpress.XtraReports.UI.XRLabel lblShipToBoxName;
-        private DevExpress.XtraReports.UI.XRLabel lblShipToBoxHeader;
-        private DevExpress.XtraReports.UI.XRPanel panelBillToBox;
-        private DevExpress.XtraReports.UI.XRLabel lblBillToBoxState;
-        private DevExpress.XtraReports.UI.XRLabel lblBillToBoxCity;
-        private DevExpress.XtraReports.UI.XRLabel lblBillToBoxAdd3;
-        private DevExpress.XtraReports.UI.XRLabel lblBillToBoxAdd2;
-        private DevExpress.XtraReports.UI.XRLabel lblBillToBoxAdd1;
-        private DevExpress.XtraReports.UI.XRLabel lblBillToBoxName;
-        private DevExpress.XtraReports.UI.XRLabel lblBillToBoxHeader;
         private DevExpress.XtraReports.UI.XRPanel panelShipInstrBox;
         private DevExpress.XtraReports.UI.XRLabel lblShipInstBoxInstruction2;
         private DevExpress.XtraReports.UI.XRLabel lblShipInstBoxInstruction1;
         private DevExpress.XtraReports.UI.XRLabel xrLabel1;
-        private DevExpress.XtraReports.UI.XRBarCode xrBarCode1;
         private DevExpress.XtraReports.UI.XRPictureBox pbItemImage;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel5;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel4;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel3;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel2;
     }
 }

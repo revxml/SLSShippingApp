@@ -152,8 +152,17 @@
     <Compile Include="QtyUpdate.Designer.cs">
       <DependentUpon>QtyUpdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="ReportPrintDocument.cs">
+    <Compile Include="Reports\rptAdvanceAutoPartsPackingLabels.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptAdvanceAutoPartsPackingLabels.Designer.cs">
+      <DependentUpon>rptAdvanceAutoPartsPackingLabels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\rptFanaticsPackingLabels.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptFanaticsPackingLabels.Designer.cs">
+      <DependentUpon>rptFanaticsPackingLabels.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\rptFanBrandsLabel.cs">
       <SubType>Component</SubType>
@@ -167,17 +176,29 @@
     <Compile Include="Reports\rptBayLabel.Designer.cs">
       <DependentUpon>rptBayLabel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\rptHSNPackingLables.cs">
+    <Compile Include="Reports\rptHSNPackingLabels.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reports\rptHSNPackingLables.Designer.cs">
-      <DependentUpon>rptHSNPackingLables.cs</DependentUpon>
+    <Compile Include="Reports\rptHSNPackingLabels.Designer.cs">
+      <DependentUpon>rptHSNPackingLabels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\rptOfficeDepotPackingLabels.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptOfficeDepotPackingLabels.Designer.cs">
+      <DependentUpon>rptOfficeDepotPackingLabels.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\rptPackingLabels.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\rptPackingLabels.Designer.cs">
       <DependentUpon>rptPackingLabels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\rptChargeBeforeShipTicket.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptChargeBeforeShipTicket.Designer.cs">
+      <DependentUpon>rptChargeBeforeShipTicket.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\rptPickingTicket.cs">
       <SubType>Component</SubType>
@@ -238,17 +259,29 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reports\rptAdvanceAutoPartsPackingLabels.resx">
+      <DependentUpon>rptAdvanceAutoPartsPackingLabels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptFanaticsPackingLabels.resx">
+      <DependentUpon>rptFanaticsPackingLabels.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptFanBrandsLabel.resx">
       <DependentUpon>rptFanBrandsLabel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptBayLabel.resx">
       <DependentUpon>rptBayLabel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\rptHSNPackingLables.resx">
-      <DependentUpon>rptHSNPackingLables.cs</DependentUpon>
+    <EmbeddedResource Include="Reports\rptHSNPackingLabels.resx">
+      <DependentUpon>rptHSNPackingLabels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptOfficeDepotPackingLabels.resx">
+      <DependentUpon>rptOfficeDepotPackingLabels.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptPackingLabels.resx">
       <DependentUpon>rptPackingLabels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptChargeBeforeShipTicket.resx">
+      <DependentUpon>rptChargeBeforeShipTicket.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptPickingTicket.resx">
       <DependentUpon>rptPickingTicket.cs</DependentUpon>
@@ -293,7 +326,9 @@
     <Resource Include="Reports\images\imgHOLD.jpg" />
     <Resource Include="Reports\images\imgSingleOrder.jpg" />
     <Resource Include="Reports\images\imgProp65.jpg" />
+    <Content Include="Reports\images\imgAAP.jpg" />
     <Content Include="Reports\images\imgHSN.jpg" />
+    <Content Include="Reports\images\imgOfficeDepot.jpg" />
     <Content Include="Reports\images\imgTarget.jpg" />
     <Content Include="Reports\images\imgWalmart.jpg" />
     <Content Include="SqlServerTypes\readme.htm" />
