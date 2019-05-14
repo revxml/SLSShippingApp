@@ -1289,8 +1289,11 @@
             this.sqlDataSource1});
             this.DataMember = "tblRetailerPackingLabel";
             this.DataSource = this.sqlDataSource1;
+            this.DefaultPrinterSettingsUsing.UsePaperKind = true;
             this.Font = new System.Drawing.Font("Arial", 9.75F);
             this.Margins = new System.Drawing.Printing.Margins(22, 19, 49, 7);
+            this.ShowPrintMarginsWarning = false;
+            this.ShowPrintStatusDialog = false;
             this.SnappingMode = DevExpress.XtraReports.UI.SnappingMode.None;
             this.Version = "18.2";
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();

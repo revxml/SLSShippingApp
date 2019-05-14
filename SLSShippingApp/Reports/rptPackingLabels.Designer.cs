@@ -362,6 +362,7 @@
             this.PageHeight = 200;
             this.PageWidth = 386;
             this.PaperKind = System.Drawing.Printing.PaperKind.Custom;
+            this.RollPaper = true;
             this.ShowPrintMarginsWarning = false;
             this.ShowPrintStatusDialog = false;
             this.SnappingMode = DevExpress.XtraReports.UI.SnappingMode.None;

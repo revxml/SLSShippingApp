@@ -42,7 +42,11 @@ namespace SLSShippingApp
         String sScanToOrder = String.Empty;
         String sScanToCustomer = String.Empty;
         Boolean bSingleItemOrders = false;
-        //String g_sOrderNumber = String.Empty;//This is used for Report Printing
+        String g_TicketPrinter = ConfigurationManager.AppSettings.Get("PickTicketPrinter").ToString();
+        String g_LabelPrinter = ConfigurationManager.AppSettings.Get("LabelPrinter").ToString();
+        System.Diagnostics.Stopwatch watch;
+        String timeMsg = String.Empty;
+        Boolean doTimeCheck = false;
      
         public SLSShippingApp()
         {
@@ -52,7 +56,7 @@ namespace SLSShippingApp
             {
                 //  iIsTest = 1;
                 tblItemMasterDB = "DATA_309";
-            }
+            }            
 
             this.txtOperator.Text = Environment.UserName.ToString();
             this.txtAdminOperator.Text = Environment.UserName.ToString();
@@ -60,6 +64,17 @@ namespace SLSShippingApp
             if (!CheckDatabaseExists())
             {
                 GenerateDatabase();
+            }
+
+            if (!CheckPrinterConnected(g_TicketPrinter))
+            {
+                MessageBox.Show(String.Format("{0} is either not connected, or not a valid printer", g_TicketPrinter), "Invalid Printer");
+                return;
+            }
+            if (!CheckPrinterConnected(g_LabelPrinter))
+            {
+                MessageBox.Show(String.Format("{0} is either not connected, or not a valid printer", g_LabelPrinter), "Invalid Printer");
+                return;
             }
 
             /* this is for generating customer packing slips, when customer needs to approve them*/
@@ -707,7 +722,14 @@ namespace SLSShippingApp
 
         private void LoadPrintData(DataTable dtPrintInfo)
         {
+            watch = System.Diagnostics.Stopwatch.StartNew();
+            if(doTimeCheck)
+                timeMsg += "LoadPrintData started\r\n";
+
             ClearSQLExpressTables();
+
+            if(doTimeCheck)
+                timeMsg += String.Format("ClearSqlExpressTables completed: {0} ms\r\n", watch.ElapsedMilliseconds);
 
             sLabelPrinter = ConfigurationManager.AppSettings["LabelPrinter"].ToString();
             sTicketPrinter = ConfigurationManager.AppSettings["PickTicketPrinter"].ToString();
@@ -788,6 +810,8 @@ namespace SLSShippingApp
                         sqlCmd.CommandText = sSQL;
                         sqlCmd = new SqlCommand(sSQL, sqlCon);
                         sqlCmd.ExecuteNonQuery();
+                        if(doTimeCheck)
+                            timeMsg += String.Format("Sqlcmd.ExecuteNonQuery completed: {0} ms\r\n", watch.ElapsedMilliseconds);
                     }
                     catch (SqlException sEx)
                     {
@@ -810,6 +834,8 @@ namespace SLSShippingApp
                 {
                     PrintDevExpReport("Label", "rptPrintLabel", 1);
                     ClearSQLExpressTables("tblLabel");
+                    if(doTimeCheck)
+                        timeMsg += String.Format("PrintDevExpReport and ClearSqlExpressTables(tblLabel) completed: {0} ms\r\n", watch.ElapsedMilliseconds);
                 }
                 bItemLabel = false;
 
@@ -831,7 +857,9 @@ namespace SLSShippingApp
                 if (bPickintTicket)
                 {
                     PrintDevExpReport("Ticket", "rptPickingTicket", 1);
-                    ClearSQLExpressTables("rptPickingTicket");
+                    ClearSQLExpressTables("tblTickets");
+                    if(doTimeCheck)
+                        timeMsg += String.Format("PrintDevExpReport and ClearSqlExpressTables(rptPickingTicket) completed: {0} ms\r\n", watch.ElapsedMilliseconds);
                     //ZRush_ShipRush.ZFShippingPanel zPanel = new ZFShippingPanel();
                     //zPanel.SerialNumber = "!5e+b08HUxyiqCM8wr75l8IZ6Kim8q6cboE-o0mWR1ChZG913D-afvU";
                     //zPanel.PartnerID = "SLS";// Environment["USER"].ToString();
@@ -847,6 +875,15 @@ namespace SLSShippingApp
                 sqlCmd.Dispose();
                 sqlCon.Close();
                 sqlCon.Dispose();
+
+                if(doTimeCheck)
+                    timeMsg += String.Format("Report printing completed: {0} ms \r\n", watch.ElapsedMilliseconds);
+            }
+            watch.Stop();
+            if (doTimeCheck)
+            {
+                MessageBox.Show(timeMsg);
+                timeMsg = String.Empty;
             }
         }
       
@@ -919,10 +956,10 @@ namespace SLSShippingApp
             }        
 
             //Bind the report to a datasource
-         //   BindToData(sRptType, sReport, report);
+            //BindToData(sRptType, sReport, report);
             //create report detail
-        //    SqlDataSource ds = report.DataSource as SqlDataSource;
-        //    CreateDetailReport(report, ds.Queries[0].Name);
+            //SqlDataSource ds = report.DataSource as SqlDataSource;
+            //CreateDetailReport(report, ds.Queries[0].Name);
             PublishReport(report, sRptType);
         }
 
@@ -1025,35 +1062,42 @@ namespace SLSShippingApp
         
         private void PublishReport(XtraReport report, String sRptType)
         {
-            String sPrinterName = ConfigurationManager.AppSettings.Get("PickTicketPrinter").ToString();
-            if (sRptType == "Label")
-            {
-                sPrinterName = ConfigurationManager.AppSettings.Get("LabelPrinter").ToString();
-                report.PrinterName = sPrinterName;
-                report.PaperKind = System.Drawing.Printing.PaperKind.Custom;
-                report.PageHeight = 200;
-                report.PageWidth = 400;
-                report.RollPaper = true;
-            }
-            else
-            {                
-                report.PrinterName = sPrinterName;
-                report.PaperKind = System.Drawing.Printing.PaperKind.Letter;
-                report.PageHeight = 1100;
-                report.PageWidth = 850;
-                report.RollPaper = false;
-            }
-            report.ReportUnit = ReportUnit.HundredthsOfAnInch;
-            report.Landscape = false;
-            report.ShowPrintMarginsWarning = false;
-            report.ShowPrintStatusDialog = false;
+            if(doTimeCheck)
+                timeMsg += String.Format("Entered PublishReport {0}: {1}\r\n", report.Name, watch.ElapsedMilliseconds);
+           // String sPrinterName = g_TicketPrinter;// = ConfigurationManager.AppSettings.Get("PickTicketPrinter").ToString();
+            String sPrinterName = sRptType == "Label" ? g_LabelPrinter : g_TicketPrinter;
+            //if (sRptType == "Label")
+            //{
+            //    sPrinterName = g_LabelPrinter;// ConfigurationManager.AppSettings.Get("LabelPrinter").ToString();
+            //    report.PrinterName = sPrinterName;
+            //    report.PaperKind = System.Drawing.Printing.PaperKind.Custom;
+            //    report.PageHeight = 200;
+            //    report.PageWidth = 400;
+            //    report.RollPaper = true;
+            //}
+            //else
+            //{
+               
+            //    report.PrinterName = sPrinterName;
+            //    report.PaperKind = System.Drawing.Printing.PaperKind.Letter;
+            //    report.PageHeight = 1100;
+            //    report.PageWidth = 850;
+            //    report.RollPaper = false;
+            //}
+           // report.ReportUnit = ReportUnit.HundredthsOfAnInch;
+           // report.Landscape = false;
+           // report.ShowPrintMarginsWarning = false;
+           // report.ShowPrintStatusDialog = false;
+           if(doTimeCheck)
+                timeMsg += String.Format("All Printer info set: {0}\r\n", watch.ElapsedMilliseconds);
 
             //Check for printer
-            if (!CheckPrinterConnected(sPrinterName))
-            {
-                MessageBox.Show(String.Format("{0} is either not connected, or not a valid printer", sPrinterName), "Invalid Printer");
-                return;
-            }
+            //if (sPrinterName != g_TicketPrinter && !CheckPrinterConnected(sPrinterName))
+            //{
+            //    MessageBox.Show(String.Format("{0} is either not connected, or not a valid printer", sPrinterName), "Invalid Printer");
+            //    return;
+            //}
+            //timeMsg += String.Format("CheckPrinterConnected({0}) completed: {1}\r\n", sPrinterName, watch.ElapsedMilliseconds);
             try
             {
                 using (ReportPrintTool printTool = new ReportPrintTool(report))
@@ -1069,6 +1113,9 @@ namespace SLSShippingApp
 
                     if (sRptType == "Label")
                         printTool.PrintingSystem.StartPrint -= PrintingSystem_StartPrint;
+
+                    if(doTimeCheck)
+                        timeMsg += String.Format("Printing Completed: {0}\r\n", watch.ElapsedMilliseconds);
                 }
             }
             catch (Exception ex)

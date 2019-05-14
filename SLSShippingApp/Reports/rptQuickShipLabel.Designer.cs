@@ -271,9 +271,12 @@
             this.Font = new System.Drawing.Font("Arial", 9.75F);
             this.Landscape = true;
             this.Margins = new System.Drawing.Printing.Margins(0, 10, 10, 4);
-            this.PageHeight = 400;
+            this.PageHeight = 200;
             this.PageWidth = 379;
             this.PaperKind = System.Drawing.Printing.PaperKind.Custom;
+            this.RollPaper = true;
+            this.ShowPrintMarginsWarning = false;
+            this.ShowPrintStatusDialog = false;
             this.SnappingMode = DevExpress.XtraReports.UI.SnappingMode.None;
             this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
             this.Title,

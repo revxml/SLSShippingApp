@@ -1706,13 +1706,12 @@
             // 
             // pbItemImage
             // 
-            this.pbItemImage.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.pbItemImage.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.pbItemImage.LocationFloat = new DevExpress.Utils.PointFloat(686.2264F, 2.622554F);
             this.pbItemImage.Name = "pbItemImage";
             this.pbItemImage.SizeF = new System.Drawing.SizeF(86.79248F, 60.73586F);
             this.pbItemImage.Sizing = DevExpress.XtraPrinting.ImageSizeMode.Squeeze;
+            this.pbItemImage.StylePriority.UseBorders = false;
             this.pbItemImage.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.pbItemImage_BeforePrint);
             // 
             // table3
@@ -1799,8 +1798,11 @@
             this.sqlDataSource1});
             this.DataMember = "tblPickingFile";
             this.DataSource = this.sqlDataSource1;
+            this.DefaultPrinterSettingsUsing.UsePaperKind = true;
             this.Font = new System.Drawing.Font("Arial", 9.75F);
             this.Margins = new System.Drawing.Printing.Margins(10, 16, 10, 58);
+            this.ShowPrintMarginsWarning = false;
+            this.ShowPrintStatusDialog = false;
             this.SnappingMode = DevExpress.XtraReports.UI.SnappingMode.None;
             this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
             this.Title,

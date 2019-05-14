@@ -421,7 +421,7 @@
             this.DataSource = this.sqlDataSource1;
             this.Font = new System.Drawing.Font("Arial", 9.75F);
             this.Margins = new System.Drawing.Printing.Margins(2, 2, 2, 8);
-            this.PageHeight = 500;
+            this.PageHeight = 200;
             this.PageWidth = 392;
             this.PaperKind = System.Drawing.Printing.PaperKind.Custom;
             this.ReportPrintOptions.DetailCountOnEmptyDataSource = 0;
