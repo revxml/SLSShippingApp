@@ -14,6 +14,7 @@ using DevExpress.DataAccess.Sql;
 using DevExpress.XtraReports.UI;
 using DevExpress.XtraPrinting;
 using SLSShippingApp.Reports;
+using ZRush_ShipRush;
 
 namespace SLSShippingApp
 {
@@ -30,8 +31,6 @@ namespace SLSShippingApp
         SqlDataReader reader;
         String gScanType = "PR";
         Boolean bGotError = false;
-        String sLabelPrinter = String.Empty;
-        String sTicketPrinter = String.Empty;
         String sSFOItemNo = String.Empty;
         String sSFOItemDesc1 = String.Empty;
         String sSFOItemDesc2 = String.Empty;
@@ -44,10 +43,12 @@ namespace SLSShippingApp
         Boolean bSingleItemOrders = false;
         String g_TicketPrinter = ConfigurationManager.AppSettings.Get("PickTicketPrinter").ToString();
         String g_LabelPrinter = ConfigurationManager.AppSettings.Get("LabelPrinter").ToString();
+        String g_ShipLabelPrinter = ConfigurationManager.AppSettings.Get("ShipLabelPrinter").ToString();
         System.Diagnostics.Stopwatch watch;
         String timeMsg = String.Empty;
         Boolean doTimeCheck = false;
-     
+        ZFShippingPanel shiprushPanel = new ZFShippingPanel() ;
+
         public SLSShippingApp()
         {
             InitializeComponent();
@@ -56,7 +57,7 @@ namespace SLSShippingApp
             {
                 //  iIsTest = 1;
                 tblItemMasterDB = "DATA_309";
-            }            
+            }
 
             this.txtOperator.Text = Environment.UserName.ToString();
             this.txtAdminOperator.Text = Environment.UserName.ToString();
@@ -377,8 +378,8 @@ namespace SLSShippingApp
         {
             if (comAPI == null) comAPI = new CommonAPI();
 
-            SqlConnection sqlCon = new SqlConnection(comAPI.ShippingConnection);
-            String sSQL = String.Empty;
+            sqlCon = new SqlConnection(comAPI.ShippingConnection);
+            sSQL = String.Empty;
             SqlDataAdapter adapter;
 
             DataTable dtOrderInfo;
@@ -577,13 +578,13 @@ namespace SLSShippingApp
         {
             if (comAPI == null) comAPI = new CommonAPI();
 
-            SqlConnection sqlCon = new SqlConnection(comAPI.ShippingConnection);
-            SqlCommand sqlCmd = new SqlCommand
+            sqlCon = new SqlConnection(comAPI.ShippingConnection);
+            sqlCmd = new SqlCommand
             {
                 Connection = sqlCon
             };
-            String sSQL = String.Empty;
-            SqlDataReader reader;
+            sSQL = String.Empty;
+            //SqlDataReader reader;
             dt = new DataTable();
 
             sqlCon.Open();
@@ -619,13 +620,13 @@ namespace SLSShippingApp
 
         public void GetItemInfo(String sItemNum)
         {
-            SqlConnection sqlCon = new SqlConnection(comAPI.ShippingConnection);
-            SqlCommand sqlCmd = new SqlCommand
+            sqlCon = new SqlConnection(comAPI.ShippingConnection);
+            sqlCmd = new SqlCommand
             {
                 Connection = sqlCon
             };
-            String sSQL = String.Empty;
-            SqlDataReader reader;
+            sSQL = String.Empty;
+            //SqlDataReader reader;
 
             sqlCon.Open();
 
@@ -667,13 +668,13 @@ namespace SLSShippingApp
 
         private void TxtPONumber_Leave(object sender, EventArgs e)
         {
-            SqlConnection sqlCon = new SqlConnection(comAPI.ShippingConnection);
-            SqlCommand sqlCmd = new SqlCommand
+            sqlCon = new SqlConnection(comAPI.ShippingConnection);
+            sqlCmd = new SqlCommand
             {
                 Connection = sqlCon
             };
-            String sSQL = "app_spPickingTicketByPO";
-            SqlDataReader reader;
+            sSQL = "app_spPickingTicketByPO";
+            // SqlDataReader reader;
             DataTable dtOrders = new DataTable();
 
             sqlCon.Open();
@@ -723,16 +724,16 @@ namespace SLSShippingApp
         private void LoadPrintData(DataTable dtPrintInfo)
         {
             watch = System.Diagnostics.Stopwatch.StartNew();
-            if(doTimeCheck)
+            if (doTimeCheck)
                 timeMsg += "LoadPrintData started\r\n";
 
             ClearSQLExpressTables();
 
-            if(doTimeCheck)
+            if (doTimeCheck)
                 timeMsg += String.Format("ClearSqlExpressTables completed: {0} ms\r\n", watch.ElapsedMilliseconds);
 
-            sLabelPrinter = ConfigurationManager.AppSettings["LabelPrinter"].ToString();
-            sTicketPrinter = ConfigurationManager.AppSettings["PickTicketPrinter"].ToString();
+            //sLabelPrinter = g_LabelPrinter;// ConfigurationManager.AppSettings["LabelPrinter"].ToString();
+            //sTicketPrinter = g_TicketPrinter;// ConfigurationManager.AppSettings["PickTicketPrinter"].ToString();
 
             Boolean bBayLabel = false;
             Boolean bItemLabel = false;
@@ -743,7 +744,7 @@ namespace SLSShippingApp
             String sPackingTicket = String.Empty;
             String sCustomerNumber = String.Empty;
             Int32 iCustomerNumber = 0;
-            String sSQL = String.Empty;
+            sSQL = String.Empty;
 
             if (dtPrintInfo.Rows.Count == 0)
                 return;
@@ -758,8 +759,8 @@ namespace SLSShippingApp
 
             foreach (DataRow row in dtPrintInfo.Rows)
             {
-                SqlConnection sqlCon = new SqlConnection(comAPI.SLSShippingAppConnection);
-                SqlCommand sqlCmd = new SqlCommand
+                sqlCon = new SqlConnection(comAPI.SLSShippingAppConnection);
+                sqlCmd = new SqlCommand
                 {
                     Connection = sqlCon,
                     CommandType = CommandType.Text
@@ -810,7 +811,7 @@ namespace SLSShippingApp
                         sqlCmd.CommandText = sSQL;
                         sqlCmd = new SqlCommand(sSQL, sqlCon);
                         sqlCmd.ExecuteNonQuery();
-                        if(doTimeCheck)
+                        if (doTimeCheck)
                             timeMsg += String.Format("Sqlcmd.ExecuteNonQuery completed: {0} ms\r\n", watch.ElapsedMilliseconds);
                     }
                     catch (SqlException sEx)
@@ -834,7 +835,7 @@ namespace SLSShippingApp
                 {
                     PrintDevExpReport("Label", "rptPrintLabel", 1);
                     ClearSQLExpressTables("tblLabel");
-                    if(doTimeCheck)
+                    if (doTimeCheck)
                         timeMsg += String.Format("PrintDevExpReport and ClearSqlExpressTables(tblLabel) completed: {0} ms\r\n", watch.ElapsedMilliseconds);
                 }
                 bItemLabel = false;
@@ -857,14 +858,13 @@ namespace SLSShippingApp
                 if (bPickintTicket)
                 {
                     PrintDevExpReport("Ticket", "rptPickingTicket", 1);
-                    ClearSQLExpressTables("tblTickets");
-                    if(doTimeCheck)
+
+                    if (doTimeCheck)
                         timeMsg += String.Format("PrintDevExpReport and ClearSqlExpressTables(rptPickingTicket) completed: {0} ms\r\n", watch.ElapsedMilliseconds);
-                    //ZRush_ShipRush.ZFShippingPanel zPanel = new ZFShippingPanel();
-                    //zPanel.SerialNumber = "!5e+b08HUxyiqCM8wr75l8IZ6Kim8q6cboE-o0mWR1ChZG913D-afvU";
-                    //zPanel.PartnerID = "SLS";// Environment["USER"].ToString();
-                    //zPanel.CarrierDeveloperKey = "xxxx";
-                    //zPanel.Connect();
+                    ShipOrder(sOrderNumber);
+
+
+                    ClearSQLExpressTables("tblTickets");
                 }
                 bPickintTicket = false;
 
@@ -876,7 +876,7 @@ namespace SLSShippingApp
                 sqlCon.Close();
                 sqlCon.Dispose();
 
-                if(doTimeCheck)
+                if (doTimeCheck)
                     timeMsg += String.Format("Report printing completed: {0} ms \r\n", watch.ElapsedMilliseconds);
             }
             watch.Stop();
@@ -886,31 +886,83 @@ namespace SLSShippingApp
                 timeMsg = String.Empty;
             }
         }
-      
+
         private void PrintDoc(String sFileName, String sOrdNo)
         {
             String c_sFolder = ConfigurationManager.AppSettings["CustomerPackingSlips"].ToString();
             StreamReader streamToPrint;
             String sFullPath = c_sFolder + sFileName;
 
-            if (System.IO.File.Exists(c_sFolder + sFileName) == true)
+            if (System.IO.File.Exists(sFullPath) == true)
             {
                 // PrintReport("Ticket", c_sFolder + sFileName, sOrdNo);                
                 //ReportPrinter.ReportPrintDocument printDoc = new ReportPrinter.ReportPrintDocument(c_sFolder + sFileName);
                 PrintController printController = new StandardPrintController();
                 streamToPrint = new StreamReader(sFullPath);
                 PrintDocument pd = new PrintDocument();
-               
+
                 pd.PrintController = printController;
-                pd.PrinterSettings.PrinterName = sTicketPrinter;
+                pd.PrinterSettings.PrinterName = g_TicketPrinter;// sTicketPrinter;                
                 pd.PrinterSettings.Copies = 1;
-                
-                pd.Print();           
+                //  pd.PrintPage += new PrintPageEventHandler(pd_PrintPage);
+                pd.Print();
+                //  pd.PrintPage -= new PrintPageEventHandler(pd_PrintPage);
                 //printDoc.PrintController = printController;
+
+
+                using (Ghostscript.NET.Processor.GhostscriptProcessor processor = new Ghostscript.NET.Processor.GhostscriptProcessor())
+                {
+                    List<string> switches = new List<string>();
+                    switches.Add("-empty");
+                    switches.Add("-dPrinted");
+                    switches.Add("-dBATCH");
+                    switches.Add("-dNOPAUSE");
+                    switches.Add("-dNOSAFER");
+                    switches.Add("-dNumCopies=1");
+                    switches.Add("-sDEVICE=mswinpr2");
+                    switches.Add("-sOutputFile=%printer%" + g_TicketPrinter);
+                    switches.Add("-f");
+                    switches.Add(sFullPath);
+                    processor.StartProcessing(switches.ToArray(), null);
+                }
+
+
+
             }
             else
                 MessageBox.Show("Customer Packing Ticket expected for customer but not found. \nContact management and/or SLS Customer Service regarding missing Packing Ticket.", "Missing Customer Packing Slip");
         }
+
+        // The PrintPage event is raised for each page to be printed.
+        //private void pd_PrintPage(object sender, PrintPageEventArgs ev)
+        //{
+        //    float linesPerPage = 0;
+        //    float yPos = 0;
+        //    int count = 0;
+        //    float leftMargin = ev.MarginBounds.Left;
+        //    float topMargin = ev.MarginBounds.Top;
+        //    String line = null;
+
+        //    // Calculate the number of lines per page.
+        //    linesPerPage = ev.MarginBounds.Height /
+        //       printFont.GetHeight(ev.Graphics);
+
+        //    // Iterate over the file, printing each line.
+        //    while (count < linesPerPage &&
+        //       ((line = streamToPrint.ReadLine()) != null))
+        //    {
+        //        yPos = topMargin + (count * printFont.GetHeight(ev.Graphics));
+        //        ev.Graphics.DrawString(line, printFont, Brushes.Black,
+        //           leftMargin, yPos, new StringFormat());
+        //        count++;
+        //    }
+
+        //    // If more lines exist, print another page.
+        //    if (line != null)
+        //        ev.HasMorePages = true;
+        //    else
+        //        ev.HasMorePages = false;
+        //}
 
         private void PrintDevExpReport(String sRptType, String sReport, short iCopies = 1)
         {
@@ -928,7 +980,7 @@ namespace SLSShippingApp
                     break;
                 case "rptPickingTicket":
                     report = new rptPickingTicket();
-                    break;               
+                    break;
                 case "rptFanBrandsLabel":
                     report = new rptFanBrandsLabel();
                     break;
@@ -953,7 +1005,7 @@ namespace SLSShippingApp
                 case "rptFanaticsPackingLabels":
                     report = new rptFanaticsPackingLabels();
                     break;
-            }        
+            }
 
             //Bind the report to a datasource
             //BindToData(sRptType, sReport, report);
@@ -1059,62 +1111,32 @@ namespace SLSShippingApp
                 g.RotateTransform(-90);
             }
         }
-        
+
         private void PublishReport(XtraReport report, String sRptType)
         {
-            if(doTimeCheck)
+            if (doTimeCheck)
                 timeMsg += String.Format("Entered PublishReport {0}: {1}\r\n", report.Name, watch.ElapsedMilliseconds);
-           // String sPrinterName = g_TicketPrinter;// = ConfigurationManager.AppSettings.Get("PickTicketPrinter").ToString();
             String sPrinterName = sRptType == "Label" ? g_LabelPrinter : g_TicketPrinter;
-            //if (sRptType == "Label")
-            //{
-            //    sPrinterName = g_LabelPrinter;// ConfigurationManager.AppSettings.Get("LabelPrinter").ToString();
-            //    report.PrinterName = sPrinterName;
-            //    report.PaperKind = System.Drawing.Printing.PaperKind.Custom;
-            //    report.PageHeight = 200;
-            //    report.PageWidth = 400;
-            //    report.RollPaper = true;
-            //}
-            //else
-            //{
-               
-            //    report.PrinterName = sPrinterName;
-            //    report.PaperKind = System.Drawing.Printing.PaperKind.Letter;
-            //    report.PageHeight = 1100;
-            //    report.PageWidth = 850;
-            //    report.RollPaper = false;
-            //}
-           // report.ReportUnit = ReportUnit.HundredthsOfAnInch;
-           // report.Landscape = false;
-           // report.ShowPrintMarginsWarning = false;
-           // report.ShowPrintStatusDialog = false;
-           if(doTimeCheck)
+
+            if (doTimeCheck)
                 timeMsg += String.Format("All Printer info set: {0}\r\n", watch.ElapsedMilliseconds);
 
-            //Check for printer
-            //if (sPrinterName != g_TicketPrinter && !CheckPrinterConnected(sPrinterName))
-            //{
-            //    MessageBox.Show(String.Format("{0} is either not connected, or not a valid printer", sPrinterName), "Invalid Printer");
-            //    return;
-            //}
-            //timeMsg += String.Format("CheckPrinterConnected({0}) completed: {1}\r\n", sPrinterName, watch.ElapsedMilliseconds);
             try
             {
                 using (ReportPrintTool printTool = new ReportPrintTool(report))
                 {
-                    if(sRptType == "Label")
+                    if (sRptType == "Label")
                         printTool.PrintingSystem.StartPrint += PrintingSystem_StartPrint;
 
                     //This is for testing purposes only
                     // printTool.ShowPreviewDialog();
                     printTool.PrinterSettings.PrinterName = sPrinterName;
                     printTool.Print();
-                   // printTool.Print(sPrinterName);
 
                     if (sRptType == "Label")
                         printTool.PrintingSystem.StartPrint -= PrintingSystem_StartPrint;
 
-                    if(doTimeCheck)
+                    if (doTimeCheck)
                         timeMsg += String.Format("Printing Completed: {0}\r\n", watch.ElapsedMilliseconds);
                 }
             }
@@ -1127,179 +1149,6 @@ namespace SLSShippingApp
                 report.DataSource = null;
             }
         }
-
-        //private void PrintReport(String sRptType, String sReport, String sOrdNo, short iCopies = 1)
-        //{
-
-        //    //LocalReport lr = new LocalReport
-        //    //{
-        //    //    EnableExternalImages = true
-        //    //};
-        //    //System.IO.Stream stream = GetDataSource(ref lr, sReport, sOrdNo);
-        //    //lr.LoadReportDefinition(stream);
-        //    //ReportPageSettings rps = lr.GetDefaultPageSettings();
-        //   // ReportPrinter.ReportPrintDocument printDoc = new ReportPrinter.ReportPrintDocument(lr);
-        //    PrintController printController = new StandardPrintController();
-
-        //    printDoc.PrintController = printController;
-
-        //    //if (sRptType == "Label")
-        //    //    printDoc.DefaultPageSettings.PaperSize = new PaperSize(rps.PaperSize.Kind.ToString(), rps.PaperSize.Height, rps.PaperSize.Width);
-
-        //    //lr.Refresh();
-
-        //    switch (sRptType)
-        //    {
-        //        case "Label":
-        //            printDoc.PrinterSettings.PrinterName = sLabelPrinter;
-        //            break;
-        //        case "Ticket":
-        //        case "SFO":
-        //            printDoc.PrinterSettings.PrinterName = sTicketPrinter;
-        //            break;
-        //    }
-        //    printDoc.PrinterSettings.Copies = iCopies;
-        //    printDoc.DocumentName = sReport;
-
-        //    String sPrinter = sLabelPrinter;
-        //    if (sRptType != "Label")
-        //        sPrinter = sTicketPrinter;
-        //    //Check for printer
-        //    if (!CheckPrinterConnected(sPrinter))
-        //    {
-        //        MessageBox.Show(String.Format("{0} is either not connected, or not a valid printer", sPrinter), "Invalid Printer");
-        //        return;
-        //    }
-
-        //    //Want to use Print Preview, but against live data. 
-        //    //commenting out the if...else portion. 
-        //    //will need to uncomment when testing completes - KEB 20150302
-        //    //#if(DEBUG)
-
-        //    //          PrintPreviewDialog pv = new PrintPreviewDialog();//Do Print Preview when in test mode
-        //    //         pv.Document = printDoc;
-        //    //         pv.Document.PrinterSettings.DefaultPageSettings.Landscape = false;
-        //    //         pv.ShowDialog();
-        //    //#endif
-        //    //no print prview here            
-        //    printDoc.Print();
-        //}
-
-        //private Microsoft.Reporting.WinForms.ReportParameterCollection ReportDefaultParam()
-        //{
-        //    ReportParameterCollection arrLst = new ReportParameterCollection
-        //    {
-        //        CreateReportParameter("@OrderNumber", g_sOrderNumber)
-        //    };
-        //    return arrLst;
-        //}
-
-        //private Microsoft.Reporting.WinForms.ReportParameter CreateReportParameter(String paramName, String paramValue)
-        //{
-        //    Microsoft.Reporting.WinForms.ReportParameter aParam = new Microsoft.Reporting.WinForms.ReportParameter(paramName, paramValue);
-        //    return aParam;
-        //}
-
-        //private System.IO.Stream GetDataSource(ref Microsoft.Reporting.WinForms.LocalReport lr, String sRptName, String sOrdNo)
-        //{
-        //    DataTable dtRptData = new DataTable("ReportData");
-        //    System.Reflection.Assembly assembly = this.GetType().Assembly;
-        //    String sEmbeddedRpt = "SLSShippingApp.Reports.rpt";//
-        //    try
-        //    {
-        //        //if (sRptName.Contains("Retailer"))
-        //        //{
-        //        //    DS_rptRetailerPackingLabelTableAdapters.tblRetailerPackingLabelTableAdapter ta = new DS_rptRetailerPackingLabelTableAdapters.tblRetailerPackingLabelTableAdapter();
-        //        //    dtRptData = ta.GetData(sOrdNo);
-        //        //    String sCusName = sRptName.Replace("PackingLabels", "").Replace("rpt", "");
-        //        //    lr.DisplayName = sCusName + " Packing Label";
-        //        //    lr.EnableExternalImages = true;
-        //        //    lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DS_rptRetailerPackingLabel", dtRptData));
-        //        //    lr.ReportEmbeddedResource = sEmbeddedRpt + sCusName + "PackingLabels.rdlc";
-        //        //    return assembly.GetManifestResourceStream(sEmbeddedRpt + sCusName + "PackingLabels.rdlc");
-        //        //}
-        //        //else
-        //        //if (sRptName.Contains("FanBrands"))
-        //        //{
-        //        //    DS_rptFanBrandsLabelTableAdapters.tblLabelFanBrandsTableAdapter ta = new DS_rptFanBrandsLabelTableAdapters.tblLabelFanBrandsTableAdapter();
-        //        //    dtRptData = ta.GetData();
-        //        //    lr.DisplayName = "FanBrands Label";
-        //        //    lr.EnableExternalImages = true;
-        //        //    lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DS_rptFanBransLabel", dtRptData));
-        //        //    lr.ReportEmbeddedResource = sEmbeddedRpt + "FanBrandsLabel.rdlc";
-        //        //    return assembly.GetManifestResourceStream(sEmbeddedRpt + "FanBrandsLabel.rdlc");
-        //        //}
-        //        //else 
-        //        //if (sRptName.Contains("QuickShipLabel"))
-        //        //{
-        //        //    DS_rptQuickShipLabelTableAdapters.tblLabelQuickShipTableAdapter ta = new DS_rptQuickShipLabelTableAdapters.tblLabelQuickShipTableAdapter();
-        //        //    dtRptData = ta.GetData();
-        //        //    lr.DisplayName = "QuickShip Label";
-        //        //    lr.EnableExternalImages = true;
-        //        //    lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DS_rptQuickShipLabel", dtRptData));
-        //        //    lr.ReportEmbeddedResource = sEmbeddedRpt + "QuickShipLabel.rdlc";
-        //        //    return assembly.GetManifestResourceStream(sEmbeddedRpt + "QuickShipLabel.rdlc");
-        //        //}
-        //        //else if (sRptName.Contains("Bay"))
-        //        //{
-        //        //    DS_rptBayLabelTableAdapters.tblLabelTableAdapter ta = new DS_rptBayLabelTableAdapters.tblLabelTableAdapter();
-        //        //    dtRptData = ta.GetData(sOrdNo);
-        //        //    lr.DisplayName = "Bay Label";
-        //        //    lr.EnableExternalImages = true;
-        //        //    lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DS_rptBayLabel", dtRptData));
-        //        //    lr.ReportEmbeddedResource = sEmbeddedRpt + "PrintBayLabel.rdlc";
-        //        //    return assembly.GetManifestResourceStream(sEmbeddedRpt + "PrintBayLabel.rdlc");
-        //        //}
-        //        //else if (sRptName.Contains("PrintLabel"))
-        //        //{
-        //        //    DS_rptPrintLabelTableAdapters.tblLabelTableAdapter ta = new DS_rptPrintLabelTableAdapters.tblLabelTableAdapter();
-        //        //    dtRptData = ta.GetData(sOrdNo);
-        //        //    String sImage = dtRptData.Rows[0]["ComponentItemNumber"].ToString();
-        //        //    String sFullImagePath = ConfigurationManager.AppSettings["ImagePath"].ToString() + sImage + ".jpg";
-        //        //    sImage = "file://" + sFullImagePath.Substring(2, sFullImagePath.Length - 2).Replace("\\", "/").Replace(" ", "%20");
-        //        //    dtRptData.Rows[0]["Image"] = sImage;
-        //        //    dtRptData.AcceptChanges();
-        //        //    lr.DisplayName = "Item Label";
-        //        //    lr.EnableExternalImages = true;
-        //        //    lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DS_rptPrintLabel", dtRptData));
-        //        //    lr.ReportEmbeddedResource = sEmbeddedRpt + "PrintLabel.rdlc";
-        //        //    return assembly.GetManifestResourceStream(sEmbeddedRpt + "PrintLabel.rdlc");
-        //        //}
-        //        //else if (sRptName.Contains("Packing"))
-        //        //{
-        //        //    DS_rptPackingLabelsTableAdapters.tblTicketsTableAdapter ta = new DS_rptPackingLabelsTableAdapters.tblTicketsTableAdapter();
-        //        //    dtRptData = ta.GetData(sOrdNo);
-        //        //    lr.DisplayName = "Packing Label";
-        //        //    lr.EnableExternalImages = true;
-        //        //    lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DS_rptPackingLabels", dtRptData));
-        //        //    lr.ReportEmbeddedResource = sEmbeddedRpt + "PackingLabels.rdlc";
-        //        //    return assembly.GetManifestResourceStream(sEmbeddedRpt + "PackingLabels.rdlc");
-        //        //}
-        //        //else if (sRptName.Contains("Picking"))
-        //        //{
-        //        //    DS_rptPickingTicketTableAdapters.tblPickingFileTableAdapter ta = new DS_rptPickingTicketTableAdapters.tblPickingFileTableAdapter();
-        //        //    dtRptData = ta.GetData(String.Concat("*", sOrdNo, "*"));
-        //        //    lr.DisplayName = "Picking Ticket";
-        //        //    lr.EnableExternalImages = true;
-        //        //    lr.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DS_rptPickingTicket", dtRptData));
-        //        //    lr.ReportEmbeddedResource = sEmbeddedRpt + "PickingTicket.rdlc";
-        //        //    return assembly.GetManifestResourceStream(sEmbeddedRpt + "PickingTicket.rdlc");
-        //        //}
-        //        return null;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        if (bVerbose)
-        //            ShowErrorDetails(ex, 892, "GetDataSource");
-        //        else
-        //            MessageBox.Show(String.Format("Error populating Report Data Source: {0}", ex.Message), "Report/Label Population");
-        //        return null;
-        //    }
-        //    finally
-        //    {
-        //        dtRptData.Dispose();
-        //    }
-        //}
         #endregion
 
         #region PRINTER ASSIGNMENT
@@ -1332,10 +1181,11 @@ namespace SLSShippingApp
                 switch (sRptType)
                 {
                     case "Label":
-                        sPrinter = sLabelPrinter;
+                        sPrinter = g_LabelPrinter;// sLabelPrinter;
                         break;
                     case "Ticket":
-                        sPrinter = sTicketPrinter;
+                        sPrinter = g_TicketPrinter;// sTicketPrinter;
+
                         break;
                 }
             }
@@ -1396,7 +1246,7 @@ namespace SLSShippingApp
             dt = new DataTable();
             String sStatusMsg = String.Empty;
 
-            String sSQL = String.Format("SELECT * FROM tblBay WHERE OrderNumber = '{0}'", txtOrderNumber.Text.Trim().PadLeft(8, '0'));
+            sSQL = String.Format("SELECT * FROM tblBay WHERE OrderNumber = '{0}'", txtOrderNumber.Text.Trim().PadLeft(8, '0'));
             sqlCmd = new SqlCommand
             {
                 Connection = sqlCon,
@@ -1539,7 +1389,7 @@ namespace SLSShippingApp
         {
             sqlCon = new SqlConnection(comAPI.ShippingConnection);
             sqlCmd = new SqlCommand();
-            String sSQL = String.Empty;
+            sSQL = String.Empty;
             sqlCmd.Connection = sqlCon;
             sqlCon.Open();
             dt = new DataTable();
@@ -1579,7 +1429,7 @@ namespace SLSShippingApp
             sqlCmd = new SqlCommand();
             Int16 iLeadTime = 0;
             String sPwd = String.Empty;
-            String sSQL = String.Empty;
+            sSQL = String.Empty;
             String sItemNumber = String.Empty;
 
             bGotError = false;
@@ -1629,7 +1479,7 @@ namespace SLSShippingApp
         {
             sqlCon = new SqlConnection(comAPI.ShippingConnection);
             sqlCmd = new SqlCommand();
-            String sSQL = String.Empty;
+            sSQL = String.Empty;
             dt = new DataTable();
 
             if (this.txtSearchOrderNo.Text.Trim() == String.Empty)
@@ -1700,7 +1550,7 @@ namespace SLSShippingApp
                 DataGridViewRow dgvRow = dgvFoundOrder.Rows[iRowIndex];
                 sqlCon = new SqlConnection(comAPI.ShippingConnection);
                 sqlCmd = new SqlCommand();
-                String sSQL = String.Format("SELECT item_no,item_desc_1,item_desc_2 FROM {0}.dbo.IMITMIDX_SQL WHERE item_no = '{1}'", tblItemMasterDB, dgvRow.Cells[1].Value.ToString().Trim());
+                sSQL = String.Format("SELECT item_no,item_desc_1,item_desc_2 FROM {0}.dbo.IMITMIDX_SQL WHERE item_no = '{1}'", tblItemMasterDB, dgvRow.Cells[1].Value.ToString().Trim());
                 dt = new DataTable();
                 sqlCmd.Connection = sqlCon;
                 sqlCon.Open();
@@ -1740,7 +1590,7 @@ namespace SLSShippingApp
         {
             sqlCon = new SqlConnection(comAPI.ShippingConnection);
             sqlCmd = new SqlCommand();
-            String sSQL = String.Empty;
+            sSQL = String.Empty;
             Int32 iScanID = 0;
             String sItemNumber = String.Empty;
             String sMsg = String.Empty;
@@ -1815,7 +1665,7 @@ namespace SLSShippingApp
         {
             sqlCon = new SqlConnection(comAPI.ShippingConnection);
             sqlCmd = new SqlCommand();
-            String sSQL = String.Empty;
+            sSQL = String.Empty;
             Int32 iScanID = 0;
             String sItemNumber = String.Empty;
             Int16 iRowIndex = Convert.ToInt16(dgvFoundOrder.SelectedRows[0].Index);
@@ -1939,7 +1789,7 @@ namespace SLSShippingApp
             String sOrderNumber = String.Empty;
             sqlCon = new SqlConnection(comAPI.ShippingConnection);
             sqlCmd = new SqlCommand();
-            String sSQL = String.Empty;
+            sSQL = String.Empty;
 
             QtyUpdate q = new QtyUpdate();
             //show dialog as modal dialog and determine if dialog result is "OK"/Accept
@@ -1988,7 +1838,7 @@ namespace SLSShippingApp
                     dtNew.Load(reader);
                     dgvBayDetails.DataSource = dtNew;
                     SetColumnOrder(ref dgvBayDetails);
-                    
+
                 }
                 catch (Exception ex)
                 {
@@ -2012,7 +1862,7 @@ namespace SLSShippingApp
         private void LoadMaintentanceTab()
         {
             DataTable dtBayDetail = new DataTable();
-            String sSQL = String.Format("SELECT BayDetailID,StockNumber,OrderedQty,ReceivedQty,[Qty Shipped Todate],QtyFromStock,item_desc_1,item_desc_2 FROM tblBayDetail bd INNER JOIN {0}.dbo.IMITMIDX_SQL i ON bd.StockNumber = i.item_no WHERE BayID = 0 ORDER BY StockNumber", tblItemMasterDB);
+            sSQL = String.Format("SELECT BayDetailID,StockNumber,OrderedQty,ReceivedQty,[Qty Shipped Todate],QtyFromStock,item_desc_1,item_desc_2 FROM tblBayDetail bd INNER JOIN {0}.dbo.IMITMIDX_SQL i ON bd.StockNumber = i.item_no WHERE BayID = 0 ORDER BY StockNumber", tblItemMasterDB);
             lblOrderNotFound.Visible = false;
             sqlCon = new SqlConnection(comAPI.ShippingConnection);
             sqlCon.Open();
@@ -2462,7 +2312,7 @@ namespace SLSShippingApp
 
         private void TxtQSFilter_TextChanged(object sender, EventArgs e)
         {
-            bsQSMaintenance.Filter = String.Format("Item LIKE '%{0}%'", txtQSFilter.Text);
+            bsQSMaintenance.Filter = String.Format("Item_desc_2 LIKE '%{0}%'", txtQSFilter.Text);
         }
 
         private void BtnMax_Click(object sender, DataGridViewCellEventArgs e)
@@ -2963,7 +2813,7 @@ namespace SLSShippingApp
         {
             sqlCon = new SqlConnection(comAPI.ShippingConnection);
             sqlCmd = new SqlCommand();
-            String sSQL = String.Empty;
+            sSQL = String.Empty;
             Int32 iScanID = 0;
             String sItemNumber = String.Empty;
             Int16 iRowIndex = Convert.ToInt16(this.menuLastScans.Tag.ToString());
@@ -3021,7 +2871,7 @@ namespace SLSShippingApp
 
             sqlCon = new SqlConnection(comAPI.ShippingConnection);
             sqlCmd = new SqlCommand();
-            String sSQL = String.Empty;
+            sSQL = String.Empty;
             Int32 iScanID = 0;
             String sItemNumber = String.Empty;
             String sMsg = String.Empty;
@@ -3103,24 +2953,6 @@ namespace SLSShippingApp
 
         static Boolean CheckPrinterConnected(String sPrinterName)
         {
-            /*      // Lookup arrays.
-                    string[] PrinterStatuses = 
-                    {
-                        "Other", "Unknown", "Idle", "Printing", "WarmUp",
-                        "Stopped Printing", "Offline"
-                    };
-                    string[] PrinterStates = 
-                    {
-                        "Paused", "Error", "Pending Deletion", "Paper Jam",
-                        "Paper Out", "Manual Feed", "Paper Problem",
-                        "Offline", "IO Active", "Busy", "Printing",
-                        "Output Bin Full", "Not Available", "Waiting",
-                        "Processing", "Initialization", "Warming Up", 
-                        "Toner Low", "No Toner", "Page Punt",
-                        "User Intervention Required", "Out of Memory",
-                        "Door Open", "Server_Unknown", "Power Save"};
-            */
-
             ManagementScope mgmtScope = new ManagementScope(@"\root\cimv2");
             mgmtScope.Connect();
             ManagementObjectSearcher objSearcher = new ManagementObjectSearcher("SELECT * FROM Win32_Printer");
@@ -3128,28 +2960,7 @@ namespace SLSShippingApp
             {
                 if (printer["Name"].Equals(sPrinterName))
                 {
-                    return true; //to escape the tests because I have a valid printer installed, but keep
-                                 //being told i don't
-                                 //Int32 pState = Convert.ToInt32(printer.Properties["PrinterState"].Value);
-                                 //Int16 pStatus = Convert.ToInt16(printer.Properties["PrinterStatus"].Value);
-
-                    //switch (pState)
-                    //{
-                    //    case 0:
-                    //    case 2:
-                    //    case 6:
-                    //        return false;
-                    //}
-                    //switch (pStatus)
-                    //{
-                    //    case 1:
-                    //    case 2:
-                    //    case 7:
-                    //    case 12:
-                    //    case 23:
-                    //        return false;
-                    //}
-                    //return true;
+                    return true;
                 }
             }
             return true;
@@ -3267,13 +3078,13 @@ namespace SLSShippingApp
 
         private void ClearSQLExpressTables(String sTable = null)
         {
-            String sSQL;
+
             sqlCon = new SqlConnection
             {
                 ConnectionString = comAPI.SLSShippingAppConnection
             };
             sqlCon.Open();
-            SqlCommand sqlCmd = new SqlCommand();
+            sqlCmd = new SqlCommand();
             sqlCmd.Connection = sqlCon;
 
             String[] arrTables = { "tblLabel", "tblTickets", "tblPickingFile", "tblRetailerPackingLabel", "tblLabelFanBrands", "tblLabelQuickShip", "tblOrderItemMismatchMacola", "tblOrderItemsNotInMacola", "tblPostingLog", "tblQuickShipReport", "tblTicketsArch" };
@@ -3313,5 +3124,139 @@ namespace SLSShippingApp
             this.Dispose();
         }
         #endregion
+
+        #region ShipRush Shipping
+        private void ShipOrder(String sOrdNo)
+        {
+            String sTrackingNumber = String.Empty;
+            Double dblFreight = 0.0D;
+
+
+            if (!shiprushPanel.Connected)
+            {
+                try
+                {
+                    shiprushPanel.SerialNumber = "!5e+b08HUxyiqCM8wr75l8IZ6Kim8q6cboE-o0mWR1ChZG913D-afvU";
+                    shiprushPanel.PartnerID = "SLS";// Environment["USER"].ToString();
+                    shiprushPanel.CarrierDeveloperKey = "xxxx"; //CarrierShippingKey goes here
+                    shiprushPanel.Connect();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(String.Format("Unable to conenct to ShipRush: {0}", ex.Message), "ShipRush Error");
+                    return;
+                }
+
+                sqlCon = new SqlConnection
+                {
+                    ConnectionString = comAPI.SLSShippingAppConnection
+                };
+                sqlCon.Open();
+                sqlCmd = new SqlCommand();
+                sqlCmd.Connection = sqlCon;
+                String sSql = "SELECT * FROM tblPickingFile";
+                DataTable dt = new DataTable("ShippingInfo");
+                sqlCmd.CommandText = sSql;
+                sqlCmd.CommandType = CommandType.Text;
+               
+                try
+                {
+                    reader = sqlCmd.ExecuteReader();
+                    dt.Load(reader);
+                }catch(Exception ex)
+                {
+                    MessageBox.Show(String.Format("Error loading Shipment Data from local table: {0}", ex.Message), "Data Retrieval Error");
+                    return;
+                }
+                finally
+                {
+                    sqlCon.Close();
+                    sqlCmd.Dispose();
+                    sqlCon.Dispose();
+                    dt.Dispose();
+                }
+                //these only appear to be necessary for APO/FPO/International shipments
+               // ZFCommodity commodity;
+               // Int32 i = 0;
+                
+                shiprushPanel.StartNewShipment();
+                shiprushPanel.Settings.SaveLabels = false;
+                shiprushPanel.Settings.AutoAddressValidation = true;
+                shiprushPanel.ShowErrors = true;
+                //shiprushPanel.SlaveMode = ?
+                
+                shiprushPanel.Shipment.ToAddress.Company = dt.Rows[0]["ShipToName"].ToString().Trim();
+                shiprushPanel.Shipment.ToAddress.Name = dt.Rows[0]["ShipToName"].ToString().Trim();
+                shiprushPanel.Shipment.ToAddress.Address1 = dt.Rows[0]["ShipToAddress1"].ToString().Trim();
+                shiprushPanel.Shipment.ToAddress.Address2 = dt.Rows[0]["ShipToAddress2"].ToString().Trim();
+                shiprushPanel.Shipment.ToAddress.Address3 = dt.Rows[0]["ShipToAddress3"].ToString().Trim();
+                shiprushPanel.Shipment.ToAddress.City = dt.Rows[0]["ShipToCity"].ToString().Trim();
+                shiprushPanel.Shipment.ToAddress.ZIP = dt.Rows[0]["ShipToZipCode"].ToString().Trim();
+                shiprushPanel.Shipment.ToAddress.Phone = dt.Rows[0]["ShipToPhone"].ToString().Trim();
+                shiprushPanel.Shipment.ToAddress.State = comAPI.GetStateTranslation(dt.Rows[0]["ShipToState"].ToString().Trim());
+                shiprushPanel.Shipment.ToAddress.Country = comAPI.GetCountryTranslation( dt.Rows[0]["ShipToCountry"].ToString().Trim());
+
+                if (dt.Rows[0]["CustShipperAcct"].ToString().Trim().Length > 0)
+                    shiprushPanel.Shipment.FromAddress.Account = dt.Rows[0]["CustShipperAcct"].ToString().Trim();
+
+                //Theres a lot of code that has to happen if either of these is true
+                //Boolean isApoFpo = false;
+                //Boolean isInternational = false;
+                //if (dt.Rows[0]["ShipToCity"].ToString().Trim() == "APO" || dt.Rows[0]["ShipToCity"].ToString().Trim() == "FPO")
+                //    isApoFpo = true;
+                //if (GetCountryInt(dt.Rows[0]["ShipToCountry"].ToString().Trim()) > 0)
+                //    isInternational = true;
+
+                ////shipment validation is required for APO/FPO packages
+                //if (isApoFpo)
+                //    shiprushPanel.ValidateShipment();
+                ////International shipments need extra steps, make suer the list of commodities is empty
+                //if (isApoFpo || isInternational)
+                //{
+                //    while (shiprushPanel.Shipment.International.CommoditiesCount > 0)
+                //        shiprushPanel.Shipment.International.DeleteCommodity(0);
+
+                //    shiprushPanel.Shipment.International.DescriptionOfGoods = "Put some generic description here?";
+
+                //    shiprushPanel.Shipment.DocInd = 1; //?
+                //    //add commodity (always required for USPS shipments)
+                //    commodity = shiprushPanel.Shipment.International.AddCommodity();
+
+                //    //I'm bailing out here, there is much more in the NonVisual - VB shiprush project
+                //}
+
+                //'StartNewShipment() creates a single parcel shipment.
+                //'to add packages (e.g. create an mps shipment), call AddPackage for each package to add. E.g.
+                //'AxZFShippingPanel1.Shipment.AddPackage()
+
+                //Service
+                shiprushPanel.Shipment.Service.ServiceType = comAPI.GetShipViaTranslation(dt.Rows[0]["ShipViaCode"].ToString().Trim());
+
+                //'make it return services if appro, see FAQ in the SDK docs for some info
+                //'see SDK docs for : TRetService: Return service type
+                //I don't think we need this because customers call in for returns.
+                //shiprushPanel.Shipment.ERLEmail = dt.Rows[0]["ShipToEmail"].ToString().Trim();
+
+                shiprushPanel.Shipment.Packages(0).Weight = Int32.Parse(dt.Rows[0]["OrderWeight"].ToString().Trim());
+                shiprushPanel.Shipment.Packages(0).PackagingType = 0;
+
+                try
+                {
+                    shiprushPanel.Ship();
+                    sTrackingNumber = shiprushPanel.Shipment.TrackingNumber;
+                    dblFreight = shiprushPanel.Shipment.EffectiveCarrierCharges; //??
+                    dblFreight = shiprushPanel.Shipment.ShippingCharges; //??
+
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(String.Format("Shiprush returned and error for this shipment: {0}\r\n{1}", shiprushPanel.ErrorMessage.ToString(),ex.Message), "Shipping Error");
+                    return;
+                }
+            }
+
+        }
+            
+            #endregion
     }
 }
