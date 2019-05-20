@@ -47,7 +47,7 @@ namespace SLSShippingApp
         System.Diagnostics.Stopwatch watch;
         String timeMsg = String.Empty;
         Boolean doTimeCheck = false;
-        ZFShippingPanel shiprushPanel = new ZFShippingPanel() ;
+        ZFShippingPanel shiprushPanel = new ZFShippingPanel();
 
         public SLSShippingApp()
         {
@@ -465,7 +465,7 @@ namespace SLSShippingApp
                 }
 
                 if (dtPrintInfo != null)
-                    LoadPrintData(dtPrintInfo);
+                    LoadPrintData(dtPrintInfo,false);
 
                 if (dtScanInfo != null)
                     dgvList.DataSource = dtScanInfo;
@@ -691,7 +691,7 @@ namespace SLSShippingApp
 
                 if (dtOrders.Rows.Count > 0)
                 {
-                    LoadPrintData(dtOrders);
+                    LoadPrintData(dtOrders,false);
                 }
                 else
                 {
@@ -721,13 +721,13 @@ namespace SLSShippingApp
         #endregion
         #region PRINTING REPORTS
 
-        private void LoadPrintData(DataTable dtPrintInfo)
+        private void LoadPrintData(DataTable dtPrintInfo,Boolean isReprint = false)
         {
             watch = System.Diagnostics.Stopwatch.StartNew();
             if (doTimeCheck)
                 timeMsg += "LoadPrintData started\r\n";
 
-            ClearSQLExpressTables();
+            ClearSQLExpressTables(null, null, null);
 
             if (doTimeCheck)
                 timeMsg += String.Format("ClearSqlExpressTables completed: {0} ms\r\n", watch.ElapsedMilliseconds);
@@ -744,6 +744,8 @@ namespace SLSShippingApp
             String sPackingTicket = String.Empty;
             String sCustomerNumber = String.Empty;
             Int32 iCustomerNumber = 0;
+            String sTargetColumnName = String.Empty;
+
             sSQL = String.Empty;
 
             if (dtPrintInfo.Rows.Count == 0)
@@ -769,7 +771,8 @@ namespace SLSShippingApp
 
                 String sRptCustomer = row["Customer"].ToString().Length > 0 ? row["Customer"].ToString().Trim() : null;
                 sCustomerNumber = row["CustomerNumber"].ToString().Length > 0 ? row["CustomerNumber"].ToString().Trim() : null;
-                String sOrderNumber = sOrderNumber = row["OrderNumber"].ToString().Trim();
+                String sOrderNumber = row["OrderNumber"].ToString().Trim();
+                String sTargetTableName = String.Empty;
 
                 if (sRptCustomer != null && sCustomerNumber != null)
                     iCustomerNumber = Convert.ToInt32(sCustomerNumber);
@@ -779,22 +782,32 @@ namespace SLSShippingApp
                     case "BayNItemLabel":
                         bBayLabel = true;
                         bRunSql = true;
+                        sTargetColumnName = "OrderNumber";
+                        sTargetTableName = "tblLabel";
                         break;
                     case "ItemLabel":
                         bItemLabel = true;
                         bRunSql = true;
+                        sTargetColumnName = "OrderNumber";
+                        sTargetTableName = "tblLabel";
                         break;
                     case "PackingLabel":
                         bPackingLabel = true;
                         bRunSql = true;
+                        sTargetColumnName = "OrderOrSONumber";
+                        sTargetTableName = "tblTickets";
                         break;
                     case "PickingTicket":
                         bPickintTicket = true;
                         bRunSql = true;
+                        sTargetColumnName = "OrderOrSONumber";
+                        sTargetTableName = "tblPickingFile";
                         break;
                     case "RetailerPackingLabel":
                         bPackingLabel = true;
                         bRunSql = true;
+                        sTargetColumnName = "OrderOrSONumber";
+                        sTargetTableName = "tblRetailerPackingLabel";
                         break;
                     case "CustomerPackingTicket":
                         bRunSql = false;
@@ -813,6 +826,7 @@ namespace SLSShippingApp
                         sqlCmd.ExecuteNonQuery();
                         if (doTimeCheck)
                             timeMsg += String.Format("Sqlcmd.ExecuteNonQuery completed: {0} ms\r\n", watch.ElapsedMilliseconds);
+
                     }
                     catch (SqlException sEx)
                     {
@@ -826,15 +840,15 @@ namespace SLSShippingApp
 
                 if (bBayLabel)
                 {
-                    PrintDevExpReport("Label", "rptPrintBayLabel", 1);
-                    ClearSQLExpressTables("tblLabel");
+                    PrintDevExpReport("Label", "rptPrintBayLabel", 1, sOrderNumber);
+                    ClearSQLExpressTables("tblLabel", sOrderNumber, sTargetColumnName);
                 }
                 bBayLabel = false;
 
                 if (bItemLabel)
                 {
-                    PrintDevExpReport("Label", "rptPrintLabel", 1);
-                    ClearSQLExpressTables("tblLabel");
+                    PrintDevExpReport("Label", "rptPrintLabel", 1, sOrderNumber);
+                    ClearSQLExpressTables("tblLabel", sOrderNumber, sTargetColumnName);
                     if (doTimeCheck)
                         timeMsg += String.Format("PrintDevExpReport and ClearSqlExpressTables(tblLabel) completed: {0} ms\r\n", watch.ElapsedMilliseconds);
                 }
@@ -844,27 +858,29 @@ namespace SLSShippingApp
                 {
                     if (sRptCustomer != null)
                     {
-                        PrintDevExpReport("tblRetailerPackingLabel", "rpt" + sRptCustomer + "PackingLabels", 1);
-                        ClearSQLExpressTables("tblRetailerPackingLabel");
+                        PrintDevExpReport("tblRetailerPackingLabel", "rpt" + sRptCustomer + "PackingLabels", 1, sOrderNumber);
+                        ClearSQLExpressTables("tblRetailerPackingLabel", sOrderNumber, sTargetColumnName);
                     }
                     else
                     {
-                        PrintDevExpReport("Label", "rptPackingLabels", 1);
-                        ClearSQLExpressTables("tblTickets");
+                        PrintDevExpReport("Label", "rptPackingLabels", 1, sOrderNumber);
+                        ClearSQLExpressTables("tblTickets", sOrderNumber, sTargetColumnName);
                     }
                 }
                 bPackingLabel = false;
 
                 if (bPickintTicket)
                 {
-                    PrintDevExpReport("Ticket", "rptPickingTicket", 1);
+                    PrintDevExpReport("Ticket", "rptPickingTicket", 1, sOrderNumber);
 
                     if (doTimeCheck)
                         timeMsg += String.Format("PrintDevExpReport and ClearSqlExpressTables(rptPickingTicket) completed: {0} ms\r\n", watch.ElapsedMilliseconds);
-                    ShipOrder(sOrderNumber);
 
+                   // if(!isReprint) //ADD THIS FOR PRODUCTION. IN DEV, I'M TESTING USING THE REPRINT FUNCTIONALITY
+                   //BUT YOU'D NEVER WANT TO RE-SHIP EVERY TIME A USER DOES A REPRINT!!!!!!
+                        ShipOrder(sOrderNumber);
 
-                    ClearSQLExpressTables("tblTickets");
+                    ClearSQLExpressTables("tblTickets", sOrderNumber, sTargetColumnName);
                 }
                 bPickintTicket = false;
 
@@ -964,22 +980,26 @@ namespace SLSShippingApp
         //        ev.HasMorePages = false;
         //}
 
-        private void PrintDevExpReport(String sRptType, String sReport, short iCopies = 1)
+        private void PrintDevExpReport(String sRptType, String sReport, short iCopies = 1, String sOrderNo = null)
         {
             XtraReport report = new XtraReport();
             switch (sReport)
             {
                 case "rptPrintLabel":
                     report = new rptPrintLabel();
+                    report.FilterString = String.Format("[OrderNumber] = '{0}'", sOrderNo);
                     break;
                 case "rptBayLabel":
                     report = new rptBayLabel();
+                    report.FilterString = String.Format("[OrderNumber] = '{0}'", sOrderNo);
                     break;
                 case "rptPackingLabels":
                     report = new rptPackingLabels();
+                    report.FilterString = String.Format("[OrderOrSONumber] = '{0}'", sOrderNo);
                     break;
                 case "rptPickingTicket":
                     report = new rptPickingTicket();
+                    report.FilterString = String.Format("[OrderorSONumber] = '{0}'", sOrderNo);
                     break;
                 case "rptFanBrandsLabel":
                     report = new rptFanBrandsLabel();
@@ -989,29 +1009,28 @@ namespace SLSShippingApp
                     break;
                 case "rptHSNPackingLabels":
                     report = new rptHSNPackingLabels();
+                    report.FilterString = String.Format("[OrderorSONumber] = '{0}'", sOrderNo);
                     break;
                 case "rptWalmartPackingLabels":
                     report = new rptWalmartPackingLabels();
+                    report.FilterString = String.Format("[OrderorSONumber] = '{0}'", sOrderNo);
                     break;
                 case "rptTargetPackingLabels":
                     report = new rptTargetPackingLabels();
+                    report.FilterString = String.Format("[OrderorSONumber] = '{0}'", sOrderNo);
                     break;
                 case "rptAdvanceAutoPartsPackingLabels":
                     report = new rptAdvanceAutoPartsPackingLabels();
+                    report.FilterString = String.Format("[OrderorSONumber] = '{0}'", sOrderNo);
                     break;
                 case "rptOfficeDepotPackingLabels":
                     report = new rptOfficeDepotPackingLabels();
+                    report.FilterString = String.Format("[OrderorSONumber] = '{0}'", sOrderNo);
                     break;
                 case "rptFanaticsPackingLabels":
                     report = new rptFanaticsPackingLabels();
                     break;
             }
-
-            //Bind the report to a datasource
-            //BindToData(sRptType, sReport, report);
-            //create report detail
-            //SqlDataSource ds = report.DataSource as SqlDataSource;
-            //CreateDetailReport(report, ds.Queries[0].Name);
             PublishReport(report, sRptType);
         }
 
@@ -1706,7 +1725,7 @@ namespace SLSShippingApp
                     reader.Dispose();
                     return;
                 }
-                LoadPrintData(dt);
+                LoadPrintData(dt,true);
                 DgvFoundOrder_SelectionChanged(sender, e);
             }
             catch (Exception ex)
@@ -2843,7 +2862,7 @@ namespace SLSShippingApp
                     MessageBox.Show("Error retrieving Print Info for Order/Item", "Reprint Info");
                     return;
                 }
-                LoadPrintData(dt);
+                LoadPrintData(dt,true);
             }
             catch (Exception ex)
             {
@@ -3076,7 +3095,7 @@ namespace SLSShippingApp
             }
         }
 
-        private void ClearSQLExpressTables(String sTable = null)
+        private void ClearSQLExpressTables(String sTable = null, String sOrdNo = null, String sColumName = null)
         {
 
             sqlCon = new SqlConnection
@@ -3087,7 +3106,7 @@ namespace SLSShippingApp
             sqlCmd = new SqlCommand();
             sqlCmd.Connection = sqlCon;
 
-            String[] arrTables = { "tblLabel", "tblTickets", "tblPickingFile", "tblRetailerPackingLabel", "tblLabelFanBrands", "tblLabelQuickShip", "tblOrderItemMismatchMacola", "tblOrderItemsNotInMacola", "tblPostingLog", "tblQuickShipReport", "tblTicketsArch" };
+            String[] arrTables = { "tblLabel", "tblTickets", "tblPickingFile", "tblRetailerPackingLabel", "tblLabelFanBrands", "tblLabelQuickShip", "tblTicketsArch" };//"tblOrderItemMismatchMacola", "tblOrderItemsNotInMacola", "tblPostingLog", "tblQuickShipReport",
 
             try
             {
@@ -3096,6 +3115,9 @@ namespace SLSShippingApp
                     if (sTable == null || sTable == arrTables[t])
                     {
                         sSQL = String.Format("DELETE FROM SLSShippingApp.dbo.{0}", arrTables[t]);
+                        if (sOrdNo != null)
+                            sSQL += String.Format(" WHERE {0} = '{1}'", sColumName, sOrdNo);
+
                         sqlCmd.CommandText = sSQL;
                         sqlCmd.CommandType = CommandType.Text;
                         sqlCmd.ExecuteNonQuery();
@@ -3130,75 +3152,88 @@ namespace SLSShippingApp
         {
             String sTrackingNumber = String.Empty;
             Double dblFreight = 0.0D;
+            Int32 iZone = 0;
+            String sCarrierCode = "U";
+            String sCarrierMode = "G";
+            Int32 iShipWeight = 0;
+
+            sqlCon = new SqlConnection
+            {
+                ConnectionString = comAPI.SLSShippingAppConnection
+            };
+            sqlCon.Open();
+            sqlCmd = new SqlCommand();
+            sqlCmd.Connection = sqlCon;
+            String sSql = "SELECT * FROM tblPickingFile";
+            DataTable dt = new DataTable("ShippingInfo");
+            sqlCmd.CommandText = sSql;
+            sqlCmd.CommandType = CommandType.Text;
+
+            try
+            {
+                reader = sqlCmd.ExecuteReader();
+                dt.Load(reader);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format("Error loading Shipment Data from local table: {0}", ex.Message), "Data Retrieval Error");
+                return;
+            }
+            finally
+            {
+                sqlCon.Close();
+                sqlCmd.Dispose();
+                sqlCon.Dispose();
+                // dt.Dispose();
+            }
 
 
             if (!shiprushPanel.Connected)
             {
                 try
                 {
-                    shiprushPanel.SerialNumber = "!5e+b08HUxyiqCM8wr75l8IZ6Kim8q6cboE-o0mWR1ChZG913D-afvU";
-                    shiprushPanel.PartnerID = "SLS";// Environment["USER"].ToString();
-                    shiprushPanel.CarrierDeveloperKey = "xxxx"; //CarrierShippingKey goes here
+                    shiprushPanel.SerialNumber = ConfigurationManager.AppSettings.Get("TestShiprushSerialNumber").ToString();
+                    shiprushPanel.CarrierType = comAPI.GetShipViaTranslation(dt.Rows[0]["ShipViaCode"].ToString().Trim());
+                    // shiprushPanel.PartnerID = "SLS";// Environment["USER"].ToString();
+                    //  shiprushPanel.CarrierDeveloperKey = "xxxx"; //CarrierShippingKey goes here
                     shiprushPanel.Connect();
+                    if (!shiprushPanel.Connected)
+                        MessageBox.Show(shiprushPanel.ErrorMessage);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(String.Format("Unable to conenct to ShipRush: {0}", ex.Message), "ShipRush Error");
                     return;
                 }
+            }
 
-                sqlCon = new SqlConnection
-                {
-                    ConnectionString = comAPI.SLSShippingAppConnection
-                };
-                sqlCon.Open();
-                sqlCmd = new SqlCommand();
-                sqlCmd.Connection = sqlCon;
-                String sSql = "SELECT * FROM tblPickingFile";
-                DataTable dt = new DataTable("ShippingInfo");
-                sqlCmd.CommandText = sSql;
-                sqlCmd.CommandType = CommandType.Text;
-               
-                try
-                {
-                    reader = sqlCmd.ExecuteReader();
-                    dt.Load(reader);
-                }catch(Exception ex)
-                {
-                    MessageBox.Show(String.Format("Error loading Shipment Data from local table: {0}", ex.Message), "Data Retrieval Error");
-                    return;
-                }
-                finally
-                {
-                    sqlCon.Close();
-                    sqlCmd.Dispose();
-                    sqlCon.Dispose();
-                    dt.Dispose();
-                }
-                //these only appear to be necessary for APO/FPO/International shipments
-               // ZFCommodity commodity;
-               // Int32 i = 0;
-                
-                shiprushPanel.StartNewShipment();
-                shiprushPanel.Settings.SaveLabels = false;
-                shiprushPanel.Settings.AutoAddressValidation = true;
-                shiprushPanel.ShowErrors = true;
-                //shiprushPanel.SlaveMode = ?
-                
-                shiprushPanel.Shipment.ToAddress.Company = dt.Rows[0]["ShipToName"].ToString().Trim();
-                shiprushPanel.Shipment.ToAddress.Name = dt.Rows[0]["ShipToName"].ToString().Trim();
-                shiprushPanel.Shipment.ToAddress.Address1 = dt.Rows[0]["ShipToAddress1"].ToString().Trim();
-                shiprushPanel.Shipment.ToAddress.Address2 = dt.Rows[0]["ShipToAddress2"].ToString().Trim();
-                shiprushPanel.Shipment.ToAddress.Address3 = dt.Rows[0]["ShipToAddress3"].ToString().Trim();
-                shiprushPanel.Shipment.ToAddress.City = dt.Rows[0]["ShipToCity"].ToString().Trim();
-                shiprushPanel.Shipment.ToAddress.ZIP = dt.Rows[0]["ShipToZipCode"].ToString().Trim();
-                shiprushPanel.Shipment.ToAddress.Phone = dt.Rows[0]["ShipToPhone"].ToString().Trim();
-                shiprushPanel.Shipment.ToAddress.State = comAPI.GetStateTranslation(dt.Rows[0]["ShipToState"].ToString().Trim());
-                shiprushPanel.Shipment.ToAddress.Country = comAPI.GetCountryTranslation( dt.Rows[0]["ShipToCountry"].ToString().Trim());
+            //these only appear to be necessary for APO/FPO/International shipments
+            // ZFCommodity commodity;
+            // Int32 i = 0;
 
-                if (dt.Rows[0]["CustShipperAcct"].ToString().Trim().Length > 0)
-                    shiprushPanel.Shipment.FromAddress.Account = dt.Rows[0]["CustShipperAcct"].ToString().Trim();
+            shiprushPanel.StartNewShipment();
+            shiprushPanel.Settings.SaveLabels = false;
+            shiprushPanel.Settings.AutoAddressValidation = true;
+            shiprushPanel.ShowErrors = true;
+            //shiprushPanel.SlaveMode = ?
 
+            shiprushPanel.Shipment.ToAddress.Company = dt.Rows[0]["ShipToName"].ToString().Trim();
+            shiprushPanel.Shipment.ToAddress.Name = dt.Rows[0]["ShipToName"].ToString().Trim();
+            shiprushPanel.Shipment.ToAddress.Address1 = dt.Rows[0]["ShipToAddress1"].ToString().Trim();
+            shiprushPanel.Shipment.ToAddress.Address2 = dt.Rows[0]["ShipToAddress2"].ToString().Trim();
+            shiprushPanel.Shipment.ToAddress.Address3 = dt.Rows[0]["ShipToAddress3"].ToString().Trim();
+            shiprushPanel.Shipment.ToAddress.City = comAPI.GetCityFromAddress(dt.Rows[0]["ShipToCity"].ToString().Trim());
+            shiprushPanel.Shipment.ToAddress.ZIP = dt.Rows[0]["ShipToZipCode"].ToString().Trim();
+            shiprushPanel.Shipment.ToAddress.Phone = dt.Rows[0]["ShipToNumber"].ToString().Trim();
+            shiprushPanel.Shipment.ToAddress.State = comAPI.GetStateTranslation(dt.Rows[0]["ShipToCity"].ToString().Trim());
+            shiprushPanel.Shipment.ToAddress.Country = comAPI.GetCountryTranslation(dt.Rows[0]["ShipToState"].ToString().Trim());
+
+            if (dt.Rows[0]["CustShipperAcct"].ToString().Trim().Length > 0)
+                //    shiprushPanel.Shipment.FromAddress.Account = dt.Rows[0]["CustShipperAcct"].ToString().Trim();
+                //UNCOMMENT THE ABOVE LINE. ALL ALTERNATE (CUSTOMER) SHIPPING ACCOUNTS WILL HAVE TO BE ADDED
+                //TO SHIPRUSH
+
+                #region APO/FPO/INTERNATIONAL
                 //Theres a lot of code that has to happen if either of these is true
                 //Boolean isApoFpo = false;
                 //Boolean isInternational = false;
@@ -3228,35 +3263,67 @@ namespace SLSShippingApp
                 //'StartNewShipment() creates a single parcel shipment.
                 //'to add packages (e.g. create an mps shipment), call AddPackage for each package to add. E.g.
                 //'AxZFShippingPanel1.Shipment.AddPackage()
+                #endregion
 
                 //Service
                 shiprushPanel.Shipment.Service.ServiceType = comAPI.GetShipViaTranslation(dt.Rows[0]["ShipViaCode"].ToString().Trim());
+            sCarrierCode = comAPI.GetCarrierCode(dt.Rows[0]["ShipViaCode"].ToString().Trim());
+            sCarrierMode = comAPI.GetCarrierMode(dt.Rows[0]["ShipViaCode"].ToString().Trim());
 
-                //'make it return services if appro, see FAQ in the SDK docs for some info
-                //'see SDK docs for : TRetService: Return service type
-                //I don't think we need this because customers call in for returns.
-                //shiprushPanel.Shipment.ERLEmail = dt.Rows[0]["ShipToEmail"].ToString().Trim();
+            //'make it return services if appro, see FAQ in the SDK docs for some info
+            //'see SDK docs for : TRetService: Return service type
+            //I don't think we need this because customers call in for returns.
+            //shiprushPanel.Shipment.ERLEmail = dt.Rows[0]["ShipToEmail"].ToString().Trim();
+            iShipWeight =Convert.ToInt32(Math.Floor(Convert.ToDouble(dt.Rows[0]["OrderWeight"].ToString().Trim())));
+            shiprushPanel.Shipment.Packages(0).Weight = iShipWeight;
+            
+            shiprushPanel.Shipment.Packages(0).PackagingType = 0;
 
-                shiprushPanel.Shipment.Packages(0).Weight = Int32.Parse(dt.Rows[0]["OrderWeight"].ToString().Trim());
-                shiprushPanel.Shipment.Packages(0).PackagingType = 0;
+            try
+            {
+                shiprushPanel.Ship();
+                sTrackingNumber = shiprushPanel.Shipment.TrackingNumber;
+                dblFreight = shiprushPanel.Shipment.EffectiveCarrierCharges; //??
+                dblFreight = shiprushPanel.Shipment.ShippingCharges; //??
+                iZone = Convert.ToInt32(shiprushPanel.Shipment.UPSZone);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format("Shiprush returned and error for this shipment: {0}\r\n{1}", shiprushPanel.ErrorMessage.ToString(), ex.Message), "Shipping Error");
+                return;
+            }
+
+            if (sTrackingNumber.Length > 0)
+            {
+                sSql = String.Format("INSERT INTO ARSHTFIL_SQL(ord_no,shipment_no,carrier_cd,mode,ship_cost,tracking_no,zone,ship_weight,complete_fg,ship_dt) " +
+                       " VALUES('{0}',1,'{1}','{2}',{3},'{4}',{5},{6},'P',CONVERT(INT, CONVERT(VARCHAR, GETDATE(), 112)))", sOrdNo, sCarrierCode, sCarrierMode, dblFreight, sTrackingNumber, iZone, iShipWeight);
+
+
+                sqlCon = new SqlConnection(comAPI.MacolaConnection);
+                sqlCmd = new SqlCommand(sSql, sqlCon);
+                sqlCon.Open();
+                sqlCmd.CommandText = sSql;
+                sqlCmd.CommandType = CommandType.Text;
 
                 try
                 {
-                    shiprushPanel.Ship();
-                    sTrackingNumber = shiprushPanel.Shipment.TrackingNumber;
-                    dblFreight = shiprushPanel.Shipment.EffectiveCarrierCharges; //??
-                    dblFreight = shiprushPanel.Shipment.ShippingCharges; //??
+                    sqlCmd.ExecuteNonQuery();
 
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-                    MessageBox.Show(String.Format("Shiprush returned and error for this shipment: {0}\r\n{1}", shiprushPanel.ErrorMessage.ToString(),ex.Message), "Shipping Error");
-                    return;
+                    MessageBox.Show(String.Format("Error creating ARSHTFIL_SQL record for Order Shipment: {0}", ex.Message), "Macola Shipment Record Error");
+
+                }
+                finally
+                {
+                    sqlCon.Close();
+                    sqlCon.Dispose();
+                    sqlCmd.Dispose();
                 }
             }
-
         }
-            
-            #endregion
+        #endregion
     }
 }

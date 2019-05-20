@@ -135,6 +135,10 @@ namespace SLSShippingApp
 
         public Int32 GetStateTranslation(String sState)
         {
+            String[] addressParts = sState.Split(' ');
+
+            String pieceState = addressParts[1];
+
             String[] arrayStates = new string[]
             {       "XX" ,//zero index dummy for Array.IndexOf(value) function
                 "AL","AK","AZ","AR","CA","CO","CT","DE","DC","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA",
@@ -142,8 +146,16 @@ namespace SLSShippingApp
                 "PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY",
                 "AB","BC","MB","NB","NL","NT","NS","ON","PE","QC","SK","YT" };
 
-            return Convert.ToInt32(Array.IndexOf(arrayStates, sState));
+            return Convert.ToInt32(Array.IndexOf(arrayStates, pieceState));
         }
+
+        public String GetCityFromAddress(String sAddress)
+        {
+            String[] addressParts = sAddress.Split(',');
+            return addressParts[0];
+
+        }
+
         public Int32 GetCountryTranslation(String sCountry)
         {
             String[] arrayCountries = new string[]
@@ -240,6 +252,104 @@ namespace SLSShippingApp
             }
 
             return iShipService;
+        }
+
+        public String GetCarrierCode(String sShipVia)
+        {
+            String sCode = "U";
+
+            switch(sShipVia)
+            {
+                case "UPG":
+                case "USP":
+                case "U2A":
+                case "U3D":
+                case "UAS":
+                case "UNA":
+                case "U2M":
+                case "UAM":
+                    sCode = "U";
+                    break;
+                case "FXG":
+                case "FSP":
+                case "FHD":
+                case "F2D":
+                case "FSO":
+                case "FES":
+                case "FPO":
+                case "F3F":
+                case "FFO":
+                    sCode = "F";
+                    break;
+                case "UPM":
+                case "UFM":
+                case "UMM":
+                case "UPP":
+                    sCode = "P";
+                    break;
+            }
+            return sCode;
+        }
+
+        public String GetCarrierMode(String sShipVia)
+        {
+            String sMode = "G";
+
+            switch (sShipVia)
+            {
+                case "USP":
+                case "FHD":
+                    sMode = "A";
+                    break;
+                case "UPG":
+                    sMode = "G";
+                    break;
+                case "FXG":
+                case "UAM":
+                    sMode = "B";
+                    break;
+                case "FSP":
+                    sMode = "C";
+                    break;
+                case "F2D":
+                case "U2A":
+                    sMode = "2";
+                    break;
+                case "UPM":
+                    sMode = "R";
+                    break;
+                case "FSO":
+                case "UMM":
+                    sMode = "S";
+                    break;
+                case "U3D":
+                    sMode = "3";
+                    break;
+                case "UAS":
+                    sMode = "V";
+                    break;
+                case "UFM":
+                case "FFO":
+                    sMode = "F";
+                    break;
+                case "UNA":
+                    sMode = "1";
+                    break;
+                case "FES":
+                    sMode = "X";
+                    break;
+                case "FPO":
+                case "UPP":
+                    sMode = "P";
+                    break;
+                case "F3F":
+                    sMode = "5";
+                    break;
+                case "U2M":
+                    sMode = "M";
+                    break;
+            }
+            return sMode;
         }
 
     }
