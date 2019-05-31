@@ -195,27 +195,225 @@ namespace SLSShippingApp
 
 
         }
+        public Int32 GetShippingService(String sShipVia)
+        {
+            Int32 iShipService = 6;
+            switch(sShipVia)
+            {
+                case "F2D":
+                    iShipService = 16;
+                    break;
+                case "FES":
+                    iShipService = 17;
+                    break;
+                case "FDX":
+                case "ABF":
+                case "LTL":
+                    iShipService = -1; //Can't find translation
+                    break;
+                case "FHD":
+                    iShipService = 22;
+                    break;
+                case "FSO":
+                    iShipService = 15;
+                    break;
+                case "FSP":
+                    iShipService = 58;
+                    break;
+                case "FXG":
+                    iShipService = 21;
+                    break;
+                case "PU":
+                    iShipService = 64;
+                    break;
+                case "U2A":
+                    iShipService = 3;
+                    break;
+                case "U3D":
+                    iShipService = 5;
+                    break;
+                case "UFM":
+                    iShipService = 43;
+                    break;
+                case "UNA":
+                    iShipService = 0;
+                    break;
+                case "UPG":
+                    iShipService = 6;
+                    break;
+                case "UPM":
+                    iShipService = 44;
+                    break;
+            }
+            return iShipService;
+            #region Shiprush Shipping Services Values
+            /* Available Values listed in Shiprush API 
+                ActiveX Value	UPS	
+                0	UPS Next Day Air	
+                1	UPS Next Day Air Early	
+                2	UPS Next Day Air Saver	
+                3	UPS 2nd Day Air	
+                4	UPS 2nd Day Air A.M.	
+                5	UPS 3 Day Select	
+                6	UPS Ground	
+                7	UPS Worldwide Express Plus	
+                8	UPS Worldwide Express	
+                9	UPS Worldwide Express Saver	
+                10	UPS Worldwide Expedited	
+                11	UPS Economy	
+                12	UPS Standard	
+                13	FedEx First Overnight	
+                14	FedEx Priority Overnight	
+                15	FedEx Standard Overnight	
+                16	FedEx 2Day	
+                17	FedEx Express Saver	
+                18	FedEx 1Day Freight	
+                19	FedEx 2Day Freight	
+                20	FedEx 3Day Freight	
+                21	FedEx Ground	
+                22	FedEx Home Delivery	
+                23	OBSOLETE: (FedEx Extra Hours Discontinued)	
+                24	FedEx International First	
+                25	FedEx International Priority	
+                26	FedEx International Economy	
+                27	OBSOLETE: (FedEx Extra Hours Discontinued)	
+                28	FedEx International Priority Freight	
+                29	FedEx International Economy Freight	
+                30	FedEx International Ground	
+                31	OBSOLETE: (DHL Next Day 10:30 am)	
+                32	OBSOLETE: (DHL Next Day 12:00 pm)	
+                33	OBSOLETE: (DHL Next Day 3:00 pm)	
+                34	OBSOLETE: (DHL Second Day)	
+                35	OBSOLETE: (DHL Ground)	
+                36	<no service>	
+                37	UPS Expedited	
+                38	UPS Express Saver	
+                39	UPS Express	
+                40	UPS Express Plus	
+                41	UPS Standard	
+                42	UPS 3 Day Select	
+                43	USPS First Class	
+                44	USPS Priority	
+                45	USPS Media Mail	
+                46	USPS Retail Ground	
+                47	USPS Express	
+                48	OBSOLETE: (USPS BPM - DO NOT USE!)	
+                49	USPS Library Mail	
+                50	DHL International Express	
+                51	OBSOLETE: (DHL @Home Standard)	
+                52	OBSOLETE: (DHL @Home Deferred)	
+                53	USPS Intl Express	
+                54	USPS Intl Priority	
+                55	USPS Intl First Class	
+                56	Generic Standard	
+                57	Generic Express	
+                58	FedEx SmartPost	
+                59	USPS Parcel Select	
+                60	Critical Mail	
+                61	Domestic Address Label	
+                62	International Address Label	
+                63	FedEx SmartPost International	
+                64	Local Pickup	
+                65	DHL GM Parcel Plus Expedited	
+                66	DHL GM Parcel Plus Standard	
+                67	DHL GM BPM Expedited	
+                68	DHL GM BPM Standard	
+                69	DHL GM Catalog BPM Expedited	
+                70	DHL GM Catalog BPM Standard	
+                71	DHL GM Media Mail Ground	
+                72	DHL GM Parcel Expedited	
+                73	DHL GM Parcel Ground	
+                74	DHL GM Priority Mail	
+                75	DHL GM First Class Product	
+                76	DHL GM First Class Parcel	
+                77	International Priority Airmail	
+                78	International Surface Air Lift	
+                79	FedEx 2Day A.M.	
+                80	FedEx Freight Priority	
+                81	FedEx Freight Economy	
+                82	UPS SurePost Less than 1 lb	
+                83	UPS SurePost 1 lb or Greater
+                84	UPS SurePost BPM	
+                85	UPS SurePost Media	
+                86	UPS First Class Mail	
+                87	UPS Priority Mail	
+                88	UPS Expedited Mail Innovations	
+                89	UPS Priority Mail Innovations	
+                90	UPS Economy Mail Innovations
+                91	FedEx First Overnight Freight	
+                92	DHL Packet Plus Priority	
+                93	DHL Packet Priority	
+                94	DHL Packet Standard	
+                95	DHL Packet IPA	
+                96	DHL Packet ISAL	
+                97	Consolidator International	
+                98	USPSAutoselected	
+                99	CollectPlusEconomy	
+                100	CollectPlusStandard	
+                101	DHLPackage1kg	
+                102	DHLPackage2kg	
+                103	DHLPackage5kg	
+                104	DHLPackage10kg	
+                105	DHLParcel2kg	
+                106	DHLExpressEasyNational5kg	
+                107	DHLExpressEasyNational10kg	
+                108	DHLExpressEasyNational20kg	
+                109	DHLExpressEasyNational31kg	
+                110	DPParcelGross	
+                111	DPParcelMaxi	
+                112	DPPackageGross	
+                113	DPPackageKompakt	
+                114	DHLExpressEasyNational1kg	
+                115	DHLExpressEasyNational2kg	
+                116	Commercial ePacket	
+                117	DHLParcel1kg	
+                118	DHLExpressEasyNational500g	
+                119	DPGross	
+                120	DPKompakt	
+                121	RoyalMailFirstClass	
+                122	RoyalMailSecondClass	
+                123	RoyalMailSignedFirstClass	
+                124	RoyalMailSignedSecondClass	
+                125	RoyalMailGuaranteedBy1PM	
+                126	RoyalMailGuaranteedBy9AM	
+                127	DYNAMEXSameDay	
+                128	DHL GM Parcel Priority	
+                129	DHL GM Parcel Standard	
+                130	DHL GM Direct Express (DDP)	
+                131	DHL GM Direct Express (DDU)	
+                132	Asendia PMI	
+                133	Asendia PMEI	
+                134	Asendia Priority Tracked	
+                135	Asendia International Express	
+                136	Asendia Other	
+                137	DHL GM Parcel Direct (DDP)	
+                138	DHL GM Parcel Direct (DDU)	
+                139	DHL GM Business Priority	
+                140	DHL GM Business Standard
+                */
+            #endregion
+        }
 
         public Int32 GetShipViaTranslation(String sShipVia)
         {
             /* Macola Ship Via for SLS
              * ship_via_cd
                 ABF = ABF Freight ????
-                F2D = FedEx 2 day
+             16   F2D = FedEx 2 day
                 FDX = FedEx
-                FES = FX Express Saver
-                FHD = FX Home Delivery
-                FSO = FX Std Ovr Night
-                FSP = FX Smart Post
-                FXG = Fed Ex Ground
+            17    FES = FX Express Saver
+            22    FHD = FX Home Delivery
+            15    FSO = FX Std Ovr Night
+             58   FSP = FX Smart Post
+            21    FXG = Fed Ex Ground
                 LTL = Freight
-                PU = Pick Up
-                U2A = UPS 2nd Day Air
-                U3D = UPS 3 Day Select
-                UFM = USPS First Class
-                UNA = UPS Next Day Air
-                UPG = UPS Ground
-                UPM = USPS Priority Mail
+            64    PU = Pick Up
+            3    U2A = UPS 2nd Day Air
+            5    U3D = UPS 3 Day Select
+            43    UFM = USPS First Class
+            0    UNA = UPS Next Day Air
+             6   UPG = UPS Ground
+            44    UPM = USPS Priority Mail
                 */
 
             /*ShipRush Ship Service

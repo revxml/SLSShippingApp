@@ -48,6 +48,7 @@ namespace SLSShippingApp
         String timeMsg = String.Empty;
         Boolean doTimeCheck = false;
         ZFShippingPanel shiprushPanel = new ZFShippingPanel();
+        static bool clockwise = false;
 
         public SLSShippingApp()
         {
@@ -173,6 +174,7 @@ namespace SLSShippingApp
             SetStartScreen();
             //  AddHoverNotes(); //comment once unit testing is completed
         }
+
         /// <summary>
         /// if there is a control, or are controls, that have not passed unit testing,-
         /// use this to bind the control(s) to the hover event that will display
@@ -465,7 +467,7 @@ namespace SLSShippingApp
                 }
 
                 if (dtPrintInfo != null)
-                    LoadPrintData(dtPrintInfo,false);
+                    LoadPrintData(dtPrintInfo, false);
 
                 if (dtScanInfo != null)
                     dgvList.DataSource = dtScanInfo;
@@ -691,7 +693,7 @@ namespace SLSShippingApp
 
                 if (dtOrders.Rows.Count > 0)
                 {
-                    LoadPrintData(dtOrders,false);
+                    LoadPrintData(dtOrders, false);
                 }
                 else
                 {
@@ -721,7 +723,7 @@ namespace SLSShippingApp
         #endregion
         #region PRINTING REPORTS
 
-        private void LoadPrintData(DataTable dtPrintInfo,Boolean isReprint = false)
+        private void LoadPrintData(DataTable dtPrintInfo, Boolean isReprint = false)
         {
             watch = System.Diagnostics.Stopwatch.StartNew();
             if (doTimeCheck)
@@ -876,9 +878,9 @@ namespace SLSShippingApp
                     if (doTimeCheck)
                         timeMsg += String.Format("PrintDevExpReport and ClearSqlExpressTables(rptPickingTicket) completed: {0} ms\r\n", watch.ElapsedMilliseconds);
 
-                   // if(!isReprint) //ADD THIS FOR PRODUCTION. IN DEV, I'M TESTING USING THE REPRINT FUNCTIONALITY
-                   //BUT YOU'D NEVER WANT TO RE-SHIP EVERY TIME A USER DOES A REPRINT!!!!!!
-                        ShipOrder(sOrderNumber);
+                    // if(!isReprint) //ADD THIS FOR PRODUCTION. IN DEV, I'M TESTING USING THE REPRINT FUNCTIONALITY
+                    //BUT YOU'D NEVER WANT TO RE-SHIP EVERY TIME A USER DOES A REPRINT!!!!!!
+                    ShipOrder(sOrderNumber);
 
                     ClearSQLExpressTables("tblTickets", sOrderNumber, sTargetColumnName);
                 }
@@ -925,7 +927,6 @@ namespace SLSShippingApp
                 //  pd.PrintPage -= new PrintPageEventHandler(pd_PrintPage);
                 //printDoc.PrintController = printController;
 
-
                 using (Ghostscript.NET.Processor.GhostscriptProcessor processor = new Ghostscript.NET.Processor.GhostscriptProcessor())
                 {
                     List<string> switches = new List<string>();
@@ -941,9 +942,6 @@ namespace SLSShippingApp
                     switches.Add(sFullPath);
                     processor.StartProcessing(switches.ToArray(), null);
                 }
-
-
-
             }
             else
                 MessageBox.Show("Customer Packing Ticket expected for customer but not found. \nContact management and/or SLS Customer Service regarding missing Packing Ticket.", "Missing Customer Packing Slip");
@@ -1110,7 +1108,6 @@ namespace SLSShippingApp
             e.PageSettings.PaperSize = new PaperSize("Custom", s.Height, s.Width);
         }
 
-        static bool clockwise = false;
         static void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
         {
             Graphics g = e.Graphics;
@@ -1317,6 +1314,7 @@ namespace SLSShippingApp
 
             dt.Dispose();
         }
+
         #endregion
 
         #region ADMIN SECTION
@@ -1725,7 +1723,7 @@ namespace SLSShippingApp
                     reader.Dispose();
                     return;
                 }
-                LoadPrintData(dt,true);
+                LoadPrintData(dt, true);
                 DgvFoundOrder_SelectionChanged(sender, e);
             }
             catch (Exception ex)
@@ -1798,6 +1796,7 @@ namespace SLSShippingApp
         #endregion
 
         #region MAINTENANCE
+
         private void DgvBayDetails_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow dgvRow = dgvBayDetails.Rows[e.RowIndex];
@@ -2325,6 +2324,7 @@ namespace SLSShippingApp
                 dt.Dispose();
             }
         }
+
         #endregion
 
         #region QS MAINTENANCE SCREEN
@@ -2862,7 +2862,7 @@ namespace SLSShippingApp
                     MessageBox.Show("Error retrieving Print Info for Order/Item", "Reprint Info");
                     return;
                 }
-                LoadPrintData(dt,true);
+                LoadPrintData(dt, true);
             }
             catch (Exception ex)
             {
@@ -3145,9 +3145,11 @@ namespace SLSShippingApp
             ClearSQLExpressTables();
             this.Dispose();
         }
+
         #endregion
 
         #region ShipRush Shipping
+
         private void ShipOrder(String sOrdNo)
         {
             String sTrackingNumber = String.Empty;
@@ -3266,7 +3268,7 @@ namespace SLSShippingApp
                 #endregion
 
                 //Service
-                shiprushPanel.Shipment.Service.ServiceType = comAPI.GetShipViaTranslation(dt.Rows[0]["ShipViaCode"].ToString().Trim());
+                shiprushPanel.Shipment.Service.ServiceType = comAPI.GetShippingService(dt.Rows[0]["ShipViaCode"].ToString().Trim());
             sCarrierCode = comAPI.GetCarrierCode(dt.Rows[0]["ShipViaCode"].ToString().Trim());
             sCarrierMode = comAPI.GetCarrierMode(dt.Rows[0]["ShipViaCode"].ToString().Trim());
 
@@ -3274,9 +3276,9 @@ namespace SLSShippingApp
             //'see SDK docs for : TRetService: Return service type
             //I don't think we need this because customers call in for returns.
             //shiprushPanel.Shipment.ERLEmail = dt.Rows[0]["ShipToEmail"].ToString().Trim();
-            iShipWeight =Convert.ToInt32(Math.Floor(Convert.ToDouble(dt.Rows[0]["OrderWeight"].ToString().Trim())));
+            iShipWeight = Convert.ToInt32(Math.Floor(Convert.ToDouble(dt.Rows[0]["OrderWeight"].ToString().Trim())));
             shiprushPanel.Shipment.Packages(0).Weight = iShipWeight;
-            
+
             shiprushPanel.Shipment.Packages(0).PackagingType = 0;
 
             try
@@ -3324,6 +3326,7 @@ namespace SLSShippingApp
                 }
             }
         }
+
         #endregion
     }
 }
