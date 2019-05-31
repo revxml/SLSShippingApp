@@ -740,7 +740,7 @@ namespace SLSShippingApp
             Boolean bBayLabel = false;
             Boolean bItemLabel = false;
             Boolean bPackingLabel = false;
-            Boolean bPickintTicket = false;
+            Boolean bPickingTicket = false;
             Boolean bPackingTicket = false;
             Boolean bRunSql = true;
             String sPackingTicket = String.Empty;
@@ -800,7 +800,7 @@ namespace SLSShippingApp
                         sTargetTableName = "tblTickets";
                         break;
                     case "PickingTicket":
-                        bPickintTicket = true;
+                        bPickingTicket = true;
                         bRunSql = true;
                         sTargetColumnName = "OrderOrSONumber";
                         sTargetTableName = "tblPickingFile";
@@ -828,7 +828,6 @@ namespace SLSShippingApp
                         sqlCmd.ExecuteNonQuery();
                         if (doTimeCheck)
                             timeMsg += String.Format("Sqlcmd.ExecuteNonQuery completed: {0} ms\r\n", watch.ElapsedMilliseconds);
-
                     }
                     catch (SqlException sEx)
                     {
@@ -871,7 +870,7 @@ namespace SLSShippingApp
                 }
                 bPackingLabel = false;
 
-                if (bPickintTicket)
+                if (bPickingTicket)
                 {
                     PrintDevExpReport("Ticket", "rptPickingTicket", 1, sOrderNumber);
 
@@ -884,7 +883,7 @@ namespace SLSShippingApp
 
                     ClearSQLExpressTables("tblTickets", sOrderNumber, sTargetColumnName);
                 }
-                bPickintTicket = false;
+                bPickingTicket = false;
 
                 if (bPackingTicket)
                     PrintDoc(sPackingTicket, sOrderNumber);
@@ -3189,7 +3188,6 @@ namespace SLSShippingApp
                 // dt.Dispose();
             }
 
-
             if (!shiprushPanel.Connected)
             {
                 try
@@ -3234,7 +3232,6 @@ namespace SLSShippingApp
                 //    shiprushPanel.Shipment.FromAddress.Account = dt.Rows[0]["CustShipperAcct"].ToString().Trim();
                 //UNCOMMENT THE ABOVE LINE. ALL ALTERNATE (CUSTOMER) SHIPPING ACCOUNTS WILL HAVE TO BE ADDED
                 //TO SHIPRUSH
-
                 #region APO/FPO/INTERNATIONAL
                 //Theres a lot of code that has to happen if either of these is true
                 //Boolean isApoFpo = false;
@@ -3267,8 +3264,8 @@ namespace SLSShippingApp
                 //'AxZFShippingPanel1.Shipment.AddPackage()
                 #endregion
 
-                //Service
-                shiprushPanel.Shipment.Service.ServiceType = comAPI.GetShippingService(dt.Rows[0]["ShipViaCode"].ToString().Trim());
+            //Service
+            shiprushPanel.Shipment.Service.ServiceType = comAPI.GetShippingService(dt.Rows[0]["ShipViaCode"].ToString().Trim());
             sCarrierCode = comAPI.GetCarrierCode(dt.Rows[0]["ShipViaCode"].ToString().Trim());
             sCarrierMode = comAPI.GetCarrierMode(dt.Rows[0]["ShipViaCode"].ToString().Trim());
 
@@ -3278,7 +3275,6 @@ namespace SLSShippingApp
             //shiprushPanel.Shipment.ERLEmail = dt.Rows[0]["ShipToEmail"].ToString().Trim();
             iShipWeight = Convert.ToInt32(Math.Floor(Convert.ToDouble(dt.Rows[0]["OrderWeight"].ToString().Trim())));
             shiprushPanel.Shipment.Packages(0).Weight = iShipWeight;
-
             shiprushPanel.Shipment.Packages(0).PackagingType = 0;
 
             try
@@ -3288,7 +3284,6 @@ namespace SLSShippingApp
                 dblFreight = shiprushPanel.Shipment.EffectiveCarrierCharges; //??
                 dblFreight = shiprushPanel.Shipment.ShippingCharges; //??
                 iZone = Convert.ToInt32(shiprushPanel.Shipment.UPSZone);
-
             }
             catch (Exception ex)
             {
@@ -3300,8 +3295,7 @@ namespace SLSShippingApp
             {
                 sSql = String.Format("INSERT INTO ARSHTFIL_SQL(ord_no,shipment_no,carrier_cd,mode,ship_cost,tracking_no,zone,ship_weight,complete_fg,ship_dt) " +
                        " VALUES('{0}',1,'{1}','{2}',{3},'{4}',{5},{6},'P',CONVERT(INT, CONVERT(VARCHAR, GETDATE(), 112)))", sOrdNo, sCarrierCode, sCarrierMode, dblFreight, sTrackingNumber, iZone, iShipWeight);
-
-
+                
                 sqlCon = new SqlConnection(comAPI.MacolaConnection);
                 sqlCmd = new SqlCommand(sSql, sqlCon);
                 sqlCon.Open();

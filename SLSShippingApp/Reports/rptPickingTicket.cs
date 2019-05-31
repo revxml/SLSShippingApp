@@ -35,7 +35,6 @@ namespace SLSShippingApp.Reports
 
         private void pbItemImage_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-
             String fullPathToFile = ConfigurationManager.AppSettings["ImagePath"].ToString();// + "! Image Not Found !.jpg";
             String sImage = @Detail.Report.GetCurrentColumnValue("StockNumber").ToString().Trim() ;//.Replace(@"\\",@"\");
             if (sImage != String.Empty)

@@ -14,8 +14,7 @@ namespace SLSShippingApp.Reports
             InitializeComponent();
             this.PageHeight = 200;
             this.PageWidth = 400;
-            lblDate.Text = DateTime.Now.ToShortDateString();
-           
+            lblDate.Text = DateTime.Now.ToShortDateString();           
         }
 
         private void xrPictureBox1_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)

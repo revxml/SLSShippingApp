@@ -117,7 +117,6 @@ namespace SLSShippingApp
             return iRecordsAffected;
         }
 
-
         public Int32 FindRecord_RS(String SQLWhere, System.Data.DataSet ds)
         {
             System.Data.DataSet dsClone;
@@ -135,9 +134,9 @@ namespace SLSShippingApp
 
         public Int32 GetStateTranslation(String sState)
         {
-            String[] addressParts = sState.Split(' ');
-
-            String pieceState = addressParts[1];
+            String[] AddressSplitOnComma = sState.Split(',');
+            String[] addressParts = AddressSplitOnComma[1].ToString().TrimStart(' ').Split(' ');
+            String pieceState = addressParts[0];
 
             String[] arrayStates = new string[]
             {       "XX" ,//zero index dummy for Array.IndexOf(value) function
@@ -153,7 +152,6 @@ namespace SLSShippingApp
         {
             String[] addressParts = sAddress.Split(',');
             return addressParts[0];
-
         }
 
         public Int32 GetCountryTranslation(String sCountry)
@@ -192,9 +190,8 @@ namespace SLSShippingApp
                     break;
             }
             return Convert.ToInt32(Array.IndexOf(arrayCountries, sCountry));
-
-
         }
+
         public Int32 GetShippingService(String sShipVia)
         {
             Int32 iShipService = 6;
@@ -396,6 +393,7 @@ namespace SLSShippingApp
 
         public Int32 GetShipViaTranslation(String sShipVia)
         {
+            #region Macola ShipVia Codes
             /* Macola Ship Via for SLS
              * ship_via_cd
                 ABF = ABF Freight ????
@@ -415,14 +413,18 @@ namespace SLSShippingApp
              6   UPG = UPS Ground
             44    UPM = USPS Priority Mail
                 */
+            #endregion
 
-            /*ShipRush Ship Service
+            #region ShipRush Ship Carriers
+            /*ShipRush Ship Carrier
              * UPS      0
              * FedEx    1
              * DHL      2 (do not use)
              * USPS     3
              * Endicia  4
              * Stamps   5 */
+            #endregion
+
             Int32 iShipService = 0;
 
             switch (sShipVia)
@@ -446,9 +448,7 @@ namespace SLSShippingApp
                 case "UPM":// = USPS Priority Mail"
                     iShipService = 3;
                     break;
-
             }
-
             return iShipService;
         }
 
@@ -549,6 +549,5 @@ namespace SLSShippingApp
             }
             return sMode;
         }
-
     }
 }

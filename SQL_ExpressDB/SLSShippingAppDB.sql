@@ -105,7 +105,6 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-
 /*
 exec dbo.GetRetailerPackingLabel 'keithb','keithb'
 */
@@ -114,8 +113,6 @@ CREATE PROC [dbo].[GetRetailerPackingLabel](@Operator VARCHAR(50), @EnvironUser 
 AS
 SET NOCOUNT ON; 
 BEGIN 
-
-
 	SELECT 
 		PickedDate, 
 		LTRIM(RTRIM(OrderOrSONumber)) as OrderOrSONumber,  
@@ -208,8 +205,6 @@ BEGIN
 	AND EnvironUser = @EnvironUser
 	AND OrderOrSoNumber = @OrderNumber
 END
-
-
 GO
 /****** Object:  StoredProcedure [dbo].[GetWalmartPackingLabel]    Script Date: 3/13/2019 10:13:04 AM ******/
 SET ANSI_NULLS ON
@@ -217,12 +212,10 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-
 CREATE PROC [dbo].[GetWalmartPackingLabel](@Operator VARCHAR(50), @EnvironUser VARCHAR(50),@OrderNumber VARCHAR(25))
 AS
 SET NOCOUNT ON; 
 BEGIN 
-
 	SELECT 
 		PickedDate, 
 		LTRIM(RTRIM(OrderOrSONumber)) as OrderOrSONumber,  
@@ -307,15 +300,12 @@ BEGIN
 	AND EnvironUser = @EnvironUser
 	AND OrderOrSONumber = @OrderNumber
 END
-
-
 GO
 /****** Object:  StoredProcedure [dbo].[qryArchTableTickets]    Script Date: 3/13/2019 10:13:04 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-
 
 CREATE PROCEDURE [dbo].[qryArchTableTickets]
 AS
@@ -332,16 +322,12 @@ tblTickets.PONumber, tblTickets.ShipViaDescription,
 tblTickets.BoxCount, GETDATE() AS Scanned, OperatorName
 FROM tblTickets
 END
-
-
 GO
 /****** Object:  StoredProcedure [dbo].[qryFreezeBay]    Script Date: 3/13/2019 10:13:04 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-
-
 
 CREATE PROCEDURE [dbo].[qryFreezeBay](@OrderNumber VARCHAR(25))
 AS
@@ -356,15 +342,12 @@ WHERE tblBay.OrderNumber = RIGHT(REPLICATE('0',8) + @ORderNumber,8)
 */
 SELECT 1
 END
-
-
 GO
 /****** Object:  StoredProcedure [dbo].[qryGetPackingLabelSums]    Script Date: 3/13/2019 10:13:04 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-
 
 CREATE PROCEDURE [dbo].[qryGetPackingLabelSums]
 AS
@@ -378,17 +361,12 @@ SUM([QuantityToShip]*[ShipCost]) AS Shipping,
   
 FROM tblRetailerPackingLabel
 END
-
-
 GO
 /****** Object:  UserDefinedFunction [dbo].[fnGetItemImage]    Script Date: 3/13/2019 10:13:04 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-
-
-
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date, ,>
@@ -399,25 +377,18 @@ CREATE FUNCTION [dbo].[fnGetItemImage](@ItemNo VARCHAR(10))
 RETURNS  VARCHAR(100)
 AS
 BEGIN
-
 	-- Declare the return variable here
 	DECLARE @ImagePath VARCHAR(100)
 	
 	SET @ImagePath = '\\fs10\public\Graphic\FANMATS\F' + RIGHT(REPLICATE('0',8) + LTRIM(RTRIM(@ItemNo)),8) + '.gif'
 
-
    --sFileName = "F" + sNewStockNumber.PadLeft(8, '0') + ".gif";
    --         sFile = ConfigurationManager.AppSettings["ImagePath"].ToString() + sFileName;
-   --         //sFile = @"\\fs10\public\Graphic\FANMATS\" + sNewStockNumber + ".gif";
-
-	
+   --         //sFile = @"\\fs10\public\Graphic\FANMATS\" + sNewStockNumber + ".gif";	
 
 	-- Return the result of the function
 	RETURN @ImagePath
-
 END
-
-
 GO
 /****** Object:  Table [dbo].[tblLabel]    Script Date: 3/13/2019 10:13:04 AM ******/
 SET ANSI_NULLS ON
@@ -444,7 +415,6 @@ CREATE TABLE [dbo].[tblLabel](
 	[OrderWeight] [decimal](6, 2) NULL,
 	[Image] [varchar](250) NULL
 ) ON [PRIMARY]
-
 GO
 SET ANSI_PADDING OFF
 GO
@@ -461,7 +431,6 @@ CREATE TABLE [dbo].[tblLabelFanBrands](
 	[EnvironUser] [varchar](50) NULL,
 	[txtImageFile] [varchar](1000) NULL
 ) ON [PRIMARY]
-
 GO
 SET ANSI_PADDING OFF
 GO
@@ -479,7 +448,6 @@ CREATE TABLE [dbo].[tblLabelQuickShip](
 	[EnvironUser] [varchar](50) NULL,
 	[txtImageFile] [varchar](1000) NULL
 ) ON [PRIMARY]
-
 GO
 SET ANSI_PADDING OFF
 GO
@@ -498,7 +466,6 @@ CREATE TABLE [dbo].[tblOrderItemMismatchMacola](
 	[qty_ordered] [int] NULL,
 	[OperatorName] [varchar](25) NULL
 ) ON [PRIMARY]
-
 GO
 SET ANSI_PADDING OFF
 GO
@@ -518,7 +485,6 @@ CREATE TABLE [dbo].[tblOrderItemsNotInMacola](
 	[ReceivedQty] [int] NULL,
 	[OperatorName] [varchar](25) NULL
 ) ON [PRIMARY]
-
 GO
 SET ANSI_PADDING OFF
 GO
@@ -585,7 +551,6 @@ CREATE TABLE [dbo].[tblPickingFile](
 	[BillToZipCode] [varchar](10) NULL,
 	[Hold] [bit] NULL
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-
 GO
 SET ANSI_PADDING OFF
 GO
@@ -611,7 +576,6 @@ CREATE TABLE [dbo].[tblPostingLog](
 	[OperatorName] [varchar](25) NULL,
 	[EnvironUser] [varchar](50) NULL
 ) ON [PRIMARY]
-
 GO
 SET ANSI_PADDING OFF
 GO
@@ -633,7 +597,6 @@ CREATE TABLE [dbo].[tblQuickShipReport](
 	[StockNumberNumeric] [int] NULL,
 	[OperatorName] [varchar](25) NULL
 ) ON [PRIMARY]
-
 GO
 SET ANSI_PADDING OFF
 GO
@@ -728,7 +691,6 @@ CREATE TABLE [dbo].[tblRetailerPackingLabel](
 	[OrderMessageText] [varchar](250) NULL,
 	[OrderMessaging] [varchar](250) NULL
 ) ON [PRIMARY]
-
 GO
 SET ANSI_PADDING OFF
 GO
@@ -753,7 +715,6 @@ CREATE TABLE [dbo].[tblTickets](
 	[NumberOfBoxes] [int] NULL,
 	[EnvironUser] [varchar](50) NULL
 ) ON [PRIMARY]
-
 GO
 SET ANSI_PADDING OFF
 GO
@@ -779,7 +740,6 @@ CREATE TABLE [dbo].[tblTicketsArch](
 	[NumberOfBoxes] [int] NULL,
 	[EnvironUser] [varchar](50) NULL
 ) ON [PRIMARY]
-
 GO
 SET ANSI_PADDING OFF
 GO
@@ -799,7 +759,6 @@ PRIMARY KEY CLUSTERED
 	[WindowsLogin] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-
 GO
 SET ANSI_PADDING OFF
 GO
@@ -808,12 +767,8 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-
-
 CREATE VIEW [dbo].[vw_tblPickingFile]
 AS
-
-
 SELECT [PickedDate] as PickedDate
       ,[OrderorSONumber] as OrderOrSoNumber
       ,[PKTK]
@@ -868,8 +823,6 @@ SELECT [PickedDate] as PickedDate
       ,[EnvironUser]
       ,[BillToZipCode]
   FROM [SLSShippingApp].[dbo].[tblPickingFile]
-
-
 GO
 ALTER TABLE [dbo].[tblLabel] ADD  DEFAULT ((0)) FOR [IsKit]
 GO

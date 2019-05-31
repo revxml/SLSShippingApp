@@ -11,8 +11,6 @@ namespace SLSShippingApp.Reports
         public rptWalmartPackingLabels()
         {
             InitializeComponent();
-        }
-
-     
+        }     
     }
 }

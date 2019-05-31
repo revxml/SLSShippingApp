@@ -14,6 +14,5 @@ namespace SLSShippingApp.Reports
             this.PageHeight = 200;
             this.PageWidth = 400;
         }
-
     }
 }

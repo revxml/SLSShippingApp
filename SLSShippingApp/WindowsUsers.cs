@@ -139,7 +139,6 @@ namespace SLSShippingApp
 
         private void dgvWindowsUsers_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-
             if (MessageBox.Show(String.Format("Are you sure you want to DELETE user:{0}?", e.Row.Cells[0].Value), "Add/Edit Windows Users", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
             {
                 try
@@ -152,7 +151,6 @@ namespace SLSShippingApp
                 catch (Exception ex)
                 {
                     MessageBox.Show(String.Format("Error DELETING Windows User: {0} - {1}", e.Row.Cells[0].Value, ex.Message), "Add/Edit Windows Users");
-
                 }
                 finally
                 {

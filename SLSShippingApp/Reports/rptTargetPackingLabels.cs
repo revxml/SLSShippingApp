@@ -14,8 +14,7 @@ namespace SLSShippingApp.Reports
         }
 
         private void lblPageNo_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
-        {
-            
+        {            
         }
     }
 }
