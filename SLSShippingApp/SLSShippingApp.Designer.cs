@@ -154,6 +154,7 @@
             this.lblCloseBay = new System.Windows.Forms.Label();
             this.tabPrinters = new System.Windows.Forms.TabPage();
             this.gbSetPrinters = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.cboLabelPrinter = new System.Windows.Forms.ComboBox();
             this.cboTicketPrinter = new System.Windows.Forms.ComboBox();
             this.lblSelectLabelPrinter = new System.Windows.Forms.Label();
@@ -202,6 +203,7 @@
             this.miReprint = new System.Windows.Forms.ToolStripMenuItem();
             this.miBackout = new System.Windows.Forms.ToolStripMenuItem();
             this.scShipping = new System.Windows.Forms.SplitContainer();
+            this.cboShippingLabelPrinter = new System.Windows.Forms.ComboBox();
             this.tcUI.SuspendLayout();
             this.tabScanItem.SuspendLayout();
             this.pnlScanMode.SuspendLayout();
@@ -214,12 +216,14 @@
             this.tabPickTicket.SuspendLayout();
             this.gbPickTicketByPO.SuspendLayout();
             this.tabMaintenance.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBayDetails)).BeginInit();
             this.tabQSMaintenance.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
@@ -229,6 +233,7 @@
             this.tabPrinters.SuspendLayout();
             this.gbSetPrinters.SuspendLayout();
             this.tabAdmin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -236,6 +241,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvFoundOrder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
             this.menuLastScans.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.scShipping)).BeginInit();
             this.scShipping.Panel1.SuspendLayout();
             this.scShipping.Panel2.SuspendLayout();
             this.scShipping.SuspendLayout();
@@ -1408,6 +1414,8 @@
             // 
             // gbSetPrinters
             // 
+            this.gbSetPrinters.Controls.Add(this.cboShippingLabelPrinter);
+            this.gbSetPrinters.Controls.Add(this.label14);
             this.gbSetPrinters.Controls.Add(this.cboLabelPrinter);
             this.gbSetPrinters.Controls.Add(this.cboTicketPrinter);
             this.gbSetPrinters.Controls.Add(this.lblSelectLabelPrinter);
@@ -1415,15 +1423,24 @@
             this.gbSetPrinters.Controls.Add(this.btnSetPrinters);
             this.gbSetPrinters.Location = new System.Drawing.Point(181, 83);
             this.gbSetPrinters.Name = "gbSetPrinters";
-            this.gbSetPrinters.Size = new System.Drawing.Size(594, 127);
+            this.gbSetPrinters.Size = new System.Drawing.Size(594, 163);
             this.gbSetPrinters.TabIndex = 11;
             this.gbSetPrinters.TabStop = false;
             this.gbSetPrinters.Text = "Printers";
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(119, 83);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(132, 15);
+            this.label14.TabIndex = 12;
+            this.label14.Text = "Shipping Label Printer:";
+            // 
             // cboLabelPrinter
             // 
             this.cboLabelPrinter.FormattingEnabled = true;
-            this.cboLabelPrinter.Location = new System.Drawing.Point(260, 19);
+            this.cboLabelPrinter.Location = new System.Drawing.Point(260, 20);
             this.cboLabelPrinter.Name = "cboLabelPrinter";
             this.cboLabelPrinter.Size = new System.Drawing.Size(270, 21);
             this.cboLabelPrinter.TabIndex = 1;
@@ -1431,7 +1448,7 @@
             // cboTicketPrinter
             // 
             this.cboTicketPrinter.FormattingEnabled = true;
-            this.cboTicketPrinter.Location = new System.Drawing.Point(260, 49);
+            this.cboTicketPrinter.Location = new System.Drawing.Point(260, 50);
             this.cboTicketPrinter.Name = "cboTicketPrinter";
             this.cboTicketPrinter.Size = new System.Drawing.Size(270, 21);
             this.cboTicketPrinter.TabIndex = 5;
@@ -1439,16 +1456,16 @@
             // lblSelectLabelPrinter
             // 
             this.lblSelectLabelPrinter.AutoSize = true;
-            this.lblSelectLabelPrinter.Location = new System.Drawing.Point(86, 23);
+            this.lblSelectLabelPrinter.Location = new System.Drawing.Point(121, 23);
             this.lblSelectLabelPrinter.Name = "lblSelectLabelPrinter";
-            this.lblSelectLabelPrinter.Size = new System.Drawing.Size(167, 15);
+            this.lblSelectLabelPrinter.Size = new System.Drawing.Size(130, 15);
             this.lblSelectLabelPrinter.TabIndex = 1;
-            this.lblSelectLabelPrinter.Text = "Select Item/Bay Label Printer:";
+            this.lblSelectLabelPrinter.Text = "Item/Bay Label Printer:";
             // 
             // lblTicketPrinter
             // 
             this.lblTicketPrinter.AutoSize = true;
-            this.lblTicketPrinter.Location = new System.Drawing.Point(140, 53);
+            this.lblTicketPrinter.Location = new System.Drawing.Point(138, 53);
             this.lblTicketPrinter.Name = "lblTicketPrinter";
             this.lblTicketPrinter.Size = new System.Drawing.Size(113, 15);
             this.lblTicketPrinter.TabIndex = 2;
@@ -1457,7 +1474,7 @@
             // btnSetPrinters
             // 
             this.btnSetPrinters.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnSetPrinters.Location = new System.Drawing.Point(168, 87);
+            this.btnSetPrinters.Location = new System.Drawing.Point(166, 122);
             this.btnSetPrinters.Name = "btnSetPrinters";
             this.btnSetPrinters.Size = new System.Drawing.Size(183, 23);
             this.btnSetPrinters.TabIndex = 10;
@@ -1965,6 +1982,14 @@
             this.scShipping.SplitterDistance = 417;
             this.scShipping.TabIndex = 2;
             // 
+            // cboShippingLabelPrinter
+            // 
+            this.cboShippingLabelPrinter.FormattingEnabled = true;
+            this.cboShippingLabelPrinter.Location = new System.Drawing.Point(260, 80);
+            this.cboShippingLabelPrinter.Name = "cboShippingLabelPrinter";
+            this.cboShippingLabelPrinter.Size = new System.Drawing.Size(270, 21);
+            this.cboShippingLabelPrinter.TabIndex = 13;
+            // 
             // SLSShippingApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1998,6 +2023,7 @@
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -2006,6 +2032,7 @@
             this.splitContainer3.Panel1.ResumeLayout(false);
             this.splitContainer3.Panel1.PerformLayout();
             this.splitContainer3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvQSMaintenance)).EndInit();
             this.tabCloseBay.ResumeLayout(false);
@@ -2020,6 +2047,7 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.gbRePrintBackout.ResumeLayout(false);
             this.gbRePrintBackout.PerformLayout();
@@ -2028,6 +2056,7 @@
             this.menuLastScans.ResumeLayout(false);
             this.scShipping.Panel1.ResumeLayout(false);
             this.scShipping.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.scShipping)).EndInit();
             this.scShipping.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -2190,6 +2219,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colOrderNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colBayNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colType;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox cboShippingLabelPrinter;
     }
 }
 

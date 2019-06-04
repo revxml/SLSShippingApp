@@ -1211,11 +1211,14 @@ namespace SLSShippingApp
             String sReport = String.Empty;
             String sLabelPrinter = String.Empty;
             String sTicketPrinter = String.Empty;
+            String sShippingLabelPrinter = String.Empty;
 
             cboLabelPrinter.Focus();
             sLabelPrinter = cboLabelPrinter.Text.Trim();
             cboTicketPrinter.Focus();
             sTicketPrinter = cboTicketPrinter.Text.Trim();
+            cboShippingLabelPrinter.Focus();
+            sShippingLabelPrinter = cboShippingLabelPrinter.Text.Trim();
 
             try
             {
@@ -1226,6 +1229,8 @@ namespace SLSShippingApp
                 settings["LabelPrinter"].Value = sLabelPrinter;
                 // update PickTicketPrinter
                 settings["PickTicketPrinter"].Value = sTicketPrinter;
+                //update ShippingLabelPrinter
+                settings["ShipLabelPrinter"].Value = sShippingLabelPrinter;
 
                 //save the file
                 config.Save(ConfigurationSaveMode.Modified);
@@ -3228,7 +3233,12 @@ namespace SLSShippingApp
             shiprushPanel.Shipment.ToAddress.State = comAPI.GetStateTranslation(dt.Rows[0]["ShipToCity"].ToString().Trim());
             shiprushPanel.Shipment.ToAddress.Country = comAPI.GetCountryTranslation(dt.Rows[0]["ShipToState"].ToString().Trim());
 
-            if (dt.Rows[0]["CustShipperAcct"].ToString().Trim().Length > 0)
+            //The Shiprush SDK states that installing Shiprush for testing, account 123555 has to be used, with ZipCode 67840
+            //I didn't install Shiprush (on my pc) using this test account, so I'm trying to manipulate the UPS account
+            //in code, for the following two lines
+            shiprushPanel.Shipment.FromAddress.Account = "123555";
+            shiprushPanel.Shipment.FromAddress.UPSAccount = "123555";
+            //if (dt.Rows[0]["CustShipperAcct"].ToString().Trim().Length > 0)
                 //    shiprushPanel.Shipment.FromAddress.Account = dt.Rows[0]["CustShipperAcct"].ToString().Trim();
                 //UNCOMMENT THE ABOVE LINE. ALL ALTERNATE (CUSTOMER) SHIPPING ACCOUNTS WILL HAVE TO BE ADDED
                 //TO SHIPRUSH
@@ -3322,5 +3332,10 @@ namespace SLSShippingApp
         }
 
         #endregion
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
