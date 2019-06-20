@@ -15,6 +15,20 @@ using DevExpress.XtraReports.UI;
 using DevExpress.XtraPrinting;
 using SLSShippingApp.Reports;
 using ZRush_ShipRush;
+//using ZRush_ShipRushWeb;
+
+    /*
+     * KEB - 20190620
+     * After Installing this app on a local pc, any pc, you have to open a CMD prompt (as administrator), 
+     * change directories until you get into this applications installation directory.
+     * use "dir" to see the contents of the directory
+     * then type "ShipRush-COM-Plus-register.vbs" and hit <Enter>
+     * you should get a prompt that says it was succesfully registered as a COM+ component.
+     * CONVERSELY:
+     * If you need to uninstall the actual ShipRush application, go to Control Panel - Adminsitrative Tools - 
+     * COmponent Service - then expand COmponent Services, and COmputers, and My Computer and COM+ Applications.
+     * Then right-click on the [ShipRush] object and select <Delete>. You may have to <Stop> the object first
+     */
 
 namespace SLSShippingApp
 {
@@ -48,6 +62,7 @@ namespace SLSShippingApp
         String timeMsg = String.Empty;
         Boolean doTimeCheck = false;
         ZFShippingPanel shiprushPanel = new ZFShippingPanel();
+        //ZFShippingPanel shiprushPanel = new ZFShippingPanel();
         static bool clockwise = false;
 
         public SLSShippingApp()
@@ -3228,7 +3243,7 @@ namespace SLSShippingApp
             shiprushPanel.Shipment.ToAddress.Address2 = dt.Rows[0]["ShipToAddress2"].ToString().Trim();
             shiprushPanel.Shipment.ToAddress.Address3 = dt.Rows[0]["ShipToAddress3"].ToString().Trim();
             shiprushPanel.Shipment.ToAddress.City = comAPI.GetCityFromAddress(dt.Rows[0]["ShipToCity"].ToString().Trim());
-            shiprushPanel.Shipment.ToAddress.ZIP = dt.Rows[0]["ShipToZipCode"].ToString().Trim();
+            shiprushPanel.Shipment.ToAddress.ZIP = comAPI.GetZipFromAddress(dt.Rows[0]["ShipToCity"].ToString().Trim());
             shiprushPanel.Shipment.ToAddress.Phone = dt.Rows[0]["ShipToNumber"].ToString().Trim();
             shiprushPanel.Shipment.ToAddress.State = comAPI.GetStateTranslation(dt.Rows[0]["ShipToCity"].ToString().Trim());
             shiprushPanel.Shipment.ToAddress.Country = comAPI.GetCountryTranslation(dt.Rows[0]["ShipToState"].ToString().Trim());
@@ -3236,8 +3251,9 @@ namespace SLSShippingApp
             //The Shiprush SDK states that installing Shiprush for testing, account 123555 has to be used, with ZipCode 67840
             //I didn't install Shiprush (on my pc) using this test account, so I'm trying to manipulate the UPS account
             //in code, for the following two lines
-            shiprushPanel.Shipment.FromAddress.Account = "123555";
-            shiprushPanel.Shipment.FromAddress.UPSAccount = "123555";
+          //  shiprushPanel.Shipment.FromAddress.Account = "123555";
+           // shiprushPanel.Shipment.FromAddress.UPSAccount = "123555";
+
             //if (dt.Rows[0]["CustShipperAcct"].ToString().Trim().Length > 0)
                 //    shiprushPanel.Shipment.FromAddress.Account = dt.Rows[0]["CustShipperAcct"].ToString().Trim();
                 //UNCOMMENT THE ABOVE LINE. ALL ALTERNATE (CUSTOMER) SHIPPING ACCOUNTS WILL HAVE TO BE ADDED
@@ -3301,7 +3317,7 @@ namespace SLSShippingApp
                 return;
             }
 
-            if (sTrackingNumber.Length > 0)
+            if (sTrackingNumber != null &&  sTrackingNumber.Length > 0)
             {
                 sSql = String.Format("INSERT INTO ARSHTFIL_SQL(ord_no,shipment_no,carrier_cd,mode,ship_cost,tracking_no,zone,ship_weight,complete_fg,ship_dt) " +
                        " VALUES('{0}',1,'{1}','{2}',{3},'{4}',{5},{6},'P',CONVERT(INT, CONVERT(VARCHAR, GETDATE(), 112)))", sOrdNo, sCarrierCode, sCarrierMode, dblFreight, sTrackingNumber, iZone, iShipWeight);

@@ -154,6 +154,7 @@
             this.lblCloseBay = new System.Windows.Forms.Label();
             this.tabPrinters = new System.Windows.Forms.TabPage();
             this.gbSetPrinters = new System.Windows.Forms.GroupBox();
+            this.cboShippingLabelPrinter = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.cboLabelPrinter = new System.Windows.Forms.ComboBox();
             this.cboTicketPrinter = new System.Windows.Forms.ComboBox();
@@ -203,7 +204,7 @@
             this.miReprint = new System.Windows.Forms.ToolStripMenuItem();
             this.miBackout = new System.Windows.Forms.ToolStripMenuItem();
             this.scShipping = new System.Windows.Forms.SplitContainer();
-            this.cboShippingLabelPrinter = new System.Windows.Forms.ComboBox();
+          //  this.axZFShippingPanel1 = new AxZRush_ShipRush.AxZFShippingPanel();
             this.tcUI.SuspendLayout();
             this.tabScanItem.SuspendLayout();
             this.pnlScanMode.SuspendLayout();
@@ -245,6 +246,7 @@
             this.scShipping.Panel1.SuspendLayout();
             this.scShipping.Panel2.SuspendLayout();
             this.scShipping.SuspendLayout();
+           // ((System.ComponentModel.ISupportInitialize)(this.axZFShippingPanel1)).BeginInit();
             this.SuspendLayout();
             // 
             // tcUI
@@ -266,6 +268,7 @@
             // tabScanItem
             // 
             this.tabScanItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(228)))), ((int)(((byte)(231)))));
+            //this.tabScanItem.Controls.Add(this.axZFShippingPanel1);
             this.tabScanItem.Controls.Add(this.pnlScanMode);
             this.tabScanItem.Controls.Add(this.btnScanToOrder);
             this.tabScanItem.Controls.Add(this.btnRefreshScans);
@@ -1428,6 +1431,14 @@
             this.gbSetPrinters.TabStop = false;
             this.gbSetPrinters.Text = "Printers";
             // 
+            // cboShippingLabelPrinter
+            // 
+            this.cboShippingLabelPrinter.FormattingEnabled = true;
+            this.cboShippingLabelPrinter.Location = new System.Drawing.Point(260, 80);
+            this.cboShippingLabelPrinter.Name = "cboShippingLabelPrinter";
+            this.cboShippingLabelPrinter.Size = new System.Drawing.Size(270, 21);
+            this.cboShippingLabelPrinter.TabIndex = 13;
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -1982,13 +1993,13 @@
             this.scShipping.SplitterDistance = 417;
             this.scShipping.TabIndex = 2;
             // 
-            // cboShippingLabelPrinter
+            // axZFShippingPanel1
             // 
-            this.cboShippingLabelPrinter.FormattingEnabled = true;
-            this.cboShippingLabelPrinter.Location = new System.Drawing.Point(260, 80);
-            this.cboShippingLabelPrinter.Name = "cboShippingLabelPrinter";
-            this.cboShippingLabelPrinter.Size = new System.Drawing.Size(270, 21);
-            this.cboShippingLabelPrinter.TabIndex = 13;
+            //this.axZFShippingPanel1.Location = new System.Drawing.Point(811, 353);
+            //this.axZFShippingPanel1.Name = "axZFShippingPanel1";
+            //this.axZFShippingPanel1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axZFShippingPanel1.OcxState")));
+            //this.axZFShippingPanel1.Size = new System.Drawing.Size(75, 23);
+            //this.axZFShippingPanel1.TabIndex = 39;
             // 
             // SLSShippingApp
             // 
@@ -2058,6 +2069,7 @@
             this.scShipping.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.scShipping)).EndInit();
             this.scShipping.ResumeLayout(false);
+         
             this.ResumeLayout(false);
 
         }
@@ -2221,6 +2233,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colType;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox cboShippingLabelPrinter;
+       // private AxZRush_ShipRush.AxZFShippingPanel axZFShippingPanel1;
     }
 }
 

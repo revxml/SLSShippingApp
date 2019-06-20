@@ -192,6 +192,16 @@ namespace SLSShippingApp
             return Convert.ToInt32(Array.IndexOf(arrayCountries, sCountry));
         }
 
+        public String GetZipFromAddress(String sCityStateZip)
+        {
+            String[] addressParts = sCityStateZip.Split(',');
+            String stateZip = addressParts[1];
+            String[] arrStateZip = stateZip.Split(' ');
+            String zip = arrStateZip[arrStateZip.Length - 1];
+            return zip;
+
+        }
+
         public Int32 GetShippingService(String sShipVia)
         {
             Int32 iShipService = 6;

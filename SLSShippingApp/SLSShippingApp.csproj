@@ -324,6 +324,9 @@
     <Content Include="Reports\images\imgOfficeDepot.jpg" />
     <Content Include="Reports\images\imgTarget.jpg" />
     <Content Include="Reports\images\imgWalmart.jpg" />
+    <AdditionalFiles Include="ShipRush-COM-Plus-register.vbs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AdditionalFiles>
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -378,6 +381,9 @@
     </PublishFile>
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
     <COMReference Include="ZRush_ShipRush">
       <Guid>{23C5E959-E319-89AA-7D19-1A882E7DF5F6}</Guid>
       <VersionMajor>1</VersionMajor>
@@ -388,10 +394,11 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

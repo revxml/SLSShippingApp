@@ -16,8 +16,6 @@ namespace SLSShippingApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new SLSShippingApp());
-            Application.Run(new SLSShippingApp());
-            Application.Run(new SLSShippingApp());
         }
     }
 }
