@@ -157,7 +157,7 @@ namespace SLSShippingApp
         public Int32 GetCountryTranslation(String sCountry)
         {
             String[] arrayCountries = new string[]
-                {   "XX", //Zero Index for IndexOf function
+                {    //Zero Index for IndexOf function - the ShipRush Index value for US is actually 0, so no need to pad the Array with an empty 0 index
                     "US","CA","AL","DZ","AS","AD","AO","AI","AG","AR","AM","AW","AU","AT","AZ","BS","BH","BD","BB","BY",
                     "BE","BZ","BJ","BM","BO","BA","BW","BR","VG","BN","BG","BF","BI","KH","CM","CV","KY","CF","TD","JE",
                     "CL","CN","CO","CG","CK","CR","CI","HR","AN","CY","CZ","DK","DJ","DM","DO","EC","EG","SV","GQ","ER",

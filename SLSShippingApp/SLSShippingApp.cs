@@ -3214,8 +3214,6 @@ namespace SLSShippingApp
                 {
                     shiprushPanel.SerialNumber = ConfigurationManager.AppSettings.Get("TestShiprushSerialNumber").ToString();
                     shiprushPanel.CarrierType = comAPI.GetShipViaTranslation(dt.Rows[0]["ShipViaCode"].ToString().Trim());
-                    // shiprushPanel.PartnerID = "SLS";// Environment["USER"].ToString();
-                    //  shiprushPanel.CarrierDeveloperKey = "xxxx"; //CarrierShippingKey goes here
                     shiprushPanel.Connect();
                     if (!shiprushPanel.Connected)
                         MessageBox.Show(shiprushPanel.ErrorMessage);
@@ -3307,8 +3305,8 @@ namespace SLSShippingApp
             {
                 shiprushPanel.Ship();
                 sTrackingNumber = shiprushPanel.Shipment.TrackingNumber;
-                dblFreight = shiprushPanel.Shipment.EffectiveCarrierCharges; //??
-                dblFreight = shiprushPanel.Shipment.ShippingCharges; //??
+                dblFreight = shiprushPanel.Shipment.EffectiveCarrierCharges*.01; //?? These Starship.Shipment values are returned as integers
+                dblFreight = shiprushPanel.Shipment.ShippingCharges*.01; //?? so 15.01 is returned as 1501
                 iZone = Convert.ToInt32(shiprushPanel.Shipment.UPSZone);
             }
             catch (Exception ex)
