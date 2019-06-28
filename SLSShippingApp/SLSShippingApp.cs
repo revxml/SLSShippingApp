@@ -60,9 +60,8 @@ namespace SLSShippingApp
         String g_ShipLabelPrinter = ConfigurationManager.AppSettings.Get("ShipLabelPrinter").ToString();
         System.Diagnostics.Stopwatch watch;
         String timeMsg = String.Empty;
-        Boolean doTimeCheck = false;
+        Boolean doTimeCheck = true;
         ZFShippingPanel shiprushPanel = new ZFShippingPanel();
-        //ZFShippingPanel shiprushPanel = new ZFShippingPanel();
         static bool clockwise = false;
 
         public SLSShippingApp()
@@ -91,6 +90,11 @@ namespace SLSShippingApp
             if (!CheckPrinterConnected(g_LabelPrinter))
             {
                 MessageBox.Show(String.Format("{0} is either not connected, or not a valid printer", g_LabelPrinter), "Invalid Printer");
+                return;
+            }
+            if (!CheckPrinterConnected(g_ShipLabelPrinter))
+            {
+                MessageBox.Show(String.Format("{0} is either not connected, or not a valide printer", g_ShipLabelPrinter), "Invalid Printer");
                 return;
             }
 
@@ -748,10 +752,7 @@ namespace SLSShippingApp
 
             if (doTimeCheck)
                 timeMsg += String.Format("ClearSqlExpressTables completed: {0} ms\r\n", watch.ElapsedMilliseconds);
-
-            //sLabelPrinter = g_LabelPrinter;// ConfigurationManager.AppSettings["LabelPrinter"].ToString();
-            //sTicketPrinter = g_TicketPrinter;// ConfigurationManager.AppSettings["PickTicketPrinter"].ToString();
-
+            
             Boolean bBayLabel = false;
             Boolean bItemLabel = false;
             Boolean bPackingLabel = false;
@@ -856,14 +857,14 @@ namespace SLSShippingApp
 
                 if (bBayLabel)
                 {
-                    PrintDevExpReport("Label", "rptPrintBayLabel", 1, sOrderNumber);
+    //                PrintDevExpReport("Label", "rptPrintBayLabel", 1, sOrderNumber);
                     ClearSQLExpressTables("tblLabel", sOrderNumber, sTargetColumnName);
                 }
                 bBayLabel = false;
 
                 if (bItemLabel)
                 {
-                    PrintDevExpReport("Label", "rptPrintLabel", 1, sOrderNumber);
+     //               PrintDevExpReport("Label", "rptPrintLabel", 1, sOrderNumber);
                     ClearSQLExpressTables("tblLabel", sOrderNumber, sTargetColumnName);
                     if (doTimeCheck)
                         timeMsg += String.Format("PrintDevExpReport and ClearSqlExpressTables(tblLabel) completed: {0} ms\r\n", watch.ElapsedMilliseconds);
@@ -874,12 +875,12 @@ namespace SLSShippingApp
                 {
                     if (sRptCustomer != null)
                     {
-                        PrintDevExpReport("tblRetailerPackingLabel", "rpt" + sRptCustomer + "PackingLabels", 1, sOrderNumber);
+     //                   PrintDevExpReport("tblRetailerPackingLabel", "rpt" + sRptCustomer + "PackingLabels", 1, sOrderNumber);
                         ClearSQLExpressTables("tblRetailerPackingLabel", sOrderNumber, sTargetColumnName);
                     }
                     else
                     {
-                        PrintDevExpReport("Label", "rptPackingLabels", 1, sOrderNumber);
+    //                    PrintDevExpReport("Label", "rptPackingLabels", 1, sOrderNumber);
                         ClearSQLExpressTables("tblTickets", sOrderNumber, sTargetColumnName);
                     }
                 }
@@ -887,7 +888,7 @@ namespace SLSShippingApp
 
                 if (bPickingTicket)
                 {
-                    PrintDevExpReport("Ticket", "rptPickingTicket", 1, sOrderNumber);
+      //              PrintDevExpReport("Ticket", "rptPickingTicket", 1, sOrderNumber);
 
                     if (doTimeCheck)
                         timeMsg += String.Format("PrintDevExpReport and ClearSqlExpressTables(rptPickingTicket) completed: {0} ms\r\n", watch.ElapsedMilliseconds);
@@ -901,7 +902,7 @@ namespace SLSShippingApp
                 bPickingTicket = false;
 
                 if (bPackingTicket)
-                    PrintDoc(sPackingTicket, sOrderNumber);
+     //               PrintDoc(sPackingTicket, sOrderNumber);
                 bPackingTicket = false;
 
                 sqlCmd.Dispose();
@@ -934,7 +935,7 @@ namespace SLSShippingApp
                 PrintDocument pd = new PrintDocument();
 
                 pd.PrintController = printController;
-                pd.PrinterSettings.PrinterName = g_TicketPrinter;// sTicketPrinter;                
+                pd.PrinterSettings.PrinterName = g_TicketPrinter;               
                 pd.PrinterSettings.Copies = 1;
                 //  pd.PrintPage += new PrintPageEventHandler(pd_PrintPage);
                 pd.Print();
@@ -1189,6 +1190,7 @@ namespace SLSShippingApp
             {
                 this.cboLabelPrinter.Items.Add(printer);
                 this.cboTicketPrinter.Items.Add(printer);
+                this.cboShippingLabelPrinter.Items.Add(printer);
             }
         }
 
@@ -1414,6 +1416,14 @@ namespace SLSShippingApp
                         if (item.ToString() == ConfigurationManager.AppSettings["PickTicketPrinter"].ToString())
                         {
                             cboTicketPrinter.SelectedItem = item;
+                            break;
+                        }
+                    }
+                    foreach(object item in cboShippingLabelPrinter.Items)
+                    {
+                        if(item.ToString() == ConfigurationManager.AppSettings["ShipLabelPrinter"].ToString())
+                        {
+                            cboShippingLabelPrinter.SelectedItem = item;
                             break;
                         }
                     }
@@ -3162,6 +3172,8 @@ namespace SLSShippingApp
         private void SLSShipping_Closing(object sender, FormClosingEventArgs e)
         {
             ClearSQLExpressTables();
+            if (shiprushPanel.Connected)
+              shiprushPanel.Disconnect();
             this.Dispose();
         }
 
@@ -3171,6 +3183,8 @@ namespace SLSShippingApp
 
         private void ShipOrder(String sOrdNo)
         {
+            if (doTimeCheck)
+                timeMsg += String.Format("Peform Shipment Procedure entered: {0} ms\r\n", watch.ElapsedMilliseconds);
             String sTrackingNumber = String.Empty;
             Double dblFreight = 0.0D;
             Int32 iZone = 0;
@@ -3189,11 +3203,13 @@ namespace SLSShippingApp
             DataTable dt = new DataTable("ShippingInfo");
             sqlCmd.CommandText = sSql;
             sqlCmd.CommandType = CommandType.Text;
-
+           
             try
             {
                 reader = sqlCmd.ExecuteReader();
                 dt.Load(reader);
+                if (doTimeCheck)
+                    timeMsg += String.Format("Shipment/Order details loaded into DataTable: {0} ms\r\n", watch.ElapsedMilliseconds);
             }
             catch (Exception ex)
             {
@@ -3207,7 +3223,8 @@ namespace SLSShippingApp
                 sqlCon.Dispose();
                 // dt.Dispose();
             }
-
+            if (doTimeCheck)
+                timeMsg += String.Format("Check for Existing ShipRush Connection: {0} ms\r\n", watch.ElapsedMilliseconds);
             if (!shiprushPanel.Connected)
             {
                 try
@@ -3215,6 +3232,8 @@ namespace SLSShippingApp
                     shiprushPanel.SerialNumber = ConfigurationManager.AppSettings.Get("TestShiprushSerialNumber").ToString();
                     shiprushPanel.CarrierType = comAPI.GetShipViaTranslation(dt.Rows[0]["ShipViaCode"].ToString().Trim());
                     shiprushPanel.Connect();
+                    if (doTimeCheck)
+                        timeMsg += String.Format("ShipRush Connection Established: {0} ms\r\n", watch.ElapsedMilliseconds);
                     if (!shiprushPanel.Connected)
                         MessageBox.Show(shiprushPanel.ErrorMessage);
                 }
@@ -3228,7 +3247,8 @@ namespace SLSShippingApp
             //these only appear to be necessary for APO/FPO/International shipments
             // ZFCommodity commodity;
             // Int32 i = 0;
-
+            if (doTimeCheck)
+                timeMsg += String.Format("Shiprush StartNewShipment(): {0} ms\r\n", watch.ElapsedMilliseconds);
             shiprushPanel.StartNewShipment();
             shiprushPanel.Settings.SaveLabels = false;
             shiprushPanel.Settings.AutoAddressValidation = true;
@@ -3301,13 +3321,22 @@ namespace SLSShippingApp
             shiprushPanel.Shipment.Packages(0).Weight = iShipWeight;
             shiprushPanel.Shipment.Packages(0).PackagingType = 0;
 
+            if (doTimeCheck)
+                timeMsg += String.Format("Shipment/Order details loaded into Shiprush.Shipment(): {0} ms\r\n", watch.ElapsedMilliseconds);
+
             try
             {
+                if (doTimeCheck)
+                    timeMsg += String.Format("Execute Shiprush.Ship(): {0} ms\r\n", watch.ElapsedMilliseconds);
                 shiprushPanel.Ship();
+                if (doTimeCheck)
+                    timeMsg += String.Format("Shiprush.Ship() completed: {0} ms\r\n", watch.ElapsedMilliseconds);
                 sTrackingNumber = shiprushPanel.Shipment.TrackingNumber;
                 dblFreight = shiprushPanel.Shipment.EffectiveCarrierCharges*.01; //?? These Starship.Shipment values are returned as integers
                 dblFreight = shiprushPanel.Shipment.ShippingCharges*.01; //?? so 15.01 is returned as 1501
                 iZone = Convert.ToInt32(shiprushPanel.Shipment.UPSZone);
+                if (doTimeCheck)
+                    timeMsg += String.Format("TrackingNumber, Freight charge retrieved: {0} ms\r\n", watch.ElapsedMilliseconds);
             }
             catch (Exception ex)
             {
@@ -3317,6 +3346,8 @@ namespace SLSShippingApp
 
             if (sTrackingNumber != null &&  sTrackingNumber.Length > 0)
             {
+                if (doTimeCheck)
+                    timeMsg += String.Format("Create ARSHTFIL_SQL insert SQL string: {0} ms\r\n", watch.ElapsedMilliseconds);
                 sSql = String.Format("INSERT INTO ARSHTFIL_SQL(ord_no,shipment_no,carrier_cd,mode,ship_cost,tracking_no,zone,ship_weight,complete_fg,ship_dt) " +
                        " VALUES('{0}',1,'{1}','{2}',{3},'{4}',{5},{6},'P',CONVERT(INT, CONVERT(VARCHAR, GETDATE(), 112)))", sOrdNo, sCarrierCode, sCarrierMode, dblFreight, sTrackingNumber, iZone, iShipWeight);
                 
@@ -3329,7 +3360,13 @@ namespace SLSShippingApp
                 try
                 {
                     sqlCmd.ExecuteNonQuery();
-
+                    if (doTimeCheck)
+                    {
+                        sSQL = String.Format("DELETE FROM ARSHTFIL_SQL WHERE ord_no = '{0}'", sOrdNo);
+                        sqlCmd.CommandText = sSQL;
+                        sqlCmd.ExecuteNonQuery();
+                        timeMsg += String.Format("ARSHTFIL_SQL record insert (and deletion) complete: {0} ms\r\n", watch.ElapsedMilliseconds);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -3341,6 +3378,8 @@ namespace SLSShippingApp
                     sqlCon.Close();
                     sqlCon.Dispose();
                     sqlCmd.Dispose();
+                    if (doTimeCheck)
+                        timeMsg += String.Format("Exit Shiprush.Shippment function: {0} ms\r\n", watch.ElapsedMilliseconds);
                 }
             }
         }

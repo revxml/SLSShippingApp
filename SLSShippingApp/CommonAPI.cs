@@ -228,6 +228,7 @@ namespace SLSShippingApp
                     iShipService = 58;
                     break;
                 case "FXG":
+                case "FXG: FX Ground":
                     iShipService = 21;
                     break;
                 case "PU":
@@ -452,6 +453,7 @@ namespace SLSShippingApp
                 case "FSO":// = FX Std Ovr Night
                 case "FSP":// = FX Smart Post
                 case "FXG":// = Fed Ex Ground
+                case "FXG: FX Ground": // = Fex Ex Ground
                     iShipService = 1;
                     break;
                 case "UFM":// = USPS First Class"
@@ -479,6 +481,7 @@ namespace SLSShippingApp
                     sCode = "U";
                     break;
                 case "FXG":
+                case "FXG: FX Ground":
                 case "FSP":
                 case "FHD":
                 case "F2D":
@@ -514,6 +517,7 @@ namespace SLSShippingApp
                     break;
                 case "FXG":
                 case "UAM":
+                case "FXG: FX Ground":
                     sMode = "B";
                     break;
                 case "FSP":
