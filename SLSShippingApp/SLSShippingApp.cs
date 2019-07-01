@@ -15,7 +15,6 @@ using DevExpress.XtraReports.UI;
 using DevExpress.XtraPrinting;
 using SLSShippingApp.Reports;
 using ZRush_ShipRush;
-//using ZRush_ShipRushWeb;
 
     /*
      * KEB - 20190620
@@ -60,7 +59,7 @@ namespace SLSShippingApp
         String g_ShipLabelPrinter = ConfigurationManager.AppSettings.Get("ShipLabelPrinter").ToString();
         System.Diagnostics.Stopwatch watch;
         String timeMsg = String.Empty;
-        Boolean doTimeCheck = true;
+        Boolean doTimeCheck = Convert.ToBoolean( ConfigurationManager.AppSettings.Get("DoTimeCheck").ToString());
         ZFShippingPanel shiprushPanel = new ZFShippingPanel();
         static bool clockwise = false;
 
@@ -97,7 +96,6 @@ namespace SLSShippingApp
                 MessageBox.Show(String.Format("{0} is either not connected, or not a valide printer", g_ShipLabelPrinter), "Invalid Printer");
                 return;
             }
-
             /* this is for generating customer packing slips, when customer needs to approve them*/
             // DataTable dtPrintInfo = GetPrintInfo();
             // LoadPrintData(dtPrintInfo);
@@ -857,14 +855,14 @@ namespace SLSShippingApp
 
                 if (bBayLabel)
                 {
-    //                PrintDevExpReport("Label", "rptPrintBayLabel", 1, sOrderNumber);
+                    PrintDevExpReport("Label", "rptPrintBayLabel", 1, sOrderNumber);
                     ClearSQLExpressTables("tblLabel", sOrderNumber, sTargetColumnName);
                 }
                 bBayLabel = false;
 
                 if (bItemLabel)
                 {
-     //               PrintDevExpReport("Label", "rptPrintLabel", 1, sOrderNumber);
+                    PrintDevExpReport("Label", "rptPrintLabel", 1, sOrderNumber);
                     ClearSQLExpressTables("tblLabel", sOrderNumber, sTargetColumnName);
                     if (doTimeCheck)
                         timeMsg += String.Format("PrintDevExpReport and ClearSqlExpressTables(tblLabel) completed: {0} ms\r\n", watch.ElapsedMilliseconds);
@@ -875,12 +873,12 @@ namespace SLSShippingApp
                 {
                     if (sRptCustomer != null)
                     {
-     //                   PrintDevExpReport("tblRetailerPackingLabel", "rpt" + sRptCustomer + "PackingLabels", 1, sOrderNumber);
+                        PrintDevExpReport("tblRetailerPackingLabel", "rpt" + sRptCustomer + "PackingLabels", 1, sOrderNumber);
                         ClearSQLExpressTables("tblRetailerPackingLabel", sOrderNumber, sTargetColumnName);
                     }
                     else
                     {
-    //                    PrintDevExpReport("Label", "rptPackingLabels", 1, sOrderNumber);
+                        PrintDevExpReport("Label", "rptPackingLabels", 1, sOrderNumber);
                         ClearSQLExpressTables("tblTickets", sOrderNumber, sTargetColumnName);
                     }
                 }
@@ -888,7 +886,7 @@ namespace SLSShippingApp
 
                 if (bPickingTicket)
                 {
-      //              PrintDevExpReport("Ticket", "rptPickingTicket", 1, sOrderNumber);
+                    PrintDevExpReport("Ticket", "rptPickingTicket", 1, sOrderNumber);
 
                     if (doTimeCheck)
                         timeMsg += String.Format("PrintDevExpReport and ClearSqlExpressTables(rptPickingTicket) completed: {0} ms\r\n", watch.ElapsedMilliseconds);
@@ -902,7 +900,7 @@ namespace SLSShippingApp
                 bPickingTicket = false;
 
                 if (bPackingTicket)
-     //               PrintDoc(sPackingTicket, sOrderNumber);
+                    PrintDoc(sPackingTicket, sOrderNumber);
                 bPackingTicket = false;
 
                 sqlCmd.Dispose();
@@ -1217,7 +1215,6 @@ namespace SLSShippingApp
                         break;
                     case "Ticket":
                         sPrinter = g_TicketPrinter;// sTicketPrinter;
-
                         break;
                 }
             }
@@ -1885,7 +1882,6 @@ namespace SLSShippingApp
                     dtNew.Load(reader);
                     dgvBayDetails.DataSource = dtNew;
                     SetColumnOrder(ref dgvBayDetails);
-
                 }
                 catch (Exception ex)
                 {
@@ -2916,7 +2912,6 @@ namespace SLSShippingApp
 
         private void MiBackout_Click(object sender, EventArgs e)
         {
-
             sqlCon = new SqlConnection(comAPI.ShippingConnection);
             sqlCmd = new SqlCommand();
             sSQL = String.Empty;
@@ -3225,12 +3220,19 @@ namespace SLSShippingApp
             }
             if (doTimeCheck)
                 timeMsg += String.Format("Check for Existing ShipRush Connection: {0} ms\r\n", watch.ElapsedMilliseconds);
+
+            String sShipVia = comAPI.ParseShipVia(dt.Rows[0]["ShipViaCode"].ToString().Trim());
+
             if (!shiprushPanel.Connected)
             {
                 try
                 {
-                    shiprushPanel.SerialNumber = ConfigurationManager.AppSettings.Get("TestShiprushSerialNumber").ToString();
-                    shiprushPanel.CarrierType = comAPI.GetShipViaTranslation(dt.Rows[0]["ShipViaCode"].ToString().Trim());
+                    if (Convert.ToBoolean(ConfigurationManager.AppSettings.Get("LiveShipping").ToString()) == true)
+                        shiprushPanel.SerialNumber = ConfigurationManager.AppSettings.Get("ShiprushSerialNumber").ToString();
+                    else
+                        shiprushPanel.SerialNumber = ConfigurationManager.AppSettings.Get("TestShiprushSerialNumber").ToString();
+
+                    shiprushPanel.CarrierType = comAPI.GetShipViaTranslation(sShipVia);// dt.Rows[0]["ShipViaCode"].ToString().Trim());
                     shiprushPanel.Connect();
                     if (doTimeCheck)
                         timeMsg += String.Format("ShipRush Connection Established: {0} ms\r\n", watch.ElapsedMilliseconds);
@@ -3253,6 +3255,8 @@ namespace SLSShippingApp
             shiprushPanel.Settings.SaveLabels = false;
             shiprushPanel.Settings.AutoAddressValidation = true;
             shiprushPanel.ShowErrors = true;
+            shiprushPanel.ShowProgress = false;
+            shiprushPanel.Modal = false;
             //shiprushPanel.SlaveMode = ?
 
             shiprushPanel.Shipment.ToAddress.Company = dt.Rows[0]["ShipToName"].ToString().Trim();
@@ -3269,49 +3273,49 @@ namespace SLSShippingApp
             //The Shiprush SDK states that installing Shiprush for testing, account 123555 has to be used, with ZipCode 67840
             //I didn't install Shiprush (on my pc) using this test account, so I'm trying to manipulate the UPS account
             //in code, for the following two lines
-          //  shiprushPanel.Shipment.FromAddress.Account = "123555";
-           // shiprushPanel.Shipment.FromAddress.UPSAccount = "123555";
+            //  shiprushPanel.Shipment.FromAddress.Account = "123555";
+            // shiprushPanel.Shipment.FromAddress.UPSAccount = "123555";
 
-            //if (dt.Rows[0]["CustShipperAcct"].ToString().Trim().Length > 0)
-                //    shiprushPanel.Shipment.FromAddress.Account = dt.Rows[0]["CustShipperAcct"].ToString().Trim();
-                //UNCOMMENT THE ABOVE LINE. ALL ALTERNATE (CUSTOMER) SHIPPING ACCOUNTS WILL HAVE TO BE ADDED
-                //TO SHIPRUSH
-                #region APO/FPO/INTERNATIONAL
-                //Theres a lot of code that has to happen if either of these is true
-                //Boolean isApoFpo = false;
-                //Boolean isInternational = false;
-                //if (dt.Rows[0]["ShipToCity"].ToString().Trim() == "APO" || dt.Rows[0]["ShipToCity"].ToString().Trim() == "FPO")
-                //    isApoFpo = true;
-                //if (GetCountryInt(dt.Rows[0]["ShipToCountry"].ToString().Trim()) > 0)
-                //    isInternational = true;
+            // if (dt.Rows[0]["CustShipperAcct"].ToString().Trim().Length > 0)
+            //         shiprushPanel.Shipment.FromAddress.Account = dt.Rows[0]["CustShipperAcct"].ToString().Trim();
+            //UNCOMMENT THE ABOVE LINE. ALL ALTERNATE (CUSTOMER) SHIPPING ACCOUNTS WILL HAVE TO BE ADDED
+            //TO SHIPRUSH
+            #region APO/FPO/INTERNATIONAL
+            //Theres a lot of code that has to happen if either of these is true
+            //Boolean isApoFpo = false;
+            //Boolean isInternational = false;
+            //if (dt.Rows[0]["ShipToCity"].ToString().Trim() == "APO" || dt.Rows[0]["ShipToCity"].ToString().Trim() == "FPO")
+            //    isApoFpo = true;
+            //if (GetCountryInt(dt.Rows[0]["ShipToCountry"].ToString().Trim()) > 0)
+            //    isInternational = true;
 
-                ////shipment validation is required for APO/FPO packages
-                //if (isApoFpo)
-                //    shiprushPanel.ValidateShipment();
-                ////International shipments need extra steps, make suer the list of commodities is empty
-                //if (isApoFpo || isInternational)
-                //{
-                //    while (shiprushPanel.Shipment.International.CommoditiesCount > 0)
-                //        shiprushPanel.Shipment.International.DeleteCommodity(0);
+            ////shipment validation is required for APO/FPO packages
+            //if (isApoFpo)
+            //    shiprushPanel.ValidateShipment();
+            ////International shipments need extra steps, make suer the list of commodities is empty
+            //if (isApoFpo || isInternational)
+            //{
+            //    while (shiprushPanel.Shipment.International.CommoditiesCount > 0)
+            //        shiprushPanel.Shipment.International.DeleteCommodity(0);
 
-                //    shiprushPanel.Shipment.International.DescriptionOfGoods = "Put some generic description here?";
+            //    shiprushPanel.Shipment.International.DescriptionOfGoods = "Put some generic description here?";
 
-                //    shiprushPanel.Shipment.DocInd = 1; //?
-                //    //add commodity (always required for USPS shipments)
-                //    commodity = shiprushPanel.Shipment.International.AddCommodity();
+            //    shiprushPanel.Shipment.DocInd = 1; //?
+            //    //add commodity (always required for USPS shipments)
+            //    commodity = shiprushPanel.Shipment.International.AddCommodity();
 
-                //    //I'm bailing out here, there is much more in the NonVisual - VB shiprush project
-                //}
+            //    //I'm bailing out here, there is much more in the NonVisual - VB shiprush project
+            //}
 
-                //'StartNewShipment() creates a single parcel shipment.
-                //'to add packages (e.g. create an mps shipment), call AddPackage for each package to add. E.g.
-                //'AxZFShippingPanel1.Shipment.AddPackage()
-                #endregion
+            //'StartNewShipment() creates a single parcel shipment.
+            //'to add packages (e.g. create an mps shipment), call AddPackage for each package to add. E.g.
+            //'AxZFShippingPanel1.Shipment.AddPackage()
+            #endregion
 
             //Service
-            shiprushPanel.Shipment.Service.ServiceType = comAPI.GetShippingService(dt.Rows[0]["ShipViaCode"].ToString().Trim());
-            sCarrierCode = comAPI.GetCarrierCode(dt.Rows[0]["ShipViaCode"].ToString().Trim());
-            sCarrierMode = comAPI.GetCarrierMode(dt.Rows[0]["ShipViaCode"].ToString().Trim());
+            shiprushPanel.Shipment.Service.ServiceType = comAPI.GetShippingService(sShipVia);// dt.Rows[0]["ShipViaCode"].ToString().Trim());
+            sCarrierCode = comAPI.GetCarrierCode(sShipVia);// dt.Rows[0]["ShipViaCode"].ToString().Trim());
+            sCarrierMode = comAPI.GetCarrierMode(sShipVia);// dt.Rows[0]["ShipViaCode"].ToString().Trim());
 
             //'make it return services if appro, see FAQ in the SDK docs for some info
             //'see SDK docs for : TRetService: Return service type
@@ -3384,11 +3388,6 @@ namespace SLSShippingApp
             }
         }
 
-        #endregion
-
-        private void label14_Click(object sender, EventArgs e)
-        {
-
-        }
+        #endregion  
     }
 }

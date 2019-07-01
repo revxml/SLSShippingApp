@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Data.SqlClient;
-using System.Drawing;
 using System.Configuration;
 
 
@@ -131,6 +128,13 @@ namespace SLSShippingApp
 
             return iMatches;
         }
+        #region ShipRush Translations        
+
+        public String GetCityFromAddress(String sAddress)
+        {
+            String[] addressParts = sAddress.Split(',');
+            return addressParts[0];
+        }
 
         public Int32 GetStateTranslation(String sState)
         {
@@ -148,10 +152,14 @@ namespace SLSShippingApp
             return Convert.ToInt32(Array.IndexOf(arrayStates, pieceState));
         }
 
-        public String GetCityFromAddress(String sAddress)
+        public String GetZipFromAddress(String sCityStateZip)
         {
-            String[] addressParts = sAddress.Split(',');
-            return addressParts[0];
+            String[] addressParts = sCityStateZip.Split(',');
+            String stateZip = addressParts[1];
+            String[] arrStateZip = stateZip.Split(' ');
+            String zip = arrStateZip[arrStateZip.Length - 1];
+            return zip;
+
         }
 
         public Int32 GetCountryTranslation(String sCountry)
@@ -191,17 +199,7 @@ namespace SLSShippingApp
             }
             return Convert.ToInt32(Array.IndexOf(arrayCountries, sCountry));
         }
-
-        public String GetZipFromAddress(String sCityStateZip)
-        {
-            String[] addressParts = sCityStateZip.Split(',');
-            String stateZip = addressParts[1];
-            String[] arrStateZip = stateZip.Split(' ');
-            String zip = arrStateZip[arrStateZip.Length - 1];
-            return zip;
-
-        }
-
+            
         public Int32 GetShippingService(String sShipVia)
         {
             Int32 iShipService = 6;
@@ -402,6 +400,14 @@ namespace SLSShippingApp
             #endregion
         }
 
+        public String ParseShipVia(String sExtended)
+        {
+            String ShipVia = String.Empty;
+            String[] arrFull = sExtended.Split(':');
+            ShipVia = arrFull[0].ToString();
+            return ShipVia;
+        }
+
         public Int32 GetShipViaTranslation(String sShipVia)
         {
             #region Macola ShipVia Codes
@@ -563,5 +569,7 @@ namespace SLSShippingApp
             }
             return sMode;
         }
+
+       #endregion
     }
 }

@@ -46,16 +46,4 @@ Global
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C6463D34-8AB6-414A-A813-B26DD0E0216A}
 	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = http://mmtfs01:8080/tfs/utilities
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = SLSShippingApp\\SLSShippingApp.csproj
-		SccProjectName1 = ../SLSShippingApp/SLSShippingApp
-		SccLocalPath1 = SLSShippingApp
-		SccProjectUniqueName2 = SQL_ExpressDB\\SQL_ExpressDB.vdproj
-		SccProjectName2 = SQL_ExpressDB
-		SccLocalPath2 = SQL_ExpressDB
-	EndGlobalSection
 EndGlobal
