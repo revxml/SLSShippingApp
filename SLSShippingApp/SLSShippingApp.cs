@@ -33,7 +33,7 @@ namespace SLSShippingApp
 {
     public partial class SLSShippingApp : Form
     {
-        Boolean bVerbose = Convert.ToBoolean(ConfigurationManager.AppSettings["VerboseError"].ToString());
+       // Boolean bVerbose = Convert.ToBoolean(ConfigurationManager.AppSettings["VerboseError"].ToString());
 
         CommonAPI comAPI;
         SqlConnection sqlCon;
@@ -54,12 +54,12 @@ namespace SLSShippingApp
         String sScanToOrder = String.Empty;
         String sScanToCustomer = String.Empty;
         Boolean bSingleItemOrders = false;
-        String g_TicketPrinter = ConfigurationManager.AppSettings.Get("PickTicketPrinter").ToString();
-        String g_LabelPrinter = ConfigurationManager.AppSettings.Get("LabelPrinter").ToString();
-        String g_ShipLabelPrinter = ConfigurationManager.AppSettings.Get("ShipLabelPrinter").ToString();
+        //String g_TicketPrinter = ConfigurationManager.AppSettings.Get("PickTicketPrinter").ToString();
+        //String g_LabelPrinter = ConfigurationManager.AppSettings.Get("LabelPrinter").ToString();
+        //String g_ShipLabelPrinter = ConfigurationManager.AppSettings.Get("ShipLabelPrinter").ToString();
         System.Diagnostics.Stopwatch watch;
         String timeMsg = String.Empty;
-        Boolean doTimeCheck = Convert.ToBoolean( ConfigurationManager.AppSettings.Get("DoTimeCheck").ToString());
+        //Boolean doTimeCheck = Convert.ToBoolean( ConfigurationManager.AppSettings.Get("DoTimeCheck").ToString());
         ZFShippingPanel shiprushPanel = new ZFShippingPanel();
         static bool clockwise = false;
 
@@ -67,7 +67,8 @@ namespace SLSShippingApp
         {
             InitializeComponent();
 
-            if (ConfigurationManager.AppSettings["IsTesting"].ToString() == "true")
+           // if (ConfigurationManager.AppSettings["IsTesting"].ToString() == "true")
+            if(comAPI.InTestMode)
             {
                 //  iIsTest = 1;
                 tblItemMasterDB = "DATA_309";
@@ -81,19 +82,19 @@ namespace SLSShippingApp
                 GenerateDatabase();
             }
 
-            if (!CheckPrinterConnected(g_TicketPrinter))
+            if (!CheckPrinterConnected(comAPI.TicketPrinter))
             {
-                MessageBox.Show(String.Format("{0} is either not connected, or not a valid printer", g_TicketPrinter), "Invalid Printer");
+                MessageBox.Show(String.Format("{0} is either not connected, or not a valid printer", comAPI.TicketPrinter), "Invalid Printer");
                 return;
             }
-            if (!CheckPrinterConnected(g_LabelPrinter))
+            if (!CheckPrinterConnected(comAPI.LabelPrinter))
             {
-                MessageBox.Show(String.Format("{0} is either not connected, or not a valid printer", g_LabelPrinter), "Invalid Printer");
+                MessageBox.Show(String.Format("{0} is either not connected, or not a valid printer", comAPI.LabelPrinter), "Invalid Printer");
                 return;
             }
-            if (!CheckPrinterConnected(g_ShipLabelPrinter))
+            if (!CheckPrinterConnected(comAPI.ShipLabelPrinter))
             {
-                MessageBox.Show(String.Format("{0} is either not connected, or not a valide printer", g_ShipLabelPrinter), "Invalid Printer");
+                MessageBox.Show(String.Format("{0} is either not connected, or not a valide printer", comAPI.ShipLabelPrinter), "Invalid Printer");
                 return;
             }
             /* this is for generating customer packing slips, when customer needs to approve them*/
@@ -308,7 +309,8 @@ namespace SLSShippingApp
                     break;
             }
             ToggleFormControlEvents(true);
-            String fullPathToFile = ConfigurationManager.AppSettings["ImagePath"].ToString() + "! Image Not Found !.jpg";
+           // String fullPathToFile = ConfigurationManager.AppSettings["ImagePath"].ToString() + "! Image Not Found !.jpg";
+           String fullPathToFile = comAPI.ImagePath + "! Image Not Found !.jpg";
             pbItemImage.Load(fullPathToFile);
         }
 
@@ -383,7 +385,7 @@ namespace SLSShippingApp
             }
             catch (Exception ex)
             {
-                if (bVerbose)
+                if (comAPI.ShowVerbose)//bVerbose)
                     ShowErrorDetails(ex, 259, "SetStartScreen()");
                 else
                     MessageBox.Show(String.Format("Error retrieving your Windows Login SLSShipping App start screen:\n\t{0}", ex.Message));
@@ -471,7 +473,8 @@ namespace SLSShippingApp
                     txtItemNumber.Text = dtOrderInfo.Rows[0]["OrderStatus"] == null ? "Unknown - Contact IT" : dtOrderInfo.Rows[0]["OrderStatus"].ToString();
                     txtItemDesc1.Text = String.Empty;
                     txtItemDesc2.Text = String.Empty;
-                    String fullPathToFile = ConfigurationManager.AppSettings["ImagePath"].ToString() + "! Image Not Found !.jpg";
+                   // String fullPathToFile = ConfigurationManager.AppSettings["ImagePath"].ToString() + "! Image Not Found !.jpg";
+                   String fullPathToFile = comAPI.ImagePath + "! Image Not Found !.jpg";
                     pbItemImage.Load(fullPathToFile);
                     dgvList.DataSource = dtScanInfo;
                 }
@@ -493,7 +496,7 @@ namespace SLSShippingApp
             }
             catch (Exception ex)
             {
-                if (bVerbose)
+                if (comAPI.ShowVerbose)//bVerbose)
                     ShowErrorDetails(ex, 373, "GetFMOrderFromLabelScan");
                 else
                     MessageBox.Show("Error getting Order Information: " + ex.Message);
@@ -581,7 +584,8 @@ namespace SLSShippingApp
 
         public void LoadImage(String sItemNum)
         {
-            String sImagePath = ConfigurationManager.AppSettings["ImagePath"].ToString();
+            // String sImagePath = ConfigurationManager.AppSettings["ImagePath"].ToString();
+            String sImagePath = comAPI.ImagePath;
             String sItemNumber = String.Empty;
             String sFullImagePath = sImagePath;
             String sFormattedItemNum = sItemNum + ".jpg";
@@ -624,7 +628,7 @@ namespace SLSShippingApp
             }
             catch (Exception ex)
             {
-                if (bVerbose)
+                if (comAPI.ShowVerbose)//bVerbose)
                     ShowErrorDetails(ex, 513, "GetScannedHistory");
                 else
                     MessageBox.Show("Error Loading Scanned History: " + ex.Message);
@@ -664,7 +668,7 @@ namespace SLSShippingApp
             }
             catch (Exception ex)
             {
-                if (bVerbose)
+                if (comAPI.ShowVerbose)//bVerbose)
                     ShowErrorDetails(ex, 551, "GetItemInfo");
                 else
                     MessageBox.Show("Error getting Item Details: " + ex.Message);
@@ -723,7 +727,7 @@ namespace SLSShippingApp
             }
             catch (Exception ex)
             {
-                if (bVerbose)
+                if (comAPI.ShowVerbose)//bVerbose)
                     ShowErrorDetails(ex, 608, "txtPONumber_Leave");
                 else
                     MessageBox.Show(String.Format("Error retrieving Pick Ticket from PO Number: {0}\n\t{1}", txtPONumber.Text.Trim(), ex.Message));
@@ -743,12 +747,12 @@ namespace SLSShippingApp
         private void LoadPrintData(DataTable dtPrintInfo, Boolean isReprint = false)
         {
             watch = System.Diagnostics.Stopwatch.StartNew();
-            if (doTimeCheck)
+            if (comAPI.doTimeCheck)
                 timeMsg += "LoadPrintData started\r\n";
 
             ClearSQLExpressTables(null, null, null);
 
-            if (doTimeCheck)
+            if (comAPI.doTimeCheck)
                 timeMsg += String.Format("ClearSqlExpressTables completed: {0} ms\r\n", watch.ElapsedMilliseconds);
             
             Boolean bBayLabel = false;
@@ -840,7 +844,7 @@ namespace SLSShippingApp
                         sqlCmd.CommandText = sSQL;
                         sqlCmd = new SqlCommand(sSQL, sqlCon);
                         sqlCmd.ExecuteNonQuery();
-                        if (doTimeCheck)
+                        if (comAPI.doTimeCheck)
                             timeMsg += String.Format("Sqlcmd.ExecuteNonQuery completed: {0} ms\r\n", watch.ElapsedMilliseconds);
                     }
                     catch (SqlException sEx)
@@ -864,7 +868,7 @@ namespace SLSShippingApp
                 {
                     PrintDevExpReport("Label", "rptPrintLabel", 1, sOrderNumber);
                     ClearSQLExpressTables("tblLabel", sOrderNumber, sTargetColumnName);
-                    if (doTimeCheck)
+                    if (comAPI.doTimeCheck)
                         timeMsg += String.Format("PrintDevExpReport and ClearSqlExpressTables(tblLabel) completed: {0} ms\r\n", watch.ElapsedMilliseconds);
                 }
                 bItemLabel = false;
@@ -888,7 +892,7 @@ namespace SLSShippingApp
                 {
                     PrintDevExpReport("Ticket", "rptPickingTicket", 1, sOrderNumber);
 
-                    if (doTimeCheck)
+                    if (comAPI.doTimeCheck)
                         timeMsg += String.Format("PrintDevExpReport and ClearSqlExpressTables(rptPickingTicket) completed: {0} ms\r\n", watch.ElapsedMilliseconds);
 
                     // if(!isReprint) //ADD THIS FOR PRODUCTION. IN DEV, I'M TESTING USING THE REPRINT FUNCTIONALITY
@@ -907,11 +911,11 @@ namespace SLSShippingApp
                 sqlCon.Close();
                 sqlCon.Dispose();
 
-                if (doTimeCheck)
+                if (comAPI.doTimeCheck)
                     timeMsg += String.Format("Report printing completed: {0} ms \r\n", watch.ElapsedMilliseconds);
             }
             watch.Stop();
-            if (doTimeCheck)
+            if (comAPI.doTimeCheck)
             {
                 MessageBox.Show(timeMsg);
                 timeMsg = String.Empty;
@@ -920,7 +924,7 @@ namespace SLSShippingApp
 
         private void PrintDoc(String sFileName, String sOrdNo)
         {
-            String c_sFolder = ConfigurationManager.AppSettings["CustomerPackingSlips"].ToString();
+            String c_sFolder = comAPI.PackingSlipPath;// ConfigurationManager.AppSettings["CustomerPackingSlips"].ToString();
             StreamReader streamToPrint;
             String sFullPath = c_sFolder + sFileName;
 
@@ -933,7 +937,7 @@ namespace SLSShippingApp
                 PrintDocument pd = new PrintDocument();
 
                 pd.PrintController = printController;
-                pd.PrinterSettings.PrinterName = g_TicketPrinter;               
+                pd.PrinterSettings.PrinterName = comAPI.TicketPrinter;               
                 pd.PrinterSettings.Copies = 1;
                 //  pd.PrintPage += new PrintPageEventHandler(pd_PrintPage);
                 pd.Print();
@@ -950,7 +954,7 @@ namespace SLSShippingApp
                     switches.Add("-dNOSAFER");
                     switches.Add("-dNumCopies=1");
                     switches.Add("-sDEVICE=mswinpr2");
-                    switches.Add("-sOutputFile=%printer%" + g_TicketPrinter);
+                    switches.Add("-sOutputFile=%printer%" + comAPI.TicketPrinter);
                     switches.Add("-f");
                     switches.Add(sFullPath);
                     processor.StartProcessing(switches.ToArray(), null);
@@ -1143,11 +1147,11 @@ namespace SLSShippingApp
 
         private void PublishReport(XtraReport report, String sRptType)
         {
-            if (doTimeCheck)
+            if (comAPI.doTimeCheck)
                 timeMsg += String.Format("Entered PublishReport {0}: {1}\r\n", report.Name, watch.ElapsedMilliseconds);
-            String sPrinterName = sRptType == "Label" ? g_LabelPrinter : g_TicketPrinter;
+            String sPrinterName = sRptType == "Label" ? comAPI.LabelPrinter : comAPI.TicketPrinter;
 
-            if (doTimeCheck)
+            if (comAPI.doTimeCheck)
                 timeMsg += String.Format("All Printer info set: {0}\r\n", watch.ElapsedMilliseconds);
 
             try
@@ -1165,7 +1169,7 @@ namespace SLSShippingApp
                     if (sRptType == "Label")
                         printTool.PrintingSystem.StartPrint -= PrintingSystem_StartPrint;
 
-                    if (doTimeCheck)
+                    if (comAPI.doTimeCheck)
                         timeMsg += String.Format("Printing Completed: {0}\r\n", watch.ElapsedMilliseconds);
                 }
             }
@@ -1211,10 +1215,10 @@ namespace SLSShippingApp
                 switch (sRptType)
                 {
                     case "Label":
-                        sPrinter = g_LabelPrinter;// sLabelPrinter;
+                        sPrinter = comAPI.LabelPrinter;// sLabelPrinter;
                         break;
                     case "Ticket":
-                        sPrinter = g_TicketPrinter;// sTicketPrinter;
+                        sPrinter = comAPI.TicketPrinter;// sTicketPrinter;
                         break;
                 }
             }
@@ -1253,11 +1257,15 @@ namespace SLSShippingApp
             }
             catch (Exception ex)
             {
-                if (bVerbose)
+                if (comAPI.ShowVerbose)//bVerbose)
                     ShowErrorDetails(ex, 974, "btnAssignPrinter_Click");
                 else
                     MessageBox.Show(String.Format("Error Assigning Printers:\n\t{0}", ex.Message));
                 return;
+            }
+            finally
+            {
+                comAPI = new CommonAPI();
             }
             MessageBox.Show(String.Format("Printer Assingment Complete.\n\tLabel Printer:\t{0}\n\tPickTicket Printer:\t{1}", sLabelPrinter, sTicketPrinter), "Printer Assignment");
         }
@@ -1295,7 +1303,7 @@ namespace SLSShippingApp
             }
             catch (Exception ex)
             {
-                if (bVerbose)
+                if (comAPI.ShowVerbose)//bVerbose)
                     ShowErrorDetails(ex, 1015, "btnCloseBay_Cick");
                 else
                     MessageBox.Show(String.Format("Error retrieving bay information:\n\t{0}", ex.Message), "Close Holding Bay");
@@ -1339,8 +1347,8 @@ namespace SLSShippingApp
 
         private void TxtLeadTimePwd_TextChanged(object sender, EventArgs e)
         {
-            String sPwd = ConfigurationManager.AppSettings["leadTimePwd"];
-            Int16 iPwdLength = Convert.ToInt16(ConfigurationManager.AppSettings["leadTimePwdLength"]);
+            String sPwd = comAPI.LeadTimePwd;// ConfigurationManager.AppSettings["leadTimePwd"];
+            Int16 iPwdLength = comAPI.LeadTimePwdLength;// Convert.ToInt16(ConfigurationManager.AppSettings["leadTimePwdLength"]);
 
             if (txtLeadTimePwd.Text.Trim().Length == iPwdLength && txtLeadTimePwd.Text.Trim() == sPwd)
                 btnUpdateLeadTime.Enabled = true;
@@ -1348,8 +1356,8 @@ namespace SLSShippingApp
 
         private void TxtBackoutPwd_TextChanged(object sender, EventArgs e)
         {
-            String sPwd = ConfigurationManager.AppSettings["backoutPwd"];
-            Int16 iPwdLength = Convert.ToInt16(ConfigurationManager.AppSettings["backoutPwdLength"]);
+            String sPwd = comAPI.BackoutPwd;// ConfigurationManager.AppSettings["backoutPwd"];
+            Int16 iPwdLength = comAPI.BackoutPwdLength;// Convert.ToInt16(ConfigurationManager.AppSettings["backoutPwdLength"]);
 
             if (txtBackoutPwd.Text.Trim().Length == iPwdLength && txtBackoutPwd.Text.Trim() == sPwd)
                 btnSearchOrderScan.Enabled = true;
@@ -1357,8 +1365,8 @@ namespace SLSShippingApp
 
         private void TxtWindowsUsersPwd_TextChanged(object sender, EventArgs e)
         {
-            String sPwd = ConfigurationManager.AppSettings["windowsUsersPwd"];
-            Int16 iPwdLenght = Convert.ToInt16(ConfigurationManager.AppSettings["windowsUserPwdLength"]);
+            String sPwd = comAPI.WinUserPwd;// ConfigurationManager.AppSettings["windowsUsersPwd"];
+            Int16 iPwdLenght = comAPI.WinUserPwdLength;// Convert.ToInt16(ConfigurationManager.AppSettings["windowsUserPwdLength"]);
 
             if (txtWindowsUsersPwd.Text.Trim().Length == iPwdLenght && txtWindowsUsersPwd.Text.Trim() == sPwd)
                 btnAddEditWindowsUsers.Enabled = true;
@@ -1402,7 +1410,7 @@ namespace SLSShippingApp
                 case "TABPRINTERS":
                     foreach (object item in cboLabelPrinter.Items)
                     {
-                        if (item.ToString() == ConfigurationManager.AppSettings["LabelPrinter"].ToString())
+                        if (item.ToString() == comAPI.LabelPrinter)// ConfigurationManager.AppSettings["LabelPrinter"].ToString())
                         {
                             cboLabelPrinter.SelectedItem = item;
                             break;
@@ -1410,7 +1418,7 @@ namespace SLSShippingApp
                     }
                     foreach (object item in cboTicketPrinter.Items)
                     {
-                        if (item.ToString() == ConfigurationManager.AppSettings["PickTicketPrinter"].ToString())
+                        if (item.ToString() == comAPI.TicketPrinter)// ConfigurationManager.AppSettings["PickTicketPrinter"].ToString())
                         {
                             cboTicketPrinter.SelectedItem = item;
                             break;
@@ -1418,7 +1426,7 @@ namespace SLSShippingApp
                     }
                     foreach(object item in cboShippingLabelPrinter.Items)
                     {
-                        if(item.ToString() == ConfigurationManager.AppSettings["ShipLabelPrinter"].ToString())
+                        if(item.ToString() == comAPI.ShipLabelPrinter)// ConfigurationManager.AppSettings["ShipLabelPrinter"].ToString())
                         {
                             cboShippingLabelPrinter.SelectedItem = item;
                             break;
@@ -1451,7 +1459,7 @@ namespace SLSShippingApp
             }
             catch (Exception ex)
             {
-                if (bVerbose)
+                if (comAPI.ShowVerbose)//bVerbose)
                     ShowErrorDetails(ex, 1163, "GetLeadTime");
                 else
                     MessageBox.Show(String.Format("Error getting Lead Time value:\n\t{0}", ex.Message), "Lead Time");
@@ -1501,7 +1509,7 @@ namespace SLSShippingApp
             }
             catch (Exception ex)
             {
-                if (bVerbose)
+                if (comAPI.ShowVerbose)//bVerbose)
                     ShowErrorDetails(ex, 1212, "UpdateLeadTime");
                 else
                     MessageBox.Show(String.Format("Error setting Lead Time value:\n\t{0}", ex.Message), "Lead Time Update");
@@ -1557,7 +1565,8 @@ namespace SLSShippingApp
                     this.txtItemNumber.Text = String.Empty;
                     this.txtItemDesc1.Text = String.Empty;
                     this.txtItemDesc2.Text = String.Empty;
-                    String sFullImagePath = ConfigurationManager.AppSettings["ImagePath"].ToString() + "! Image Not Found !.jpg";
+                  //  String sFullImagePath = ConfigurationManager.AppSettings["ImagePath"].ToString() + "! Image Not Found !.jpg";
+                    String sFullImagePath = comAPI.ImagePath + "! Image Not Found !.jpg";
                     pbItemImage.Load(sFullImagePath);
                     MessageBox.Show("Order Not Found", "No Order");
                     return;
@@ -1565,7 +1574,7 @@ namespace SLSShippingApp
             }
             catch (Exception ex)
             {
-                if (bVerbose)
+                if (comAPI.ShowVerbose)//bVerbose)
                     ShowErrorDetails(ex, 1279, "cmdSearchForOrder_Click");
                 else
                     MessageBox.Show(String.Format("Error retrieving Scanned item infomration:\n\t{0}", ex.Message));
@@ -1614,7 +1623,7 @@ namespace SLSShippingApp
                     txtFoundItemNo.Text = String.Empty;
                     txtFoundDesc1.Text = String.Empty;
                     txtFoundDesc2.Text = String.Empty;
-                    if (bVerbose)
+                    if (comAPI.ShowVerbose)//bVerbose)
                         ShowErrorDetails(ex, 1328, "dgvFoundOrder_SelectionChanged");
                     else
                         MessageBox.Show(String.Format("Error retrieving Item information:\n\t{0}", ex.Message), "Data Error");
@@ -1689,7 +1698,7 @@ namespace SLSShippingApp
             }
             catch (Exception ex)
             {
-                if (bVerbose)
+                if (comAPI.ShowVerbose)//bVerbose)
                     ShowErrorDetails(ex, 1405, "btnBackoutScan_Click");
                 else
                     MessageBox.Show(String.Format("Error backing out scan:\n\t{0}", ex.Message), "Backout Scan");
@@ -1754,7 +1763,7 @@ namespace SLSShippingApp
             }
             catch (Exception ex)
             {
-                if (bVerbose)
+                if (comAPI.ShowVerbose)//bVerbose)
                     ShowErrorDetails(ex, 1472, "btnReprint_Click");
                 else
                     MessageBox.Show(String.Format("Error retrieving Print Info for Order/Item:\n\t{0}", ex.Message), "Reprint Info");
@@ -1805,7 +1814,7 @@ namespace SLSShippingApp
             }
             catch (Exception ex)
             {
-                if (bVerbose)
+                if (comAPI.ShowVerbose)//bVerbose)
                     ShowErrorDetails(ex, 1547, "funReturnOrderQuantity");
                 else
                     MessageBox.Show(String.Format("Error retrieving Order Quantity:\n\t{0}", ex.Message), "Data Error");
@@ -1885,7 +1894,7 @@ namespace SLSShippingApp
                 }
                 catch (Exception ex)
                 {
-                    if (bVerbose)
+                    if (comAPI.ShowVerbose)//bVerbose)
                         ShowErrorDetails(ex, 1622, "dgvBayDetails_CellContentClick");
                     else
                         MessageBox.Show(String.Format("Error Updating Bay Item Quantity:\n\t{0} ", ex.Message), "Update Error");
@@ -1923,7 +1932,7 @@ namespace SLSShippingApp
             }
             catch (Exception ex)
             {
-                if (bVerbose)
+                if (comAPI.ShowVerbose)//bVerbose)
                     ShowErrorDetails(ex, 1657, "LoadMaintenanceTab");
                 else
                     MessageBox.Show(String.Format("Error retrieving Bay Detail information:\n\t{0}", ex.Message), "Bay Detail");
@@ -1956,7 +1965,7 @@ namespace SLSShippingApp
             }
             catch (Exception ex)
             {
-                if (bVerbose)
+                if (comAPI.ShowVerbose)//bVerbose)
                     ShowErrorDetails(ex, 1688, "LoadQSMaintenanceTab");
                 else
                     MessageBox.Show(String.Format("Error retreiving Quick Ship items:\n\t{0} ", ex.Message), "Data retrieval error");
@@ -2098,7 +2107,7 @@ namespace SLSShippingApp
             }
             catch (Exception ex)
             {
-                if (bVerbose)
+                if (comAPI.ShowVerbose)//bVerbose)
                     ShowErrorDetails(ex, 1824, "btnFindOrder_Click");
                 else
                     MessageBox.Show(String.Format("Error retrieving BayDetail information:\n\t{0}", ex.Message), "No Matching Order");
@@ -2170,7 +2179,7 @@ namespace SLSShippingApp
             }
             catch (Exception ex)
             {
-                if (bVerbose)
+                if (comAPI.ShowVerbose)//bVerbose)
                     ShowErrorDetails(ex, 1890, "btnRemovePickingDate_Click");
                 else
                     MessageBox.Show(String.Format("Error Updating Order:\n\t{0}", ex.Message), "Order Update");
@@ -2211,7 +2220,7 @@ namespace SLSShippingApp
             }
             catch (Exception ex)
             {
-                if (bVerbose)
+                if (comAPI.ShowVerbose)//bVerbose)
                     ShowErrorDetails(ex, 1929, "btnDeleteItem_Click");
                 else
                     MessageBox.Show(String.Format("Error Deleting Order Information: {0} ", ex.Message), "Order Deletion");
@@ -2280,7 +2289,7 @@ namespace SLSShippingApp
             }
             catch (Exception ex)
             {
-                if (bVerbose)
+                if (comAPI.ShowVerbose)//bVerbose)
                     ShowErrorDetails(ex, 1990, "btnFreezeBay_Click");
                 else
                     MessageBox.Show(String.Format("Error Freezing Bay:\n\t{0}", ex.Message), "Freeze Bay");
@@ -2336,7 +2345,7 @@ namespace SLSShippingApp
             }
             catch (Exception ex)
             {
-                if (bVerbose)
+                if (comAPI.ShowVerbose)//bVerbose)
                     ShowErrorDetails(ex, 2043, "ClearBayLocation");
                 else
                     MessageBox.Show(String.Format("Error Clearing Bay Location:\n\t{0} ", ex.Message), "Bay Location Error");
@@ -2373,7 +2382,7 @@ namespace SLSShippingApp
                 txtQSPwd.Focus();
                 return;
             }
-            if (txtQSPwd.Text.Trim() != ConfigurationManager.AppSettings["qsReplenishmentPwd"])
+            if (txtQSPwd.Text.Trim() != comAPI.QSRepPwd)// ConfigurationManager.AppSettings["qsReplenishmentPwd"])
             {
                 MessageBox.Show("The Password entered is incorrect.", "Incorrect Password");
                 txtQSPwd.Text = String.Empty;
@@ -2411,7 +2420,7 @@ namespace SLSShippingApp
             }
             catch (Exception ex)
             {
-                if (bVerbose)
+                if (comAPI.ShowVerbose)//bVerbose)
                     ShowErrorDetails(ex, 2115, "btnMax_Click");
                 else
                     MessageBox.Show(String.Format("Error updating Max value:\n\t{0}", ex.Message), "Update Error");
@@ -2439,7 +2448,7 @@ namespace SLSShippingApp
                 txtQSPwd.Focus();
                 return;
             }
-            if (txtQSPwd.Text.Trim() != ConfigurationManager.AppSettings["qsReplenishmentPwd"])
+            if (txtQSPwd.Text.Trim() != comAPI.QSRepPwd)// ConfigurationManager.AppSettings["qsReplenishmentPwd"])
             {
                 MessageBox.Show("The Password entered is incorrect.", "Incorrect Password");
                 txtQSPwd.Text = String.Empty;
@@ -2476,7 +2485,7 @@ namespace SLSShippingApp
             }
             catch (Exception ex)
             {
-                if (bVerbose)
+                if (comAPI.ShowVerbose)//bVerbose)
                     ShowErrorDetails(ex, 2177, "btnMin_Click");
                 else
                     MessageBox.Show(String.Format("Error updating Min value:\n\t{0} ", ex.Message), "Update Error");
@@ -2504,7 +2513,7 @@ namespace SLSShippingApp
                 txtQSPwd.Focus();
                 return;
             }
-            if (txtQSPwd.Text.Trim() != ConfigurationManager.AppSettings["qsReplenishmentPwd"])
+            if (txtQSPwd.Text.Trim() != comAPI.QSRepPwd)// ConfigurationManager.AppSettings["qsReplenishmentPwd"])
             {
                 MessageBox.Show("The Password entered is incorrect.", "Incorrect Password");
                 txtQSPwd.Text = String.Empty;
@@ -2540,7 +2549,7 @@ namespace SLSShippingApp
             }
             catch (Exception ex)
             {
-                if (bVerbose)
+                if (comAPI.ShowVerbose)//bVerbose)
                     ShowErrorDetails(ex, 2236, "btnUpdateQty_Click");
                 else
                     MessageBox.Show(String.Format("Error updating Qty In Stock:\n\t{0}", ex.Message), "Update Error");
@@ -2567,7 +2576,7 @@ namespace SLSShippingApp
                 txtQSPwd.Focus();
                 return;
             }
-            if (txtQSPwd.Text.Trim() != ConfigurationManager.AppSettings["qsReplenishmentPwd"])
+            if (txtQSPwd.Text.Trim() != comAPI.QSRepPwd)// ConfigurationManager.AppSettings["qsReplenishmentPwd"])
             {
                 MessageBox.Show("The Password entered is incorrect.", "Incorrect Password");
                 txtQSPwd.Text = String.Empty;
@@ -2602,7 +2611,7 @@ namespace SLSShippingApp
             }
             catch (Exception ex)
             {
-                if (bVerbose)
+                if (comAPI.ShowVerbose)//bVerbose)
                     ShowErrorDetails(ex, 2295, "btnClear_Click");
                 else
                     MessageBox.Show(String.Format("Error Clearing Replenishment Request:\n\t{0} ", ex.Message), "Update Error");
@@ -2808,7 +2817,7 @@ namespace SLSShippingApp
             }
             catch (Exception ex)
             {
-                if (bVerbose)
+                if (comAPI.ShowVerbose)//bVerbose)
                     ShowErrorDetails(ex, 2501, "GetScheduleAndItemFromSFO");
                 else
                     MessageBox.Show(String.Format("Error Retreiving Schedule from Shop Floor Order ({0}): {1}", sSFONo, ex.Message), "Data Retrieval");
@@ -2891,7 +2900,7 @@ namespace SLSShippingApp
             }
             catch (Exception ex)
             {
-                if (bVerbose)
+                if (comAPI.ShowVerbose)//bVerbose)
                     ShowErrorDetails(ex, 2586, "miReprint_Click");
                 else
                     MessageBox.Show(String.Format("Error retrieving Print Info for Order/Item:\n\t{0}", ex.Message), "Reprint Info");
@@ -2959,7 +2968,7 @@ namespace SLSShippingApp
             }
             catch (Exception ex)
             {
-                if (bVerbose)
+                if (comAPI.ShowVerbose)//bVerbose)
                     ShowErrorDetails(ex, 2651, "miBackout_Click");
                 else
                     MessageBox.Show(String.Format("Error backing out scan:\n\t{0}", ex.Message), "Backout Scan");
@@ -3150,7 +3159,7 @@ namespace SLSShippingApp
             }
             catch (Exception ex)
             {
-                if (bVerbose)
+                if (comAPI.ShowVerbose)//bVerbose)
                     ShowErrorDetails(ex, 680, "ClearSQLExpressTables");
                 else
                     MessageBox.Show(String.Format("Error Deleting print data\n\t{0}", ex.Message));
@@ -3178,7 +3187,7 @@ namespace SLSShippingApp
 
         private void ShipOrder(String sOrdNo)
         {
-            if (doTimeCheck)
+            if (comAPI.doTimeCheck)
                 timeMsg += String.Format("Peform Shipment Procedure entered: {0} ms\r\n", watch.ElapsedMilliseconds);
             String sTrackingNumber = String.Empty;
             Double dblFreight = 0.0D;
@@ -3203,7 +3212,7 @@ namespace SLSShippingApp
             {
                 reader = sqlCmd.ExecuteReader();
                 dt.Load(reader);
-                if (doTimeCheck)
+                if (comAPI.doTimeCheck)
                     timeMsg += String.Format("Shipment/Order details loaded into DataTable: {0} ms\r\n", watch.ElapsedMilliseconds);
             }
             catch (Exception ex)
@@ -3218,7 +3227,7 @@ namespace SLSShippingApp
                 sqlCon.Dispose();
                 // dt.Dispose();
             }
-            if (doTimeCheck)
+            if (comAPI.doTimeCheck)
                 timeMsg += String.Format("Check for Existing ShipRush Connection: {0} ms\r\n", watch.ElapsedMilliseconds);
 
             String sShipVia = comAPI.ParseShipVia(dt.Rows[0]["ShipViaCode"].ToString().Trim());
@@ -3227,14 +3236,14 @@ namespace SLSShippingApp
             {
                 try
                 {
-                    if (Convert.ToBoolean(ConfigurationManager.AppSettings.Get("LiveShipping").ToString()) == true)
-                        shiprushPanel.SerialNumber = ConfigurationManager.AppSettings.Get("ShiprushSerialNumber").ToString();
+                    if (comAPI.LiveShipping)//(Convert.ToBoolean(ConfigurationManager.AppSettings.Get("LiveShipping").ToString()) == true)
+                        shiprushPanel.SerialNumber = comAPI.ShipRushSerialNumber;// ConfigurationManager.AppSettings.Get("ShiprushSerialNumber").ToString();
                     else
-                        shiprushPanel.SerialNumber = ConfigurationManager.AppSettings.Get("TestShiprushSerialNumber").ToString();
+                        shiprushPanel.SerialNumber = comAPI.TestShipRushSerialNumber;// ConfigurationManager.AppSettings.Get("TestShiprushSerialNumber").ToString();
 
                     shiprushPanel.CarrierType = comAPI.GetShipViaTranslation(sShipVia);// dt.Rows[0]["ShipViaCode"].ToString().Trim());
                     shiprushPanel.Connect();
-                    if (doTimeCheck)
+                    if (comAPI.doTimeCheck)
                         timeMsg += String.Format("ShipRush Connection Established: {0} ms\r\n", watch.ElapsedMilliseconds);
                     if (!shiprushPanel.Connected)
                         MessageBox.Show(shiprushPanel.ErrorMessage);
@@ -3249,7 +3258,7 @@ namespace SLSShippingApp
             //these only appear to be necessary for APO/FPO/International shipments
             // ZFCommodity commodity;
             // Int32 i = 0;
-            if (doTimeCheck)
+            if (comAPI.doTimeCheck)
                 timeMsg += String.Format("Shiprush StartNewShipment(): {0} ms\r\n", watch.ElapsedMilliseconds);
             shiprushPanel.StartNewShipment();
             shiprushPanel.Settings.SaveLabels = false;
@@ -3325,21 +3334,21 @@ namespace SLSShippingApp
             shiprushPanel.Shipment.Packages(0).Weight = iShipWeight;
             shiprushPanel.Shipment.Packages(0).PackagingType = 0;
 
-            if (doTimeCheck)
+            if (comAPI.doTimeCheck)
                 timeMsg += String.Format("Shipment/Order details loaded into Shiprush.Shipment(): {0} ms\r\n", watch.ElapsedMilliseconds);
 
             try
             {
-                if (doTimeCheck)
+                if (comAPI.doTimeCheck)
                     timeMsg += String.Format("Execute Shiprush.Ship(): {0} ms\r\n", watch.ElapsedMilliseconds);
                 shiprushPanel.Ship();
-                if (doTimeCheck)
+                if (comAPI.doTimeCheck)
                     timeMsg += String.Format("Shiprush.Ship() completed: {0} ms\r\n", watch.ElapsedMilliseconds);
                 sTrackingNumber = shiprushPanel.Shipment.TrackingNumber;
                 dblFreight = shiprushPanel.Shipment.EffectiveCarrierCharges*.01; //?? These Starship.Shipment values are returned as integers
                 dblFreight = shiprushPanel.Shipment.ShippingCharges*.01; //?? so 15.01 is returned as 1501
                 iZone = Convert.ToInt32(shiprushPanel.Shipment.UPSZone);
-                if (doTimeCheck)
+                if (comAPI.doTimeCheck)
                     timeMsg += String.Format("TrackingNumber, Freight charge retrieved: {0} ms\r\n", watch.ElapsedMilliseconds);
             }
             catch (Exception ex)
@@ -3350,7 +3359,7 @@ namespace SLSShippingApp
 
             if (sTrackingNumber != null &&  sTrackingNumber.Length > 0)
             {
-                if (doTimeCheck)
+                if (comAPI.doTimeCheck)
                     timeMsg += String.Format("Create ARSHTFIL_SQL insert SQL string: {0} ms\r\n", watch.ElapsedMilliseconds);
                 sSql = String.Format("INSERT INTO ARSHTFIL_SQL(ord_no,shipment_no,carrier_cd,mode,ship_cost,tracking_no,zone,ship_weight,complete_fg,ship_dt) " +
                        " VALUES('{0}',1,'{1}','{2}',{3},'{4}',{5},{6},'P',CONVERT(INT, CONVERT(VARCHAR, GETDATE(), 112)))", sOrdNo, sCarrierCode, sCarrierMode, dblFreight, sTrackingNumber, iZone, iShipWeight);
@@ -3364,7 +3373,7 @@ namespace SLSShippingApp
                 try
                 {
                     sqlCmd.ExecuteNonQuery();
-                    if (doTimeCheck)
+                    if (comAPI.doTimeCheck)
                     {
                         sSQL = String.Format("DELETE FROM ARSHTFIL_SQL WHERE ord_no = '{0}'", sOrdNo);
                         sqlCmd.CommandText = sSQL;
@@ -3382,7 +3391,7 @@ namespace SLSShippingApp
                     sqlCon.Close();
                     sqlCon.Dispose();
                     sqlCmd.Dispose();
-                    if (doTimeCheck)
+                    if (comAPI.doTimeCheck)
                         timeMsg += String.Format("Exit Shiprush.Shippment function: {0} ms\r\n", watch.ElapsedMilliseconds);
                 }
             }

@@ -14,6 +14,24 @@ namespace SLSShippingApp
         String MacolaCon;
         String ShippingAppCon;
         Int16 conVersion;
+        Boolean Verbose;
+        String sTicketPrinter;
+        String sLabelPrinter;
+        String sShipLabelPrinter;
+        Boolean bTimeCheck;
+        String sImagePath;
+        String sPackingSlipFolder;
+        String sLeadTimePwd;
+        Int16 iLeadTimePwdLength;
+        String sBackoutPwd;
+        Int16 iBackoutPwdLength;
+        String sWinUserPwd;
+        Int16 iWinUserPwdLength;
+        String sQSRepPwd;
+        Boolean bLiveShipping;
+        String sShipRushSerialNumber;
+        String sTestShipRushSerialNumber;
+
 
         public CommonAPI()
         {
@@ -37,8 +55,26 @@ namespace SLSShippingApp
             }
 
             ShippingAppCon = ConfigurationManager.ConnectionStrings["SLSShippingAppConnection"].ToString();
-
             Version = Convert.ToInt16(ConfigurationManager.AppSettings["AppVersion"].ToString());
+            Verbose = Convert.ToBoolean(ConfigurationManager.AppSettings["VerboseError"].ToString());
+            sTicketPrinter = ConfigurationManager.AppSettings.Get("PickTicketPrinter").ToString();
+            sLabelPrinter = ConfigurationManager.AppSettings.Get("LabelPrinter").ToString();
+            sShipLabelPrinter = ConfigurationManager.AppSettings.Get("ShipLabelPrinter").ToString();
+            bTimeCheck = Convert.ToBoolean(ConfigurationManager.AppSettings.Get("DoTimeCheck").ToString());
+            sImagePath = ConfigurationManager.AppSettings["ImagePath"].ToString();
+            sPackingSlipFolder = ConfigurationManager.AppSettings["CustomerPackingSlips"].ToString();
+            sLeadTimePwd = ConfigurationManager.AppSettings["leadTimePwd"]; 
+            iLeadTimePwdLength = Convert.ToInt16(ConfigurationManager.AppSettings["leadTimePwdLength"]);
+            sBackoutPwd = ConfigurationManager.AppSettings["backoutPwd"];
+            iBackoutPwdLength = Convert.ToInt16(ConfigurationManager.AppSettings["backoutPwdLength"]);
+            sWinUserPwd = ConfigurationManager.AppSettings["windowsUsersPwd"];
+            iWinUserPwdLength = Convert.ToInt16(ConfigurationManager.AppSettings["windowsUserPwdLength"]);
+            sQSRepPwd = ConfigurationManager.AppSettings["qsReplenishmentPwd"];
+            bLiveShipping = Convert.ToBoolean(ConfigurationManager.AppSettings.Get("LiveShipping").ToString());
+            sShipRushSerialNumber = ConfigurationManager.AppSettings.Get("ShiprushSerialNumber").ToString();
+            sTestShipRushSerialNumber = ConfigurationManager.AppSettings.Get("TestShiprushSerialNumber").ToString();
+
+
         }
 
         public Boolean InTestMode
@@ -53,6 +89,205 @@ namespace SLSShippingApp
             }
         }
 
+        public Boolean doTimeCheck
+        {
+            get
+            {
+                return bTimeCheck;
+            }
+            set
+            {
+                bTimeCheck = value;
+            }
+        }
+
+        public Boolean LiveShipping
+        {
+            get
+            {
+                return bLiveShipping;
+            }
+            set
+            {
+                bLiveShipping = value;
+            }
+        }
+         
+        public String ShipRushSerialNumber
+        {
+            get
+            {
+                return sShipRushSerialNumber;
+            }
+            set
+            {
+                sShipRushSerialNumber = value;
+            }
+        }
+        public String TestShipRushSerialNumber
+        {
+            get
+            {
+                return sTestShipRushSerialNumber;
+            }
+            set
+            {
+                sTestShipRushSerialNumber = value;
+            }
+        }
+
+        public String ImagePath
+        {
+            get
+            {
+                return sImagePath;
+            }
+            set
+            {
+                sImagePath = value;
+            }
+        }
+
+        public String TicketPrinter
+        {
+            get
+            {
+                return sTicketPrinter;
+            }
+            set
+            {
+                sTicketPrinter = value;
+            }
+        }
+
+        public String LabelPrinter
+        {
+            get
+            {
+                return sLabelPrinter;
+            }
+            set
+            {
+                sLabelPrinter = value;
+            }
+        }
+
+        public String ShipLabelPrinter
+        {
+            get
+            {
+                return sShipLabelPrinter;
+            }
+            set
+            {
+                sShipLabelPrinter = value;
+            }
+        }
+
+        public String PackingSlipPath
+        {
+            get
+            {
+                return sPackingSlipFolder;
+            }
+            set
+            {
+                sPackingSlipFolder = value;
+            }
+        }
+
+        public Boolean ShowVerbose
+        {
+            get
+            {
+                return Verbose;
+            }
+            set
+            {
+                Verbose = value;
+            }
+        }
+
+        public String LeadTimePwd
+        {
+            get
+            {
+                return sLeadTimePwd;
+            }
+            set
+            {
+                sLeadTimePwd = value;
+            }
+        }
+
+        public String BackoutPwd
+        {
+            get
+            {
+                return sBackoutPwd;
+            }
+            set
+            {
+                sBackoutPwd = value;
+            }
+        }
+
+        public String WinUserPwd
+        {
+            get
+            {
+                return sWinUserPwd;
+            }
+            set
+            {
+                sWinUserPwd = value;
+            }
+        }
+        public String QSRepPwd
+        {
+            get
+            {
+                return sQSRepPwd;
+            }
+            set
+            {
+                sQSRepPwd = value;
+            }
+        }
+
+        public Int16 LeadTimePwdLength
+        {
+            get
+            {
+                return iLeadTimePwdLength;
+            }
+            set
+            {
+                iLeadTimePwdLength = value;
+            }
+        }
+        public Int16 BackoutPwdLength
+        {
+            get
+            {
+                return iBackoutPwdLength;
+            }
+            set
+            {
+                iBackoutPwdLength = value;
+            }
+        }
+        public Int16 WinUserPwdLength
+        {
+            get
+            {
+                return iWinUserPwdLength;
+            }
+            set
+            {
+                iWinUserPwdLength = value;
+            }
+        }
         public String ShippingConnection
         {
             get
