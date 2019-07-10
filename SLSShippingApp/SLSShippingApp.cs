@@ -128,6 +128,7 @@ namespace SLSShippingApp
 
         private void GenerateDatabase()
         {
+
             List<string> cmds = new List<string>();
 
             if (File.Exists(Application.StartupPath + "\\SLSShippingAppDB.sql"))
@@ -153,6 +154,10 @@ namespace SLSShippingApp
                     cmd = String.Empty;
                 }
                 tr.Close();
+            }
+            else
+            {
+                MessageBox.Show(String.Format("Database file not found at {0}",Application.StartupPath + "\\SLSShippingAppDB.sql"),"On Load - Database Creation Failure");
             }
             if (cmds.Count > 0)
             {

@@ -34,7 +34,7 @@
     <ProductName>SLSShippingApp</ProductName>
     <PublisherName>Sports Licensing Solutions</PublisherName>
     <SuiteName>SLS Shipping App</SuiteName>
-    <ApplicationRevision>72</ApplicationRevision>
+    <ApplicationRevision>74</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -330,7 +330,7 @@
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
+      <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.SqlServer.Express.10.5">
       <Visible>False</Visible>

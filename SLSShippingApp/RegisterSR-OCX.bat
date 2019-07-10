@@ -1,1 +1,1 @@
-c:\windows\sysWOW64\regsvr32.exe ZRush_ShipRush.ocx
+runas/user:Administrator regsvr32.exe "ZRush_ShipRush.ocx"

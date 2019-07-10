@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Windows.Forms;
 
 
 namespace SLSShippingApp
@@ -38,48 +39,54 @@ namespace SLSShippingApp
 
         public CommonAPI()
         {
-
-            if (ConfigurationManager.AppSettings["IsTesting"].ToString() == "true")
-                InTestMode = true;
-            else
-                InTestMode = false;
-
-            if (InTestMode)
+            try
             {
-                //DEBUG/TEST MODE
-                ShippingConnection = ConfigurationManager.ConnectionStrings["DevShippingConnection"].ToString();
-                MacolaConnection = ConfigurationManager.ConnectionStrings["DevMacolaConnection"].ToString();
+
+                if (ConfigurationManager.AppSettings["IsTesting"].ToString() == "true")
+                    InTestMode = true;
+                else
+                    InTestMode = false;
+
+                if (InTestMode)
+                {
+                    //DEBUG/TEST MODE
+                    ShippingConnection = ConfigurationManager.ConnectionStrings["DevShippingConnection"].ToString();
+                    MacolaConnection = ConfigurationManager.ConnectionStrings["DevMacolaConnection"].ToString();
+                }
+                else
+                {
+                    //Production Mode Settings
+                    ShippingConnection = ConfigurationManager.ConnectionStrings["ShippingConnection"].ToString();
+                    MacolaConnection = ConfigurationManager.ConnectionStrings["MacolaConnection"].ToString();
+                }
+
+                ShippingAppCon = ConfigurationManager.ConnectionStrings["SLSShippingAppConnection"].ToString();
+                Version = Convert.ToInt16(ConfigurationManager.AppSettings["AppVersion"].ToString());
+                Verbose = Convert.ToBoolean(ConfigurationManager.AppSettings["VerboseError"].ToString());
+                sTicketPrinter = ConfigurationManager.AppSettings.Get("PickTicketPrinter").ToString();
+                sLabelPrinter = ConfigurationManager.AppSettings.Get("LabelPrinter").ToString();
+                sShipLabelPrinter = ConfigurationManager.AppSettings.Get("ShipLabelPrinter").ToString();
+                bTimeCheck = Convert.ToBoolean(ConfigurationManager.AppSettings.Get("DoTimeCheck").ToString());
+                sImagePath = ConfigurationManager.AppSettings["ImagePath"].ToString();
+                sPackingSlipFolder = ConfigurationManager.AppSettings["CustomerPackingSlips"].ToString();
+                sLeadTimePwd = ConfigurationManager.AppSettings["leadTimePwd"];
+                iLeadTimePwdLength = Convert.ToInt16(ConfigurationManager.AppSettings["leadTimePwdLength"]);
+                sBackoutPwd = ConfigurationManager.AppSettings["backoutPwd"];
+                iBackoutPwdLength = Convert.ToInt16(ConfigurationManager.AppSettings["backoutPwdLength"]);
+                sWinUserPwd = ConfigurationManager.AppSettings["windowsUsersPwd"];
+                iWinUserPwdLength = Convert.ToInt16(ConfigurationManager.AppSettings["windowsUserPwdLength"]);
+                sQSRepPwd = ConfigurationManager.AppSettings["qsReplenishmentPwd"];
+                bLiveShipping = Convert.ToBoolean(ConfigurationManager.AppSettings.Get("LiveShipping").ToString());
+                sShipRushSerialNumber = ConfigurationManager.AppSettings.Get("ShiprushSerialNumber").ToString();
+                sTestShipRushSerialNumber = ConfigurationManager.AppSettings.Get("TestShiprushSerialNumber").ToString();
+                bUseHouseAccount = Convert.ToBoolean(ConfigurationManager.AppSettings.Get("UseHouseAccount").ToString());
+                sUPSTestAcct = ConfigurationManager.AppSettings.Get("UPSTestAcct").ToString();
+                sUPSAcct = ConfigurationManager.AppSettings.Get("UPSAcct").ToString();
             }
-            else
+            catch (Exception ex)
             {
-                //Production Mode Settings
-                ShippingConnection = ConfigurationManager.ConnectionStrings["ShippingConnection"].ToString();
-                MacolaConnection = ConfigurationManager.ConnectionStrings["MacolaConnection"].ToString();
+                MessageBox.Show(String.Format("Error Loading CommonAPI: {0}", ex.Message));
             }
-
-            ShippingAppCon = ConfigurationManager.ConnectionStrings["SLSShippingAppConnection"].ToString();
-            Version = Convert.ToInt16(ConfigurationManager.AppSettings["AppVersion"].ToString());
-            Verbose = Convert.ToBoolean(ConfigurationManager.AppSettings["VerboseError"].ToString());
-            sTicketPrinter = ConfigurationManager.AppSettings.Get("PickTicketPrinter").ToString();
-            sLabelPrinter = ConfigurationManager.AppSettings.Get("LabelPrinter").ToString();
-            sShipLabelPrinter = ConfigurationManager.AppSettings.Get("ShipLabelPrinter").ToString();
-            bTimeCheck = Convert.ToBoolean(ConfigurationManager.AppSettings.Get("DoTimeCheck").ToString());
-            sImagePath = ConfigurationManager.AppSettings["ImagePath"].ToString();
-            sPackingSlipFolder = ConfigurationManager.AppSettings["CustomerPackingSlips"].ToString();
-            sLeadTimePwd = ConfigurationManager.AppSettings["leadTimePwd"]; 
-            iLeadTimePwdLength = Convert.ToInt16(ConfigurationManager.AppSettings["leadTimePwdLength"]);
-            sBackoutPwd = ConfigurationManager.AppSettings["backoutPwd"];
-            iBackoutPwdLength = Convert.ToInt16(ConfigurationManager.AppSettings["backoutPwdLength"]);
-            sWinUserPwd = ConfigurationManager.AppSettings["windowsUsersPwd"];
-            iWinUserPwdLength = Convert.ToInt16(ConfigurationManager.AppSettings["windowsUserPwdLength"]);
-            sQSRepPwd = ConfigurationManager.AppSettings["qsReplenishmentPwd"];
-            bLiveShipping = Convert.ToBoolean(ConfigurationManager.AppSettings.Get("LiveShipping").ToString());
-            sShipRushSerialNumber = ConfigurationManager.AppSettings.Get("ShiprushSerialNumber").ToString();
-            sTestShipRushSerialNumber = ConfigurationManager.AppSettings.Get("TestShiprushSerialNumber").ToString();
-            bUseHouseAccount =Convert.ToBoolean(ConfigurationManager.AppSettings.Get("UseHouseAccount").ToString());
-            sUPSTestAcct = ConfigurationManager.AppSettings.Get("UPSTestAcct").ToString();
-            sUPSAcct = ConfigurationManager.AppSettings.Get("UPSAcct").ToString();
-
 
         }
 
