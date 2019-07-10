@@ -204,7 +204,7 @@
             this.miReprint = new System.Windows.Forms.ToolStripMenuItem();
             this.miBackout = new System.Windows.Forms.ToolStripMenuItem();
             this.scShipping = new System.Windows.Forms.SplitContainer();
-          //  this.axZFShippingPanel1 = new AxZRush_ShipRush.AxZFShippingPanel();
+            this.cbScanAndShip = new System.Windows.Forms.CheckBox();
             this.tcUI.SuspendLayout();
             this.tabScanItem.SuspendLayout();
             this.pnlScanMode.SuspendLayout();
@@ -246,7 +246,6 @@
             this.scShipping.Panel1.SuspendLayout();
             this.scShipping.Panel2.SuspendLayout();
             this.scShipping.SuspendLayout();
-           // ((System.ComponentModel.ISupportInitialize)(this.axZFShippingPanel1)).BeginInit();
             this.SuspendLayout();
             // 
             // tcUI
@@ -268,7 +267,7 @@
             // tabScanItem
             // 
             this.tabScanItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(228)))), ((int)(((byte)(231)))));
-            //this.tabScanItem.Controls.Add(this.axZFShippingPanel1);
+            this.tabScanItem.Controls.Add(this.cbScanAndShip);
             this.tabScanItem.Controls.Add(this.pnlScanMode);
             this.tabScanItem.Controls.Add(this.btnScanToOrder);
             this.tabScanItem.Controls.Add(this.btnRefreshScans);
@@ -1993,13 +1992,15 @@
             this.scShipping.SplitterDistance = 417;
             this.scShipping.TabIndex = 2;
             // 
-            // axZFShippingPanel1
+            // cbScanAndShip
             // 
-            //this.axZFShippingPanel1.Location = new System.Drawing.Point(811, 353);
-            //this.axZFShippingPanel1.Name = "axZFShippingPanel1";
-            //this.axZFShippingPanel1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axZFShippingPanel1.OcxState")));
-            //this.axZFShippingPanel1.Size = new System.Drawing.Size(75, 23);
-            //this.axZFShippingPanel1.TabIndex = 39;
+            this.cbScanAndShip.AutoSize = true;
+            this.cbScanAndShip.Location = new System.Drawing.Point(809, 27);
+            this.cbScanAndShip.Name = "cbScanAndShip";
+            this.cbScanAndShip.Size = new System.Drawing.Size(106, 19);
+            this.cbScanAndShip.TabIndex = 39;
+            this.cbScanAndShip.Text = "Scan and Ship";
+            this.cbScanAndShip.UseVisualStyleBackColor = true;
             // 
             // SLSShippingApp
             // 
@@ -2069,7 +2070,6 @@
             this.scShipping.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.scShipping)).EndInit();
             this.scShipping.ResumeLayout(false);
-         
             this.ResumeLayout(false);
 
         }
@@ -2233,7 +2233,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colType;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox cboShippingLabelPrinter;
-       // private AxZRush_ShipRush.AxZFShippingPanel axZFShippingPanel1;
+        private System.Windows.Forms.CheckBox cbScanAndShip;
+        // private AxZRush_ShipRush.AxZFShippingPanel axZFShippingPanel1;
     }
 }
 

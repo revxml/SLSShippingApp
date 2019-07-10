@@ -31,6 +31,9 @@ namespace SLSShippingApp
         Boolean bLiveShipping;
         String sShipRushSerialNumber;
         String sTestShipRushSerialNumber;
+        Boolean bUseHouseAccount;
+        String sUPSTestAcct;
+        String sUPSAcct;
 
 
         public CommonAPI()
@@ -73,6 +76,9 @@ namespace SLSShippingApp
             bLiveShipping = Convert.ToBoolean(ConfigurationManager.AppSettings.Get("LiveShipping").ToString());
             sShipRushSerialNumber = ConfigurationManager.AppSettings.Get("ShiprushSerialNumber").ToString();
             sTestShipRushSerialNumber = ConfigurationManager.AppSettings.Get("TestShiprushSerialNumber").ToString();
+            bUseHouseAccount =Convert.ToBoolean(ConfigurationManager.AppSettings.Get("UseHouseAccount").ToString());
+            sUPSTestAcct = ConfigurationManager.AppSettings.Get("UPSTestAcct").ToString();
+            sUPSAcct = ConfigurationManager.AppSettings.Get("UPSAcct").ToString();
 
 
         }
@@ -86,6 +92,39 @@ namespace SLSShippingApp
             set
             {
                 cInTestMode = value;
+            }
+        }
+
+        public Boolean UseHouseAccount
+        {
+            get
+            {
+                return bUseHouseAccount;
+            }
+            set
+            {
+                bUseHouseAccount = value;
+            }
+        }
+
+        public String UPSTestAcct
+        {
+            get {
+                return sUPSTestAcct;
+            }
+            set {
+                sUPSTestAcct = value;
+            }
+        }
+        public String UPSAcct
+        {
+            get
+            {
+                return sUPSAcct;
+            }
+            set
+            {
+                sUPSAcct = value;
             }
         }
 

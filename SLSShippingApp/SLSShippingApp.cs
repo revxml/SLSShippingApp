@@ -66,6 +66,7 @@ namespace SLSShippingApp
         public SLSShippingApp()
         {
             InitializeComponent();
+            comAPI = new CommonAPI();
 
            // if (ConfigurationManager.AppSettings["IsTesting"].ToString() == "true")
             if(comAPI.InTestMode)
@@ -74,32 +75,39 @@ namespace SLSShippingApp
                 tblItemMasterDB = "DATA_309";
             }
 
-            this.txtOperator.Text = Environment.UserName.ToString();
-            this.txtAdminOperator.Text = Environment.UserName.ToString();
-            LoadAvailablePrinters();
-            if (!CheckDatabaseExists())
+            try
             {
-                GenerateDatabase();
-            }
+                this.txtOperator.Text = Environment.UserName.ToString();
+                this.txtAdminOperator.Text = Environment.UserName.ToString();
+                LoadAvailablePrinters();
+                if (!CheckDatabaseExists())
+                {
+                    GenerateDatabase();
+                }
 
-            if (!CheckPrinterConnected(comAPI.TicketPrinter))
-            {
-                MessageBox.Show(String.Format("{0} is either not connected, or not a valid printer", comAPI.TicketPrinter), "Invalid Printer");
-                return;
+                if (!CheckPrinterConnected(comAPI.TicketPrinter))
+                {
+                    MessageBox.Show(String.Format("{0} is either not connected, or not a valid printer", comAPI.TicketPrinter), "Invalid Printer");
+                    return;
+                }
+                if (!CheckPrinterConnected(comAPI.LabelPrinter))
+                {
+                    MessageBox.Show(String.Format("{0} is either not connected, or not a valid printer", comAPI.LabelPrinter), "Invalid Printer");
+                    return;
+                }
+                if (!CheckPrinterConnected(comAPI.ShipLabelPrinter))
+                {
+                    MessageBox.Show(String.Format("{0} is either not connected, or not a valide printer", comAPI.ShipLabelPrinter), "Invalid Printer");
+                    return;
+                }
+                /* this is for generating customer packing slips, when customer needs to approve them*/
+                // DataTable dtPrintInfo = GetPrintInfo();
+                // LoadPrintData(dtPrintInfo);
             }
-            if (!CheckPrinterConnected(comAPI.LabelPrinter))
+            catch(Exception ex)
             {
-                MessageBox.Show(String.Format("{0} is either not connected, or not a valid printer", comAPI.LabelPrinter), "Invalid Printer");
-                return;
+                MessageBox.Show(String.Format("Error on load: {0}\r\n{1}",ex.Message,ex.InnerException.ToString()));
             }
-            if (!CheckPrinterConnected(comAPI.ShipLabelPrinter))
-            {
-                MessageBox.Show(String.Format("{0} is either not connected, or not a valide printer", comAPI.ShipLabelPrinter), "Invalid Printer");
-                return;
-            }
-            /* this is for generating customer packing slips, when customer needs to approve them*/
-            // DataTable dtPrintInfo = GetPrintInfo();
-            // LoadPrintData(dtPrintInfo);
         }
 
         private bool CheckDatabaseExists()
@@ -793,6 +801,7 @@ namespace SLSShippingApp
                 sCustomerNumber = row["CustomerNumber"].ToString().Length > 0 ? row["CustomerNumber"].ToString().Trim() : null;
                 String sOrderNumber = row["OrderNumber"].ToString().Trim();
                 String sTargetTableName = String.Empty;
+                Boolean bSingleItem = row["SingleItemOrder"].ToString().Length > 0 ? Convert.ToBoolean(row["SingleItemOrder"].ToString().Trim()): false;
 
                 if (sRptCustomer != null && sCustomerNumber != null)
                     iCustomerNumber = Convert.ToInt32(sCustomerNumber);
@@ -897,9 +906,12 @@ namespace SLSShippingApp
 
                     // if(!isReprint) //ADD THIS FOR PRODUCTION. IN DEV, I'M TESTING USING THE REPRINT FUNCTIONALITY
                     //BUT YOU'D NEVER WANT TO RE-SHIP EVERY TIME A USER DOES A REPRINT!!!!!!
-                    ShipOrder(sOrderNumber);
-
+                    if (isReprint == false && cbScanAndShip.Checked == true && bSingleItem == true)
+                    {
+                        ShipOrder(sOrderNumber);
+                    }
                     ClearSQLExpressTables("tblTickets", sOrderNumber, sTargetColumnName);
+                  
                 }
                 bPickingTicket = false;
 
@@ -1662,7 +1674,7 @@ namespace SLSShippingApp
 
             iScanID = Convert.ToInt32(dgvFoundOrder.Rows[iRowIndex].Cells[0].Value.ToString());
             sItemNumber = dgvFoundOrder.Rows[iRowIndex].Cells[1].Value.ToString();
-            sSQL = "spBackoutScan";
+            sSQL = "app_spBackoutScan";
             sqlCmd.Connection = sqlCon;
             sqlCon.Open();
             sqlCmd.CommandType = CommandType.StoredProcedure;
@@ -1688,6 +1700,9 @@ namespace SLSShippingApp
                         break;
                     case "DELETE Bay":
                         sBackoutBayAction = "With backout of this item, no items yet picked\n\t\t\tfor order therefor bay has been removed";
+                        break;
+                    case "DELETE Bay - Shipment Voided":
+                        sBackoutBayAction = "With backout of this item, no items yet picked\n\t\t\tfor order therefor bay has been removed\n\t\t\tThe Shipment Record has been VOIDED";
                         break;
                 }
                 sMsg = sMsg + "\tBayAction:\t" + sBackoutBayAction;
@@ -2934,7 +2949,7 @@ namespace SLSShippingApp
             Int16 iRowIndex = Convert.ToInt16(this.menuLastScans.Tag.ToString());
             iScanID = Convert.ToInt32(dgvList.Rows[iRowIndex].Cells[0].Value.ToString());
             sItemNumber = dgvList.Rows[iRowIndex].Cells[1].Value.ToString();
-            sSQL = "spBackoutScan";
+            sSQL = "app_spBackoutScan";
             sqlCmd.Connection = sqlCon;
             sqlCon.Open();
             sqlCmd.CommandType = CommandType.StoredProcedure;
@@ -2958,6 +2973,9 @@ namespace SLSShippingApp
                         break;
                     case "DELETE Bay":
                         sBackoutBayAction = "With backout of this item, no items yet picked\n\t\t\tfor order therefor bay has been removed";
+                        break;
+                    case "DELETE Bay - Shipment Voided":
+                        sBackoutBayAction = "With backout of this item, no items yet picked\n\t\t\tfor order therefor bay has been removed\n\t\t\tThe Shipment Record has been VOIDED";
                         break;
                 }
                 sMsg = sMsg + "\tBayAction:\t" + sBackoutBayAction;
@@ -3285,8 +3303,10 @@ namespace SLSShippingApp
             //  shiprushPanel.Shipment.FromAddress.Account = "123555";
             // shiprushPanel.Shipment.FromAddress.UPSAccount = "123555";
 
-            // if (dt.Rows[0]["CustShipperAcct"].ToString().Trim().Length > 0)
-            //         shiprushPanel.Shipment.FromAddress.Account = dt.Rows[0]["CustShipperAcct"].ToString().Trim();
+            if (comAPI.UseHouseAccount == false && dt.Rows[0]["CustShipperAcct"].ToString().Trim().Length > 0)
+                shiprushPanel.Shipment.FromAddress.Account = dt.Rows[0]["CustShipperAcct"].ToString().Trim();
+            else
+                shiprushPanel.Shipment.FromAddress.Account = comAPI.UPSAcct;
             //UNCOMMENT THE ABOVE LINE. ALL ALTERNATE (CUSTOMER) SHIPPING ACCOUNTS WILL HAVE TO BE ADDED
             //TO SHIPRUSH
             #region APO/FPO/INTERNATIONAL
